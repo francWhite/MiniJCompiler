@@ -1,0 +1,99 @@
+{ 
+  "name"                  : "Divider",
+  "commandline"           : "${buildDir}/divider",
+  "description"           : "A set of system tests to verify, whether the divider program works as specified",
+  "timeoutMilliseconds"   : 500,
+
+  "testCases" : [
+    {
+        "name"           : "single digit (zero)",
+        "precondition"   : [],
+        "args"           : "",
+        "input"          : "0\n",
+        "expectedOutput" : "0",
+        "maxTime"        : 500,
+        "score"          : 2
+    },
+    {
+        "name"           : "single digit (uneven)",
+        "precondition"   : [],
+        "args"           : "",
+        "input"          : "3\n",
+        "expectedOutput" : "1",
+        "maxTime"        : 500,
+        "score"          : 2
+    },
+    {
+        "name"           : "two digits (even)",
+        "precondition"   : [],
+        "args"           : "",
+        "input"          : "10\n",
+        "expectedOutput" : "5",
+        "maxTime"        : 500,
+        "score"          : 1        
+    },
+    {
+        "name"           : "two digits (uneven)",
+        "precondition"   : [],
+        "input"          : "42\n",
+        "expectedOutput" : "21",
+        "maxTime"        : 500,
+        "score"          : 1        
+    },
+    {
+      "name"           : "text",
+      "precondition"   : [],
+      "args"           : "",
+      "input"          : "10\n",
+      "expectedOutput" : "Bitte geben Sie eine Zahl ein:\nDas Resultat ist: 5",
+      "maxTime"        : 500,
+      "score"          : 1
+    },
+    {
+        "name"           : "negative",
+        "precondition"   : [],
+        "args"           : "",
+        "input"          : "-1234\n",
+        "expectedOutput" : "-617",
+        "maxTime"        : 500,
+        "score"          : 1        
+    },
+
+    {
+        "name"           : "large (positive)",
+        "precondition"   : [],
+        "args"           : "",
+        "input"          : "12345678900\n",
+        "expectedOutput" : "6172839450",
+        "maxTime"        : 500,
+        "score"          : 0.5
+    },
+    {
+      "name"           : "large (negative)",
+      "precondition"   : [],
+      "args"           : "",
+      "input"          : "-12345678900\n",
+      "expectedOutput" : "-6172839450",
+      "maxTime"        : 500,
+      "score"          : 0.5
+    },
+    {
+      "name"           : "64-bit (maximal)",
+      "precondition"   : [],
+      "args"           : "",
+      "input"          : "9223372036854775807\n",
+      "expectedOutput" : "4611686018427387903",
+      "maxTime"        : 500,
+      "score"          : 0.5
+    },
+    {
+      "name"           : "64-bit (minimal)",
+      "precondition"   : [],
+      "args"           : "",
+      "input"          : "-9223372036854775808\n",
+      "expectedOutput" : "-4611686018427387904",
+      "maxTime"        : 500,
+      "score"          : 0.5
+    }
+  ]
+}
