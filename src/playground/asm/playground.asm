@@ -18,7 +18,7 @@ section .bss		; defines start of section of unitialized data
 section .text		; defines start of code section
 
 _start:			; start label
-   jmp number_to_string
+   jmp pow
 
 
 _simple_multiplication:
@@ -37,8 +37,8 @@ _simple_multiplication:
 
 
 pow:
-    mov r8, 2
-    mov r9, 1
+    mov r8, 3
+    mov r9, 0
     mov r10, 1
     jmp pow_cond
 ;r8 = potenz (x von 10^x)
@@ -53,29 +53,26 @@ pow_loop:
 
 pow_cond:
     cmp r9, r8
-    jle pow_loop
-
-
+    jl pow_loop
 
 number_to_string:
-    mov r10, 5 ;testvalue 10
-
-    mov r9, 0
+    mov r9, 0 ;inde for number_to_string_div_loop
+    mov r12, 10                 ;move 10 (dividend) to r12
     mov rax, r10
     mov rdx, 0
     jmp number_to_string_div_cond
 
     number_to_string_div_loop:
-        mov r12, 10                 ;move 10 (dividend) to r12
         idiv r12                    ;rdx:rax / r12 -> rax=Resultat, rdx=rest
         mov [NUMBER + r9], rdx      ;move rdx(rest) to NUMBER
+        mov rdx, 0
         add r9, 1
 
     number_to_string_div_cond:
         cmp rax, 0
         jne number_to_string_div_loop
-        sub r9, 1
 
+    sub r9, 1
     mov r11, 0  ;r11 = index number_to_string_convert_loop
     jmp number_to_string_convert_cond
 
@@ -96,7 +93,7 @@ number_to_string:
 ;    mov [BUFFER], r13
 
     mov rdi, BUFFER     ; copy address of variable BUFFER into register rdi
-    mov rsi, 1        ; register rax contians the number of typed char, copy value of rax into register rsi
+    mov rsi, r11        ; register rax contians the number of typed char, copy value of rax into register rsi
     call _write         ; now calls function _write to write to console (stdin)
 
 _end:
