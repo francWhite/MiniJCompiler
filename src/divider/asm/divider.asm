@@ -7,48 +7,48 @@ extern _exit
 global _start
 
 section .data
-    TEXTHW: db 'Bitte geben Sie eine Zahl ein:', 13, 10	; defines the string constant TEXTHW with ‘hello world’&cr/lf)
-    TXTLEN: equ $-TEXTHW		    ; Reads the lenght of TEXTHW ino TXTLN
-
-    LENGTH: equ 64                  ; constant (buffer length in bytes)
+    TEXTHW db 'Bitte geben Sie eine Zahl ein:', 13, 10	; defines the string constant TEXTHW with 13=cr and 10=lf
+    TXTLEN equ $-TEXTHW		                        ; Reads the length of TEXTHW ino TXTLN
+    LENGTH equ 64                                      ; constant (buffer length in bytes)
 
 section .bss
     alignb 8
-    BUFFER: resb LENGTH
-    NUMBER: resb LENGTH
+    BUFFER resb LENGTH
+    NUMBER resb LENGTH
 
 section .text
 
 _start:
-            push  rbp                   ; store pointer to previous frame, and additionally
-                                        ; ensure that the stack is aligned for the subsequent
-                                        ; function calls. Required for Windows and MacOS.
+    push  rbp   ; store pointer to previous frame, and additionally
+                ; ensure that the stack is aligned for the subsequent
+                ; function calls. Required for Windows and MacOS.
 
 ; implement divider (milestone 1)
-mov rdi, TEXTHW     	; copy address of constant TEXTHW into register rdi
-mov rsi, TXTLEN       ; writes the length of TEXTHW into register rsi
+mov rdi, TEXTHW     	; adresse von konstante TEXTHW in das register rdi laden
+mov rsi, TXTLEN         ; länge von konstante TEXTHW in das register rsi laden
 call _write         	; now calls function _write to write to console (stdout)
 
-mov rdi, BUFFER; copy pointer to BUFFER into rdi
-mov rsi, LENGTH; copy length of byte array into rsi
-call _read; execute system call
+mov rdi, BUFFER ; copy pointer to BUFFER into rdi
+mov rsi, LENGTH ; copy length of byte array into rsi
+call _read      ; execute system call --> BUFFER contains the input, rax contains the input length
 
-sub rax, 2 ; Enter = \r\n -> subtract 2
+sub rax, 2  ; Enter = \r\n -> subtract 2
 
-; loop init
-mov r12, 0  ;r12 = index
+; eingabe zu zahl umwandeln
+mov r12, 0  ; r12 = index von loop
 jmp convert_string_to_number_cond
 
+; BUFFER zeichen für zeichen iterieren und der string wird durch subtratkion von 48 (ascii code für '0') in eine zahl umgewandelt und in NUMBER gespeichert
 convert_string_to_number_loop:
     mov r13, [BUFFER + r12]
-    sub r13, 48 ;'0'
+    sub r13, 48 ; '0'
     mov [NUMBER + r12], r13
     add r12, 1
 
 convert_string_to_number_cond:
-    cmp r12, rax    ;check if max length is reached
+    cmp r12, rax    ; check if max length is reached
     jl convert_string_to_number_loop
-;--------------------------WORKING ABOVE-----------------------------
+;--------------------WORKING ABOVE--------------------
 sub r12, 1
 mov r13, 0  ;r13 = Potenz, von 0-n
 mov r15, 0  ;r15 = resultat
@@ -94,12 +94,12 @@ pow_loop:
     add r9, 1
 
 pow_cond:
-    cmp r9, r8
+    cmp r9, r8 ;r8 ist die höchste potenz bzw. anzahl stellen-1
     jl pow_loop
     jmp pow_return
 
 number_to_string:
-    mov r9, 0 ;inde for number_to_string_div_loop
+    mov r9, 0 ;index for number_to_string_div_loop
     mov r12, 10                 ;move 10 (dividend) to r12
     mov rax, r10 ;r10 auszugebender wert
     mov rdx, 0
