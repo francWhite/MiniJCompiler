@@ -18,7 +18,9 @@ section .bss		; defines start of section of unitialized data
 section .text		; defines start of code section
 
 _start:			; start label
-   jmp pow
+   mov r15, 48
+   mov r10, r15
+   jmp number_to_string
 
 
 _simple_multiplication:
@@ -58,7 +60,7 @@ pow_cond:
 number_to_string:
     mov r9, 0 ;inde for number_to_string_div_loop
     mov r12, 10                 ;move 10 (dividend) to r12
-    mov rax, r10
+    mov rax, r10 ;r10 auszugebender wert
     mov rdx, 0
     jmp number_to_string_div_cond
 
@@ -99,3 +101,14 @@ number_to_string:
 _end:
     mov   rdi, 0        ; terminate program with exit 0
     call  _exit
+
+
+
+
+    ;DEBUGER
+        mov r14, 0; WERT
+        add r14, '0'
+        mov [BUFFER], r14
+        mov rdi, BUFFER     ; copy address of variable BUFFER into register rdi
+        mov rsi, 1        ; register rax contians the number of typed char, copy value of rax into register rsi
+        call _write
