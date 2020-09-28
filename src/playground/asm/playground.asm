@@ -18,9 +18,9 @@ section .bss		; defines start of section of unitialized data
 section .text		; defines start of code section
 
 _start:			; start label
-   mov r15, 48
-   mov r10, r15
-   jmp number_to_string
+   ;mov r15, 48
+   ;mov r10, r15
+   jmp pow
 
 
 _simple_multiplication:
@@ -39,7 +39,7 @@ _simple_multiplication:
 
 
 pow:
-    mov r8, 3
+    mov r8, 6
     mov r9, 0
     mov r10, 1
     jmp pow_cond

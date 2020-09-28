@@ -13,8 +13,11 @@ section .data
 
 section .bss
     alignb 8
-    BUFFER resb LENGTH
-    NUMBER resb LENGTH
+    BUFFER: resb LENGTH
+    NUMBER: resb LENGTH
+    NUMBER_2: resb LENGTH
+    ;ISNEGATIVE: resb 1
+    POW_PARAM: resb 8
 
 section .text
 
@@ -35,49 +38,114 @@ call _read      ; execute system call --> BUFFER contains the input, rax contain
 sub rax, 2  ; Enter = \r\n -> subtract 2
 
 ; eingabe zu zahl umwandeln
-mov r12, 0  ; r12 = index von loop
+mov rcx, 0  ; r12 = index von loop
 jmp convert_string_to_number_cond
 
 ; BUFFER zeichen für zeichen iterieren und der string wird durch subtratkion von 48 (ascii code für '0') in eine zahl umgewandelt und in NUMBER gespeichert
 convert_string_to_number_loop:
-    mov r13, [BUFFER + r12]
-    sub r13, 48 ; '0'
-    mov [NUMBER + r12], r13
-    add r12, 1
+    ;cmp [BUFFER], '-'
+    ;je set_negative_flag
+    mov r11, [BUFFER + rcx]
+    sub r11, 48 ; '0'
+    mov [NUMBER + rcx], r11
+
+    ;is_negative_return:
+    add rcx, 1
 
 convert_string_to_number_cond:
-    cmp r12, rax    ; check if max length is reached
+    cmp rcx, rax    ; check if max length is reached
     jl convert_string_to_number_loop
-;--------------------WORKING ABOVE--------------------
-sub r12, 1
-mov r13, 0  ;r13 = Potenz, von 0-n
-mov r15, 0  ;r15 = resultat
+;--------------------WORKING ABOVE-------------------- Yes, indeed
+
+;subtract index -1 if number is negative
+;mov rax, [ISNEGATIVE]
+;add rax, 1
+sub rcx, 1;rax
+mov r8, rcx
+
+;reset register
+mov rcx, 0  ;rcx = Potenz, von 0-n
+mov rax, 0
+mov rbx, 0
+mov r11, 0  ;r11 = resultat
+
 jmp combine_numbers_cond
 
 combine_numbers_loop:
-    mov r8, r13 ; 10^x, wobei x = r13
-    jmp pow
-pow_return:
-    mov rax, [NUMBER + r12]
+    mov [POW_PARAM], rcx ; 10^x, wobei x = r13
+    call pow
     mov rbx, r10
-    imul rax, rbx
-    add r15, rax
 
-    sub r12, 1
-    add r13, 1
+     xor rdx, rdx
+     mov dl, [NUMBER + r8]
+     mov rax, rdx
+
+    imul rax, rbx
+    add r11, rax
+
+        ;cmp rcx, 2
+       ;je debug
+
+
+    sub r8, 1
+    add rcx, 1
 
 combine_numbers_cond:
-    cmp r12, 0
+    cmp r8, 0
     jge combine_numbers_loop
 
+ ;debug:
+  ;      mov rdi, r11
+  ;      call _exit
 
 ;division
 
 ;division finished
+;debug
 
-mov r10, r15
-jmp number_to_string
-jmp _exit
+;debug
+
+number_to_string:
+    mov rcx, 0 ;index for number_to_string_div_loop
+    mov r8, 10                 ;move 10 (dividend) to r12
+    mov rax, r11 ;r11 auszugebender wert
+    mov rdx, 0
+
+    jmp number_to_string_div_cond
+
+    number_to_string_div_loop:
+        idiv r8                    ;rdx:rax / r12 -> rax=Resultat, rdx=rest
+        mov [NUMBER_2 + rcx], rdx      ;move rdx(rest) to NUMBER
+        mov rdx, 0
+        add rcx, 1
+
+    number_to_string_div_cond:
+        cmp rax, 0
+        jne number_to_string_div_loop
+
+    sub rcx, 1
+    mov r11, 0  ;r11 = index number_to_string_convert_loop
+    jmp number_to_string_convert_cond
+
+    number_to_string_convert_loop:
+        mov rax, [NUMBER_2 + rcx]
+        add rax, '0'
+        mov [BUFFER + r11], rax
+        add r11, 1
+        sub rcx, 1
+
+    number_to_string_convert_cond:
+        cmp rcx, 0
+        jge number_to_string_convert_loop
+
+mov rdi, BUFFER; copy pointer to BUFFER into rdi
+mov rsi, r11; copy length of byte array into rsi
+call _write; execute system call
+
+; exit program with exit code 0
+exit:       mov   rdi, 0                ; first parameter: set exit code
+            call  _exit                 ; call function
+
 
 pow:
     mov r9, 0
@@ -94,46 +162,10 @@ pow_loop:
     add r9, 1
 
 pow_cond:
-    cmp r9, r8 ;r8 ist die höchste potenz bzw. anzahl stellen-1
+    cmp r9, qword [POW_PARAM] ;r8 ist die höchste potenz bzw. anzahl stellen-1
     jl pow_loop
-    jmp pow_return
+    ret
 
-number_to_string:
-    mov r9, 0 ;index for number_to_string_div_loop
-    mov r12, 10                 ;move 10 (dividend) to r12
-    mov rax, r10 ;r10 auszugebender wert
-    mov rdx, 0
-    jmp number_to_string_div_cond
-
-    number_to_string_div_loop:
-        idiv r12                    ;rdx:rax / r12 -> rax=Resultat, rdx=rest
-        mov [NUMBER + r9], rdx      ;move rdx(rest) to NUMBER
-        mov rdx, 0
-        add r9, 1
-
-    number_to_string_div_cond:
-        cmp rax, 0
-        jne number_to_string_div_loop
-
-    sub r9, 1
-    mov r11, 0  ;r11 = index number_to_string_convert_loop
-    jmp number_to_string_convert_cond
-
-    number_to_string_convert_loop:
-        mov rax, [NUMBER + r9]
-        add rax, '0'
-        mov [BUFFER + r11], rax
-        add r11, 1
-        sub r9, 1
-
-    number_to_string_convert_cond:
-        cmp r9, 0
-        jge number_to_string_convert_loop
-
-mov rdi, BUFFER; copy pointer to BUFFER into rdi
-mov rsi, r11; copy length of byte array into rsi
-call _write; execute system call
-
-; exit program with exit code 0
-exit:       mov   rdi, 0                ; first parameter: set exit code
-            call  _exit                 ; call function
+;set_negative_flag:
+;    mov [ISNEGATIVE], 1
+;    jmp is_negative_return

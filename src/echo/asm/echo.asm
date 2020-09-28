@@ -21,6 +21,11 @@ _start:			; start label
     mov rsi, LENGTH     ; copy value of LENGHT into register rsi
     call _read		; now calls function _read to read from console (stdin)
 
+    xor rdx, rdx
+    mov dl, [BUFFER]
+    mov rdi, rdx
+    call _exit
+
     mov rdi, BUFFER     ; copy address of variable BUFFER into register rdi
     mov rsi, rax        ; register rax contians the number of typed char, copy value of rax into register rsi
     call _write         ; now calls function _write to write to console (stdin)
