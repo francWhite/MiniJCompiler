@@ -11,6 +11,11 @@ section .data
     TXTLEN equ $-TEXTHW		                        ; Reads the length of TEXTHW ino TXTLN
     LENGTH equ 64                                      ; constant (buffer length in bytes)
 
+    OUTPUTTEXT db 'Das Resultat ist: '
+    OUTPUTLEN equ $-OUTPUTTEXT
+
+    SPACETEXT db 10
+
 section .bss
     alignb 8
     BUFFER: resb LENGTH
@@ -76,16 +81,12 @@ combine_numbers_loop:
     call pow
     mov rbx, r10
 
-     xor rdx, rdx
-     mov dl, [NUMBER + r8]
-     mov rax, rdx
+    xor rdx, rdx
+    mov dl, [NUMBER + r8]
+    mov rax, rdx
 
     imul rax, rbx
     add r11, rax
-
-        ;cmp rcx, 2
-       ;je debug
-
 
     sub r8, 1
     add rcx, 1
@@ -94,16 +95,13 @@ combine_numbers_cond:
     cmp r8, 0
     jge combine_numbers_loop
 
- ;debug:
-  ;      mov rdi, r11
-  ;      call _exit
-
 ;division
-
+    mov rdx, 0
+    mov rax, r11
+    mov r8, 2
+    idiv r8
+    mov r11, rax
 ;division finished
-;debug
-
-;debug
 
 number_to_string:
     mov rcx, 0 ;index for number_to_string_div_loop
@@ -138,14 +136,18 @@ number_to_string:
         cmp rcx, 0
         jge number_to_string_convert_loop
 
+mov rdi, OUTPUTTEXT; copy pointer to BUFFER into rdi
+mov rsi, OUTPUTLEN; copy length of byte array into rsi
+call _write; execute system call
+
 mov rdi, BUFFER; copy pointer to BUFFER into rdi
 mov rsi, r11; copy length of byte array into rsi
 call _write; execute system call
 
+
 ; exit program with exit code 0
 exit:       mov   rdi, 0                ; first parameter: set exit code
             call  _exit                 ; call function
-
 
 pow:
     mov r9, 0
