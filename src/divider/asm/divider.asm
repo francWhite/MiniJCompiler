@@ -56,12 +56,6 @@ jmp convert_string_to_number_cond
 
 ;----------BUFFER zeichen für zeichen iterieren und der string wird durch subtratkion von 48 (ascii code für '0') in eine zahl umgewandelt und in NUMBER gespeichert---------
 convert_string_to_number_loop:
-
-xor rdx, rdx
-mov dl, [BUFFER]
-mov rdi, rdx
-call _exit
-
     xor rdx, rdx
     mov dl, [BUFFER + rcx]
     mov r11, rdx
@@ -203,5 +197,5 @@ pow_cond:
 
 set_negative_flag:
     mov [ISNEGATIVE], byte 1
-    sub [BUFFER], byte '0'
+    mov [BUFFER], byte '0'
     jmp is_negative_return

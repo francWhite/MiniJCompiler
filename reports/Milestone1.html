@@ -8,7 +8,7 @@
     td.pass {border: 1px solid #90EE90; background-color: #90EE90;color: #007000}
     td.fail {border: 1px solid #F08080; background-color: #F08080;color: #700000}
     tr:nth-child(even) {background-color: #dddddd}
-    </style></head><body><p><b>Test results (score: 0.0 of 10.0):</b></p><table>  <col width="14%">  <col width="14%">  <col width="24%">  <col width="23%">  <col width="5%">  <col width="5%">  <col width="7%">  <col width="8%">  <tr>    <th>Test case</th>
+    </style></head><body><p><b>Test results (score: 10.0 of 10.0):</b></p><table>  <col width="14%">  <col width="14%">  <col width="24%">  <col width="23%">  <col width="5%">  <col width="5%">  <col width="7%">  <col width="8%">  <tr>    <th>Test case</th>
     <th>Input</th>
     <th>Expected Output</th>
     <th>Actual Output</th>
@@ -21,9 +21,9 @@
     <td>single digit (zero)</td>
     <td>0<br></td>
     <td>0</td>
-    <td>Bitte geben Sie eine Zahl ein:<br><br>Program exited with exit code: 48, but expected: 0</td>
+    <td>Bitte geben Sie eine Zahl ein:<br>Das Resultat ist: 0<br><br></td>
     <td>2.0</td>
-    <td class="fail">Wrong Exitcode</td>
+    <td class="pass">Passed</td>
     <td>0</td>
     <td>500</td>
   </tr>
@@ -31,9 +31,9 @@
     <td>single digit (uneven)</td>
     <td>3<br></td>
     <td>1</td>
-    <td>Bitte geben Sie eine Zahl ein:<br><br>Program exited with exit code: 51, but expected: 0</td>
+    <td>Bitte geben Sie eine Zahl ein:<br>Das Resultat ist: 1<br><br></td>
     <td>2.0</td>
-    <td class="fail">Wrong Exitcode</td>
+    <td class="pass">Passed</td>
     <td>0</td>
     <td>500</td>
   </tr>
@@ -41,9 +41,9 @@
     <td>two digits (even)</td>
     <td>10<br></td>
     <td>5</td>
-    <td>Bitte geben Sie eine Zahl ein:<br><br>Program exited with exit code: 49, but expected: 0</td>
+    <td>Bitte geben Sie eine Zahl ein:<br>Das Resultat ist: 5<br><br></td>
     <td>1.0</td>
-    <td class="fail">Wrong Exitcode</td>
+    <td class="pass">Passed</td>
     <td>0</td>
     <td>500</td>
   </tr>
@@ -51,9 +51,9 @@
     <td>two digits (uneven)</td>
     <td>42<br></td>
     <td>21</td>
-    <td>Bitte geben Sie eine Zahl ein:<br><br>Program exited with exit code: 52, but expected: 0</td>
+    <td>Bitte geben Sie eine Zahl ein:<br>Das Resultat ist: 21<br><br></td>
     <td>1.0</td>
-    <td class="fail">Wrong Exitcode</td>
+    <td class="pass">Passed</td>
     <td>0</td>
     <td>500</td>
   </tr>
@@ -61,9 +61,9 @@
     <td>text</td>
     <td>10<br></td>
     <td>Bitte geben Sie eine Zahl ein:<br>Das Resultat ist: 5</td>
-    <td>Bitte geben Sie eine Zahl ein:<br><br>Program exited with exit code: 49, but expected: 0</td>
+    <td>Bitte geben Sie eine Zahl ein:<br>Das Resultat ist: 5<br><br></td>
     <td>1.0</td>
-    <td class="fail">Wrong Exitcode</td>
+    <td class="pass">Passed</td>
     <td>0</td>
     <td>500</td>
   </tr>
@@ -71,9 +71,9 @@
     <td>negative</td>
     <td>-1234<br></td>
     <td>-617</td>
-    <td>Bitte geben Sie eine Zahl ein:<br><br>Program exited with exit code: 253, but expected: 0</td>
+    <td>Bitte geben Sie eine Zahl ein:<br>Das Resultat ist: -617<br><br></td>
     <td>1.0</td>
-    <td class="fail">Wrong Exitcode</td>
+    <td class="pass">Passed</td>
     <td>0</td>
     <td>500</td>
   </tr>
@@ -81,9 +81,9 @@
     <td>large (positive)</td>
     <td>12345678900<br></td>
     <td>6172839450</td>
-    <td>Bitte geben Sie eine Zahl ein:<br><br>Program exited with exit code: 49, but expected: 0</td>
+    <td>Bitte geben Sie eine Zahl ein:<br>Das Resultat ist: 6172839450<br><br></td>
     <td>0.5</td>
-    <td class="fail">Wrong Exitcode</td>
+    <td class="pass">Passed</td>
     <td>0</td>
     <td>500</td>
   </tr>
@@ -91,9 +91,9 @@
     <td>large (negative)</td>
     <td>-12345678900<br></td>
     <td>-6172839450</td>
-    <td>Bitte geben Sie eine Zahl ein:<br><br>Program exited with exit code: 253, but expected: 0</td>
+    <td>Bitte geben Sie eine Zahl ein:<br>Das Resultat ist: -6172839450<br><br></td>
     <td>0.5</td>
-    <td class="fail">Wrong Exitcode</td>
+    <td class="pass">Passed</td>
     <td>0</td>
     <td>500</td>
   </tr>
@@ -101,9 +101,9 @@
     <td>64-bit (maximal)</td>
     <td>9223372036854775807<br></td>
     <td>4611686018427387903</td>
-    <td>Bitte geben Sie eine Zahl ein:<br><br>Program exited with exit code: 57, but expected: 0</td>
+    <td>Bitte geben Sie eine Zahl ein:<br>Das Resultat ist: 4611686018427387903<br><br></td>
     <td>0.5</td>
-    <td class="fail">Wrong Exitcode</td>
+    <td class="pass">Passed</td>
     <td>0</td>
     <td>500</td>
   </tr>
@@ -111,9 +111,9 @@
     <td>64-bit (minimal)</td>
     <td>-9223372036854775808<br></td>
     <td>-4611686018427387904</td>
-    <td>Bitte geben Sie eine Zahl ein:<br><br>Program exited with exit code: 253, but expected: 0</td>
+    <td>Bitte geben Sie eine Zahl ein:<br>Das Resultat ist: -4611686018427387904<br><br></td>
     <td>0.5</td>
-    <td class="fail">Wrong Exitcode</td>
+    <td class="pass">Passed</td>
     <td>0</td>
     <td>500</td>
   </tr>
