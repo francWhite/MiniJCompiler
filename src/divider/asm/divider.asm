@@ -15,6 +15,9 @@ section .data
     OUTPUTTEXT db 'Das Resultat ist: '
     OUTPUTLEN equ $-OUTPUTTEXT
 
+    NEGATIVETEXT db '-'
+    NEGATIVELEN equ $-NEGATIVETEXT
+
     CRLF        db  10, 13  ; carriage return (CR) / line feed (LF)
     CRLF_LEN    equ $-CRLF  ; current position ($) minus address of CRLF => 2 bytes
 
@@ -22,7 +25,7 @@ section .bss
     alignb 8
     BUFFER: resb LENGTH
     NUMBER: resb LENGTH
-    ;ISNEGATIVE: resb 1
+    ISNEGATIVE: resb 1
     POW_PARAM: resb 8
 
 section .text
@@ -44,12 +47,20 @@ sub rax, 1  ; Enter = \r\n -> subtract 2
 
 ;----------Eingabe zu zahl umwandeln-----------
 mov rcx, 0              ; rcx = index von loop
+
+cmp [BUFFER], byte '-'
+je set_negative_flag
+
+is_negative_return:
 jmp convert_string_to_number_cond
 
 ;----------BUFFER zeichen für zeichen iterieren und der string wird durch subtratkion von 48 (ascii code für '0') in eine zahl umgewandelt und in NUMBER gespeichert---------
 convert_string_to_number_loop:
-    ;cmp [BUFFER], '-'
-    ;je set_negative_flag
+
+xor rdx, rdx
+mov dl, [BUFFER]
+mov rdi, rdx
+call _exit
 
     xor rdx, rdx
     mov dl, [BUFFER + rcx]
@@ -66,7 +77,6 @@ convert_string_to_number_loop:
     sub r11, 48
     mov [NUMBER + rcx], r11
 
-    ;is_negative_return:
     inc rcx
 
 convert_string_to_number_cond:
@@ -147,6 +157,15 @@ mov rdi, OUTPUTTEXT     ;copy pointer to OUTPUTTEXT into rdi
 mov rsi, OUTPUTLEN      ; copy length of byte array into rsi
 call _write             ; execute system call
 
+cmp [ISNEGATIVE], byte 1
+jne number_output
+
+mov rdi, NEGATIVETEXT         ; copy pointer to BUFFER into rdi
+mov rsi, NEGATIVELEN         ; copy length of byte array into rsi
+call _write             ; execute system call
+
+number_output:
+
 mov rdi, BUFFER         ; copy pointer to BUFFER into rdi
 mov rsi, r11            ; copy length of byte array into rsi
 call _write             ; execute system call
@@ -182,6 +201,7 @@ pow_cond:
     jl pow_loop
     ret
 
-;set_negative_flag:
-;    mov [ISNEGATIVE], 1
-;    jmp is_negative_return
+set_negative_flag:
+    mov [ISNEGATIVE], byte 1
+    sub [BUFFER], byte '0'
+    jmp is_negative_return
