@@ -104,7 +104,6 @@ combine_numbers_loop:
 combine_numbers_cond:
     cmp r8, 0
     jge combine_numbers_loop
-
 ;--------division--------
 mov rdx, 0
 mov rax, r11
@@ -129,8 +128,17 @@ number_to_string_div_loop:
 number_to_string_div_cond:
     cmp rax, 0
     jne number_to_string_div_loop
+    sub rcx, 1
 
-sub rcx, 1
+;beim resultat-wert 0 ist rcx = -1. In diesem Fall mus rcx auf 0 gesetzt werden, damit die Ausgabe korrekt funktioniert
+cmp rcx, 0
+jl rcx_fix
+jmp rcx_correct
+
+rcx_fix:
+    mov rcx, 0
+rcx_correct:
+
 mov r11, 0              ;r11 = index number_to_string_convert_loop
 jmp number_to_string_convert_cond
 
