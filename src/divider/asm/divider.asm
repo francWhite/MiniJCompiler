@@ -42,11 +42,11 @@ call _read              ; execute system call --> BUFFER contains the input, rax
 
 sub rax, 1  ; Enter = \r\n -> subtract 2
 
-; eingabe zu zahl umwandeln
-mov rcx, 0      ; rcx = index von loop
+;----------Eingabe zu zahl umwandeln-----------
+mov rcx, 0              ; rcx = index von loop
 jmp convert_string_to_number_cond
 
-; BUFFER zeichen für zeichen iterieren und der string wird durch subtratkion von 48 (ascii code für '0') in eine zahl umgewandelt und in NUMBER gespeichert
+;----------BUFFER zeichen für zeichen iterieren und der string wird durch subtratkion von 48 (ascii code für '0') in eine zahl umgewandelt und in NUMBER gespeichert---------
 convert_string_to_number_loop:
     ;cmp [BUFFER], '-'
     ;je set_negative_flag
@@ -55,7 +55,7 @@ convert_string_to_number_loop:
     mov [NUMBER + rcx], r11
 
     ;is_negative_return:
-    add rcx, 1
+    inc rcx
 
 convert_string_to_number_cond:
     cmp rcx, rax        ;check if max length is reached
@@ -67,7 +67,7 @@ convert_string_to_number_cond:
 
 sub rcx, 1
 mov r8, rcx
-;reset register
+;-----reset register-----
 mov rcx, 0              ;rcx = Potenz, von 0-n
 mov rax, 0              ;1. Faktor
 mov rbx, 0              ;2. Faktor
@@ -86,22 +86,22 @@ combine_numbers_loop:
     imul rax, rbx
     add r11, rax
 
-    sub r8, 1
-    add rcx, 1
+    dec r8
+    inc rcx
 
 combine_numbers_cond:
     cmp r8, 0
     jge combine_numbers_loop
 
-;division
+;--------division--------
 mov rdx, 0
 mov rax, r11
 mov r8, 2
 idiv r8
 mov r11, rax
-;division finished
+;------division finished-----
 
-;number_to_string
+;-------number_to_string------
 mov rcx, 0              ;index for number_to_string_div_loop
 mov r8, 10              ;move 10 (dividend) to r12
 mov rax, r11            ;r11 auszugebender wert
@@ -112,7 +112,7 @@ number_to_string_div_loop:
     idiv r8                      ;rdx:rax / r8 -> rax=Resultat, rdx=rest
     mov [NUMBER + rcx], rdx      ;move rdx (rest) to NUMBER
     mov rdx, 0
-    add rcx, 1
+    inc rcx
 
 number_to_string_div_cond:
     cmp rax, 0
@@ -126,8 +126,8 @@ number_to_string_convert_loop:
     mov rax, [NUMBER + rcx]
     add rax, '0'
     mov [BUFFER + r11], rax
-    add r11, 1
-    sub rcx, 1
+    inc r11
+    dec rcx
 
 number_to_string_convert_cond:
     cmp rcx, 0
@@ -151,7 +151,7 @@ exit:                    ; exit program with exit code 0
     call  _exit          ; call function
 
 
-;pow: rechnet 10^x
+;-------pow: rechnet 10^x-------
 ;r8 = potenz (x von 10^x)
 ;r9 = index of loop
 ;r10 = start und resultat
@@ -165,7 +165,7 @@ pow_loop:
     mov rbx, r10
     imul rax, rbx               ; the product is in rax
     mov r10, rax
-    add r9, 1
+    inc r9
 
 pow_cond:
     cmp r9, qword [POW_PARAM]   ;r9 ist die höchste potenz bzw. anzahl stellen-1
