@@ -117,7 +117,6 @@ mov rcx, 0              ;index for number_to_string_div_loop
 mov r8, 10              ;move 10 (dividend) to r12
 mov rax, r11            ;r11 auszugebender wert
 mov rdx, 0
-jmp number_to_string_div_cond
 
 number_to_string_div_loop:
     idiv r8                      ;rdx:rax / r8 -> rax=Resultat, rdx=rest
@@ -129,15 +128,6 @@ number_to_string_div_cond:
     cmp rax, 0
     jne number_to_string_div_loop
     sub rcx, 1
-
-;beim resultat-wert 0 ist rcx = -1. In diesem Fall mus rcx auf 0 gesetzt werden, damit die Ausgabe korrekt funktioniert
-cmp rcx, 0
-jl rcx_fix
-jmp rcx_correct
-
-rcx_fix:
-    mov rcx, 0
-rcx_correct:
 
 mov r11, 0              ;r11 = index number_to_string_convert_loop
 jmp number_to_string_convert_cond
