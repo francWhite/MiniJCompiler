@@ -15,6 +15,8 @@ section .data
     OUTPUTLEN equ $-OUTPUTTEXT
 
     SPACETEXT db 10
+    CRLF        db  10, 13  ; carriage return (CR) / line feed (LF)
+    CRLF_LEN    equ $-CRLF  ; current position ($) minus address of CRLF => 2 bytes
 
 section .bss
     alignb 8
@@ -40,7 +42,7 @@ mov rdi, BUFFER ; copy pointer to BUFFER into rdi
 mov rsi, LENGTH ; copy length of byte array into rsi
 call _read      ; execute system call --> BUFFER contains the input, rax contains the input length
 
-sub rax, 2  ; Enter = \r\n -> subtract 2
+sub rax, 1  ; Enter = \r\n -> subtract 2
 
 ; eingabe zu zahl umwandeln
 mov rcx, 0  ; r12 = index von loop
@@ -144,6 +146,9 @@ mov rdi, BUFFER; copy pointer to BUFFER into rdi
 mov rsi, r11; copy length of byte array into rsi
 call _write; execute system call
 
+mov rdi, CRLF       ; copy address of variable BUFFER into register rdi
+mov rsi, CRLF_LEN   ; length of output: 3 (number + CRLF)
+call _write         ; now calls function _write to write to console (stdin)
 
 ; exit program with exit code 0
 exit:       mov   rdi, 0                ; first parameter: set exit code
