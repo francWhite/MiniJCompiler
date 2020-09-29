@@ -50,7 +50,19 @@ jmp convert_string_to_number_cond
 convert_string_to_number_loop:
     ;cmp [BUFFER], '-'
     ;je set_negative_flag
-    mov r11, [BUFFER + rcx]
+
+    xor rdx, rdx
+    mov dl, [BUFFER + rcx]
+    mov r11, rdx
+
+    cmp r11, 48
+    jge greater_than_48     ;wenn wert >= 48 ist, handelt es sich möglicherweise um eine Zahl
+    jl combine_numbers      ;wenn wert < 48 ist, handelt es sich um keine Zahl mehr
+
+    greater_than_48:
+    cmp r11, 58
+    jg  combine_numbers     ;wenn wert > 58 ist, handelt es sich um keine Zahl mehr
+
     sub r11, 48
     mov [NUMBER + rcx], r11
 
@@ -64,15 +76,15 @@ convert_string_to_number_cond:
 ;subtract index -1 if number is negative
 ;mov rax, [ISNEGATIVE]
 ;add rax, 1
-
-sub rcx, 1
-mov r8, rcx
-;-----reset register-----
-mov rcx, 0              ;rcx = Potenz, von 0-n
-mov rax, 0              ;1. Faktor
-mov rbx, 0              ;2. Faktor
-mov r11, 0              ;r11 = resultat
-jmp combine_numbers_cond
+combine_numbers:
+    sub rcx, 1
+    mov r8, rcx
+    ;-----reset register-----
+    mov rcx, 0              ;rcx = Potenz, von 0-n
+    mov rax, 0              ;1. Faktor
+    mov rbx, 0              ;2. Faktor
+    mov r11, 0              ;r11 = resultat
+    jmp combine_numbers_cond
 
 combine_numbers_loop:
     mov [POW_PARAM], rcx        ;parameter für pow-func 10^x, wobei x = rcx
