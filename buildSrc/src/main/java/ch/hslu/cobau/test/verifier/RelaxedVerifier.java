@@ -79,7 +79,7 @@ public class RelaxedVerifier implements Verifier {
     }
 
     private String[] splitLines(String input) {
-        if ("".equals(input)) {
+        if ("".equals(input.trim())) {
             return new String[0];
         } else {
             return input.split("\\r?\\n");
@@ -87,7 +87,7 @@ public class RelaxedVerifier implements Verifier {
     }
 
     private String[] splitWords(String input) {
-        if ("".equals(input)) {
+        if ("".equals(input.trim())) {
             return new String[0];
         } else {
             return input.split("\\s+");

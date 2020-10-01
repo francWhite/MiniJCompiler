@@ -1,0 +1,848 @@
+{
+    "name"                  : "Parser",
+    "commandline"           : "${jvm} -jar ${buildDir}/libs/MiniJCompiler.jar",
+    "description"           : "A set of system tests to verify, whether the the compile is able to perform a syntactic analysis of a miniJ program",
+    "startScore"            : -20,
+    "timeoutMilliseconds"   : 1000,
+    "testCases" : [
+    {
+        "name"             : "Globale Variable (int)",
+        "input"            : "int number;",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"   : 0.3333
+    },
+    {
+        "name"             : "Globale Variable (boolean)",
+        "input"            : "boolean isSet;",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"   : 0.3333
+    },
+    {
+        "name"             : "Globale Variable (string)",
+        "input"            : "string text;",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"   : 0.3333
+    },
+    {
+        "name"             : "Globale Variable (reference)",
+        "input"            : "record test\n   int f1;\nend;\ntest myRec;",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"   : 0.3333
+    },
+    {
+        "name"             : "Zwei globale Variablen",
+        "input"            : "int number;\nstring zeichen;",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"   : 0.3333
+    },
+    {
+        "name"             : "Drei globale Variablen",
+        "input"            : "int number;\nstring zeichen;\nboolean isSet;",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"   : 0.3333
+    },
+    {
+        "name"             : "Falsche Variablendefinition (kein Symbolname)",
+        "input"            : "int;",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"   : 0.3333
+    },
+    {
+        "name"             : "Falsche Variablendefinition (mehr als eine Symbolname)",
+        "input"            : "int i,j;",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"   : 0.3333
+    },
+    {
+        "name"             : "Falsche Variablendefinition (kein Semikolon)",
+        "input"            : "int wert",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"   : 0.3333
+    },
+    {
+        "name"             : "Recorddefinition",
+        "input"            : "record scalar\n  int myValue;\nend;",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"   : 0.3333
+    },
+    {
+        "name"             : "Leerer Record",
+        "input"            : "record leer\nend;",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"   : 0.3333
+    },
+    {
+        "name"             : "Recorddefintion mit zwei Feldern",
+        "input"            : "record meinRecord\n  int xCoord;\n  int yCoord;\nend;",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"   : 0.3333
+    },
+    {
+        "name"             : "Recorddefinition mit drei Feldern",
+        "input"            : "record x\n  int xCoord;\n  boolean isSet;\n  string s;\nend;",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"   : 0.3333
+    },
+    {
+        "name"             : "Recorddefinition mit globaler Variable",
+        "input"            : "record x\n  int xCoord;\nend;\nx myRecord;",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"   : 0.3333
+    },
+    {
+        "name"             : "Recorddefinition (falsches Schlüsselwort)",
+        "input"            : "recrd meinRecord42\n  int xCoord;\n  int yCoord;\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"   : 0.3333
+    },
+    {
+        "name"             : "Recorddefinition (Feldname fehlt)",
+        "input"            : "record meinRecord42\n  int;\n  int yCoord;\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"   : 0.3333
+    },
+    {
+        "name"             : "Recorddefinition (Falsch: verschachtelte Prozedur)",
+        "input"            : "record meinRecord\n  int xCoord;\n  procedure bla() {}\n  int yCoord;\nend;",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"   : 0.3333
+    },
+    {
+        "name"             : "Record Definition (Felddefinition inkorrekt)",
+        "input"            : "record meinRecord42\n  int name,name;\n  int yCoord;\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"   : 0.3333
+    },
+    {
+        "name"             : "Prozedur ohne Parameter (Variante 1)",
+        "input"            : "procedure myName() {\n}",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"   : 0.3333
+    },
+    {
+        "name"             : "Prozedur ohne Parameter (Variante 2)",
+        "input"            : "procedure myName()\nbegin\nend",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"   : 0.3333
+    },
+    {
+        "name"             : "Prozedur mit Parameter",
+        "input"            : "procedure name(int param1) {\n}",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"   : 0.3333
+    },
+    {
+        "name"             : "Prozedur mit zwei Parametern",
+        "input"            : "procedure name(int param1, int p2) {\n}",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"   : 0.3333
+    },
+    {
+        "name"             : "Prozedur mit drei Parametern",
+        "input"            : "procedure name(int param1, boolean p2, string TEXT) {\n}",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"   : 0.3333
+    },
+    {
+        "name"             : "Prozedur ohne Parameter (Variante 1)",
+        "input"            : "procedure myName() {\n}",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"   : 0.3333
+    },
+    {
+        "name"             : "Prozedur ohne Namen (falsch)",
+        "input"            : "procedure ()\nbegin\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"   : 0.3333
+    },
+    {
+        "name"             : "Prozedur ohne Parameterliste (falsch)",
+        "input"            : "procedure myName {\n}",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"   : 0.3333
+    },
+    {
+        "name"             : "Prozedur mit falscher Klammerung (1)",
+        "input"            : "procedure name(int param1) {",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"   : 0.3333
+    },
+    {
+        "name"             : "Prozedur mit falscher Klammerung (2)",
+        "input"            : "procedure name(int param1) begin\n}",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"   : 0.3333
+    },
+    {
+        "name"             : "Prozedur mit Array-Parameter",
+        "input"            : "procedure name(int[] param) {\n}",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"   : 0.3333
+    },
+    {
+        "name"             : "Prozedur mit Record-Parameter",
+        "input"            : "record myRecord\n  int f1;\nend;\nprocedure name(myRecord param) {\n}",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"   : 0.3333
+    },
+    {
+        "name"             : "Prozedur mit inkorrekten Parametern (1)",
+        "input"            : "procedure name(int)\nbegin\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"   : 0.3333
+    },
+    {
+        "name"             : "Prozedur mit inkorrekten Parametern (2)",
+        "input"            : "procedure name(bla)\nbegin\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"   : 0.3333
+    },
+    {
+        "name"             : "Prozedur mit inkorrekten Parametern (3)",
+        "input"            : "procedure name(int a, bla)\nbegin\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"   : 0.3333
+    },
+    {
+        "name"             : "Zuweisung von Integerkonstante",
+        "input"            : "procedure test() \n    int i;\n    int j;\n{\n    i = +424242;\n    j = -424242;\n}",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"   : 0.3333
+    },
+    {
+        "name"             : "Zuweisung von ungültiger Integerkonstante",
+        "input"            : "procedure test()\n    int i;\n{\n    i = +123a;\n}",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"   : 0.3333
+    },
+    {
+        "name"             : "Zuweisung von Stringkonstante",
+        "input"            : "procedure test()\n    string s1;\n    string s2;\n{\n    s1 = \"\";\n    s2 = \"Hallo Welt!\";\n}",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"   : 0.3333
+    },
+    {
+        "name"             : "Zuweisung von fehlerhafter Stringkonstante",
+        "input"            : "procedure test()\n    string s;\n{\n    s = \"abc;\n}",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"   : 0.3333
+    },
+    {
+        "name"             : "Zuweisung (Boolean)",
+        "input"            : "procedure test()\n    boolean a;\n    boolean b;\n{\n    a = false;\n    b = true;\n}",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"   : 0.3333
+    },
+    {
+        "name"             : "Fehlerhafte Zuweisung (mittels ==)",
+        "input"            : "procedure test()\n    string s;\n{\n    s == \"abc\";\n}",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"   : 0.3333
+    },
+    {
+        "name"             : "Return",
+        "input"            : "procedure test() \n{\n    return;\n}",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"   : 0.3333
+    },
+    {
+        "name"             : "Fehlerhaftes (Return) Statmement",
+        "input"            : "procedure test()\n{\n    retrn;\n}",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"   : 0.3333
+    },
+    {
+        "name"             : "Fehlerhaftes Return-Statmement",
+        "input"            : "procedure test()\n    int i;\n{\n    return i;\n}",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"   : 0.3333
+    },
+    {
+        "name"             : "Prozeduraufruf",
+        "input"            : "procedure call1() begin end;\nprocedure call2(int a) begin end;\nprocedure call3(int a, int b) begin end;\nprocedure call4(int a, int b, int c) begin end;\nprocedure test()\nint a;\nboolean b;\nstring a;\n{\n    call1();\n    call2(a);\n    call3(a, b);\n    call4(a, b, a);\n}",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"   : 0.3333
+    },
+    {
+        "name"             : "Fehlerhafter Prozeduraufruf",
+        "input"            : "procedure test()\n{\n    call(abc;\n}",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"   : 0.3333
+    },
+    {
+        "name"             : "Ausdrücke (Binär, math.)",
+        "input"            : "procedure myExpr(int i) \n    int a;\n{\n    a = 2 + i;\n    a = 2 - 1;\n    a = 2 * 1;\n    a = i / 2;\n    a = i % 2;\n}",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"   : 0.3333
+    },
+    {
+        "name"             : "Fehlerhafter Ausdruck (math.)",
+        "input"            : "procedure test()\n   int a;\n{\n    a = 2 +\n}",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"   : 0.3333
+    },
+    {
+        "name"             : "Ausdrücke (Binär, Vergleich)",
+        "input"            : "procedure myExpr(int a, int b)\n    boolean x;\n    boolean y;\n{\n    x = b < a;\n    x = b > a;\n    x = b <= a;\n    x = b >= a;\n    x = b == a;\n    x = b != a;\n}",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"   : 0.3333
+    },
+    {
+        "name"             : "Fehlerhafter Ausdruck (Vergleich)",
+        "input"            : "procedure test()\n   int a;\n{\n    a = 2 <;\n}",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"   : 0.3333
+    },
+    {
+        "name"             : "Ausdrücke (Binär, Boolean)",
+        "input"            : "procedure myExpr(int a, int b)\n    boolean x;\n    boolean y;\n{\n    x = b < a || b > a;\n    x = b < a && b > a;\n    x = !(b < a);\n}",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"   : 0.3333
+    },
+    {
+        "name"             : "Fehlerhafter Ausdruck (Boolean)",
+        "input"            : "procedure test()\n   int a;\n{\n    a = 2 !=;\n}",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"   : 0.3333
+    },
+    {
+        "name"             : "Ausdrücke (Klammern)",
+        "input"            : "procedure myExpr(int i)\n    int a;\n{\n    a = (2 + i);\n    a = ((2 + i));\n    a = (((2 + i)));\n    a = (2 + i) + (2 - i);\n    a = ((2 + i) + (2 - i));\n    a = ((2 + i)) + ((2 - i));\n    a = (((2 + i)) + ((2 - i)));\n    a = (((2 + i))) + (((2 - i)));\n    a = -(5 + 1);\n    a = -(5 + 1) + (2 + i) + (2 - i);\n    a = -((5 + 1) + (2 + i) + (2 - i));\n    a = -((5 + 1)) + ((2 + i)) + ((2 - i));\n    a = -(((5 + 1)) + ((2 + i)) + ((2 - i)));\n    a = -(((5 + 1))) + (((2 + i))) + (((2 - i)));\n}",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"   : 0.3333
+    },
+    {
+        "name"             : "Fehlerhafter Ausdruck (Klammern 1)",
+        "input"            : "procedure test()\n   int a;\n{\n    a = (2 + 1;\n}",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"   : 0.3333
+    },
+    {
+        "name"             : "Fehlerhafter Ausdruck (Klammern 2)",
+        "input"            : "procedure test()\n   int a;\n{\n    a = (2 + 1));\n}",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"   : 0.3333
+    },
+    {
+        "name"             : "Fehlerhafter Ausdruck (Klammern 3)",
+        "input"            : "procedure test()\n   int a;\n{\n    a = ((2 + 1);\n}",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"   : 0.3333
+    },
+    {
+        "name"             : "Ausdrücke (Unär) {",
+        "input"            : "procedure myExpr(int i)\n    int a;\n    boolean x;\n{\n    a = -a;\n    x = !b;\n}",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"   : 0.3333
+    },
+    {
+        "name"             : "Fehlerhafter Ausdruck (Unär) {",
+        "input"            : "procedure myExpr(int i)\n    int a;\n    boolean x;\n{\n    a = -a\n}",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"   : 0.3333
+    },
+    {
+        "name"             : "Fehlerhafter Ausdruck (Unär) {",
+        "input"            : "procedure myExpr(int i)\n    int a;\n    boolean x;\n{\n    x = !x\n}",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"   : 0.3333
+    },
+    {
+        "name"             : "Ausdrücke (Pre-increment/Pre-decrement) {",
+        "input"            : "procedure myExpr(int i)\n    int a;\n    int x;\n{\n    x = ++a;\n    x = --a;\n}",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"   : 0.3333
+    },
+    {
+        "name"             : "Ausdrücke (Post-increment/Post-decrement) {",
+        "input"            : "procedure myExpr(int i)\n    int a;\n    int x;\n{\n    x = a++;\n    x = a--;\n}",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"   : 0.3333
+    },
+    {
+        "name"             : "Ausdrücke (Pre-increment/Pre-decrement) {",
+        "input"            : "procedure myExpr(int i)\n    int a;\n    int x;\n{\n    x = ++++a;\n    x = ----a;\n}",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"   : 0.3333
+    },
+    {
+        "name"             : "Fehlerhafter Ausdruck (Post-increment/Post-decrement) {",
+        "input"            : "procedure myExpr(int i)\n    int a;\n    boolean x;\n{\n    x = a++++;\n    y = a----;\n}",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"   : 0.3333
+    },
+    {
+        "name"             : "Ausdrücke (Kombination von Increment/Decrement und Addition) {",
+        "input"            : "procedure myExpr()\n    int a;\n    int b;\n    int x;\n{\n  x = a++ + b++;\n  x = ++a + ++b;\n}",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"   : 0.3333
+    },
+    {
+        "name"             : "Ausdrücke (Increment/Decrement und Operation mit fehlendem zweiten Operanden) {",
+        "input"            : "procedure myExpr()\n    int a;\n    int b;\n    int x;\n{\n  x = a++ +;\n  x = b-- -;\n}",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"   : 0.3333
+    },
+    {
+        "name"             : "Prozeduraufruf mit Expressions",
+        "input"            : "procedure call1() begin end;\nprocedure call2(int a) begin end;\nprocedure call3(int a, int b) begin end;\nprocedure call4(int a, int b, int c) begin end;\nprocedure test(int a, int b)\n    int a;\n    int b;\n{\n    call1();\n    call2(a + b);\n    call3(a > b, b - a);\n    call4(\"Test\", b++, a);\n}",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"   : 0.3333
+    },
+    {
+        "name"             : "Prozeduraufruf mit Expressions (Fehlerhaft 1)",
+        "input"            : "procedure call(int a) begin end;\nprocedure test(int a, int b)\n    int a;\n    int b;\n{\n    call((a + b);\n}",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"   : 0.3333
+    },
+    {
+        "name"             : "Prozeduraufruf mit Expressions (Fehlerhaft 2)",
+        "input"            : "procedure call(int a) begin end;\nprocedure test(int a, int b)\n    int a;\n    int b;\n{\n    call(a + b;\n}",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"   : 0.3333
+    },
+    {
+        "name"             : "Prozeduraufruf mit Expressions (Fehlerhaft 3)",
+        "input"            : "procedure call(int a) begin end;\nprocedure test(int a, int b)\n    int a;\n    int b;\n{\n    call((a + b), (a - b);\n}",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"   : 0.3333
+    },
+    {
+        "name"             : "If-Anweisung",
+        "input"            : "procedure test(int i)\n    int i;\n{\n    if (i == 1) then\n        return;\n    end;\n}",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"   : 0.3333
+    },
+    {
+        "name"             : "If-Anweisung mit else",
+        "input"            : "procedure test(int i)\n    int i;\n{\n    if (i == 1) then\n        return;\n    else\n        return;\n    end;\n}",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"   : 0.3333
+    },
+    {
+        "name"             : "If-Anweisung mit elsif",
+        "input"            : "procedure test(int i)\n   int i;\n{\n    if (i == 1) then\n        return;\n    elsif (i > 1) then\n        return;\n    else\n        return;\n    end;\n}",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"   : 0.3333
+    },
+    {
+        "name"             : "If-Anweisung ohne end",
+        "input"            : "procedure test(int i)\n   int i;\n{\n    if (i == 1) then\n        return;\n}",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"   : 0.3333
+    },
+    {
+        "name"             : "If-Anweisung ohne then",
+        "input"            : "procedure test(int i)\n   int i;\n{\n    if (i == 1)\n        return;\n    end;\n}",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"   : 0.3333
+    },
+    {
+        "name"             : "If-Anweisung mit else if ohne then",
+        "input"            : "procedure test(int i)\n   int i;\n{\n    if (i == 1) then\n        return;\n    elsif (i > 1)\n        return;\n    else\n        return;\n    end;\n}",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"   : 0.3333
+    },
+    {
+        "name"             : "If-Anweisung ohne Semikolon",
+        "input"            : "procedure test(int i)\n   int i;\n{\n    if (i == 1) then\n        return;\n    elsif (i > 1)\n        return;\n    else\n        return;\n    end\n}",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"   : 0.3333
+    },
+    {
+        "name"             : "If-Anweisung doppelt verschachtelt",
+        "input"            : "procedure test(int i)\n    int i;\n{\n    if (i == 1) then\n        i = i + 1;\n    elsif (i > 1) then\n        if (i < 100) then\n            i = i + 2;\n        else\n            i = i + 3;\n        end;\n    else\n        if (i < -100) then\n            i = i + 4;\n        elsif(i > -50) then\n            i = i + 5;\n        end;\n    end;\n}",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"   : 0.3333
+    },
+    {
+        "name"             : "If-Anweisung doppelt verschachtelt; end fehlt",
+        "input"            : "procedure test(int i)\n    int i;\n{\n    if (i == 1) then\n        i = i + 1;\n    elsif (i > 1) then\n        if (i < 100) then\n            i = i + 2;\n        else\n            i = i + 3;\n        end;\n    else\n        if (i < -100) then\n            i = i + 4;\n        elsif(i > -50) then\n            i = i + 5;\n        end;\n}",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"   : 0.3333
+    },
+    {
+        "name"             : "If-Anweisung dreifach verschachtelt",
+        "input"            : "procedure test(int i)\n    int i;\n{\n    if (i > 0) then\n        if (i > 1) then\n            if (i > 2) then\n               i = i + 1;\n            end;\n        end;\n    end;\n}",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"   : 0.3333
+    },
+    {
+        "name"             : "If-Anweisung dreifach verschachtelt; end fehlt",
+        "input"            : "procedure test(int i)\n    int i;\n{\n    if (i > 0) then\n        if (i > 1) then\n            if (i > 2) then\n               i = i + 1;\n            end;\n    end;\n}",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"   : 0.3333
+    },
+    {
+        "name"             : "If-Anweisung dreifach verschachtelt; Klammer fehlt",
+        "input"            : "procedure test(int i)\n    int i;\n{\n    if i > 0 then\n        if i > 1 then\n            if i > 2 then\n               i = i + 1;\n            end;\n    end;\n}",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"   : 0.3333
+    },
+    {
+        "name"             : "While",
+        "input"            : "procedure stmt1() begin end;\nprocedure myWhile()\n     int x;\nbegin\n    while(x > 1) do\n        x = x - 1;\n        stmt1();\n    end;\nend;",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"   : 0.3333
+    },
+    {
+        "name"             : "While ohne Klammer",
+        "input"            : "procedure stmt1() begin end;\nprocedure myWhile()\n     int x;\nbegin\n    while x > 1 do\n        x = x - 1;\n        stmt1();\n    end;\nend;",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"   : 0.3333
+    },
+    {
+        "name"             : "While ohne do",
+        "input"            : "procedure stmt1() begin end;\nprocedure myWhile()\n     int x;\nbegin\n    while (x > 1)\n        x = x - 1;\n        stmt1();\n    end;\nend;",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"   : 0.3333
+    },
+    {
+        "name"             : "While ohne end",
+        "input"            : "procedure stmt1() begin end;\nprocedure myWhile()\n     int x;\nbegin\n    while (x > 1)\n        x = x - 1;\n        stmt1();\nend;",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"   : 0.3333
+    },
+    {
+        "name"             : "While ohne Semikolon",
+        "input"            : "procedure stmt1() begin end;\nprocedure myWhile()\n     int x;\nbegin\n    while (x > 1) do\n        x = x - 1;\n        stmt1()\n    end;\nend;",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"   : 0.3333
+    },
+    {
+        "name"             : "While mit zwei Statements",
+        "input"            : "procedure stmt1() begin end;\nprocedure stmt2() begin end;\nprocedure myWhile()\n     int x;\nbegin\n    while(x > 1) do\n        stmt1();\n        stmt2();\n        x = x - 1;\n    end;\nend;",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"   : 0.3333
+    },
+    {
+        "name"             : "While mit drei Statements",
+        "input"            : "procedure stmt1() begin end;\nprocedure stmt2() begin end;\nprocedure stmt3() begin end;\nprocedure myWhile()\n  int x;\nbegin\n    while(x > 1) do\n        stmt1();\n        stmt2();\n        stmt3();\n        x = x - 1;\n    end;\nend;",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"   : 0.3333
+    },
+    {
+        "name"             : "Kontrollfluss (While/If verschachtelt)",
+        "input"            : "procedure stmt1() begin end;\nprocedure stmt2() begin end;\nprocedure complex(int x)\n   int i;\nbegin\n    while(x > 1) do\n        if (x > 2) then\n            stmt1();\n            i = i + 1;\n        elsif (x < 2) then\n            while (x < 10) do\n                 stmt2();\n                 i = i * (i / 2);\n            end;\n        end;\n    end;\nend;",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"   : 0.3333
+    },
+    {
+        "name"             : "Feldzugriff (LHS und RHS)",
+        "input"            : "record test\n    int value1;\n    int value2;\nend;\nprocedure fields()\n   test myTest;\n   int i;\nbegin\n   myTest.value1 = 1 + 1;\n   i = myTest.value2 * myTest.value1;\nend;",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"   : 0.3333
+    },
+    {
+        "name"             : "Feldzugriff (falsch)",
+        "input"            : "record test\n    int value1;\n    int value2;\nend;\nprocedure fields()\n   test myTest;\nbegin\n   myTest. = 1 + 1;\nend;",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"   : 0.3333
+    },
+    {
+        "name"             : "Feldzugriff (falsch)",
+        "input"            : "record test\n    int value1;\n    int value2;\nend;\nprocedure fields()\n   test myTest;\n   int i;\nbegin\n   i = myTest. + 1;\nend;",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"   : 0.3333
+    },
+    {
+        "name"             : "Feldzugriff (LHS und RHS, verschachtelt)",
+        "input"            : "record test\n    int value1;\n    int value2;\nend;\nrecord test2\n    test val;\nend;\nprocedure fields()\n   test2 myTest;\n   int i;\nbegin\n   myTest.val.value1 = 1 + 1;\n   i = myTest.val.value2 * myTest.val.value1;\nend;",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"   : 0.3333
+    },
+    {
+        "name"             : "Feldzugriff (LHS und RHS, falsch, verschachtelt)",
+        "input"            : "record test\n    int value1;\n    int value2;\nend;\nrecord test2\n    test val;\nend;\nprocedure fields()\n   test2 myTest;\n   int i;\nbegin\n   myTest.val. = 1 + 1;\nend;",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"   : 0.3333
+    },
+    {
+        "name"             : "Arrayzugriff (LHS und RHS)",
+        "input"            : "boolean[] values;\nprocedure fields()\n    boolean result;\nbegin\n   values[0] = true;\n   values[1] = false;\n   result = values[0] && values[1];\nend;",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"   : 0.3333
+    },
+    {
+        "name"             : "Arrayzugriff (falsch)",
+        "input"            : "boolean[] values;\nprocedure fields()\n    boolean result;\nbegin\n   values[0] = true;\n   values[1 = false;\n   result = values[0] && values[1];\nend;",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"   : 0.3333
+    },
+    {
+        "name"             : "Arrayzugriff (LHS und RHS, falsch)",
+        "input"            : "boolean[] values;\nprocedure fields()\n    boolean result;\nbegin\n   values[0] = true;\n   values[1] = false;\n   result = values[0 && values[1];\nend;",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"   : 0.3333
+    },
+    {
+        "name"             : "Arrayzugriff (LHS und RHS, 2D)",
+        "input"            : "string[][] values;\nprocedure fields()\n   int i;\nbegin\n   values[0][0] = \"1\";\n   values[1][1] = \"2\";\n   i =  values[0][0] + values[1][1];\nend;",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"   : 0.3333
+    },
+    {
+        "name"             : "Arrayzugriff (LHS und RHS, 3D)",
+        "input"            : "int[][][] values;\nprocedure fields()\n   int i;\nbegin\n   values[0][0][2] = 1;\n   values[1][1][3] = 2;\n   i = values[0][0][2] * values[1][1][3];\nend;",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"   : 0.3333
+    },
+    {
+        "name"             : "Arrayzugriff (LHS und RHS, falsch, 3D)",
+        "input"            : "int[][][] values;\nprocedure fields()\n   int i;\nbegin\n   values[0][call(x)][2] = 1;\n   values[1][1][3] = 2;\n   i = values[0][0][2] * values[1][1][3];\nend;",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"   : 0.3333
+    },
+    {
+        "name"             : "Arrayzugriff mit Feld (LHS und RHS)",
+        "input"            : "record test\n  int f1;\n  int f2;\nend\ntest[] values;\nprocedure fields()\n   int i;\nbegin\n   test.f1[0] = 1;\n   test.f2[1] = 2;\n   i =  test.f1[0] + test.f2[1];\nend;",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"   : 0.3333
+    },
+    {
+        "name"             : "Arrayzugriff mit Feld (LHS und RHS)",
+        "input"            : "record test\n  int f1;\n  int f2;\nend\ntest[] values;\nprocedure fields()\n   int i;\nbegin\n   values[0].f1 = 1;\n   values[call().f2 = 2;\n   i = values[0].f1 + values[0].f2;\nend;",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"   : 0.3333
+    },
+    {
+        "name"             : "Referenzparameter",
+        "input"            : "procedure refParameters(ref int abc) {\n    abc = 1;\n}",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"   : 0.3333
+    },
+    {
+        "name"             : "Zwei Referenzparameter",
+        "input"            : "procedure refParameters(ref int abc, ref string xyz) {\n    abc = 1;\n    xyz = \"abc\";\n}",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"   : 0.3333
+    },
+    {
+        "name"             : "Referenzparameter (falsch)",
+        "input"            : "procedure refParameters(refer int abc) {\n    abc = 1;\n}",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"   : 0.3333
+    },
+    {
+        "name"             : "Zwei Referenzparameter (falsch)",
+        "input"            : "procedure refParameters(ref int abc ref string xyz) {\n    abc = 1;\n    xyz = \"abc\";\n}",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"   : 0.3333
+    },
+    {
+        "name"             : "Kombinationen",
+        "input"            : "int j;\nrecord myRec\n    int field1;\n    string field2;\n    boolean field3;\nend;\nprocedure stmt1() begin end;\nprocedure stmt2() begin end;\nprocedure myWhile()\nbegin\n    while(x > 1) do\n        stmt1();\n        stmt2();\n    end;\nend;",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"   : 0.3333
+    },
+    {
+        "name"             : "Noch mehr Kombinationen",
+        "input"            : "int global1;\nint global2;\nprocedure stmt1() begin end;\nprocedure stmt2() begin end;\nprocedure myWhile(int x)\nbegin\n    while(x > 1) do\n        stmt1();\n        stmt2();\n    end;\nend;\nrecord myRec\n    int field1;\n    string field2;\n    boolean field3;\nend;\nrecord myRec2\n    int field1;\n    string field2;\n    myRec field3;\nend;\nprocedure myIf(int x)\nbegin\n    if(x > 1) then\n        stmt1();\n        stmt2();\n    end;\nend;",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"   : 0.3333
+    },
+    {
+        "name"             : "Kommentar (korrekt 1)",
+        "input"            : "// Basic comment",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"   : 0.3333
+    },
+    {
+        "name"             : "Kommentar (korrekt 2)",
+        "input"            : "procedure stmt1() begin end;\nprocedure stmt2() begin end;\nprocedure myIf(int x)\nbegin\n    if(x > 1) then\n       // my comment\n        stmt1();\n        stmt2();\n    end;\nend;",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"   : 0.3333
+    },
+    {
+        "name"             : "Zeilenkommentar (korrekt 3)",
+        "input"            : "///Basic comment",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"   : 0.3333
+    },
+    {
+        "name"             : "Zeilenkommentar (falsch 1)",
+        "input"            : "/Falscher Kommentar",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"   : 0.3333
+    },
+    {
+        "name"             : "Zeilenkommentar (falsch 2)",
+        "input"            : "procedure stmt1() begin end;\nprocedure stmt2() begin end;\nprocedure myIf(int x)\nbegin\n    if(x > 1) then\n        stmt1();\n        /Falscher Kommentar\n        stmt2();\n    end;\nend;",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"   : 0.3333
+    },
+    {
+        "name"             : "Blockkommentar",
+        "input"            : "int bla;\n/* Bla */\nint bla;",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"   : 0.3333
+    },
+    {
+        "name"             : "Blockkommentar",
+        "input"            : "procedure stmt1() begin end;\nprocedure stmt2() begin end;\nprocedure myIf(int x)\nbegin\n    if(x > 1) then\n        stmt1();\n        /*Mein\n          mehrzeiliger\n          Kommentar\n        */\n        stmt2();\n    end;\nend;",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"   : 0.3333
+    },
+    {
+        "name"             : "Nicht geschlossener Blockkommentar 1",
+        "input"            : "int bla;\n/* Bla\nint bla;",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"   : 0.3333
+    },
+    {
+        "name"             : "Nicht geschlossener Blockkommentar 2",
+        "input"            : "procedure stmt1() begin end;\nprocedure stmt2() begin end;\nprocedure myIf(int x)\nbegin\n    if(x > 1) then\n        stmt1();\n        /*Mein\n          mehrzeiliger\n          Kommentar\n        stmt2();\n    end;\nend;",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"   : 0.3333
+    },
+    {
+        "name"             : "Falscher Bezeichner (1)",
+        "input"            : "int 1bla;",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"   : 0.3333
+    },
+    {
+        "name"             : "Falscher Bezeichner (2)",
+        "input"            : "int abc!;",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"   : 0.3333
+    },
+    {
+        "name"             : "Falscher Bezeichner (3)",
+        "input"            : "int abc*;",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"   : 0.3333
+    },
+    {
+        "name"             : "Programm: GCD",
+        "input"            : "procedure gcd(int n1, int n2)\nbegin\n    while (n1 != n2) do\n        if (n1 > n2) then\n            n1 = n1 - n2;\n        else\n            n2 = n2 - n1;\n        end;\n    end;\n    writeInt(n2);\nend;\nprocedure main()\nbegin\n  gcd(60, 50);\nend;",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"   : 0.3333
+    },
+    {
+        "name"             : "Programm: QuickSort",
+        "input"            : "procedure quickSort(ref int[] arr, int from, int to)\n    int partitionIndex;\nbegin\n     if (from < to) then\n        partition(arr, partitionIndex, from, to);\n        quickSort(arr, from, partitionIndex - 1);\n        quickSort(arr, partitionIndex + 1, to);\n     end;\nend;\nprocedure partition(ref int[] arr, ref int partitionIndex, int from, int to)\n    int pivot;\n    int i;\n    int j;\n    int swapTemp;\nbegin\n    pivot = arr[to];\n    i = from - 1;\n    j = from;\n    while (j < to) do\n        if (arr[j] <= pivot) then\n            i = i + 1;\n            swapTemp = arr[i];\n            arr[i] = arr[j];\n            arr[j] = swapTemp;\n        end;\n        j = j + 1;\n    end;\n    swapTemp = arr[i + 1];\n    arr[i + 1] = arr[to];\n    arr[to] = swapTemp;\n    partitionIndex = i + 1;\nend;",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"   : 0.3333
+    }  ]
+}

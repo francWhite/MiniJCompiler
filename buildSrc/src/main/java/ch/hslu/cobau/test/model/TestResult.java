@@ -2,15 +2,17 @@ package ch.hslu.cobau.test.model;
 
 public class TestResult {
     private final TestCase testCase;
-    private final String actualOutput;
     private final TestStatus testStatus;
-    private final long timeActual;
+    private final String actualOutput;
+    private final Integer actualExitcode;
+    private final long actualTime;
 
-    public TestResult(TestCase testCase, String actualOutput, TestStatus testStatus, long timeActual) {
+    public TestResult(TestCase testCase, String actualOutput, TestStatus testStatus, Integer actualExitcode, long actualTime) {
         this.testCase     = testCase;
-        this.actualOutput = actualOutput;
         this.testStatus   = testStatus;
-        this.timeActual   = timeActual;
+        this.actualOutput = actualOutput;
+        this.actualExitcode = actualExitcode;
+        this.actualTime = actualTime;
     }
 
     public TestCase getTestCase() {
@@ -25,7 +27,11 @@ public class TestResult {
         return actualOutput;
     }
 
+    public Integer getActualExitCode() {
+        return actualExitcode;
+    }
+
     public long getActualExecutionTime() {
-        return timeActual;
+        return actualTime;
     }
 }

@@ -8,13 +8,15 @@ public class TestSet {
     private final String commandline;
     private final String description;
     private final TestCase[] testCases;
+    private final int startScore;
     private final int timeoutMilliseconds;
 
-    public TestSet(String name, String commandline, String description, TestCase[] testCases, int timeoutMilliseconds) {
+    public TestSet(String name, String commandline, String description, TestCase[] testCases, int startScore, int timeoutMilliseconds) {
         this.name = name;
         this.commandline = commandline;
         this.description = description;
         this.testCases = testCases;
+        this.startScore = startScore;
         this.timeoutMilliseconds = timeoutMilliseconds;
     }
     /**
@@ -47,6 +49,14 @@ public class TestSet {
      */
     public TestCase[] getTestCases() {
         return testCases;
+    }
+
+    /**
+     * Gets the starting score for the entire test set (e.g., to offset tests with binary results).
+     * @return The starting score for the entire test set.
+     */
+    public int getStartScore() {
+        return startScore;
     }
 
     /**

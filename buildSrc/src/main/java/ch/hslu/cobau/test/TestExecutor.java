@@ -108,13 +108,18 @@ public class TestExecutor {
      * @return An instance of TestResult that contain the result of this test execution.
      */
     public TestResult execute(TestCase testCase, Verifier verifier) {
+        Objects.requireNonNull(testCase);
+        Objects.requireNonNull(verifier);
+
         ProcessBuilder pb = new ProcessBuilder();
         pb.redirectErrorStream(true);
         pb.command(commandLine);
 
         TestStatus testStatus = TestStatus.PASSED;
         String actualOutput = "";
+        Integer actualExitcode = null;
         Process process = null;
+        long timeActual = System.nanoTime();
         try {
             process = pb.start();
         } catch (IOException e) {
@@ -129,7 +134,10 @@ public class TestExecutor {
             outputReader.start();
 
             try {
-                if (!process.waitFor(timeOut, TimeUnit.MILLISECONDS)) {
+                boolean status = process.waitFor(timeOut, TimeUnit.MILLISECONDS);
+                timeActual = (System.nanoTime() - timeActual) / 1000000; // convert to [ms]
+
+                if (!status) {
                     process.destroy();
                     testStatus = TestStatus.TIMEOUT;
                     actualOutput = outputReader.getOutput();
@@ -137,9 +145,9 @@ public class TestExecutor {
 
                 } else {
                     actualOutput = outputReader.getOutput();
-                    int exitValue = process.exitValue();
-                    if (exitValue != testCase.getExpectedExitCode()) {
-                        actualOutput += "\nProgram exited with exit code: " + exitValue + ", but expected: " + testCase.getExpectedExitCode();
+                    actualExitcode = process.exitValue();
+                    if (actualExitcode != testCase.getExpectedExitCode()) {
+                        actualOutput += "\nProgram exited with exit code: " + actualExitcode + ", but expected: " + testCase.getExpectedExitCode();
                         testStatus = TestStatus.WRONG_EXITCODE;
 
                     } else {
@@ -155,6 +163,6 @@ public class TestExecutor {
                 actualOutput = "Program aborted by user";
             }
         }
-        return new TestResult(testCase, actualOutput, testStatus, 0);
+        return new TestResult(testCase, actualOutput, testStatus, actualExitcode, timeActual);
     }
 }

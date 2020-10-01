@@ -24,10 +24,18 @@ java {
 // create a "fat" jar (includes all dependencies)
 jar {
     manifest {
-        attributes('Main-Class': 'ch.hslu.cobau.MiniJCompiler')
+        attributes('Main-Class': 'ch.hslu.cobau.minij.MiniJCompiler')
     }
     from {
         configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
+
+sourceSets {
+    testconv {
+        java {
+            srcDirs = ['src/testconv/java']
+        }
     }
 }
 
