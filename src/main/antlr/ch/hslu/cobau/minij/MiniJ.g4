@@ -13,16 +13,34 @@ program : (procedure | declaration | record)+ EOF;
 procedure: PROCEDURE IDENTIFIER LPAREN (param? | param (COMMA param)*) RPAREN declaration* (BEGIN body END | BEGINBLOCK body ENDBLOCK) SEMICOLON?;
 declaration : param SEMICOLON;
 record : RECORD IDENTIFIER declaration* END SEMICOLON;
-param: (TYPE | IDENTIFIER) IDENTIFIER;
+param: REF? (TYPE | IDENTIFIER) IDENTIFIER;
 body : (assignment | procedurecall)* returnrule?;
-assignment : IDENTIFIER ASSIGN CONSTVALUE SEMICOLON;
-procedurecall : IDENTIFIER LPAREN (IDENTIFIER? | IDENTIFIER (COMMA IDENTIFIER)*) RPAREN SEMICOLON;
+assignment : IDENTIFIER ASSIGN expression SEMICOLON;
+procedurecall : IDENTIFIER LPAREN (callparam? | callparam (COMMA callparam)*) RPAREN SEMICOLON;
+callparam: IDENTIFIER | expression;
 returnrule : RETURN SEMICOLON;
+//expression : expression (OPERATOR | COMPARATOR) expression | (CONSTVALUE | IDENTIFIER);
+//parenthesisExpression: LPAREN (parenthesisExpression | expression) RPAREN;
+expression : IDENTIFIER (INCREMENT | DECREMENT)
+            | (INCREMENT | DECREMENT) expression
+            | expression (MULT | DIV | MOD) expression
+            | expression (ADD |SUB) expression
+            | expression (LESSER | GREATER | LESSEREQ | GREATEREQ) expression
+            | expression (EQUAL | NOTEQUAL) expression
+            | expression (AND) expression
+            | expression (OR) expression
+            | LPAREN expression RPAREN
+            | IDENTIFIER
+            | (SUB| NEGATE) expression
+            | CONSTVALUE;
+
 ///////////////////////////////////////////////////////////////////////////////
 // Scanner(Lexer)-Regeln
 ///////////////////////////////////////////////////////////////////////////////
 WHITESPACE : [ \t\r\n]+ -> skip;
 
+//OPERATOR : ADD | SUB | MULT | DIV | MOD;
+// : LESSER | GREATER | LESSEREQ | GREATEREQ | EQUAL | NOTEQUAL | AND | OR;
 INCREMENT : '++';
 DECREMENT : '--';
 NEGATE : '!';
