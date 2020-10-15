@@ -9,19 +9,21 @@ package ch.hslu.cobau.minij;
 // Parser-Regeln
 ///////////////////////////////////////////////////////////////////////////////
 unit : program;
-program : (procedure | declaration | record)+ EOF;
+program : (procedure | declaration | record )* EOF;
 procedure: PROCEDURE IDENTIFIER LPAREN (param? | param (COMMA param)*) RPAREN declaration* (BEGIN body END | BEGINBLOCK body ENDBLOCK) SEMICOLON?;
 declaration : param SEMICOLON;
-record : RECORD IDENTIFIER declaration* END SEMICOLON;
-param: REF? (TYPE | IDENTIFIER) IDENTIFIER;
-body : (assignment | procedurecall)* returnrule?;
-assignment : IDENTIFIER ASSIGN expression SEMICOLON;
-procedurecall : IDENTIFIER LPAREN (callparam? | callparam (COMMA callparam)*) RPAREN SEMICOLON;
-callparam: IDENTIFIER | expression;
+record : RECORD IDENTIFIER declaration* END SEMICOLON?;
+param: REF? (TYPE | IDENTIFIER) (INDEXBEGIN INDEXEND)* IDENTIFIER;
+body : (assignment | procedurecall | ifelse | whileblock)* returnrule?;
+assignment : identifier ASSIGN expression SEMICOLON;
+procedurecall : identifier LPAREN (callparam? | callparam (COMMA callparam)*) RPAREN SEMICOLON;
+callparam: identifier | expression;
 returnrule : RETURN SEMICOLON;
-//expression : expression (OPERATOR | COMPARATOR) expression | (CONSTVALUE | IDENTIFIER);
-//parenthesisExpression: LPAREN (parenthesisExpression | expression) RPAREN;
-expression : IDENTIFIER (INCREMENT | DECREMENT)
+ifelse : IF LPAREN expression RPAREN THEN body (ELSIF LPAREN expression RPAREN THEN body)* (ELSE body)?  END SEMICOLON;
+whileblock : WHILE LPAREN expression RPAREN DO body END SEMICOLON;
+identifier: IDENTIFIER | identifier (PERIOD identifier)+ | identifier (INDEXBEGIN (NUMBER | identifier | expression) INDEXEND)+;
+
+expression : identifier (INCREMENT | DECREMENT)
             | (INCREMENT | DECREMENT) expression
             | expression (MULT | DIV | MOD) expression
             | expression (ADD |SUB) expression
@@ -30,17 +32,17 @@ expression : IDENTIFIER (INCREMENT | DECREMENT)
             | expression (AND) expression
             | expression (OR) expression
             | LPAREN expression RPAREN
-            | IDENTIFIER
+            | identifier
             | (SUB| NEGATE) expression
-            | CONSTVALUE;
+            | (NUMBER | STRINGVALUE | BOOLVALUE);//CONSTVALUE;
 
 ///////////////////////////////////////////////////////////////////////////////
 // Scanner(Lexer)-Regeln
 ///////////////////////////////////////////////////////////////////////////////
+COMMENT : '//' ALLCHARS* ([\r\n] | EOF) -> skip;
+BLOCKCOMMENT : '/*' ALLCHARS* '*/' -> skip;
 WHITESPACE : [ \t\r\n]+ -> skip;
 
-//OPERATOR : ADD | SUB | MULT | DIV | MOD;
-// : LESSER | GREATER | LESSEREQ | GREATEREQ | EQUAL | NOTEQUAL | AND | OR;
 INCREMENT : '++';
 DECREMENT : '--';
 NEGATE : '!';
@@ -77,6 +79,7 @@ RECORD : 'record';
 IF : 'if';
 ELSIF : 'elsif';
 ELSE : 'else';
+THEN : 'then';
 WHILE : 'while';
 DO : 'do';
 REF : 'ref';
@@ -88,11 +91,10 @@ INT: 'int';
 BOOL: 'boolean';
 STRING: 'string';
 
-CONSTVALUE : (NUMBER | STRINGVALUE | BOOLVALUE);
-IDENTIFIER : (LOWERCHAR | UPPERCHAR) (LOWERCHAR | UPPERCHAR | DIGIT)*;
-ALLCHARS : DIGIT | LOWERCHAR | UPPERCHAR | PERIOD | WHITESPACE | COMMA | NEGATE;
-DIGIT : [0-9];
 NUMBER : (ADD | SUB)? DIGIT+;
+DIGIT : [0-9];
+IDENTIFIER : (LOWERCHAR | UPPERCHAR) (LOWERCHAR | UPPERCHAR | DIGIT)*;
+ALLCHARS : DIGIT | LOWERCHAR | UPPERCHAR | PERIOD | WHITESPACE | COMMA | NEGATE | DIV;
 STRINGVALUE: QUOTES ALLCHARS* QUOTES;
 LOWERCHAR : 'a'..'z';
 UPPERCHAR : 'A'..'Z';
@@ -104,8 +106,6 @@ READINT : 'readInt';
 WRITEINT : 'writeInt';
 READCHAR : 'readChar';
 WRITECHAR : 'writeChar';
-MAIN: 'main' LPAREN RPAREN;
 
-COMMENT : '//';
 BLOCKCOMMENTSTART : '/*';
 BLOCKCOMMENTEND : '*/';
