@@ -1,0 +1,1730 @@
+{
+    "name"                  : "Semantic Analysis",
+    "commandline"           : "${jvm} -jar ${buildDir}/libs/MiniJCompiler.jar",
+    "description"           : "A set of system tests to verify, whether the the compile is able to perform a semantic analysis of a miniJ program",
+    "startScore"            : -30,
+    "timeoutMilliseconds"   : 1000,
+    "testCases" : [
+    {
+        "name"             : "(Deklaration) Globale Variablen (ok)",
+        "input"            : "int number1;\nint number2;",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"            : 2.4
+    },
+    {
+        "name"             : "(Deklaration) Variablen (ok)",
+        "input"            : "procedure main()\n    string text1;\n    string text2;\nbegin\nend",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"            : 2.4
+    },
+    {
+        "name"             : "(Deklaration) Prozedur (ok)",
+        "input"            : "procedure test1()\nbegin\nend\nprocedure test2()\nbegin\nend",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"            : 2.4
+    },
+    {
+        "name"             : "(Deklaration) Felder (ok)",
+        "input"            : "record Coordinate\n    int x;\n    int y;\nend",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"            : 2.4
+    },
+    {
+        "name"             : "(Deklaration) Records (ok)",
+        "input"            : "record Coordinate1\n    int x;\n    int y;\nend\nrecord Coordinate2\n    int x;\n    int y;\nend",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"            : 2.4
+    },
+    {
+        "name"             : "(Deklaration) Globale Variablen (nok)",
+        "input"            : "int number;\nint number;",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 2.4
+    },
+    {
+        "name"             : "(Deklaration) Variablen (nok)",
+        "input"            : "procedure main()\n    string text;\n    string text;\nbegin\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 2.4
+    },
+    {
+        "name"             : "(Deklaration) Prozedur (nok)",
+        "input"            : "procedure test()\nbegin\nend\nprocedure test()\nbegin\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 2.4
+    },
+    {
+        "name"             : "(Deklaration) Records (nok)",
+        "input"            : "record Coordinate\n    int x;\n    int y;\nend\nrecord Coordinate\n    int x;\n    int y;\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 2.4
+    },
+    {
+        "name"             : "(Deklaration) Felder (nok)",
+        "input"            : "record Coordinate\n    int x;\n    int x;\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 2.4
+    },
+    {
+        "name"             : "(Existenz) Variable",
+        "input"            : "procedure main()\n    int number;\nbegin\n    number = 0;\nend",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"            : 1.3
+    },
+    {
+        "name"             : "(Existenz) Variable (nok)",
+        "input"            : "procedure main()\nbegin\n    number = 0;\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.53
+    },
+    {
+        "name"             : "(Existenz) Globale Variable",
+        "input"            : "int number;\nprocedure main()\nbegin\n    number = 0;\nend",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"            : 1.3
+    },
+    {
+        "name"             : "(Existenz) Globale Variable (nok)",
+        "input"            : "procedure main()\nbegin\n    number = 0;\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.53
+    },
+    {
+        "name"             : "(Existenz) Parameter",
+        "input"            : "procedure test(string text)\nbegin\n    text = \"Hello\";\nend",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"            : 1.4
+    },
+    {
+        "name"             : "(Existenz) Parameter (nok)",
+        "input"            : "procedure test(string text)\nbegin\n    greeting = \"Hello\";\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.54
+    },
+    {
+        "name"             : "(Existenz) Record",
+        "input"            : "record Coordinate\n    int x;\n    int y;\nend\nprocedure main()\n    Coordinate coordinate;\nbegin\nend",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"            : 1.3
+    },
+    {
+        "name"             : "(Existenz) Record (nok)",
+        "input"            : "procedure main()\n    Coordinate coordinate;\nbegin\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.53
+    },
+    {
+        "name"             : "(Existenz) Recordfelder",
+        "input"            : "record Coordinate\n    int x;\n    int y;\nend\nprocedure main()\n    Coordinate coordinate;\nbegin\n    coordinate.x = 1;\nend",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"            : 1.3
+    },
+    {
+        "name"             : "(Existenz) Recordfelder (nok)",
+        "input"            : "record Coordinate\n    int x;\n    int y;\nend\nprocedure main()\n    Coordinate coordinate;\nbegin\n    coordinate.z = 1;\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.53
+    },
+    {
+        "name"             : "(Existenz) Prozedur",
+        "input"            : "procedure test()\nbegin\nend\nprocedure main()\nbegin\n    test();\nend",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"            : 1.4
+    },
+    {
+        "name"             : "(Existenz) Prozedur (nok)",
+        "input"            : "procedure test()\nbegin\nend\nprocedure main()\nbegin\n    ueberpruefung();\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.54
+    },
+    {
+        "name"             : "(Existenz) Falsche Entität (Global als Prozedur)",
+        "input"            : "int number;\nprocedure main()\nbegin\n   number();\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.53
+    },
+    {
+        "name"             : "(Existenz) Falsche Entität (Record als Prozedur)",
+        "input"            : "record Coordinate\n  int x;\n  int y;\nend\nprocedure main()\nbegin\n   Coordinate();\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.53
+    },
+    {
+        "name"             : "(Existenz) Falsche Entität (Prozedur als Record)",
+        "input"            : "procedure test()\nbegin\nend\nprocedure main()\nbegin\n   test.x = 0;\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.54
+    },
+    {
+        "name"             : "(Existenz) Falsche Entität (Prozedur als Variable, LHS)",
+        "input"            : "procedure test()\nbegin\nend\nprocedure main()\nbegin\n   test = 42;\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.53
+    },
+    {
+        "name"             : "(Existenz) Falsche Entität (Prozedur als Variable, RHS)",
+        "input"            : "procedure test()\nbegin\nend\nprocedure main()\n  int number;\nbegin\n   number = 2 * test;\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.53
+    },
+    {
+        "name"             : "(Existenz) Falsche Entität (Record als Variable, LHS)",
+        "input"            : "record Coordinate\n    int x;\n    int y;\nend\nprocedure main()\nbegin\n   Coordinate = 42;\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.54
+    },
+    {
+        "name"             : "(Existenz) Falsche Entität (Record als Variable, RHS)",
+        "input"            : "record Coordinate\n    int x;\n    int y;\nend\nprocedure main()\n  int number;\nbegin\n   number = 2 * Coordinate;\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.53
+    },
+    {
+        "name"             : "(Existenz) Falsche Entität (Variable als Prozedur)",
+        "input"            : "procedure main()\n   int number;\nbegin\n   number();\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.53
+    },
+    {
+        "name"             : "(Existenz) Falsche Entität (Variable als Record)",
+        "input"            : "procedure main()\n   int number;\nbegin\n   number.x = 1;\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.54
+    },
+    {
+        "name"             : "(Bereich) Wertebereich von Integerkonstante (max)",
+        "input"            : "int number;\nprocedure main() {\n    number = 9223372036854775807;\n}",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"            : 0.5
+    },
+    {
+        "name"             : "(Bereich) Wertebereich von Integerkonstante (zu hoch)",
+        "input"            : "int number;\nprocedure main() {\n    number = 9223372036854775808;\n}",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.5
+    },
+    {
+        "name"             : "(Bereich) Wertebereich von Integerkonstante (min)",
+        "input"            : "int number;\nprocedure main() {\n    number = -9223372036854775808;\n}",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"            : 0.5
+    },
+    {
+        "name"             : "(Bereich) Wertebereich von Integerkonstante (zu tief)",
+        "input"            : "int number;\nprocedure main() {\n    number = -9223372036854775809;\n}",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.5
+    },
+    {
+        "name"             : "(Aufruf) Funktion mit 2 Parameter",
+        "input"            : "procedure test(int a, int b)\nbegin\nend\nprocedure main()\n    int number;\nbegin\n    test(1, number);\nend",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"            : 1.0
+    },
+    {
+        "name"             : "(Aufruf) Funktion mit 3 Parameter",
+        "input"            : "procedure test(int a, int b, int c)\nbegin\nend\nprocedure main()\n    int number;\nbegin\n    test(1, 2, number);\nend",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"            : 1.0
+    },
+    {
+        "name"             : "(Aufruf) Funktion mit 2 Parameter (nok)",
+        "input"            : "procedure test(int a, int b)\nbegin\nend\nprocedure main()\n    int number;\nbegin\n    test(1, number, 3);\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 1.0
+    },
+    {
+        "name"             : "(Aufruf) Funktion mit 3 Parameter (nok)",
+        "input"            : "procedure test(int a, int b, int c)\nbegin\nend\nprocedure main()\n    int number;\nbegin\n    test(1, number);\n    test(number);\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 1.0
+    },
+    {
+        "name"             : "(Main) Mainprozedur ohne Parameter (ok)",
+        "input"            : "procedure main()\nbegin\nend",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"            : 1.0
+    },
+    {
+        "name"             : "(Main) Mainprozedur mit einem Parameter (nok)",
+        "input"            : "procedure main(int a)\nbegin\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.5
+    },
+    {
+        "name"             : "(Main) Mainprozedur mit zwei Parameter (nok)",
+        "input"            : "procedure main(int a, string b)\nbegin\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.5
+    },
+    {
+        "name"             : "(Built-in) writeInt/readInt/writeChar/readChar",
+        "input"            : "procedure main()\n    int number;\nbegin\n    writeInt(number);\n    readInt(number);\n    writeChar(number);\n    readChar(number);\nend",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"            : 1.0
+    },
+    {
+        "name"             : "(Built-in) writeInt/readInt/writeChar/readChar",
+        "input"            : "procedure main()\n    int number;\nbegin\n    if (1 == 1) then\n        writeInt(number);\n        readInt(number);\n        writeChar(number);\n        readChar(number);\n    end;\nend",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"            : 1.0
+    },
+    {
+        "name"             : "(Built-in) writeInt (nok)",
+        "input"            : "procedure main()\n    int number;\nbegin\n    writeInt();\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.4
+    },
+    {
+        "name"             : "(Built-in) readInt (nok)",
+        "input"            : "procedure main()\n    int number;\nbegin\n    readInt(number, number);\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.4
+    },
+    {
+        "name"             : "(Built-in) writeChar (nok)",
+        "input"            : "procedure main()\n    string text;\nbegin\n    writeChar(text);\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.4
+    },
+    {
+        "name"             : "(Built-in) readChar (nok)",
+        "input"            : "procedure main()\nbegin\n    readChar(1, 1, 1);\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.4
+    },
+    {
+        "name"             : "(Built-in) writeInt/readInt/writeChar/readChar (nok)",
+        "input"            : "procedure main()\n    int number;\nbegin\n    if (1 == 1) then\n        writeInt(\"text\");\n    end;\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.4
+    },
+    {
+        "name"             : "(Typ) Zuweisung von Integerkonstante",
+        "input"            : "int number;\nprocedure main() {\n    number = 0;\n}",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"            : 0.125
+    },
+    {
+        "name"             : "(Typ) Zuweisung von Integerkonstante (nok)",
+        "input"            : "string text;\nprocedure main() {\n    text = 0;\n}",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.125
+    },
+    {
+        "name"             : "(Typ) Zuweisung von Stringkonstante",
+        "input"            : "string text;\nprocedure main() {\n    text = \"xyz\";\n    text = \"\";\n}",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"            : 0.125
+    },
+    {
+        "name"             : "(Typ) Zuweisung von Stringkonstante (nok)",
+        "input"            : "int number;\nprocedure main() {\n    number = \"xyz\";\n}",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.125
+    },
+    {
+        "name"             : "(Typ) Zuweisung von Wahrheitswert",
+        "input"            : "boolean flag;\nprocedure main() {\n    flag = true;\n    flag = false;\n}",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"            : 0.125
+    },
+    {
+        "name"             : "(Typ) Zuweisung von Wahrheitswert (nok)",
+        "input"            : "int number;\nprocedure main() {\n    number = true;\n}",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.0625
+    },
+    {
+        "name"             : "(Typ) Zuweisung von Wahrheitswert (nok)",
+        "input"            : "int number;\nprocedure main() {\n    number = false;\n}",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.0625
+    },
+    {
+        "name"             : "(Typ) If-Anweisung mit Bedingung vom Typ boolean",
+        "input"            : "procedure main()\n    boolean flag;\nbegin\n   if (flag) then\n       return;\n   end;\nend",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"            : 0.125
+    },
+    {
+        "name"             : "(Typ) If-Anweisung mit Bedingung vom Typ int (nok)",
+        "input"            : "procedure main()\n    int flag;\nbegin\n   if (flag) then\n       return;\n   end;\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.03125
+    },
+    {
+        "name"             : "(Typ) If-Anweisung mit Bedingung vom Typ string (nok)",
+        "input"            : "procedure main()\n    string flag;\nbegin\n   if (flag) then\n       return;\n   end;\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.03125
+    },
+    {
+        "name"             : "(Typ) If-Anweisung mit Bedingung vom Typ int[] (nok)",
+        "input"            : "procedure main()\n    int[] flag;\nbegin\n   if (flag[0]) then\n       return;\n   end;\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.03125
+    },
+    {
+        "name"             : "(Typ) If-Anweisung mit Bedingung vom Typ record (nok)",
+        "input"            : "record Coordinate\n  int x;\n  int y;\nend\nprocedure main()\n    Coordinate flag;\nbegin\n   if (flag) then\n       return;\n   end;\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.03125
+    },
+    {
+        "name"             : "(Typ) While-Anweisung mit Bedingung vom Typ boolean",
+        "input"            : "procedure main()\n    boolean flag;\nbegin\n   while (flag) do\n       return;\n   end;\nend;",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"            : 0.125
+    },
+    {
+        "name"             : "(Typ) While-Anweisung mit Bedingung vom Typ int (nok)",
+        "input"            : "procedure main()\n    int flag;\nbegin\n   while (flag) do\n       return;\n   end;\nend;",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.03125
+    },
+    {
+        "name"             : "(Typ) While-Anweisung mit Bedingung vom Typ string (nok)",
+        "input"            : "procedure main()\n    string flag;\nbegin\n   while (flag) do\n       return;\n   end;\nend;",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.03125
+    },
+    {
+        "name"             : "(Typ) While-Anweisung mit Bedingung vom Typ Array (nok)",
+        "input"            : "procedure main()\n    int[] flag;\nbegin\n   while (flag[0]) do\n       return;\n   end;\nend;",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.03125
+    },
+    {
+        "name"             : "(Typ) While-Anweisung mit Bedingung vom Typ record (nok)",
+        "input"            : "record Coordinate\n  int x;\n  int y;\nend\nprocedure main()\n    Coordinate flag;\nbegin\n   while (flag) do\n       return;\n   end;\nend;",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.03125
+    },
+    {
+        "name"             : "(Typ) Vergleich mit Boolean Resultat (integer, ok)",
+        "input"            : "procedure main()\n    boolean flag;\n    int number1;\n    int number2;\nbegin\n    flag = number1 == number2;\n    flag = number1 >= number2;\n    flag = number1 <= number2;\n    flag = number1 != number2;\n    flag = number1 > number2;\n    flag = number1 < number2;\nend;",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"            : 0.125
+    },
+    {
+        "name"             : "(Typ) Vergleich mit Boolean Resultat (integer, nok ==)",
+        "input"            : "procedure main()\n    int flag;\n    int number1;\n    int number2;\nbegin\n    flag = number1 == number2;\nend;",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.02
+    },
+    {
+        "name"             : "(Typ) Vergleich mit Boolean Resultat (integer, nok !=)",
+        "input"            : "procedure main()\n    int flag;\n    int number1;\n    int number2;\nbegin\n    flag = number1 != number2;\nend;",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.02
+    },
+    {
+        "name"             : "(Typ) Vergleich mit Boolean Resultat (integer, nok <=)",
+        "input"            : "procedure main()\n    int flag;\n    int number1;\n    int number2;\nbegin\n    flag = number1 <= number2;\nend;",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.02
+    },
+    {
+        "name"             : "(Typ) Vergleich mit Boolean Resultat (integer, nok >=)",
+        "input"            : "procedure main()\n    int flag;\n    int number1;\n    int number2;\nbegin\n    flag = number1 >= number2;\nend;",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.02
+    },
+    {
+        "name"             : "(Typ) Vergleich mit Boolean Resultat (integer, nok >)",
+        "input"            : "procedure main()\n    int flag;\n    int number1;\n    int number2;\nbegin\n    flag = number1 > number2;\nend;",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.02
+    },
+    {
+        "name"             : "(Typ) Vergleich mit Boolean Resultat (integer, nok <)",
+        "input"            : "procedure main()\n    int flag;\n    int number1;\n    int number2;\nbegin\n    flag = number1 < number2;\nend;",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.025
+    },
+    {
+        "name"             : "(Typ) Vergleich mit Boolean Resultat (string, ok)",
+        "input"            : "procedure main()\n    boolean flag;\n    string value1;\n    string value2;\nbegin\n    flag = value1 == value2;\n    flag = value1 >= value2;\n    flag = value1 <= value2;\n    flag = value1 != value2;\n    flag = value1 > value2;\n    flag = value1 < value2;\nend;",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"            : 0.125
+    },
+    {
+        "name"             : "(Typ) Vergleich mit Boolean Resultat (string, nok ==)",
+        "input"            : "procedure main()\n    string flag;\n    string value1;\n    string value2;\nbegin\n    flag = value1 == value2;\nend;",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.02
+    },
+    {
+        "name"             : "(Typ) Vergleich mit Boolean Resultat (string, nok !=)",
+        "input"            : "procedure main()\n    string flag;\n    string value1;\n    string value2;\nbegin\n    flag = value1 != value2;\nend;",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.02
+    },
+    {
+        "name"             : "(Typ) Vergleich mit Boolean Resultat (string, nok <=)",
+        "input"            : "procedure main()\n    int flag;\n    string value1;\n    string value2;\nbegin\n    flag = value1 <= value2;\nend;",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.02
+    },
+    {
+        "name"             : "(Typ) Vergleich mit Boolean Resultat (string, nok >=)",
+        "input"            : "procedure main()\n    int flag;\n    string value1;\n    string value2;\nbegin\n    flag = value1 >= value2;\nend;",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.02
+    },
+    {
+        "name"             : "(Typ) Vergleich mit Boolean Resultat (string, nok >)",
+        "input"            : "procedure main()\n    int flag;\n    string value1;\n    string value2;\nbegin\n    flag = value1 > value2;\nend;",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.02
+    },
+    {
+        "name"             : "(Typ) Vergleich mit Boolean Resultat (string, nok <)",
+        "input"            : "procedure main()\n    int flag;\n    string value1;\n    string value2;\nbegin\n    flag = value1 < value2;\nend;",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.025
+    },
+    {
+        "name"             : "(Typ) Vergleich mit Boolean Resultat (boolean, ok)",
+        "input"            : "procedure main()\n    boolean flag;\n    boolean value1;\n    boolean value2;\nbegin\n    flag = value1 == value2;\n    flag = value1 != value2;\nend;",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"            : 0.125
+    },
+    {
+        "name"             : "(Typ) Vergleich mit Boolean Resultat (boolean, nok)",
+        "input"            : "procedure main()\n    boolean flag;\n    boolean value1;\n    boolean value2;\nbegin\n    flag = value1 >= value2;\nend;",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.03125
+    },
+    {
+        "name"             : "(Typ) Vergleich mit Boolean Resultat (boolean, nok)",
+        "input"            : "procedure main()\n    boolean flag;\n    boolean value1;\n    boolean value2;\nbegin\n    flag = value1 <= value2;\nend;",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.03125
+    },
+    {
+        "name"             : "(Typ) Vergleich mit Boolean Resultat (boolean, nok)",
+        "input"            : "procedure main()\n    boolean flag;\n    boolean value1;\n    boolean value2;\nbegin\n    flag = value1 > value2;\nend;",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.03125
+    },
+    {
+        "name"             : "(Typ) Vergleich mit Boolean Resultat (boolean, nok)",
+        "input"            : "procedure main()\n    boolean flag;\n    boolean value1;\n    boolean value2;\nbegin\n    flag = value1 < value2;\nend;",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.03125
+    },
+    {
+        "name"             : "(Typ) Zuweisung (int vs. int)",
+        "input"            : "procedure main()\n    int number1;\n    int number2;\nbegin\n    number1 = number2;\nend",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"            : 0.06
+    },
+    {
+        "name"             : "(Typ) Zuweisung (int vs. boolean)",
+        "input"            : "procedure main()\n    int number1;\n    boolean flag2;\nbegin\n    number1 = flag2;\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.015
+    },
+    {
+        "name"             : "(Typ) Zuweisung (int vs. string)",
+        "input"            : "procedure main()\n    int number1;\n    string text2;\nbegin\n    number1 = text2;\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.015
+    },
+    {
+        "name"             : "(Typ) Zuweisung (int vs. Record)",
+        "input"            : "record Coordinate\n    int x;\n    int y;\nend\nprocedure main()\n    int number1;\n    Coordinate coord2;\nbegin\n    number1 = coord2;\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.015
+    },
+    {
+        "name"             : "(Typ) Zuweisung (int vs. Record-Field)",
+        "input"            : "record Coordinate\n    int x;\n    int y;\nend\nprocedure main()\n    int number1;\n    Coordinate coord2;\nbegin\n    number1 = coord2.x;\nend",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"            : 0.06
+    },
+    {
+        "name"             : "(Typ) Zuweisung (int vs. Intarray)",
+        "input"            : "procedure main()\n    int number1;\n    int[] array2;\nbegin\n    number1 = array2;\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.015
+    },
+    {
+        "name"             : "(Typ) Zuweisung (int vs. Recordarray)",
+        "input"            : "record Coordinate\n    int x;\n    int y;\nend\nprocedure main()\n    int number1;\n    Coordinate[] coordinate2;\nbegin\n    number1 = coordinate2;\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.015
+    },
+    {
+        "name"             : "(Typ) Zuweisung (int vs. Intarray-Field)",
+        "input"            : "procedure main()\n    int number1;\n    int[] array2;\nbegin\n    number1 = array2[0];\nend",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"            : 0.06
+    },
+    {
+        "name"             : "(Typ) Zuweisung (int vs. Recordarray-Field)",
+        "input"            : "record Coordinate\n    int x;\n    int y;\nend\nprocedure main()\n    int number1;\n    Coordinate[] coordinate2;\nbegin\n    number1 = coordinate2[0];\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.015
+    },
+    {
+        "name"             : "(Typ) Zuweisung (boolean vs. Intarray)",
+        "input"            : "procedure main()\n    boolean flag1;\n    int number2;\nbegin\n    flag1 = number2;\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.015
+    },
+    {
+        "name"             : "(Typ) Zuweisung (boolean vs. boolean)",
+        "input"            : "procedure main()\n    boolean flag1;\n    boolean flag2;\nbegin\n    flag1 = flag2;\nend",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"            : 0.06
+    },
+    {
+        "name"             : "(Typ) Zuweisung (boolean vs. string)",
+        "input"            : "procedure main()\n    boolean flag1;\n    string text2;\nbegin\n    flag1 = text2;\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.015
+    },
+    {
+        "name"             : "(Typ) Zuweisung (boolean vs. Record)",
+        "input"            : "record Coordinate\n    int x;\n    int y;\nend\nprocedure main()\n    boolean flag1;\n    Coordinate coord2;\nbegin\n    flag1 = coord2;\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.015
+    },
+    {
+        "name"             : "(Typ) Zuweisung (boolean vs. Record-Field(int))",
+        "input"            : "record Coordinate\n    int x;\n    int y;\nend\nprocedure main()\n    boolean flag1;\n    Coordinate coord2;\nbegin\n    flag1 = coord2.x;\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.015
+    },
+    {
+        "name"             : "(Typ) Zuweisung (boolean vs. Intarray)",
+        "input"            : "procedure main()\n    boolean flag1;\n    int[] array2;\nbegin\n    flag1 = array2;\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.015
+    },
+    {
+        "name"             : "(Typ) Zuweisung (boolean vs. Recordarray)",
+        "input"            : "record Coordinate\n    int x;\n    int y;\nend\nprocedure main()\n    boolean flag1;\n    Coordinate[] coordinate2;\nbegin\n    flag1 = coordinate2;\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.015
+    },
+    {
+        "name"             : "(Typ) Zuweisung (boolean vs. Intarray-Field)",
+        "input"            : "procedure main()\n    boolean flag1;\n    int[] array2;\nbegin\n    flag1 = array2[0];\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.015
+    },
+    {
+        "name"             : "(Typ) Zuweisung (boolean vs. Recordarray-Field)",
+        "input"            : "record Coordinate\n    int x;\n    int y;\nend\nprocedure main()\n    boolean flag1;\n    Coordinate[] coordinate2;\nbegin\n    flag1 = coordinate2[0];\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.015
+    },
+    {
+        "name"             : "(Typ) Zuweisung (string vs. int)",
+        "input"            : "procedure main()\n    string text1;\n    int number2;\nbegin\n    text1 = number2;\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.015
+    },
+    {
+        "name"             : "(Typ) Zuweisung (string vs. boolean)",
+        "input"            : "procedure main()\n    string text1;\n    boolean flag2;\nbegin\n    text1 = flag2;\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.015
+    },
+    {
+        "name"             : "(Typ) Zuweisung (string vs. string)",
+        "input"            : "procedure main()\n    string text1;\n    string text2;\nbegin\n    text1 = text2;\nend",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"            : 0.06
+    },
+    {
+        "name"             : "(Typ) Zuweisung (string vs. Record)",
+        "input"            : "record Coordinate\n    int x;\n    int y;\nend\nprocedure main()\n    string text1;\n    Coordinate coord2;\nbegin\n    text1 = coord2;\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.015
+    },
+    {
+        "name"             : "(Typ) Zuweisung (string vs. Record-Field(int))",
+        "input"            : "record Coordinate\n    int x;\n    int y;\nend\nprocedure main()\n    string text1;\n    Coordinate coord2;\nbegin\n    text1 = coord2.x;\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.015
+    },
+    {
+        "name"             : "(Typ) Zuweisung (string vs. Intarray)",
+        "input"            : "procedure main()\n    string text1;\n    int[] array2;\nbegin\n    text1 = array2;\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.015
+    },
+    {
+        "name"             : "(Typ) Zuweisung (string vs. Recordarray)",
+        "input"            : "record Coordinate\n    int x;\n    int y;\nend\nprocedure main()\n    string text1;\n    Coordinate[] coordinate2;\nbegin\n    text1 = coordinate2;\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.015
+    },
+    {
+        "name"             : "(Typ) Zuweisung (string vs. Intarray-Field)",
+        "input"            : "procedure main()\n    string text1;\n    int[] array2;\nbegin\n    text1 = array2[0];\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.016
+    },
+    {
+        "name"             : "(Typ) Zuweisung (string vs. Recordarray-Field)",
+        "input"            : "record Coordinate\n    int x;\n    int y;\nend\nprocedure main()\n    string text1;\n    Coordinate[] coordinate2;\nbegin\n    text1 = coordinate2[0];\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.016
+    },
+    {
+        "name"             : "(Typ) Zuweisung (Record vs. int)",
+        "input"            : "record Coordinate\n    int x;\n    int y;\nend\nprocedure main()\n    Coordinate coord1;\n    int number2;\nbegin\n    coord1 = number2;\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.016
+    },
+    {
+        "name"             : "(Typ) Zuweisung (Record vs. boolean)",
+        "input"            : "record Coordinate\n    int x;\n    int y;\nend\nprocedure main()\n    Coordinate coord1;\n    boolean flag2;\nbegin\n    coord1 = flag2;\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.016
+    },
+    {
+        "name"             : "(Typ) Zuweisung (Record vs. string)",
+        "input"            : "record Coordinate\n    int x;\n    int y;\nend\nprocedure main()\n    Coordinate coord1;\n    string text2;\nbegin\n    coord1 = text2;\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.016
+    },
+    {
+        "name"             : "(Typ) Zuweisung (Record vs. Record)",
+        "input"            : "record Coordinate\n    int x;\n    int y;\nend\nprocedure main()\n    Coordinate coord1;\n    Coordinate coord2;\nbegin\n    coord1 = coord2;\nend",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"            : 0.06
+    },
+    {
+        "name"             : "(Typ) Zuweisung (Record vs. Record-Field(int))",
+        "input"            : "record Coordinate\n    int x;\n    int y;\nend\nprocedure main()\n    Coordinate coord1;\n    Coordinate coord2;\nbegin\n    coord1 = coord2.x;\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.016
+    },
+    {
+        "name"             : "(Typ) Zuweisung (Record vs. Intarray)",
+        "input"            : "record Coordinate\n    int x;\n    int y;\nend\nprocedure main()\n    Coordinate coord1;\n    int[] array2;\nbegin\n    coord1 = array2;\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.016
+    },
+    {
+        "name"             : "(Typ) Zuweisung (Record vs. Recordarray)",
+        "input"            : "record Coordinate\n    int x;\n    int y;\nend\nprocedure main()\n    Coordinate coord1;\n    Coordinate[] coordinate2;\nbegin\n    coord1 = coordinate2;\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.016
+    },
+    {
+        "name"             : "(Typ) Zuweisung (Record vs. Intarray-Field)",
+        "input"            : "record Coordinate\n    int x;\n    int y;\nend\nprocedure main()\n    Coordinate coord1;\n    int[] array2;\nbegin\n    coord1 = array2[0];\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.016
+    },
+    {
+        "name"             : "(Typ) Zuweisung (Record vs. Recordarray-Field)",
+        "input"            : "record Coordinate\n    int x;\n    int y;\nend\nprocedure main()\n    Coordinate coord1;\n    Coordinate[] coordinate2;\nbegin\n    coord1 = coordinate2[0];\nend",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"            : 0.06
+    },
+    {
+        "name"             : "(Typ) Zuweisung (Record-Field(int) vs. int)",
+        "input"            : "record Coordinate\n    int x;\n    int y;\nend\nprocedure main()\n    Coordinate coord1;\n    int number2;\nbegin\n    coord1.x = number2;\nend",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"            : 0.06
+    },
+    {
+        "name"             : "(Typ) Zuweisung (Record-Field(int) vs. boolean)",
+        "input"            : "record Coordinate\n    int x;\n    int y;\nend\nprocedure main()\n    Coordinate coord1;\n    boolean flag2;\nbegin\n    coord1.x = flag2;\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.016
+    },
+    {
+        "name"             : "(Typ) Zuweisung (Record-Field(int) vs. string)",
+        "input"            : "record Coordinate\n    int x;\n    int y;\nend\nprocedure main()\n    Coordinate coord1;\n    string text2;\nbegin\n    coord1.x = text2;\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.016
+    },
+    {
+        "name"             : "(Typ) Zuweisung (Record-Field(int) vs. Record)",
+        "input"            : "record Coordinate\n    int x;\n    int y;\nend\nprocedure main()\n    Coordinate coord1;\n    Coordinate coord2;\nbegin\n    coord1.x = coord2;\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.016
+    },
+    {
+        "name"             : "(Typ) Zuweisung (Record-Field(int) vs. Record-Field(int))",
+        "input"            : "record Coordinate\n    int x;\n    int y;\nend\nprocedure main()\n    Coordinate coord1;\n    Coordinate coord2;\nbegin\n    coord1.x = coord2.x;\nend",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"            : 0.06
+    },
+    {
+        "name"             : "(Typ) Zuweisung (Record-Field(int) vs. Intarray)",
+        "input"            : "record Coordinate\n    int x;\n    int y;\nend\nprocedure main()\n    Coordinate coord1;\n    int[] array2;\nbegin\n    coord1.x = array2;\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.016
+    },
+    {
+        "name"             : "(Typ) Zuweisung (Record-Field(int) vs. Recordarray)",
+        "input"            : "record Coordinate\n    int x;\n    int y;\nend\nprocedure main()\n    Coordinate coord1;\n    Coordinate[] coordinate2;\nbegin\n    coord1.x = coordinate2;\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.016
+    },
+    {
+        "name"             : "(Typ) Zuweisung (Record-Field(int) vs. Intarray-Field)",
+        "input"            : "record Coordinate\n    int x;\n    int y;\nend\nprocedure main()\n    Coordinate coord1;\n    int[] array2;\nbegin\n    coord1.x = array2[0];\nend",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"            : 0.06
+    },
+    {
+        "name"             : "(Typ) Zuweisung (Record-Field(int) vs. Recordarray-Field)",
+        "input"            : "record Coordinate\n    int x;\n    int y;\nend\nprocedure main()\n    Coordinate coord1;\n    Coordinate[] coordinate2;\nbegin\n    coord1.x = coordinate2[0];\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.016
+    },
+    {
+        "name"             : "(Typ) Zuweisung (Intarray vs. int)",
+        "input"            : "procedure main()\n    int[] array1;\n    int number2;\nbegin\n    array1 = number2;\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.016
+    },
+    {
+        "name"             : "(Typ) Zuweisung (Intarray vs. boolean)",
+        "input"            : "procedure main()\n    int[] array1;\n    boolean flag2;\nbegin\n    array1 = flag2;\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.016
+    },
+    {
+        "name"             : "(Typ) Zuweisung (Intarray vs. string)",
+        "input"            : "procedure main()\n    int[] array1;\n    string text2;\nbegin\n    array1 = text2;\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.016
+    },
+    {
+        "name"             : "(Typ) Zuweisung (Intarray vs. Record)",
+        "input"            : "record Coordinate\n    int x;\n    int y;\nend\nprocedure main()\n    int[] array1;\n    Coordinate coord2;\nbegin\n    array1 = coord2;\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.016
+    },
+    {
+        "name"             : "(Typ) Zuweisung (Intarray vs. Record-Field(int))",
+        "input"            : "record Coordinate\n    int x;\n    int y;\nend\nprocedure main()\n    int[] array1;\n    Coordinate coord2;\nbegin\n    array1 = coord2.x;\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.016
+    },
+    {
+        "name"             : "(Typ) Zuweisung (Intarray vs. Intarray)",
+        "input"            : "procedure main()\n    int[] array1;\n    int[] array2;\nbegin\n    array1 = array2;\nend",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"            : 0.06
+    },
+    {
+        "name"             : "(Typ) Zuweisung (Intarray vs. Recordarray)",
+        "input"            : "record Coordinate\n    int x;\n    int y;\nend\nprocedure main()\n    int[] array1;\n    Coordinate[] coordinate2;\nbegin\n    array1 = coordinate2;\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.016
+    },
+    {
+        "name"             : "(Typ) Zuweisung (Intarray vs. Intarray-Field)",
+        "input"            : "procedure main()\n    int[] array1;\n    int[] array2;\nbegin\n    array1 = array2[0];\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.016
+    },
+    {
+        "name"             : "(Typ) Zuweisung (Intarray vs. Recordarray-Field)",
+        "input"            : "record Coordinate\n    int x;\n    int y;\nend\nprocedure main()\n    int[] array1;\n    Coordinate[] coordinate2;\nbegin\n    array1 = coordinate2[0];\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.016
+    },
+    {
+        "name"             : "(Typ) Zuweisung (Recordarray vs. int)",
+        "input"            : "record Coordinate\n    int x;\n    int y;\nend\nprocedure main()\n    Coordinate[] coordinate1;\n    int number2;\nbegin\n    coordinate1 = number2;\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.016
+    },
+    {
+        "name"             : "(Typ) Zuweisung (Recordarray vs. boolean)",
+        "input"            : "record Coordinate\n    int x;\n    int y;\nend\nprocedure main()\n    Coordinate[] coordinate1;\n    boolean flag2;\nbegin\n    coordinate1 = flag2;\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.016
+    },
+    {
+        "name"             : "(Typ) Zuweisung (Recordarray vs. string)",
+        "input"            : "record Coordinate\n    int x;\n    int y;\nend\nprocedure main()\n    Coordinate[] coordinate1;\n    string text2;\nbegin\n    coordinate1 = text2;\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.016
+    },
+    {
+        "name"             : "(Typ) Zuweisung (Recordarray vs. Record)",
+        "input"            : "record Coordinate\n    int x;\n    int y;\nend\nprocedure main()\n    Coordinate[] coordinate1;\n    Coordinate coord2;\nbegin\n    coordinate1 = coord2;\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.016
+    },
+    {
+        "name"             : "(Typ) Zuweisung (Recordarray vs. Record-Field(int))",
+        "input"            : "record Coordinate\n    int x;\n    int y;\nend\nprocedure main()\n    Coordinate[] coordinate1;\n    Coordinate coord2;\nbegin\n    coordinate1 = coord2.x;\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.016
+    },
+    {
+        "name"             : "(Typ) Zuweisung (Recordarray vs. Intarray)",
+        "input"            : "record Coordinate\n    int x;\n    int y;\nend\nprocedure main()\n    Coordinate[] coordinate1;\n    int[] array2;\nbegin\n    coordinate1 = array2;\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.016
+    },
+    {
+        "name"             : "(Typ) Zuweisung (Recordarray vs. Recordarray)",
+        "input"            : "record Coordinate\n    int x;\n    int y;\nend\nprocedure main()\n    Coordinate[] coordinate1;\n    Coordinate[] coordinate2;\nbegin\n    coordinate1 = coordinate2;\nend",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"            : 0.06
+    },
+    {
+        "name"             : "(Typ) Zuweisung (Recordarray vs. Intarray-Field)",
+        "input"            : "record Coordinate\n    int x;\n    int y;\nend\nprocedure main()\n    Coordinate[] coordinate1;\n    int[] array2;\nbegin\n    coordinate1 = array2[0];\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.016
+    },
+    {
+        "name"             : "(Typ) Zuweisung (Recordarray vs. Recordarray-Field)",
+        "input"            : "record Coordinate\n    int x;\n    int y;\nend\nprocedure main()\n    Coordinate[] coordinate1;\n    Coordinate[] coordinate2;\nbegin\n    coordinate1 = coordinate2[0];\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.016
+    },
+    {
+        "name"             : "(Typ) Zuweisung (Intarray-Field vs. int)",
+        "input"            : "procedure main()\n    int[] array1;\n    int number2;\nbegin\n    array1[0] = number2;\nend",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"            : 0.06
+    },
+    {
+        "name"             : "(Typ) Zuweisung (Intarray-Field vs. boolean)",
+        "input"            : "procedure main()\n    int[] array1;\n    boolean flag2;\nbegin\n    array1[0] = flag2;\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.016
+    },
+    {
+        "name"             : "(Typ) Zuweisung (Intarray-Field vs. string)",
+        "input"            : "procedure main()\n    int[] array1;\n    string text2;\nbegin\n    array1[0] = text2;\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.016
+    },
+    {
+        "name"             : "(Typ) Zuweisung (Intarray-Field vs. Record)",
+        "input"            : "record Coordinate\n    int x;\n    int y;\nend\nprocedure main()\n    int[] array1;\n    Coordinate coord2;\nbegin\n    array1[0] = coord2;\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.016
+    },
+    {
+        "name"             : "(Typ) Zuweisung (Intarray-Field vs. Record-Field(int))",
+        "input"            : "record Coordinate\n    int x;\n    int y;\nend\nprocedure main()\n    int[] array1;\n    Coordinate coord2;\nbegin\n    array1[0] = coord2.x;\nend",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"            : 0.06
+    },
+    {
+        "name"             : "(Typ) Zuweisung (Intarray-Field vs. Intarray)",
+        "input"            : "record Coordinate\n    int x;\n    int y;\nend\nprocedure main()\n    int[] array1;\n    int[] array2;\nbegin\n    array1[0] = array2;\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.016
+    },
+    {
+        "name"             : "(Typ) Zuweisung (Intarray-Field vs. Recordarray)",
+        "input"            : "record Coordinate\n    int x;\n    int y;\nend\nprocedure main()\n    int[] array1;\n    Coordinate[] coordinate2;\nbegin\n    array1[0] = coordinate2;\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.016
+    },
+    {
+        "name"             : "(Typ) Zuweisung (Intarray-Field vs. Intarray-Field)",
+        "input"            : "record Coordinate\n    int x;\n    int y;\nend\nprocedure main()\n    int[] array1;\n    int[] array2;\nbegin\n    array1[0] = array2[0];\nend",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"            : 0.06
+    },
+    {
+        "name"             : "(Typ) Zuweisung (Intarray-Field vs. Recordarray-Field)",
+        "input"            : "record Coordinate\n    int x;\n    int y;\nend\nprocedure main()\n    int[] array1;\n    Coordinate[] coordinate2;\nbegin\n    array1[0] = coordinate2[0];\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.016
+    },
+    {
+        "name"             : "(Typ) Zuweisung (Recordarray-Field vs. int)",
+        "input"            : "record Coordinate\n    int x;\n    int y;\nend\nprocedure main()\n    Coordinate[] coordinate1;\n    int number2;\nbegin\n    coordinate1[0] = number2;\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.016
+    },
+    {
+        "name"             : "(Typ) Zuweisung (Recordarray-Field vs. boolean)",
+        "input"            : "record Coordinate\n    int x;\n    int y;\nend\nprocedure main()\n    Coordinate[] coordinate1;\n    boolean flag2;\nbegin\n    coordinate1[0] = flag2;\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.016
+    },
+    {
+        "name"             : "(Typ) Zuweisung (Recordarray-Field vs. string)",
+        "input"            : "record Coordinate\n    int x;\n    int y;\nend\nprocedure main()\n    Coordinate[] coordinate1;\n    string text2;\nbegin\n    coordinate1[0] = text2;\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.016
+    },
+    {
+        "name"             : "(Typ) Zuweisung (Recordarray-Field vs. Record)",
+        "input"            : "record Coordinate\n    int x;\n    int y;\nend\nprocedure main()\n    Coordinate[] coordinate1;\n    Coordinate coord2;\nbegin\n    coordinate1[0] = coord2;\nend",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"            : 0.05
+    },
+    {
+        "name"             : "(Typ) Zuweisung (Recordarray-Field vs. Record-Field(int))",
+        "input"            : "record Coordinate\n    int x;\n    int y;\nend\nprocedure main()\n    Coordinate[] coordinate1;\n    Coordinate coord2;\nbegin\n    coordinate1[0] = coord2.x;\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.016
+    },
+    {
+        "name"             : "(Typ) Zuweisung (Recordarray-Field vs. Intarray)",
+        "input"            : "record Coordinate\n    int x;\n    int y;\nend\nprocedure main()\n    Coordinate[] coordinate1;\n    int[] array2;\nbegin\n    coordinate1[0] = array2;\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.016
+    },
+    {
+        "name"             : "(Typ) Zuweisung (Recordarray-Field vs. Recordarray)",
+        "input"            : "record Coordinate\n    int x;\n    int y;\nend\nprocedure main()\n    Coordinate[] coordinate1;\n    Coordinate[] coordinate2;\nbegin\n    coordinate1[0] = coordinate2;\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.016
+    },
+    {
+        "name"             : "(Typ) Zuweisung (Recordarray-Field vs. Intarray-Field)",
+        "input"            : "record Coordinate\n    int x;\n    int y;\nend\nprocedure main()\n    Coordinate[] coordinate1;\n    int[] array2;\nbegin\n    coordinate1[0] = array2[0];\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.016
+    },
+    {
+        "name"             : "(Typ) Zuweisung (Recordarray-Field vs. Recordarray-Field)",
+        "input"            : "record Coordinate\n    int x;\n    int y;\nend\nprocedure main()\n    Coordinate[] coordinate1;\n    Coordinate[] coordinate2;\nbegin\n    coordinate1[0] = coordinate2[0];\nend",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"            : 0.05
+    },
+    {
+        "name"             : "(Typ) Operatoren (int, +)",
+        "input"            : "procedure main()\n    int value1;\n    int value2;\nbegin\n    value1 = value1 + value2;\nend",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"            : 0.03
+    },
+    {
+        "name"             : "(Typ) Operatoren (string, +)",
+        "input"            : "procedure main()\n    string value1;\n    string value2;\nbegin\n    value1 = value1 + value2;\nend",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"            : 0.05
+    },
+    {
+        "name"             : "(Typ) Operatoren (boolean, +)",
+        "input"            : "procedure main()\n    boolean value1;\n    boolean value2;\nbegin\n    value1 = value1 + value2;\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.02
+    },
+    {
+        "name"             : "(Typ) Operatoren (Array, +)",
+        "input"            : "procedure main()\n    int[] value1;\n    int[] value2;\nbegin\n    value1 = value1 + value2;\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.02
+    },
+    {
+        "name"             : "(Typ) Operatoren (Record, +)",
+        "input"            : "procedure main()\n    Coordinate value1;\n    Coordinate value2;\nbegin\n    value1 = value1 + value2;\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.02
+    },
+    {
+        "name"             : "(Typ) Operatoren (int, -)",
+        "input"            : "procedure main()\n    int value1;\n    int value2;\nbegin\n    value1 = value1 - value2;\nend",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"            : 0.02
+    },
+    {
+        "name"             : "(Typ) Operatoren (string, -)",
+        "input"            : "procedure main()\n    string value1;\n    string value2;\nbegin\n    value1 = value1 - value2;\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.02
+    },
+    {
+        "name"             : "(Typ) Operatoren (boolean, -)",
+        "input"            : "procedure main()\n    boolean value1;\n    boolean value2;\nbegin\n    value1 = value1 - value2;\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.02
+    },
+    {
+        "name"             : "(Typ) Operatoren (Array, -)",
+        "input"            : "procedure main()\n    int[] value1;\n    int[] value2;\nbegin\n    value1 = value1 - value2;\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.02
+    },
+    {
+        "name"             : "(Typ) Operatoren (Record, -)",
+        "input"            : "procedure main()\n    Coordinate value1;\n    Coordinate value2;\nbegin\n    value1 = value1 - value2;\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.02
+    },
+    {
+        "name"             : "(Typ) Operatoren (int, *)",
+        "input"            : "procedure main()\n    int value1;\n    int value2;\nbegin\n    value1 = value1 * value2;\nend",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"            : 0.03
+    },
+    {
+        "name"             : "(Typ) Operatoren (string, *)",
+        "input"            : "procedure main()\n    string value1;\n    string value2;\nbegin\n    value1 = value1 * value2;\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.02
+    },
+    {
+        "name"             : "(Typ) Operatoren (boolean, *)",
+        "input"            : "procedure main()\n    boolean value1;\n    boolean value2;\nbegin\n    value1 = value1 * value2;\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.02
+    },
+    {
+        "name"             : "(Typ) Operatoren (Array, *)",
+        "input"            : "procedure main()\n    int[] value1;\n    int[] value2;\nbegin\n    value1 = value1 * value2;\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.02
+    },
+    {
+        "name"             : "(Typ) Operatoren (Record, *)",
+        "input"            : "procedure main()\n    Coordinate value1;\n    Coordinate value2;\nbegin\n    value1 = value1 * value2;\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.02
+    },
+    {
+        "name"             : "(Typ) Operatoren (int, /)",
+        "input"            : "procedure main()\n    int value1;\n    int value2;\nbegin\n    value1 = value1 / value2;\nend",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"            : 0.02
+    },
+    {
+        "name"             : "(Typ) Operatoren (string, /)",
+        "input"            : "procedure main()\n    string value1;\n    string value2;\nbegin\n    value1 = value1 / value2;\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.02
+    },
+    {
+        "name"             : "(Typ) Operatoren (boolean, /)",
+        "input"            : "procedure main()\n    boolean value1;\n    boolean value2;\nbegin\n    value1 = value1 / value2;\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.02
+    },
+    {
+        "name"             : "(Typ) Operatoren (Array, /)",
+        "input"            : "procedure main()\n    int[] value1;\n    int[] value2;\nbegin\n    value1 = value1 / value2;\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.02
+    },
+    {
+        "name"             : "(Typ) Operatoren (Record, /)",
+        "input"            : "procedure main()\n    Coordinate value1;\n    Coordinate value2;\nbegin\n    value1 = value1 / value2;\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.02
+    },
+    {
+        "name"             : "(Typ) Operatoren (int, %)",
+        "input"            : "procedure main()\n    int value1;\n    int value2;\nbegin\n    value1 = value1 % value2;\nend",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"            : 0.05
+    },
+    {
+        "name"             : "(Typ) Operatoren (string, %)",
+        "input"            : "procedure main()\n    string value1;\n    string value2;\nbegin\n    value1 = value1 % value2;\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.02
+    },
+    {
+        "name"             : "(Typ) Operatoren (boolean, %)",
+        "input"            : "procedure main()\n    boolean value1;\n    boolean value2;\nbegin\n    value1 = value1 % value2;\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.02
+    },
+    {
+        "name"             : "(Typ) Operatoren (Array, %)",
+        "input"            : "procedure main()\n    int[] value1;\n    int[] value2;\nbegin\n    value1 = value1 % value2;\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.02
+    },
+    {
+        "name"             : "(Typ) Operatoren (Record, %)",
+        "input"            : "record Coordinate\n    int x;\n    int y;\nend\nprocedure main()\n    Coordinate value1;\n    Coordinate value2;\nbegin\n    value1 = value1 % value2;\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.02
+    },
+    {
+        "name"             : "(Typ) Operatoren (int, ==)",
+        "input"            : "procedure main()\n    boolean res;\n    int value1;\n    int value2;\nbegin\n    res = value1 == value2;\nend",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"            : 0.05
+    },
+    {
+        "name"             : "(Typ) Operatoren (string, ==)",
+        "input"            : "procedure main()\n    boolean res;\n    string value1;\n    string value2;\nbegin\n    res = value1 == value2;\nend",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"            : 0.05
+    },
+    {
+        "name"             : "(Typ) Operatoren (boolean, ==)",
+        "input"            : "procedure main()\n    boolean value1;\n    boolean value2;\n    boolean res;\nbegin\n    res = value1 == value2;\nend",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"            : 0.05
+    },
+    {
+        "name"             : "(Typ) Operatoren (Array, ==)",
+        "input"            : "procedure main()\n    boolean res;\n    int[] value1;\n    int[] value2;\nbegin\n    res = value1 == value2;\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.02
+    },
+    {
+        "name"             : "(Typ) Operatoren (Record, ==)",
+        "input"            : "record Coordinate\n    int x;\n    int y;\nend\nprocedure main()\n    boolean res;\n    Coordinate value1;\n    Coordinate value2;\nbegin\n    res = value1 == value2;\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.02
+    },
+    {
+        "name"             : "(Typ) Operatoren (int, !=)",
+        "input"            : "procedure main()\n    boolean res;\n    int value1;\n    int value2;\nbegin\n    res = value1 != value2;\nend",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"            : 0.05
+    },
+    {
+        "name"             : "(Typ) Operatoren (string, !=)",
+        "input"            : "procedure main()\n    boolean res;\n    string value1;\n    string value2;\nbegin\n    res = value1 != value2;\nend",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"            : 0.05
+    },
+    {
+        "name"             : "(Typ) Operatoren (boolean, !=)",
+        "input"            : "procedure main()\n    boolean res;\n    boolean value1;\n    boolean value2;\nbegin\n    res = value1 != value2;\nend",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"            : 0.05
+    },
+    {
+        "name"             : "(Typ) Operatoren (Array, !=)",
+        "input"            : "procedure main()\n    boolean res;\n    int[] value1;\n    int[] value2;\nbegin\n    res = value1 != value2;\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.02
+    },
+    {
+        "name"             : "(Typ) Operatoren (Record, !=)",
+        "input"            : "record Coordinate\n    int x;\n    int y;\nend\nprocedure main()\n    boolean res;\n    Coordinate value1;\n    Coordinate value2;\nbegin\n    res = value1 != value2;\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.02
+    },
+    {
+        "name"             : "(Typ) Operatoren (int, >=)",
+        "input"            : "procedure main()\n    boolean res;\n    int value1;\n    int value2;\nbegin\n    res = value1 >= value2;\nend",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"            : 0.02
+    },
+    {
+        "name"             : "(Typ) Operatoren (string, >=)",
+        "input"            : "procedure main()\n    boolean res;\n    string value1;\n    string value2;\nbegin\n    res = value1 >= value2;\nend",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"            : 0.05
+    },
+    {
+        "name"             : "(Typ) Operatoren (boolean, >=)",
+        "input"            : "procedure main()\n    boolean res;\n    boolean value1;\n    boolean value2;\nbegin\n    res = value1 >= value2;\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.02
+    },
+    {
+        "name"             : "(Typ) Operatoren (Array, >=)",
+        "input"            : "procedure main()\n    boolean res;\n    int[] value1;\n    int[] value2;\nbegin\n    res = value1 >= value2;\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.02
+    },
+    {
+        "name"             : "(Typ) Operatoren (Record, >=)",
+        "input"            : "record Coordinate\n    int x;\n    int y;\nend\nprocedure main()\n    boolean res;\n    Coordinate value1;\n    Coordinate value2;\nbegin\n    res = value1 >= value2;\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.02
+    },
+    {
+        "name"             : "(Typ) Operatoren (int, <=)",
+        "input"            : "procedure main()\n    boolean res;\n    int value1;\n    int value2;\nbegin\n    res = value1 <= value2;\nend",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"            : 0.03
+    },
+    {
+        "name"             : "(Typ) Operatoren (string, <=)",
+        "input"            : "procedure main()\n    boolean res;\n    string value1;\n    string value2;\nbegin\n    res = value1 <= value2;\nend",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"            : 0.05
+    },
+    {
+        "name"             : "(Typ) Operatoren (boolean, <=)",
+        "input"            : "procedure main()\n    boolean res;\n    boolean value1;\n    boolean value2;\nbegin\n    res = value1 <= value2;\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.02
+    },
+    {
+        "name"             : "(Typ) Operatoren (Array, <=)",
+        "input"            : "procedure main()\n    boolean res;\n    int[] value1;\n    int[] value2;\nbegin\n    res = value1 <= value2;\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.02
+    },
+    {
+        "name"             : "(Typ) Operatoren (Record, <=)",
+        "input"            : "record Coordinate\n    int x;\n    int y;\nend\nprocedure main()\n    boolean res;\n    Coordinate value1;\n    Coordinate value2;\nbegin\n    res = value1 <= value2;\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.02
+    },
+    {
+        "name"             : "(Typ) Operatoren (int, >)",
+        "input"            : "procedure main()\n    boolean res;\n    int value1;\n    int value2;\nbegin\n    res = value1 > value2;\nend",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"            : 0.02
+    },
+    {
+        "name"             : "(Typ) Operatoren (string, >)",
+        "input"            : "procedure main()\n    boolean res;\n    string value1;\n    string value2;\nbegin\n    res = value1 > value2;\nend",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"            : 0.05
+    },
+    {
+        "name"             : "(Typ) Operatoren (boolean, >)",
+        "input"            : "procedure main()\n    boolean res;\n    boolean value1;\n    boolean value2;\nbegin\n    res = value1 > value2;\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.02
+    },
+    {
+        "name"             : "(Typ) Operatoren (Array, >)",
+        "input"            : "procedure main()\n    boolean res;\n    int[] value1;\n    int[] value2;\nbegin\n    res = value1 > value2;\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.02
+    },
+    {
+        "name"             : "(Typ) Operatoren (Record, >)",
+        "input"            : "record Coordinate\n    int x;\n    int y;\nend\nprocedure main()\n    boolean res;\n    Coordinate value1;\n    Coordinate value2;\nbegin\n    res = value1 > value2;\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.02
+    },
+    {
+        "name"             : "(Typ) Operatoren (int, <)",
+        "input"            : "procedure main()\n    boolean res;\n    int value1;\n    int value2;\nbegin\n    res = value1 < value2;\nend",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"            : 0.03
+    },
+    {
+        "name"             : "(Typ) Operatoren (string, <)",
+        "input"            : "procedure main()\n    boolean res;\n    string value1;\n    string value2;\nbegin\n    res = value1 < value2;\nend",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"            : 0.05
+    },
+    {
+        "name"             : "(Typ) Operatoren (boolean, <)",
+        "input"            : "procedure main()\n    boolean res;\n    boolean value1;\n    boolean value2;\nbegin\n    res = value1 < value2;\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.02
+    },
+    {
+        "name"             : "(Typ) Operatoren (Array, <)",
+        "input"            : "procedure main()\n    boolean res;\n    int[] value1;\n    int[] value2;\nbegin\n    res = value1 < value2;\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.02
+    },
+    {
+        "name"             : "(Typ) Operatoren (Record, <)",
+        "input"            : "record Coordinate\n    int x;\n    int y;\nend\nprocedure main()\n    boolean res;\n    Coordinate value1;\n    Coordinate value2;\nbegin\n    res = value1 < value2;\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.02
+    },
+    {
+        "name"             : "(Typ) Operatoren (int, ||)",
+        "input"            : "procedure main()\n    boolean res;\n    int value1;\n    int value2;\nbegin\n    res = value1 || value2;\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.02
+    },
+    {
+        "name"             : "(Typ) Operatoren (boolean, ||)",
+        "input"            : "procedure main()\n    boolean res;\n    boolean value1;\n    boolean value2;\nbegin\n    res = value1 || value2;\nend",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"            : 0.05
+    },
+    {
+        "name"             : "(Typ) Operatoren (Array, ||)",
+        "input"            : "procedure main()\n    boolean res;\n    int[] value1;\n    int[] value2;\nbegin\n    res = value1 || value2;\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.02
+    },
+    {
+        "name"             : "(Typ) Operatoren (Record, ||)",
+        "input"            : "record Coordinate\n    boolean res;\n    int x;\n    int y;\nend\nprocedure main()\n    Coordinate value1;\n    Coordinate value2;\nbegin\n    res = value1 || value2;\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.02
+    },
+    {
+        "name"             : "(Typ) Operatoren (int, &&)",
+        "input"            : "procedure main()\n    boolean res;\n    int value1;\n    int value2;\nbegin\n    res = value1 && value2;\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.02
+    },
+    {
+        "name"             : "(Typ) Operatoren (string, &&)",
+        "input"            : "procedure main()\n    boolean res;\n    string value1;\n    string value2;\nbegin\n    res = value1 && value2;\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.02
+    },
+    {
+        "name"             : "(Typ) Operatoren (boolean, &&)",
+        "input"            : "procedure main()\n    boolean res;\n    boolean value1;\n    boolean value2;\nbegin\n    res = value1 && value2;\nend",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"            : 0.05
+    },
+    {
+        "name"             : "(Typ) Operatoren (Array, &&)",
+        "input"            : "procedure main()\n    boolean res;\n    int[] value1;\n    int[] value2;\nbegin\n    res = value1 && value2;\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.02
+    },
+    {
+        "name"             : "(Typ) Operatoren (Record, &&)",
+        "input"            : "record Coordinate\n    int x;\n    int y;\nend\nprocedure main()\n    boolean res;\n    Coordinate value1;\n    Coordinate value2;\nbegin\n    res = value1 && value2;\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.02
+    },
+    {
+        "name"             : "(Typ) Operatoren (int, !)",
+        "input"            : "procedure main()\n    int value;\nbegin\n    value = !value;\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.02
+    },
+    {
+        "name"             : "(Typ) Operatoren (string, !)",
+        "input"            : "procedure main()\n    string value;\nbegin\n    value = !value;\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.02
+    },
+    {
+        "name"             : "(Typ) Operatoren (boolean, !)",
+        "input"            : "procedure main()\n    boolean value;\nbegin\n    value = !value;\nend",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"            : 0.05
+    },
+    {
+        "name"             : "(Typ) Operatoren (Array, !)",
+        "input"            : "procedure main()\n    int[] value;\nbegin\n    value = !value;\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.02
+    },
+    {
+        "name"             : "(Typ) Operatoren (Record, !)",
+        "input"            : "record Coordinate\n    int x;\n    int y;\nend\nprocedure main()\n    Coordinate value;\nbegin\n    value = !value;\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.02
+    },
+    {
+        "name"             : "(Typ) Operatoren (int, -)",
+        "input"            : "procedure main()\n    int value;\nbegin\n    value = -value;\nend",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"            : 0.05
+    },
+    {
+        "name"             : "(Typ) Operatoren (string, -)",
+        "input"            : "procedure main()\n    string value;\nbegin\n    value = -value;\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.02
+    },
+    {
+        "name"             : "(Typ) Operatoren (boolean, -)",
+        "input"            : "procedure main()\n    boolean value;\nbegin\n    value = -value;\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.02
+    },
+    {
+        "name"             : "(Typ) Operatoren (Array, -)",
+        "input"            : "procedure main()\n    int[] value;\nbegin\n    value = -value;\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.02
+    },
+    {
+        "name"             : "(Typ) Operatoren (Record, -)",
+        "input"            : "record Coordinate\n    int x;\n    int y;\nend\nprocedure main()\n    Coordinate value;\nbegin\n    value = -value;\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.02
+    },
+    {
+        "name"             : "(Typ) Funktionsaufruf (Parametertypen ok)",
+        "input"            : "procedure test(int a)\nbegin\nend\nprocedure main()\n    int number;\nbegin\n    test(1);\n    test(number);\nend",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"            : 0.33
+    },
+    {
+        "name"             : "(Typ) Funktionsaufruf (Parametertypen ok)",
+        "input"            : "procedure testABC(int[] a, string b)\nbegin\nend\nprocedure main()\n    int[] arr;\nbegin\n    testABC(arr, \"abc\");\nend",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"            : 0.33
+    },
+    {
+        "name"             : "(Typ) Funktionsaufruf (Parametertypen ok)",
+        "input"            : "procedure test(int[] a, string b)\nbegin\nend\nprocedure main()\n    int[] arr;\nbegin\n    while(1 == 1) do\n        test(arr, \"abc\");\n    end;\nend",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"            : 0.34
+    },
+    {
+        "name"             : "(Typ) Funktionsaufruf (Parametertypen falsch)",
+        "input"            : "procedure test1(int a)\nbegin\nend\nprocedure main()\n    int number;\nbegin\n    test1(\"Hallo\");\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.33
+    },
+    {
+        "name"             : "(Typ) Funktionsaufruf (Parametertypen falsch)",
+        "input"            : "procedure test2(string s, int[] a)\nbegin\nend\nrecord Coordinate\n    int x;\n    int y;\nend\nprocedure main()\n    Coordinate coord;\nbegin\n    test2(\"abc\", coord);\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.33
+    },
+    {
+        "name"             : "(Typ) Funktionsaufruf (Parametertypen falsch)",
+        "input"            : "procedure test2(int number, int number, int[] a)\nbegin\nend\nrecord Coordinate\n    int x;\n    int y;\nend\nprocedure main()\n    Coordinate coord;\nbegin\n    if (1 == 1) then\n        test2(23, 42, coord);\n    end;\nend",
+        "expectedExitCode" : "1",
+        "expectedOutput"   : "",
+        "score"            : 0.34
+    }  ]
+}
