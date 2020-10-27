@@ -22,6 +22,10 @@ public class RecordStructure extends AstElement {
         return identifier;
     }
 
+    public List<Declaration> getDeclarations(){
+        return declarations;
+    }
+
     public void accept(AstVisitor astVisitor) {
         astVisitor.visit(this);
     }

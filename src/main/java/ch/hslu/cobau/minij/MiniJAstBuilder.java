@@ -34,6 +34,8 @@ public class MiniJAstBuilder extends MiniJBaseVisitor<Program> {
 
     @Override
     public Program visitDeclaration(MiniJParser.DeclarationContext ctx) {
+        visitChildren(ctx);
+
         var param = ctx.param();
         Declaration declaration;
 
@@ -77,21 +79,12 @@ public class MiniJAstBuilder extends MiniJBaseVisitor<Program> {
         var isArray = typeString.contains("[]");
         typeString = typeString.replace("[]", "");
 
-        Type baseType;
-        switch (typeString) {
-            case "int":
-                baseType = new IntegerType();
-                break;
-            case "boolean":
-                baseType = new BooleanType();
-                break;
-            case "string":
-                baseType = new StringType();
-                break;
-            default:
-                baseType = new RecordType(typeString);
-                break;
-        }
+        Type baseType = switch (typeString) {
+            case "int" -> new IntegerType();
+            case "boolean" -> new BooleanType();
+            case "string" -> new StringType();
+            default -> new RecordType(typeString);
+        };
 
         if (isArray) {
             return new ArrayType(baseType);
