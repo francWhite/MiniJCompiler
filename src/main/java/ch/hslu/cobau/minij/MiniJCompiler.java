@@ -29,11 +29,11 @@ public class MiniJCompiler {
         } else {
             charStream = CharStreams.fromStream(System.in);
         }
-        
+
         MiniJLexer miniJLexer = new MiniJLexer(charStream);
         CommonTokenStream commonTokenStream = new CommonTokenStream(miniJLexer);
         MiniJParser miniJParser = new MiniJParser(commonTokenStream);
-        
+
         EnhancedConsoleErrorListener errorListener = new EnhancedConsoleErrorListener();
         miniJParser.removeErrorListeners();
         miniJParser.addErrorListener(errorListener);
@@ -48,7 +48,6 @@ public class MiniJCompiler {
         // semantic check (milestone 3)
 
         // code generation (milestone 4)
-
         // runtime and system libraries (milestone 5)
 
         System.exit(errorListener.hasErrors() ? 1 : 0);
