@@ -1,0 +1,2978 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+    table { font-family: arial, sans-serif;border-collapse: collapse;width: 100% }
+    p { font-family:arial;font-size:120% }
+    td, th { border: 1px solid #dddddd; text-align: left; padding: 8px}
+    td.pass {border: 1px solid #90EE90; background-color: #90EE90;color: #007000}
+    td.fail {border: 1px solid #F08080; background-color: #F08080;color: #700000}
+    tr:nth-child(even) {background-color: #dddddd}
+    </style></head><body><p><b>Test results (score: 0.0 of 30.0 with a starting score of -30):</b></p><table>  <col width="12%">  <col width="13%">  <col width="20%">  <col width="20%">  <col width="5%">  <col width="5%">  <col width="5%">  <col width="5%">  <col width="7%">  <col width="8%">  <tr>    <th>Test case</th>
+    <th>Input</th>
+    <th>Expected Output</th>
+    <th>Actual Output</th>
+    <th>Expected Exitcode</th>
+    <th>Actual Exitcode</th>
+    <th>Score</th>
+    <th>Result</th>
+    <th>Time [ms]</th>
+    <th>Timeout [ms]</th>
+  </tr>
+  <tr>
+    <td>(Deklaration) Globale Variablen (ok)</td>
+    <td>int number1;<br>int number2;</td>
+    <td></td>
+    <td></td>
+    <td>0</td>
+    <td>0</td>
+    <td>2.4</td>
+    <td class="pass">Passed</td>
+    <td>216</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Deklaration) Variablen (ok)</td>
+    <td>procedure main()<br>    string text1;<br>    string text2;<br>begin<br>end</td>
+    <td></td>
+    <td></td>
+    <td>0</td>
+    <td>0</td>
+    <td>2.4</td>
+    <td class="pass">Passed</td>
+    <td>154</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Deklaration) Prozedur (ok)</td>
+    <td>procedure test1()<br>begin<br>end<br>procedure test2()<br>begin<br>end</td>
+    <td></td>
+    <td></td>
+    <td>0</td>
+    <td>0</td>
+    <td>2.4</td>
+    <td class="pass">Passed</td>
+    <td>150</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Deklaration) Felder (ok)</td>
+    <td>record Coordinate<br>    int x;<br>    int y;<br>end</td>
+    <td></td>
+    <td></td>
+    <td>0</td>
+    <td>0</td>
+    <td>2.4</td>
+    <td class="pass">Passed</td>
+    <td>153</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Deklaration) Records (ok)</td>
+    <td>record Coordinate1<br>    int x;<br>    int y;<br>end<br>record Coordinate2<br>    int x;<br>    int y;<br>end</td>
+    <td></td>
+    <td></td>
+    <td>0</td>
+    <td>0</td>
+    <td>2.4</td>
+    <td class="pass">Passed</td>
+    <td>150</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Deklaration) Globale Variablen (nok)</td>
+    <td>int number;<br>int number;</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>2.4</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>149</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Deklaration) Variablen (nok)</td>
+    <td>procedure main()<br>    string text;<br>    string text;<br>begin<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>2.4</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>152</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Deklaration) Prozedur (nok)</td>
+    <td>procedure test()<br>begin<br>end<br>procedure test()<br>begin<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>2.4</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>149</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Deklaration) Records (nok)</td>
+    <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>record Coordinate<br>    int x;<br>    int y;<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>2.4</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>152</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Deklaration) Felder (nok)</td>
+    <td>record Coordinate<br>    int x;<br>    int x;<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>2.4</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>151</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Existenz) Variable</td>
+    <td>procedure main()<br>    int number;<br>begin<br>    number = 0;<br>end</td>
+    <td></td>
+    <td></td>
+    <td>0</td>
+    <td>0</td>
+    <td>1.3</td>
+    <td class="pass">Passed</td>
+    <td>155</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Existenz) Variable (nok)</td>
+    <td>procedure main()<br>begin<br>    number = 0;<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.53</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>150</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Existenz) Globale Variable</td>
+    <td>int number;<br>procedure main()<br>begin<br>    number = 0;<br>end</td>
+    <td></td>
+    <td></td>
+    <td>0</td>
+    <td>0</td>
+    <td>1.3</td>
+    <td class="pass">Passed</td>
+    <td>151</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Existenz) Globale Variable (nok)</td>
+    <td>procedure main()<br>begin<br>    number = 0;<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.53</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>153</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Existenz) Parameter</td>
+    <td>procedure test(string text)<br>begin<br>    text = "Hello";<br>end</td>
+    <td></td>
+    <td></td>
+    <td>0</td>
+    <td>0</td>
+    <td>1.4</td>
+    <td class="pass">Passed</td>
+    <td>152</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Existenz) Parameter (nok)</td>
+    <td>procedure test(string text)<br>begin<br>    greeting = "Hello";<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.54</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>153</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Existenz) Record</td>
+    <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    Coordinate coordinate;<br>begin<br>end</td>
+    <td></td>
+    <td></td>
+    <td>0</td>
+    <td>0</td>
+    <td>1.3</td>
+    <td class="pass">Passed</td>
+    <td>150</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Existenz) Record (nok)</td>
+    <td>procedure main()<br>    Coordinate coordinate;<br>begin<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.53</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>148</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Existenz) Recordfelder</td>
+    <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    Coordinate coordinate;<br>begin<br>    coordinate.x = 1;<br>end</td>
+    <td></td>
+    <td></td>
+    <td>0</td>
+    <td>0</td>
+    <td>1.3</td>
+    <td class="pass">Passed</td>
+    <td>164</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Existenz) Recordfelder (nok)</td>
+    <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    Coordinate coordinate;<br>begin<br>    coordinate.z = 1;<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.53</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>157</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Existenz) Prozedur</td>
+    <td>procedure test()<br>begin<br>end<br>procedure main()<br>begin<br>    test();<br>end</td>
+    <td></td>
+    <td></td>
+    <td>0</td>
+    <td>0</td>
+    <td>1.4</td>
+    <td class="pass">Passed</td>
+    <td>153</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Existenz) Prozedur (nok)</td>
+    <td>procedure test()<br>begin<br>end<br>procedure main()<br>begin<br>    ueberpruefung();<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.54</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>156</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Existenz) Falsche Entität (Global als Prozedur)</td>
+    <td>int number;<br>procedure main()<br>begin<br>   number();<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.53</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>158</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Existenz) Falsche Entität (Record als Prozedur)</td>
+    <td>record Coordinate<br>  int x;<br>  int y;<br>end<br>procedure main()<br>begin<br>   Coordinate();<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.53</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>155</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Existenz) Falsche Entität (Prozedur als Record)</td>
+    <td>procedure test()<br>begin<br>end<br>procedure main()<br>begin<br>   test.x = 0;<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.54</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>206</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Existenz) Falsche Entität (Prozedur als Variable, LHS)</td>
+    <td>procedure test()<br>begin<br>end<br>procedure main()<br>begin<br>   test = 42;<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.53</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>156</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Existenz) Falsche Entität (Prozedur als Variable, RHS)</td>
+    <td>procedure test()<br>begin<br>end<br>procedure main()<br>  int number;<br>begin<br>   number = 2 * test;<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.53</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>161</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Existenz) Falsche Entität (Record als Variable, LHS)</td>
+    <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>begin<br>   Coordinate = 42;<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.54</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>152</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Existenz) Falsche Entität (Record als Variable, RHS)</td>
+    <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>  int number;<br>begin<br>   number = 2 * Coordinate;<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.53</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>154</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Existenz) Falsche Entität (Variable als Prozedur)</td>
+    <td>procedure main()<br>   int number;<br>begin<br>   number();<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.53</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>153</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Existenz) Falsche Entität (Variable als Record)</td>
+    <td>procedure main()<br>   int number;<br>begin<br>   number.x = 1;<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.54</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>154</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Bereich) Wertebereich von Integerkonstante (max)</td>
+    <td>int number;<br>procedure main() {<br>    number = 9223372036854775807;<br>}</td>
+    <td></td>
+    <td></td>
+    <td>0</td>
+    <td>0</td>
+    <td>0.5</td>
+    <td class="pass">Passed</td>
+    <td>158</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Bereich) Wertebereich von Integerkonstante (zu hoch)</td>
+    <td>int number;<br>procedure main() {<br>    number = 9223372036854775808;<br>}</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.5</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>160</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Bereich) Wertebereich von Integerkonstante (min)</td>
+    <td>int number;<br>procedure main() {<br>    number = -9223372036854775808;<br>}</td>
+    <td></td>
+    <td></td>
+    <td>0</td>
+    <td>0</td>
+    <td>0.5</td>
+    <td class="pass">Passed</td>
+    <td>156</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Bereich) Wertebereich von Integerkonstante (zu tief)</td>
+    <td>int number;<br>procedure main() {<br>    number = -9223372036854775809;<br>}</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.5</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>157</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Aufruf) Funktion mit 2 Parameter</td>
+    <td>procedure test(int a, int b)<br>begin<br>end<br>procedure main()<br>    int number;<br>begin<br>    test(1, number);<br>end</td>
+    <td></td>
+    <td></td>
+    <td>0</td>
+    <td>0</td>
+    <td>1.0</td>
+    <td class="pass">Passed</td>
+    <td>159</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Aufruf) Funktion mit 3 Parameter</td>
+    <td>procedure test(int a, int b, int c)<br>begin<br>end<br>procedure main()<br>    int number;<br>begin<br>    test(1, 2, number);<br>end</td>
+    <td></td>
+    <td></td>
+    <td>0</td>
+    <td>0</td>
+    <td>1.0</td>
+    <td class="pass">Passed</td>
+    <td>155</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Aufruf) Funktion mit 2 Parameter (nok)</td>
+    <td>procedure test(int a, int b)<br>begin<br>end<br>procedure main()<br>    int number;<br>begin<br>    test(1, number, 3);<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>1.0</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>155</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Aufruf) Funktion mit 3 Parameter (nok)</td>
+    <td>procedure test(int a, int b, int c)<br>begin<br>end<br>procedure main()<br>    int number;<br>begin<br>    test(1, number);<br>    test(number);<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>1.0</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>158</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Main) Mainprozedur ohne Parameter (ok)</td>
+    <td>procedure main()<br>begin<br>end</td>
+    <td></td>
+    <td></td>
+    <td>0</td>
+    <td>0</td>
+    <td>1.0</td>
+    <td class="pass">Passed</td>
+    <td>147</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Main) Mainprozedur mit einem Parameter (nok)</td>
+    <td>procedure main(int a)<br>begin<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.5</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>149</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Main) Mainprozedur mit zwei Parameter (nok)</td>
+    <td>procedure main(int a, string b)<br>begin<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.5</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>152</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Built-in) writeInt/readInt/writeChar/readChar</td>
+    <td>procedure main()<br>    int number;<br>begin<br>    writeInt(number);<br>    readInt(number);<br>    writeChar(number);<br>    readChar(number);<br>end</td>
+    <td></td>
+    <td></td>
+    <td>0</td>
+    <td>0</td>
+    <td>1.0</td>
+    <td class="pass">Passed</td>
+    <td>153</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Built-in) writeInt/readInt/writeChar/readChar</td>
+    <td>procedure main()<br>    int number;<br>begin<br>    if (1 == 1) then<br>        writeInt(number);<br>        readInt(number);<br>        writeChar(number);<br>        readChar(number);<br>    end;<br>end</td>
+    <td></td>
+    <td></td>
+    <td>0</td>
+    <td>0</td>
+    <td>1.0</td>
+    <td class="pass">Passed</td>
+    <td>160</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Built-in) writeInt (nok)</td>
+    <td>procedure main()<br>    int number;<br>begin<br>    writeInt();<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.4</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>153</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Built-in) readInt (nok)</td>
+    <td>procedure main()<br>    int number;<br>begin<br>    readInt(number, number);<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.4</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>155</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Built-in) writeChar (nok)</td>
+    <td>procedure main()<br>    string text;<br>begin<br>    writeChar(text);<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.4</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>166</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Built-in) readChar (nok)</td>
+    <td>procedure main()<br>begin<br>    readChar(1, 1, 1);<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.4</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>157</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Built-in) writeInt/readInt/writeChar/readChar (nok)</td>
+    <td>procedure main()<br>    int number;<br>begin<br>    if (1 == 1) then<br>        writeInt("text");<br>    end;<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.4</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>156</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Zuweisung von Integerkonstante</td>
+    <td>int number;<br>procedure main() {<br>    number = 0;<br>}</td>
+    <td></td>
+    <td></td>
+    <td>0</td>
+    <td>0</td>
+    <td>0.125</td>
+    <td class="pass">Passed</td>
+    <td>153</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Zuweisung von Integerkonstante (nok)</td>
+    <td>string text;<br>procedure main() {<br>    text = 0;<br>}</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.125</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>163</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Zuweisung von Stringkonstante</td>
+    <td>string text;<br>procedure main() {<br>    text = "xyz";<br>    text = "";<br>}</td>
+    <td></td>
+    <td></td>
+    <td>0</td>
+    <td>0</td>
+    <td>0.125</td>
+    <td class="pass">Passed</td>
+    <td>157</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Zuweisung von Stringkonstante (nok)</td>
+    <td>int number;<br>procedure main() {<br>    number = "xyz";<br>}</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.125</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>150</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Zuweisung von Wahrheitswert</td>
+    <td>boolean flag;<br>procedure main() {<br>    flag = true;<br>    flag = false;<br>}</td>
+    <td></td>
+    <td></td>
+    <td>0</td>
+    <td>0</td>
+    <td>0.125</td>
+    <td class="pass">Passed</td>
+    <td>150</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Zuweisung von Wahrheitswert (nok)</td>
+    <td>int number;<br>procedure main() {<br>    number = true;<br>}</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.0625</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>151</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Zuweisung von Wahrheitswert (nok)</td>
+    <td>int number;<br>procedure main() {<br>    number = false;<br>}</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.0625</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>151</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) If-Anweisung mit Bedingung vom Typ boolean</td>
+    <td>procedure main()<br>    boolean flag;<br>begin<br>   if (flag) then<br>       return;<br>   end;<br>end</td>
+    <td></td>
+    <td></td>
+    <td>0</td>
+    <td>0</td>
+    <td>0.125</td>
+    <td class="pass">Passed</td>
+    <td>157</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) If-Anweisung mit Bedingung vom Typ int (nok)</td>
+    <td>procedure main()<br>    int flag;<br>begin<br>   if (flag) then<br>       return;<br>   end;<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.03125</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>155</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) If-Anweisung mit Bedingung vom Typ string (nok)</td>
+    <td>procedure main()<br>    string flag;<br>begin<br>   if (flag) then<br>       return;<br>   end;<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.03125</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>155</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) If-Anweisung mit Bedingung vom Typ int[] (nok)</td>
+    <td>procedure main()<br>    int[] flag;<br>begin<br>   if (flag[0]) then<br>       return;<br>   end;<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.03125</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>159</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) If-Anweisung mit Bedingung vom Typ record (nok)</td>
+    <td>record Coordinate<br>  int x;<br>  int y;<br>end<br>procedure main()<br>    Coordinate flag;<br>begin<br>   if (flag) then<br>       return;<br>   end;<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.03125</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>152</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) While-Anweisung mit Bedingung vom Typ boolean</td>
+    <td>procedure main()<br>    boolean flag;<br>begin<br>   while (flag) do<br>       return;<br>   end;<br>end;</td>
+    <td></td>
+    <td></td>
+    <td>0</td>
+    <td>0</td>
+    <td>0.125</td>
+    <td class="pass">Passed</td>
+    <td>152</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) While-Anweisung mit Bedingung vom Typ int (nok)</td>
+    <td>procedure main()<br>    int flag;<br>begin<br>   while (flag) do<br>       return;<br>   end;<br>end;</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.03125</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>152</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) While-Anweisung mit Bedingung vom Typ string (nok)</td>
+    <td>procedure main()<br>    string flag;<br>begin<br>   while (flag) do<br>       return;<br>   end;<br>end;</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.03125</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>150</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) While-Anweisung mit Bedingung vom Typ Array (nok)</td>
+    <td>procedure main()<br>    int[] flag;<br>begin<br>   while (flag[0]) do<br>       return;<br>   end;<br>end;</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.03125</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>155</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) While-Anweisung mit Bedingung vom Typ record (nok)</td>
+    <td>record Coordinate<br>  int x;<br>  int y;<br>end<br>procedure main()<br>    Coordinate flag;<br>begin<br>   while (flag) do<br>       return;<br>   end;<br>end;</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.03125</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>154</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Vergleich mit Boolean Resultat (integer, ok)</td>
+    <td>procedure main()<br>    boolean flag;<br>    int number1;<br>    int number2;<br>begin<br>    flag = number1 == number2;<br>    flag = number1 >= number2;<br>    flag = number1 <= number2;<br>    flag = number1 != number2;<br>    flag = number1 > number2;<br>    flag = number1 < number2;<br>end;</td>
+    <td></td>
+    <td></td>
+    <td>0</td>
+    <td>0</td>
+    <td>0.125</td>
+    <td class="pass">Passed</td>
+    <td>157</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Vergleich mit Boolean Resultat (integer, nok ==)</td>
+    <td>procedure main()<br>    int flag;<br>    int number1;<br>    int number2;<br>begin<br>    flag = number1 == number2;<br>end;</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.02</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>158</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Vergleich mit Boolean Resultat (integer, nok !=)</td>
+    <td>procedure main()<br>    int flag;<br>    int number1;<br>    int number2;<br>begin<br>    flag = number1 != number2;<br>end;</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.02</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>155</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Vergleich mit Boolean Resultat (integer, nok <=)</td>
+    <td>procedure main()<br>    int flag;<br>    int number1;<br>    int number2;<br>begin<br>    flag = number1 <= number2;<br>end;</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.02</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>152</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Vergleich mit Boolean Resultat (integer, nok >=)</td>
+    <td>procedure main()<br>    int flag;<br>    int number1;<br>    int number2;<br>begin<br>    flag = number1 >= number2;<br>end;</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.02</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>153</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Vergleich mit Boolean Resultat (integer, nok >)</td>
+    <td>procedure main()<br>    int flag;<br>    int number1;<br>    int number2;<br>begin<br>    flag = number1 > number2;<br>end;</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.02</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>155</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Vergleich mit Boolean Resultat (integer, nok <)</td>
+    <td>procedure main()<br>    int flag;<br>    int number1;<br>    int number2;<br>begin<br>    flag = number1 < number2;<br>end;</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.025</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>150</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Vergleich mit Boolean Resultat (string, ok)</td>
+    <td>procedure main()<br>    boolean flag;<br>    string value1;<br>    string value2;<br>begin<br>    flag = value1 == value2;<br>    flag = value1 >= value2;<br>    flag = value1 <= value2;<br>    flag = value1 != value2;<br>    flag = value1 > value2;<br>    flag = value1 < value2;<br>end;</td>
+    <td></td>
+    <td></td>
+    <td>0</td>
+    <td>0</td>
+    <td>0.125</td>
+    <td class="pass">Passed</td>
+    <td>153</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Vergleich mit Boolean Resultat (string, nok ==)</td>
+    <td>procedure main()<br>    string flag;<br>    string value1;<br>    string value2;<br>begin<br>    flag = value1 == value2;<br>end;</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.02</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>157</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Vergleich mit Boolean Resultat (string, nok !=)</td>
+    <td>procedure main()<br>    string flag;<br>    string value1;<br>    string value2;<br>begin<br>    flag = value1 != value2;<br>end;</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.02</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>157</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Vergleich mit Boolean Resultat (string, nok <=)</td>
+    <td>procedure main()<br>    int flag;<br>    string value1;<br>    string value2;<br>begin<br>    flag = value1 <= value2;<br>end;</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.02</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>154</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Vergleich mit Boolean Resultat (string, nok >=)</td>
+    <td>procedure main()<br>    int flag;<br>    string value1;<br>    string value2;<br>begin<br>    flag = value1 >= value2;<br>end;</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.02</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>154</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Vergleich mit Boolean Resultat (string, nok >)</td>
+    <td>procedure main()<br>    int flag;<br>    string value1;<br>    string value2;<br>begin<br>    flag = value1 > value2;<br>end;</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.02</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>154</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Vergleich mit Boolean Resultat (string, nok <)</td>
+    <td>procedure main()<br>    int flag;<br>    string value1;<br>    string value2;<br>begin<br>    flag = value1 < value2;<br>end;</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.025</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>152</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Vergleich mit Boolean Resultat (boolean, ok)</td>
+    <td>procedure main()<br>    boolean flag;<br>    boolean value1;<br>    boolean value2;<br>begin<br>    flag = value1 == value2;<br>    flag = value1 != value2;<br>end;</td>
+    <td></td>
+    <td></td>
+    <td>0</td>
+    <td>0</td>
+    <td>0.125</td>
+    <td class="pass">Passed</td>
+    <td>154</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Vergleich mit Boolean Resultat (boolean, nok)</td>
+    <td>procedure main()<br>    boolean flag;<br>    boolean value1;<br>    boolean value2;<br>begin<br>    flag = value1 >= value2;<br>end;</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.03125</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>152</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Vergleich mit Boolean Resultat (boolean, nok)</td>
+    <td>procedure main()<br>    boolean flag;<br>    boolean value1;<br>    boolean value2;<br>begin<br>    flag = value1 <= value2;<br>end;</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.03125</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>155</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Vergleich mit Boolean Resultat (boolean, nok)</td>
+    <td>procedure main()<br>    boolean flag;<br>    boolean value1;<br>    boolean value2;<br>begin<br>    flag = value1 > value2;<br>end;</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.03125</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>156</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Vergleich mit Boolean Resultat (boolean, nok)</td>
+    <td>procedure main()<br>    boolean flag;<br>    boolean value1;<br>    boolean value2;<br>begin<br>    flag = value1 < value2;<br>end;</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.03125</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>153</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Zuweisung (int vs. int)</td>
+    <td>procedure main()<br>    int number1;<br>    int number2;<br>begin<br>    number1 = number2;<br>end</td>
+    <td></td>
+    <td></td>
+    <td>0</td>
+    <td>0</td>
+    <td>0.06</td>
+    <td class="pass">Passed</td>
+    <td>153</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Zuweisung (int vs. boolean)</td>
+    <td>procedure main()<br>    int number1;<br>    boolean flag2;<br>begin<br>    number1 = flag2;<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.015</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>152</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Zuweisung (int vs. string)</td>
+    <td>procedure main()<br>    int number1;<br>    string text2;<br>begin<br>    number1 = text2;<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.015</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>152</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Zuweisung (int vs. Record)</td>
+    <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    int number1;<br>    Coordinate coord2;<br>begin<br>    number1 = coord2;<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.015</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>154</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Zuweisung (int vs. Record-Field)</td>
+    <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    int number1;<br>    Coordinate coord2;<br>begin<br>    number1 = coord2.x;<br>end</td>
+    <td></td>
+    <td></td>
+    <td>0</td>
+    <td>0</td>
+    <td>0.06</td>
+    <td class="pass">Passed</td>
+    <td>156</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Zuweisung (int vs. Intarray)</td>
+    <td>procedure main()<br>    int number1;<br>    int[] array2;<br>begin<br>    number1 = array2;<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.015</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>152</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Zuweisung (int vs. Recordarray)</td>
+    <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    int number1;<br>    Coordinate[] coordinate2;<br>begin<br>    number1 = coordinate2;<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.015</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>165</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Zuweisung (int vs. Intarray-Field)</td>
+    <td>procedure main()<br>    int number1;<br>    int[] array2;<br>begin<br>    number1 = array2[0];<br>end</td>
+    <td></td>
+    <td></td>
+    <td>0</td>
+    <td>0</td>
+    <td>0.06</td>
+    <td class="pass">Passed</td>
+    <td>156</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Zuweisung (int vs. Recordarray-Field)</td>
+    <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    int number1;<br>    Coordinate[] coordinate2;<br>begin<br>    number1 = coordinate2[0];<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.015</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>159</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Zuweisung (boolean vs. Intarray)</td>
+    <td>procedure main()<br>    boolean flag1;<br>    int number2;<br>begin<br>    flag1 = number2;<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.015</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>164</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Zuweisung (boolean vs. boolean)</td>
+    <td>procedure main()<br>    boolean flag1;<br>    boolean flag2;<br>begin<br>    flag1 = flag2;<br>end</td>
+    <td></td>
+    <td></td>
+    <td>0</td>
+    <td>0</td>
+    <td>0.06</td>
+    <td class="pass">Passed</td>
+    <td>155</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Zuweisung (boolean vs. string)</td>
+    <td>procedure main()<br>    boolean flag1;<br>    string text2;<br>begin<br>    flag1 = text2;<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.015</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>154</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Zuweisung (boolean vs. Record)</td>
+    <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    boolean flag1;<br>    Coordinate coord2;<br>begin<br>    flag1 = coord2;<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.015</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>154</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Zuweisung (boolean vs. Record-Field(int))</td>
+    <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    boolean flag1;<br>    Coordinate coord2;<br>begin<br>    flag1 = coord2.x;<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.015</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>158</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Zuweisung (boolean vs. Intarray)</td>
+    <td>procedure main()<br>    boolean flag1;<br>    int[] array2;<br>begin<br>    flag1 = array2;<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.015</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>154</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Zuweisung (boolean vs. Recordarray)</td>
+    <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    boolean flag1;<br>    Coordinate[] coordinate2;<br>begin<br>    flag1 = coordinate2;<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.015</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>153</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Zuweisung (boolean vs. Intarray-Field)</td>
+    <td>procedure main()<br>    boolean flag1;<br>    int[] array2;<br>begin<br>    flag1 = array2[0];<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.015</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>158</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Zuweisung (boolean vs. Recordarray-Field)</td>
+    <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    boolean flag1;<br>    Coordinate[] coordinate2;<br>begin<br>    flag1 = coordinate2[0];<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.015</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>156</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Zuweisung (string vs. int)</td>
+    <td>procedure main()<br>    string text1;<br>    int number2;<br>begin<br>    text1 = number2;<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.015</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>164</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Zuweisung (string vs. boolean)</td>
+    <td>procedure main()<br>    string text1;<br>    boolean flag2;<br>begin<br>    text1 = flag2;<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.015</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>154</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Zuweisung (string vs. string)</td>
+    <td>procedure main()<br>    string text1;<br>    string text2;<br>begin<br>    text1 = text2;<br>end</td>
+    <td></td>
+    <td></td>
+    <td>0</td>
+    <td>0</td>
+    <td>0.06</td>
+    <td class="pass">Passed</td>
+    <td>157</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Zuweisung (string vs. Record)</td>
+    <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    string text1;<br>    Coordinate coord2;<br>begin<br>    text1 = coord2;<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.015</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>156</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Zuweisung (string vs. Record-Field(int))</td>
+    <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    string text1;<br>    Coordinate coord2;<br>begin<br>    text1 = coord2.x;<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.015</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>162</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Zuweisung (string vs. Intarray)</td>
+    <td>procedure main()<br>    string text1;<br>    int[] array2;<br>begin<br>    text1 = array2;<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.015</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>149</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Zuweisung (string vs. Recordarray)</td>
+    <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    string text1;<br>    Coordinate[] coordinate2;<br>begin<br>    text1 = coordinate2;<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.015</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>158</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Zuweisung (string vs. Intarray-Field)</td>
+    <td>procedure main()<br>    string text1;<br>    int[] array2;<br>begin<br>    text1 = array2[0];<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.016</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>155</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Zuweisung (string vs. Recordarray-Field)</td>
+    <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    string text1;<br>    Coordinate[] coordinate2;<br>begin<br>    text1 = coordinate2[0];<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.016</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>155</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Zuweisung (Record vs. int)</td>
+    <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    Coordinate coord1;<br>    int number2;<br>begin<br>    coord1 = number2;<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.016</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>155</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Zuweisung (Record vs. boolean)</td>
+    <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    Coordinate coord1;<br>    boolean flag2;<br>begin<br>    coord1 = flag2;<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.016</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>153</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Zuweisung (Record vs. string)</td>
+    <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    Coordinate coord1;<br>    string text2;<br>begin<br>    coord1 = text2;<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.016</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>155</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Zuweisung (Record vs. Record)</td>
+    <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    Coordinate coord1;<br>    Coordinate coord2;<br>begin<br>    coord1 = coord2;<br>end</td>
+    <td></td>
+    <td></td>
+    <td>0</td>
+    <td>0</td>
+    <td>0.06</td>
+    <td class="pass">Passed</td>
+    <td>155</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Zuweisung (Record vs. Record-Field(int))</td>
+    <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    Coordinate coord1;<br>    Coordinate coord2;<br>begin<br>    coord1 = coord2.x;<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.016</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>156</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Zuweisung (Record vs. Intarray)</td>
+    <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    Coordinate coord1;<br>    int[] array2;<br>begin<br>    coord1 = array2;<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.016</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>155</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Zuweisung (Record vs. Recordarray)</td>
+    <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    Coordinate coord1;<br>    Coordinate[] coordinate2;<br>begin<br>    coord1 = coordinate2;<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.016</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>155</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Zuweisung (Record vs. Intarray-Field)</td>
+    <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    Coordinate coord1;<br>    int[] array2;<br>begin<br>    coord1 = array2[0];<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.016</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>159</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Zuweisung (Record vs. Recordarray-Field)</td>
+    <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    Coordinate coord1;<br>    Coordinate[] coordinate2;<br>begin<br>    coord1 = coordinate2[0];<br>end</td>
+    <td></td>
+    <td></td>
+    <td>0</td>
+    <td>0</td>
+    <td>0.06</td>
+    <td class="pass">Passed</td>
+    <td>156</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Zuweisung (Record-Field(int) vs. int)</td>
+    <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    Coordinate coord1;<br>    int number2;<br>begin<br>    coord1.x = number2;<br>end</td>
+    <td></td>
+    <td></td>
+    <td>0</td>
+    <td>0</td>
+    <td>0.06</td>
+    <td class="pass">Passed</td>
+    <td>155</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Zuweisung (Record-Field(int) vs. boolean)</td>
+    <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    Coordinate coord1;<br>    boolean flag2;<br>begin<br>    coord1.x = flag2;<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.016</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>154</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Zuweisung (Record-Field(int) vs. string)</td>
+    <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    Coordinate coord1;<br>    string text2;<br>begin<br>    coord1.x = text2;<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.016</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>156</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Zuweisung (Record-Field(int) vs. Record)</td>
+    <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    Coordinate coord1;<br>    Coordinate coord2;<br>begin<br>    coord1.x = coord2;<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.016</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>153</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Zuweisung (Record-Field(int) vs. Record-Field(int))</td>
+    <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    Coordinate coord1;<br>    Coordinate coord2;<br>begin<br>    coord1.x = coord2.x;<br>end</td>
+    <td></td>
+    <td></td>
+    <td>0</td>
+    <td>0</td>
+    <td>0.06</td>
+    <td class="pass">Passed</td>
+    <td>155</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Zuweisung (Record-Field(int) vs. Intarray)</td>
+    <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    Coordinate coord1;<br>    int[] array2;<br>begin<br>    coord1.x = array2;<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.016</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>157</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Zuweisung (Record-Field(int) vs. Recordarray)</td>
+    <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    Coordinate coord1;<br>    Coordinate[] coordinate2;<br>begin<br>    coord1.x = coordinate2;<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.016</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>154</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Zuweisung (Record-Field(int) vs. Intarray-Field)</td>
+    <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    Coordinate coord1;<br>    int[] array2;<br>begin<br>    coord1.x = array2[0];<br>end</td>
+    <td></td>
+    <td></td>
+    <td>0</td>
+    <td>0</td>
+    <td>0.06</td>
+    <td class="pass">Passed</td>
+    <td>155</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Zuweisung (Record-Field(int) vs. Recordarray-Field)</td>
+    <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    Coordinate coord1;<br>    Coordinate[] coordinate2;<br>begin<br>    coord1.x = coordinate2[0];<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.016</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>158</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Zuweisung (Intarray vs. int)</td>
+    <td>procedure main()<br>    int[] array1;<br>    int number2;<br>begin<br>    array1 = number2;<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.016</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>151</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Zuweisung (Intarray vs. boolean)</td>
+    <td>procedure main()<br>    int[] array1;<br>    boolean flag2;<br>begin<br>    array1 = flag2;<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.016</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>154</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Zuweisung (Intarray vs. string)</td>
+    <td>procedure main()<br>    int[] array1;<br>    string text2;<br>begin<br>    array1 = text2;<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.016</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>157</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Zuweisung (Intarray vs. Record)</td>
+    <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    int[] array1;<br>    Coordinate coord2;<br>begin<br>    array1 = coord2;<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.016</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>156</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Zuweisung (Intarray vs. Record-Field(int))</td>
+    <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    int[] array1;<br>    Coordinate coord2;<br>begin<br>    array1 = coord2.x;<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.016</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>153</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Zuweisung (Intarray vs. Intarray)</td>
+    <td>procedure main()<br>    int[] array1;<br>    int[] array2;<br>begin<br>    array1 = array2;<br>end</td>
+    <td></td>
+    <td></td>
+    <td>0</td>
+    <td>0</td>
+    <td>0.06</td>
+    <td class="pass">Passed</td>
+    <td>153</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Zuweisung (Intarray vs. Recordarray)</td>
+    <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    int[] array1;<br>    Coordinate[] coordinate2;<br>begin<br>    array1 = coordinate2;<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.016</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>165</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Zuweisung (Intarray vs. Intarray-Field)</td>
+    <td>procedure main()<br>    int[] array1;<br>    int[] array2;<br>begin<br>    array1 = array2[0];<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.016</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>154</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Zuweisung (Intarray vs. Recordarray-Field)</td>
+    <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    int[] array1;<br>    Coordinate[] coordinate2;<br>begin<br>    array1 = coordinate2[0];<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.016</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>159</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Zuweisung (Recordarray vs. int)</td>
+    <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    Coordinate[] coordinate1;<br>    int number2;<br>begin<br>    coordinate1 = number2;<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.016</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>155</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Zuweisung (Recordarray vs. boolean)</td>
+    <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    Coordinate[] coordinate1;<br>    boolean flag2;<br>begin<br>    coordinate1 = flag2;<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.016</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>155</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Zuweisung (Recordarray vs. string)</td>
+    <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    Coordinate[] coordinate1;<br>    string text2;<br>begin<br>    coordinate1 = text2;<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.016</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>156</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Zuweisung (Recordarray vs. Record)</td>
+    <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    Coordinate[] coordinate1;<br>    Coordinate coord2;<br>begin<br>    coordinate1 = coord2;<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.016</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>157</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Zuweisung (Recordarray vs. Record-Field(int))</td>
+    <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    Coordinate[] coordinate1;<br>    Coordinate coord2;<br>begin<br>    coordinate1 = coord2.x;<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.016</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>156</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Zuweisung (Recordarray vs. Intarray)</td>
+    <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    Coordinate[] coordinate1;<br>    int[] array2;<br>begin<br>    coordinate1 = array2;<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.016</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>159</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Zuweisung (Recordarray vs. Recordarray)</td>
+    <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    Coordinate[] coordinate1;<br>    Coordinate[] coordinate2;<br>begin<br>    coordinate1 = coordinate2;<br>end</td>
+    <td></td>
+    <td></td>
+    <td>0</td>
+    <td>0</td>
+    <td>0.06</td>
+    <td class="pass">Passed</td>
+    <td>154</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Zuweisung (Recordarray vs. Intarray-Field)</td>
+    <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    Coordinate[] coordinate1;<br>    int[] array2;<br>begin<br>    coordinate1 = array2[0];<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.016</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>157</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Zuweisung (Recordarray vs. Recordarray-Field)</td>
+    <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    Coordinate[] coordinate1;<br>    Coordinate[] coordinate2;<br>begin<br>    coordinate1 = coordinate2[0];<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.016</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>156</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Zuweisung (Intarray-Field vs. int)</td>
+    <td>procedure main()<br>    int[] array1;<br>    int number2;<br>begin<br>    array1[0] = number2;<br>end</td>
+    <td></td>
+    <td></td>
+    <td>0</td>
+    <td>0</td>
+    <td>0.06</td>
+    <td class="pass">Passed</td>
+    <td>158</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Zuweisung (Intarray-Field vs. boolean)</td>
+    <td>procedure main()<br>    int[] array1;<br>    boolean flag2;<br>begin<br>    array1[0] = flag2;<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.016</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>156</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Zuweisung (Intarray-Field vs. string)</td>
+    <td>procedure main()<br>    int[] array1;<br>    string text2;<br>begin<br>    array1[0] = text2;<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.016</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>153</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Zuweisung (Intarray-Field vs. Record)</td>
+    <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    int[] array1;<br>    Coordinate coord2;<br>begin<br>    array1[0] = coord2;<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.016</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>158</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Zuweisung (Intarray-Field vs. Record-Field(int))</td>
+    <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    int[] array1;<br>    Coordinate coord2;<br>begin<br>    array1[0] = coord2.x;<br>end</td>
+    <td></td>
+    <td></td>
+    <td>0</td>
+    <td>0</td>
+    <td>0.06</td>
+    <td class="pass">Passed</td>
+    <td>155</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Zuweisung (Intarray-Field vs. Intarray)</td>
+    <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    int[] array1;<br>    int[] array2;<br>begin<br>    array1[0] = array2;<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.016</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>159</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Zuweisung (Intarray-Field vs. Recordarray)</td>
+    <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    int[] array1;<br>    Coordinate[] coordinate2;<br>begin<br>    array1[0] = coordinate2;<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.016</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>158</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Zuweisung (Intarray-Field vs. Intarray-Field)</td>
+    <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    int[] array1;<br>    int[] array2;<br>begin<br>    array1[0] = array2[0];<br>end</td>
+    <td></td>
+    <td></td>
+    <td>0</td>
+    <td>0</td>
+    <td>0.06</td>
+    <td class="pass">Passed</td>
+    <td>159</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Zuweisung (Intarray-Field vs. Recordarray-Field)</td>
+    <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    int[] array1;<br>    Coordinate[] coordinate2;<br>begin<br>    array1[0] = coordinate2[0];<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.016</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>160</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Zuweisung (Recordarray-Field vs. int)</td>
+    <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    Coordinate[] coordinate1;<br>    int number2;<br>begin<br>    coordinate1[0] = number2;<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.016</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>157</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Zuweisung (Recordarray-Field vs. boolean)</td>
+    <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    Coordinate[] coordinate1;<br>    boolean flag2;<br>begin<br>    coordinate1[0] = flag2;<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.016</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>169</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Zuweisung (Recordarray-Field vs. string)</td>
+    <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    Coordinate[] coordinate1;<br>    string text2;<br>begin<br>    coordinate1[0] = text2;<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.016</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>157</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Zuweisung (Recordarray-Field vs. Record)</td>
+    <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    Coordinate[] coordinate1;<br>    Coordinate coord2;<br>begin<br>    coordinate1[0] = coord2;<br>end</td>
+    <td></td>
+    <td></td>
+    <td>0</td>
+    <td>0</td>
+    <td>0.05</td>
+    <td class="pass">Passed</td>
+    <td>157</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Zuweisung (Recordarray-Field vs. Record-Field(int))</td>
+    <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    Coordinate[] coordinate1;<br>    Coordinate coord2;<br>begin<br>    coordinate1[0] = coord2.x;<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.016</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>156</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Zuweisung (Recordarray-Field vs. Intarray)</td>
+    <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    Coordinate[] coordinate1;<br>    int[] array2;<br>begin<br>    coordinate1[0] = array2;<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.016</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>157</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Zuweisung (Recordarray-Field vs. Recordarray)</td>
+    <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    Coordinate[] coordinate1;<br>    Coordinate[] coordinate2;<br>begin<br>    coordinate1[0] = coordinate2;<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.016</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>159</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Zuweisung (Recordarray-Field vs. Intarray-Field)</td>
+    <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    Coordinate[] coordinate1;<br>    int[] array2;<br>begin<br>    coordinate1[0] = array2[0];<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.016</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>157</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Zuweisung (Recordarray-Field vs. Recordarray-Field)</td>
+    <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    Coordinate[] coordinate1;<br>    Coordinate[] coordinate2;<br>begin<br>    coordinate1[0] = coordinate2[0];<br>end</td>
+    <td></td>
+    <td></td>
+    <td>0</td>
+    <td>0</td>
+    <td>0.05</td>
+    <td class="pass">Passed</td>
+    <td>158</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Operatoren (int, +)</td>
+    <td>procedure main()<br>    int value1;<br>    int value2;<br>begin<br>    value1 = value1 + value2;<br>end</td>
+    <td></td>
+    <td></td>
+    <td>0</td>
+    <td>0</td>
+    <td>0.03</td>
+    <td class="pass">Passed</td>
+    <td>159</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Operatoren (string, +)</td>
+    <td>procedure main()<br>    string value1;<br>    string value2;<br>begin<br>    value1 = value1 + value2;<br>end</td>
+    <td></td>
+    <td></td>
+    <td>0</td>
+    <td>0</td>
+    <td>0.05</td>
+    <td class="pass">Passed</td>
+    <td>155</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Operatoren (boolean, +)</td>
+    <td>procedure main()<br>    boolean value1;<br>    boolean value2;<br>begin<br>    value1 = value1 + value2;<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.02</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>154</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Operatoren (Array, +)</td>
+    <td>procedure main()<br>    int[] value1;<br>    int[] value2;<br>begin<br>    value1 = value1 + value2;<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.02</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>154</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Operatoren (Record, +)</td>
+    <td>procedure main()<br>    Coordinate value1;<br>    Coordinate value2;<br>begin<br>    value1 = value1 + value2;<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.02</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>158</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Operatoren (int, -)</td>
+    <td>procedure main()<br>    int value1;<br>    int value2;<br>begin<br>    value1 = value1 - value2;<br>end</td>
+    <td></td>
+    <td></td>
+    <td>0</td>
+    <td>0</td>
+    <td>0.02</td>
+    <td class="pass">Passed</td>
+    <td>161</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Operatoren (string, -)</td>
+    <td>procedure main()<br>    string value1;<br>    string value2;<br>begin<br>    value1 = value1 - value2;<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.02</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>156</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Operatoren (boolean, -)</td>
+    <td>procedure main()<br>    boolean value1;<br>    boolean value2;<br>begin<br>    value1 = value1 - value2;<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.02</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>153</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Operatoren (Array, -)</td>
+    <td>procedure main()<br>    int[] value1;<br>    int[] value2;<br>begin<br>    value1 = value1 - value2;<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.02</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>152</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Operatoren (Record, -)</td>
+    <td>procedure main()<br>    Coordinate value1;<br>    Coordinate value2;<br>begin<br>    value1 = value1 - value2;<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.02</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>152</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Operatoren (int, *)</td>
+    <td>procedure main()<br>    int value1;<br>    int value2;<br>begin<br>    value1 = value1 * value2;<br>end</td>
+    <td></td>
+    <td></td>
+    <td>0</td>
+    <td>0</td>
+    <td>0.03</td>
+    <td class="pass">Passed</td>
+    <td>153</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Operatoren (string, *)</td>
+    <td>procedure main()<br>    string value1;<br>    string value2;<br>begin<br>    value1 = value1 * value2;<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.02</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>151</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Operatoren (boolean, *)</td>
+    <td>procedure main()<br>    boolean value1;<br>    boolean value2;<br>begin<br>    value1 = value1 * value2;<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.02</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>156</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Operatoren (Array, *)</td>
+    <td>procedure main()<br>    int[] value1;<br>    int[] value2;<br>begin<br>    value1 = value1 * value2;<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.02</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>154</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Operatoren (Record, *)</td>
+    <td>procedure main()<br>    Coordinate value1;<br>    Coordinate value2;<br>begin<br>    value1 = value1 * value2;<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.02</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>153</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Operatoren (int, /)</td>
+    <td>procedure main()<br>    int value1;<br>    int value2;<br>begin<br>    value1 = value1 / value2;<br>end</td>
+    <td></td>
+    <td></td>
+    <td>0</td>
+    <td>0</td>
+    <td>0.02</td>
+    <td class="pass">Passed</td>
+    <td>167</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Operatoren (string, /)</td>
+    <td>procedure main()<br>    string value1;<br>    string value2;<br>begin<br>    value1 = value1 / value2;<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.02</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>156</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Operatoren (boolean, /)</td>
+    <td>procedure main()<br>    boolean value1;<br>    boolean value2;<br>begin<br>    value1 = value1 / value2;<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.02</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>152</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Operatoren (Array, /)</td>
+    <td>procedure main()<br>    int[] value1;<br>    int[] value2;<br>begin<br>    value1 = value1 / value2;<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.02</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>155</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Operatoren (Record, /)</td>
+    <td>procedure main()<br>    Coordinate value1;<br>    Coordinate value2;<br>begin<br>    value1 = value1 / value2;<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.02</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>150</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Operatoren (int, %)</td>
+    <td>procedure main()<br>    int value1;<br>    int value2;<br>begin<br>    value1 = value1 % value2;<br>end</td>
+    <td></td>
+    <td></td>
+    <td>0</td>
+    <td>0</td>
+    <td>0.05</td>
+    <td class="pass">Passed</td>
+    <td>154</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Operatoren (string, %)</td>
+    <td>procedure main()<br>    string value1;<br>    string value2;<br>begin<br>    value1 = value1 % value2;<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.02</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>155</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Operatoren (boolean, %)</td>
+    <td>procedure main()<br>    boolean value1;<br>    boolean value2;<br>begin<br>    value1 = value1 % value2;<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.02</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>157</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Operatoren (Array, %)</td>
+    <td>procedure main()<br>    int[] value1;<br>    int[] value2;<br>begin<br>    value1 = value1 % value2;<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.02</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>154</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Operatoren (Record, %)</td>
+    <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    Coordinate value1;<br>    Coordinate value2;<br>begin<br>    value1 = value1 % value2;<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.02</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>156</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Operatoren (int, ==)</td>
+    <td>procedure main()<br>    boolean res;<br>    int value1;<br>    int value2;<br>begin<br>    res = value1 == value2;<br>end</td>
+    <td></td>
+    <td></td>
+    <td>0</td>
+    <td>0</td>
+    <td>0.05</td>
+    <td class="pass">Passed</td>
+    <td>153</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Operatoren (string, ==)</td>
+    <td>procedure main()<br>    boolean res;<br>    string value1;<br>    string value2;<br>begin<br>    res = value1 == value2;<br>end</td>
+    <td></td>
+    <td></td>
+    <td>0</td>
+    <td>0</td>
+    <td>0.05</td>
+    <td class="pass">Passed</td>
+    <td>153</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Operatoren (boolean, ==)</td>
+    <td>procedure main()<br>    boolean value1;<br>    boolean value2;<br>    boolean res;<br>begin<br>    res = value1 == value2;<br>end</td>
+    <td></td>
+    <td></td>
+    <td>0</td>
+    <td>0</td>
+    <td>0.05</td>
+    <td class="pass">Passed</td>
+    <td>160</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Operatoren (Array, ==)</td>
+    <td>procedure main()<br>    boolean res;<br>    int[] value1;<br>    int[] value2;<br>begin<br>    res = value1 == value2;<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.02</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>167</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Operatoren (Record, ==)</td>
+    <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    boolean res;<br>    Coordinate value1;<br>    Coordinate value2;<br>begin<br>    res = value1 == value2;<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.02</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>155</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Operatoren (int, !=)</td>
+    <td>procedure main()<br>    boolean res;<br>    int value1;<br>    int value2;<br>begin<br>    res = value1 != value2;<br>end</td>
+    <td></td>
+    <td></td>
+    <td>0</td>
+    <td>0</td>
+    <td>0.05</td>
+    <td class="pass">Passed</td>
+    <td>156</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Operatoren (string, !=)</td>
+    <td>procedure main()<br>    boolean res;<br>    string value1;<br>    string value2;<br>begin<br>    res = value1 != value2;<br>end</td>
+    <td></td>
+    <td></td>
+    <td>0</td>
+    <td>0</td>
+    <td>0.05</td>
+    <td class="pass">Passed</td>
+    <td>167</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Operatoren (boolean, !=)</td>
+    <td>procedure main()<br>    boolean res;<br>    boolean value1;<br>    boolean value2;<br>begin<br>    res = value1 != value2;<br>end</td>
+    <td></td>
+    <td></td>
+    <td>0</td>
+    <td>0</td>
+    <td>0.05</td>
+    <td class="pass">Passed</td>
+    <td>154</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Operatoren (Array, !=)</td>
+    <td>procedure main()<br>    boolean res;<br>    int[] value1;<br>    int[] value2;<br>begin<br>    res = value1 != value2;<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.02</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>153</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Operatoren (Record, !=)</td>
+    <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    boolean res;<br>    Coordinate value1;<br>    Coordinate value2;<br>begin<br>    res = value1 != value2;<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.02</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>155</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Operatoren (int, >=)</td>
+    <td>procedure main()<br>    boolean res;<br>    int value1;<br>    int value2;<br>begin<br>    res = value1 >= value2;<br>end</td>
+    <td></td>
+    <td></td>
+    <td>0</td>
+    <td>0</td>
+    <td>0.02</td>
+    <td class="pass">Passed</td>
+    <td>157</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Operatoren (string, >=)</td>
+    <td>procedure main()<br>    boolean res;<br>    string value1;<br>    string value2;<br>begin<br>    res = value1 >= value2;<br>end</td>
+    <td></td>
+    <td></td>
+    <td>0</td>
+    <td>0</td>
+    <td>0.05</td>
+    <td class="pass">Passed</td>
+    <td>154</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Operatoren (boolean, >=)</td>
+    <td>procedure main()<br>    boolean res;<br>    boolean value1;<br>    boolean value2;<br>begin<br>    res = value1 >= value2;<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.02</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>163</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Operatoren (Array, >=)</td>
+    <td>procedure main()<br>    boolean res;<br>    int[] value1;<br>    int[] value2;<br>begin<br>    res = value1 >= value2;<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.02</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>160</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Operatoren (Record, >=)</td>
+    <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    boolean res;<br>    Coordinate value1;<br>    Coordinate value2;<br>begin<br>    res = value1 >= value2;<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.02</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>157</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Operatoren (int, <=)</td>
+    <td>procedure main()<br>    boolean res;<br>    int value1;<br>    int value2;<br>begin<br>    res = value1 <= value2;<br>end</td>
+    <td></td>
+    <td></td>
+    <td>0</td>
+    <td>0</td>
+    <td>0.03</td>
+    <td class="pass">Passed</td>
+    <td>153</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Operatoren (string, <=)</td>
+    <td>procedure main()<br>    boolean res;<br>    string value1;<br>    string value2;<br>begin<br>    res = value1 <= value2;<br>end</td>
+    <td></td>
+    <td></td>
+    <td>0</td>
+    <td>0</td>
+    <td>0.05</td>
+    <td class="pass">Passed</td>
+    <td>156</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Operatoren (boolean, <=)</td>
+    <td>procedure main()<br>    boolean res;<br>    boolean value1;<br>    boolean value2;<br>begin<br>    res = value1 <= value2;<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.02</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>155</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Operatoren (Array, <=)</td>
+    <td>procedure main()<br>    boolean res;<br>    int[] value1;<br>    int[] value2;<br>begin<br>    res = value1 <= value2;<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.02</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>153</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Operatoren (Record, <=)</td>
+    <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    boolean res;<br>    Coordinate value1;<br>    Coordinate value2;<br>begin<br>    res = value1 <= value2;<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.02</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>159</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Operatoren (int, >)</td>
+    <td>procedure main()<br>    boolean res;<br>    int value1;<br>    int value2;<br>begin<br>    res = value1 > value2;<br>end</td>
+    <td></td>
+    <td></td>
+    <td>0</td>
+    <td>0</td>
+    <td>0.02</td>
+    <td class="pass">Passed</td>
+    <td>150</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Operatoren (string, >)</td>
+    <td>procedure main()<br>    boolean res;<br>    string value1;<br>    string value2;<br>begin<br>    res = value1 > value2;<br>end</td>
+    <td></td>
+    <td></td>
+    <td>0</td>
+    <td>0</td>
+    <td>0.05</td>
+    <td class="pass">Passed</td>
+    <td>152</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Operatoren (boolean, >)</td>
+    <td>procedure main()<br>    boolean res;<br>    boolean value1;<br>    boolean value2;<br>begin<br>    res = value1 > value2;<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.02</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>154</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Operatoren (Array, >)</td>
+    <td>procedure main()<br>    boolean res;<br>    int[] value1;<br>    int[] value2;<br>begin<br>    res = value1 > value2;<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.02</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>153</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Operatoren (Record, >)</td>
+    <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    boolean res;<br>    Coordinate value1;<br>    Coordinate value2;<br>begin<br>    res = value1 > value2;<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.02</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>160</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Operatoren (int, <)</td>
+    <td>procedure main()<br>    boolean res;<br>    int value1;<br>    int value2;<br>begin<br>    res = value1 < value2;<br>end</td>
+    <td></td>
+    <td></td>
+    <td>0</td>
+    <td>0</td>
+    <td>0.03</td>
+    <td class="pass">Passed</td>
+    <td>157</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Operatoren (string, <)</td>
+    <td>procedure main()<br>    boolean res;<br>    string value1;<br>    string value2;<br>begin<br>    res = value1 < value2;<br>end</td>
+    <td></td>
+    <td></td>
+    <td>0</td>
+    <td>0</td>
+    <td>0.05</td>
+    <td class="pass">Passed</td>
+    <td>154</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Operatoren (boolean, <)</td>
+    <td>procedure main()<br>    boolean res;<br>    boolean value1;<br>    boolean value2;<br>begin<br>    res = value1 < value2;<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.02</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>157</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Operatoren (Array, <)</td>
+    <td>procedure main()<br>    boolean res;<br>    int[] value1;<br>    int[] value2;<br>begin<br>    res = value1 < value2;<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.02</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>158</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Operatoren (Record, <)</td>
+    <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    boolean res;<br>    Coordinate value1;<br>    Coordinate value2;<br>begin<br>    res = value1 < value2;<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.02</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>156</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Operatoren (int, ||)</td>
+    <td>procedure main()<br>    boolean res;<br>    int value1;<br>    int value2;<br>begin<br>    res = value1 || value2;<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.02</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>155</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Operatoren (boolean, ||)</td>
+    <td>procedure main()<br>    boolean res;<br>    boolean value1;<br>    boolean value2;<br>begin<br>    res = value1 || value2;<br>end</td>
+    <td></td>
+    <td></td>
+    <td>0</td>
+    <td>0</td>
+    <td>0.05</td>
+    <td class="pass">Passed</td>
+    <td>159</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Operatoren (Array, ||)</td>
+    <td>procedure main()<br>    boolean res;<br>    int[] value1;<br>    int[] value2;<br>begin<br>    res = value1 || value2;<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.02</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>153</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Operatoren (Record, ||)</td>
+    <td>record Coordinate<br>    boolean res;<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    Coordinate value1;<br>    Coordinate value2;<br>begin<br>    res = value1 || value2;<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.02</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>179</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Operatoren (int, &&)</td>
+    <td>procedure main()<br>    boolean res;<br>    int value1;<br>    int value2;<br>begin<br>    res = value1 && value2;<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.02</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>153</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Operatoren (string, &&)</td>
+    <td>procedure main()<br>    boolean res;<br>    string value1;<br>    string value2;<br>begin<br>    res = value1 && value2;<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.02</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>156</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Operatoren (boolean, &&)</td>
+    <td>procedure main()<br>    boolean res;<br>    boolean value1;<br>    boolean value2;<br>begin<br>    res = value1 && value2;<br>end</td>
+    <td></td>
+    <td></td>
+    <td>0</td>
+    <td>0</td>
+    <td>0.05</td>
+    <td class="pass">Passed</td>
+    <td>159</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Operatoren (Array, &&)</td>
+    <td>procedure main()<br>    boolean res;<br>    int[] value1;<br>    int[] value2;<br>begin<br>    res = value1 && value2;<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.02</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>155</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Operatoren (Record, &&)</td>
+    <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    boolean res;<br>    Coordinate value1;<br>    Coordinate value2;<br>begin<br>    res = value1 && value2;<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.02</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>154</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Operatoren (int, !)</td>
+    <td>procedure main()<br>    int value;<br>begin<br>    value = !value;<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.02</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>155</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Operatoren (string, !)</td>
+    <td>procedure main()<br>    string value;<br>begin<br>    value = !value;<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.02</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>177</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Operatoren (boolean, !)</td>
+    <td>procedure main()<br>    boolean value;<br>begin<br>    value = !value;<br>end</td>
+    <td></td>
+    <td></td>
+    <td>0</td>
+    <td>0</td>
+    <td>0.05</td>
+    <td class="pass">Passed</td>
+    <td>152</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Operatoren (Array, !)</td>
+    <td>procedure main()<br>    int[] value;<br>begin<br>    value = !value;<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.02</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>156</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Operatoren (Record, !)</td>
+    <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    Coordinate value;<br>begin<br>    value = !value;<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.02</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>159</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Operatoren (int, -)</td>
+    <td>procedure main()<br>    int value;<br>begin<br>    value = -value;<br>end</td>
+    <td></td>
+    <td></td>
+    <td>0</td>
+    <td>0</td>
+    <td>0.05</td>
+    <td class="pass">Passed</td>
+    <td>156</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Operatoren (string, -)</td>
+    <td>procedure main()<br>    string value;<br>begin<br>    value = -value;<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.02</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>161</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Operatoren (boolean, -)</td>
+    <td>procedure main()<br>    boolean value;<br>begin<br>    value = -value;<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.02</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>152</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Operatoren (Array, -)</td>
+    <td>procedure main()<br>    int[] value;<br>begin<br>    value = -value;<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.02</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>155</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Operatoren (Record, -)</td>
+    <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    Coordinate value;<br>begin<br>    value = -value;<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.02</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>153</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Funktionsaufruf (Parametertypen ok)</td>
+    <td>procedure test(int a)<br>begin<br>end<br>procedure main()<br>    int number;<br>begin<br>    test(1);<br>    test(number);<br>end</td>
+    <td></td>
+    <td></td>
+    <td>0</td>
+    <td>0</td>
+    <td>0.33</td>
+    <td class="pass">Passed</td>
+    <td>157</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Funktionsaufruf (Parametertypen ok)</td>
+    <td>procedure testABC(int[] a, string b)<br>begin<br>end<br>procedure main()<br>    int[] arr;<br>begin<br>    testABC(arr, "abc");<br>end</td>
+    <td></td>
+    <td></td>
+    <td>0</td>
+    <td>0</td>
+    <td>0.33</td>
+    <td class="pass">Passed</td>
+    <td>157</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Funktionsaufruf (Parametertypen ok)</td>
+    <td>procedure test(int[] a, string b)<br>begin<br>end<br>procedure main()<br>    int[] arr;<br>begin<br>    while(1 == 1) do<br>        test(arr, "abc");<br>    end;<br>end</td>
+    <td></td>
+    <td></td>
+    <td>0</td>
+    <td>0</td>
+    <td>0.34</td>
+    <td class="pass">Passed</td>
+    <td>158</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Funktionsaufruf (Parametertypen falsch)</td>
+    <td>procedure test1(int a)<br>begin<br>end<br>procedure main()<br>    int number;<br>begin<br>    test1("Hallo");<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.33</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>156</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Funktionsaufruf (Parametertypen falsch)</td>
+    <td>procedure test2(string s, int[] a)<br>begin<br>end<br>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    Coordinate coord;<br>begin<br>    test2("abc", coord);<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.33</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>156</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>(Typ) Funktionsaufruf (Parametertypen falsch)</td>
+    <td>procedure test2(int number, int number, int[] a)<br>begin<br>end<br>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    Coordinate coord;<br>begin<br>    if (1 == 1) then<br>        test2(23, 42, coord);<br>    end;<br>end</td>
+    <td></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0.34</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>166</td>
+    <td>1000</td>
+  </tr>
+</table>
+<p><small><b>Disclaimer:</b> The calculated points serve only as an indication of the achieved points. You must check yourself for obvious errors in the evaluation (e.g., test shows green although feature has not been implemented). Also, keep in mind that your submission will be tested against a similar test set with minor differences to check for hard coded results.</small></p>
+</body>
+</html>

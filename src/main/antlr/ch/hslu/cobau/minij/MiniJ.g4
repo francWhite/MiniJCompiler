@@ -34,7 +34,7 @@ expression : identifier (INCREMENT | DECREMENT)
             | LPAREN expression RPAREN
             | identifier
             | (SUB| NEGATE) expression
-            | (NUMBER | STRINGVALUE | BOOLVALUE);//CONSTVALUE;
+            | (NUMBER | STRINGVALUE | BOOLVALUE);
 
 ///////////////////////////////////////////////////////////////////////////////
 // Scanner(Lexer)-Regeln

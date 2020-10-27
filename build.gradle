@@ -15,6 +15,7 @@ repositories {
 
 dependencies {
     antlr "org.antlr:antlr4:4.8"
+    testImplementation 'junit:junit:4.+'
 }
 
 java {
