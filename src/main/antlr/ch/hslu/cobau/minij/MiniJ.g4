@@ -85,7 +85,7 @@ DO : 'do';
 REF : 'ref';
 RETURN : 'return';
 
-TYPE : BASETYPE (INDEXBEGIN INDEXEND)?;
+TYPE : BASETYPE;
 BASETYPE : (INT | BOOL | STRING);
 INT: 'int';
 BOOL: 'boolean';

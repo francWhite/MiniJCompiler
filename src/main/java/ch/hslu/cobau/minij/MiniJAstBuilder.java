@@ -10,7 +10,15 @@ import java.util.LinkedList;
 import java.util.Stack;
 
 public class MiniJAstBuilder extends MiniJBaseVisitor<Program> {
+    // Main Stack
     private final Stack<Object> stack = new Stack<>();
+
+    // Declarations
+    private final Stack<Declaration> globalDeclarations = new Stack<>();
+
+    // Records
+    private final Stack<RecordStructure> recordStructures = new Stack<>();
+    private final Stack<Declaration> recordDeclarations = new Stack<>();
 
     @Override
     public Program visitProgram(MiniJParser.ProgramContext ctx) {
@@ -19,14 +27,12 @@ public class MiniJAstBuilder extends MiniJBaseVisitor<Program> {
         var globals = new LinkedList<Declaration>();
         var records = new LinkedList<RecordStructure>();
 
-        while (!stack.empty()) {
-            var child = stack.pop();
+        while (!recordStructures.empty()) {
+            records.addFirst(recordStructures.pop());
+        }
 
-            if (child.getClass() == Declaration.class) {
-                globals.addFirst((Declaration) child);
-            } else if (child.getClass() == RecordStructure.class) {
-                records.addFirst((RecordStructure) child);
-            }
+        while(!globalDeclarations.isEmpty()){
+            globals.addFirst(globalDeclarations.pop());
         }
 
         return new Program(globals, new LinkedList<>(), records);
@@ -41,7 +47,8 @@ public class MiniJAstBuilder extends MiniJBaseVisitor<Program> {
 
         if (param.IDENTIFIER().size() == 1) {
             var identifier = param.IDENTIFIER(0).getText();
-            var type = parseType(param.TYPE());
+            var isArrayType = !param.INDEXBEGIN().isEmpty();
+            var type = parseType(param.TYPE().getText(), isArrayType);
 
             declaration = new Declaration(identifier, type);
         } else {
@@ -52,7 +59,13 @@ public class MiniJAstBuilder extends MiniJBaseVisitor<Program> {
             declaration = new Declaration(identifier, recordType);
         }
 
-        stack.push(declaration);
+        if (ctx.parent instanceof MiniJParser.ProgramContext){
+            globalDeclarations.push(declaration);
+        }
+        else if(ctx.parent instanceof MiniJParser.RecordContext){
+            recordDeclarations.push(declaration);
+        }
+
         return null;
     }
 
@@ -63,22 +76,17 @@ public class MiniJAstBuilder extends MiniJBaseVisitor<Program> {
         var identifier = ctx.IDENTIFIER().getText();
 
         var declarations = new LinkedList<Declaration>();
-        while (!stack.isEmpty()) {
-            var declaration = (Declaration) stack.pop();
-            declarations.add(declaration);
+        while (!recordDeclarations.isEmpty()) {
+            declarations.addFirst(recordDeclarations.pop());
         }
 
         var record = new RecordStructure(identifier, declarations);
-        stack.push(record);
+        recordStructures.push(record);
 
         return null;
     }
 
-    Type parseType(TerminalNode node) {
-        var typeString = node.getText();
-        var isArray = typeString.contains("[]");
-        typeString = typeString.replace("[]", "");
-
+    Type parseType(String typeString, boolean isArraytype) {
         Type baseType = switch (typeString) {
             case "int" -> new IntegerType();
             case "boolean" -> new BooleanType();
@@ -86,7 +94,7 @@ public class MiniJAstBuilder extends MiniJBaseVisitor<Program> {
             default -> new RecordType(typeString);
         };
 
-        if (isArray) {
+        if (isArraytype) {
             return new ArrayType(baseType);
         }
 

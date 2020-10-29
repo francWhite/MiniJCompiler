@@ -1,6 +1,7 @@
 package ch.hslu.cobau.minij;
 
 import ch.hslu.cobau.minij.ast.entity.Program;
+import ch.hslu.cobau.minij.ast.type.ArrayType;
 import ch.hslu.cobau.minij.ast.type.BooleanType;
 import ch.hslu.cobau.minij.ast.type.IntegerType;
 import ch.hslu.cobau.minij.ast.type.StringType;
@@ -56,6 +57,24 @@ public class MiniJAstBuilderTest {
     }
 
     @Test
+    public void globalArrayDeclarations() {
+        var input =
+                "int[] number1;";
+
+        var program = createAst(input);
+
+        var globals = program.getGlobals();
+        assertThat(globals).hasSize(1);
+
+        var firstDecleration = globals.get(0);
+        assertThat(firstDecleration.getIdentifier()).isEqualTo("number1");
+        assertThat(firstDecleration.getType()).isInstanceOf(ArrayType.class);
+
+        var arrayType = (ArrayType) firstDecleration.getType();
+        assertThat(arrayType.getType()).isInstanceOf(IntegerType.class);
+    }
+
+    @Test
     public void recordDeclaration(){
         var input =
                 "record Auto\n" +
@@ -102,9 +121,9 @@ public class MiniJAstBuilderTest {
         var recordDeclarations = record.getDeclarations();
         assertThat(recordDeclarations)
                 .hasSize(3)
-                .anyMatch(d -> d.getIdentifier().equals("Jahr") && d.getType().getClass() == IntegerType.class)
-                .anyMatch(d -> d.getIdentifier().equals("Modell") && d.getType().getClass() == StringType.class)
-                .anyMatch(d -> d.getIdentifier().equals("Verfuegbar") && d.getType().getClass() == BooleanType.class);
+                .anyMatch(d -> d.getIdentifier().equals("Jahr") && d.getType() instanceof IntegerType)
+                .anyMatch(d -> d.getIdentifier().equals("Modell") && d.getType() instanceof  StringType)
+                .anyMatch(d -> d.getIdentifier().equals("Verfuegbar") && d.getType()instanceof BooleanType);
 
         var declarations = program.getGlobals();
         assertThat(declarations)
