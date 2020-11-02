@@ -1,6 +1,7 @@
 package ch.hslu.cobau.minij;
 
 import ch.hslu.cobau.minij.ast.entity.Declaration;
+import ch.hslu.cobau.minij.ast.entity.Procedure;
 import ch.hslu.cobau.minij.ast.entity.Program;
 import ch.hslu.cobau.minij.ast.entity.RecordStructure;
 import ch.hslu.cobau.minij.ast.type.*;
@@ -12,29 +13,27 @@ public class MiniJAstBuilder extends MiniJBaseVisitor<Program> {
     // Main Stack
     private final Stack<Object> stack = new Stack<>();
 
-    // Declarations
-    private final Stack<Declaration> globalDeclarations = new Stack<>();
-
-    // Records
-    private final Stack<RecordStructure> recordStructures = new Stack<>();
-    private final Stack<Declaration> recordDeclarations = new Stack<>();
-
     @Override
     public Program visitUnit(MiniJParser.UnitContext ctx) {
         visitChildren(ctx);
 
         var globals = new LinkedList<Declaration>();
         var records = new LinkedList<RecordStructure>();
+        var procedures = new LinkedList<Procedure>();
 
-        while (!recordStructures.empty()) {
-            records.addFirst(recordStructures.pop());
+        while (!stack.empty()) {
+            var member = stack.pop();
+
+            if (member instanceof Declaration) {
+                globals.addFirst((Declaration) member);
+            } else if (member instanceof RecordStructure) {
+                records.addFirst((RecordStructure) member);
+            } else if (member instanceof Procedure) {
+                procedures.addFirst((Procedure) member);
+            }
         }
 
-        while (!globalDeclarations.isEmpty()) {
-            globals.addFirst(globalDeclarations.pop());
-        }
-
-        return new Program(globals, new LinkedList<>(), records);
+        return new Program(globals, procedures, records);
     }
 
     @Override
@@ -45,27 +44,23 @@ public class MiniJAstBuilder extends MiniJBaseVisitor<Program> {
         var type = (Type)stack.pop();
         var declaration = new Declaration(identifier, type);
 
-        if (ctx.parent instanceof MiniJParser.MemberContext) {
-            globalDeclarations.push(declaration);
-        } else if (ctx.parent instanceof MiniJParser.RecordContext) {
-            recordDeclarations.push(declaration);
-        }
-
+        stack.push(declaration);
         return null;
     }
 
     @Override
     public Program visitRecord(MiniJParser.RecordContext ctx) {
+        var parentStackCount = stack.size();
         visitChildren(ctx);
 
         var declarations = new LinkedList<Declaration>();
-        while (!recordDeclarations.isEmpty()) {
-            declarations.addFirst(recordDeclarations.pop());
+        while (stack.size() - 1 > parentStackCount) {            //stack.size() - 1 because the identifier is also pushed to the stack
+            declarations.addFirst((Declaration)stack.pop());
         }
 
-        var identifier = ctx.identifier().ID().getText();
+        var identifier = (String)stack.pop();
         var record = new RecordStructure(identifier, declarations);
-        recordStructures.push(record);
+        stack.push(record);
 
         return null;
     }
@@ -111,7 +106,7 @@ public class MiniJAstBuilder extends MiniJBaseVisitor<Program> {
     public Program visitRecordType(MiniJParser.RecordTypeContext ctx) {
         visitChildren(ctx);
 
-        var identifier = ctx.identifier().ID().getText();
+        var identifier = (String)stack.pop();
         stack.push(new RecordType(identifier));
         return null;
     }
