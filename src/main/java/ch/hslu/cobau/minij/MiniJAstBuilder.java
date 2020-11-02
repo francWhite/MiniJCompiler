@@ -41,22 +41,9 @@ public class MiniJAstBuilder extends MiniJBaseVisitor<Program> {
     public Program visitDeclaration(MiniJParser.DeclarationContext ctx) {
         visitChildren(ctx);
 
-        Declaration declaration;
-        var identifier = ctx.identifier().ID().getText();
-
-        // if basicType is not set, then it is a array-type
-        if (ctx.type().basicType() == null) {
-            var baseType = ctx.type().type().basicType().getText();
-            var type = parseType(baseType);
-            var arrayType = new ArrayType(type);
-
-            declaration = new Declaration(identifier, arrayType);
-        } else {
-            var baseType = ctx.type().basicType().getText();
-            var type = parseType(baseType);
-
-            declaration = new Declaration(identifier, type);
-        }
+        var identifier = (String)stack.pop();
+        var type = (Type)stack.pop();
+        var declaration = new Declaration(identifier, type);
 
         if (ctx.parent instanceof MiniJParser.MemberContext) {
             globalDeclarations.push(declaration);
@@ -83,12 +70,49 @@ public class MiniJAstBuilder extends MiniJBaseVisitor<Program> {
         return null;
     }
 
-    Type parseType(String typeString) {
-        return switch (typeString) {
-            case "int" -> new IntegerType();
-            case "boolean" -> new BooleanType();
-            case "string" -> new StringType();
-            default -> new RecordType(typeString);
-        };
+    @Override
+    public Program visitType(MiniJParser.TypeContext ctx) {
+        visitChildren(ctx);
+
+        var type = (Type)stack.pop();
+        if (ctx.RBRACKET() != null){
+           type = new ArrayType(type);
+        }
+
+        stack.push(type);
+        return null;
+    }
+
+    @Override
+    public Program visitIdentifier(MiniJParser.IdentifierContext ctx) {
+        stack.push(ctx.ID().getText());
+        return null;
+    }
+
+    @Override
+    public Program visitIntegerType(MiniJParser.IntegerTypeContext ctx) {
+        stack.push(new IntegerType());
+        return null;
+    }
+
+    @Override
+    public Program visitBooleanType(MiniJParser.BooleanTypeContext ctx) {
+        stack.push(new BooleanType());
+        return null;
+    }
+
+    @Override
+    public Program visitStringType(MiniJParser.StringTypeContext ctx) {
+        stack.push(new StringType());
+        return null;
+    }
+
+    @Override
+    public Program visitRecordType(MiniJParser.RecordTypeContext ctx) {
+        visitChildren(ctx);
+
+        var identifier = ctx.identifier().ID().getText();
+        stack.push(new RecordType(identifier));
+        return null;
     }
 }
