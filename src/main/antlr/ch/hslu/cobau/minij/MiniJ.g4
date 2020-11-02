@@ -1,111 +1,149 @@
+/*
+ * Reference grammar for language "miniJ"
+ */
 grammar MiniJ;
 
 @header {
 package ch.hslu.cobau.minij;
 }
 
-// milestone 2: parser
 ///////////////////////////////////////////////////////////////////////////////
-// Parser-Regeln
+// Parsing rules
 ///////////////////////////////////////////////////////////////////////////////
-unit : program;
-program : (procedure | declaration | record )* EOF;
-procedure: PROCEDURE IDENTIFIER LPAREN (param? | param (COMMA param)*) RPAREN declaration* (BEGIN body END | BEGINBLOCK body ENDBLOCK) SEMICOLON?;
-declaration : param SEMICOLON;
-record : RECORD IDENTIFIER declaration* END SEMICOLON?;
-param: REF? (TYPE | IDENTIFIER) (INDEXBEGIN INDEXEND)* IDENTIFIER;
-body : (assignment | procedurecall | ifelse | whileblock)* returnrule?;
-assignment : identifier ASSIGN expression SEMICOLON;
-procedurecall : identifier LPAREN (callparam? | callparam (COMMA callparam)*) RPAREN SEMICOLON;
-callparam: identifier | expression;
-returnrule : RETURN SEMICOLON;
-ifelse : IF LPAREN expression RPAREN THEN body (ELSIF LPAREN expression RPAREN THEN body)* (ELSE body)?  END SEMICOLON;
-whileblock : WHILE LPAREN expression RPAREN DO body END SEMICOLON;
-identifier: IDENTIFIER | identifier (PERIOD identifier)+ | identifier (INDEXBEGIN (NUMBER | identifier | expression) INDEXEND)+;
 
-expression : identifier (INCREMENT | DECREMENT)
-            | (INCREMENT | DECREMENT) expression
-            | expression (MULT | DIV | MOD) expression
-            | expression (ADD |SUB) expression
-            | expression (LESSER | GREATER | LESSEREQ | GREATEREQ) expression
-            | expression (EQUAL | NOTEQUAL) expression
-            | expression (AND) expression
-            | expression (OR) expression
-            | LPAREN expression RPAREN
-            | identifier
-            | (SUB| NEGATE) expression
-            | (NUMBER | STRINGVALUE | BOOLVALUE);
+// declaractions
+unit        : member* EOF;
+member      : declaration | record | procedure | SEMICOLON;
+
+record      : RECORD identifier (declaration)* END;
+
+// procedures and blocks
+procedure     : PROCEDURE identifier LPAREN (parameter (COMMA parameter)*)? RPAREN declarations procedureBody;
+parameter     : (REF)? type identifier;
+declarations  : (declarationStatement)*;
+
+procedureBody : LBRACE block RBRACE
+              | BEGIN block END
+              ;
+
+block         : (statement)*;
+
+// statements
+declarationStatement : declaration | SEMICOLON;
+statement            : assignment | callStatement | returnStatement | ifStatement | whileStatement | SEMICOLON;
+
+assignment           : memoryAccess ASSIGN expression SEMICOLON;
+callStatement        : identifier LPAREN (expression (COMMA expression)*)? RPAREN SEMICOLON;
+whileStatement       : WHILE LPAREN expression RPAREN DO block END;
+returnStatement      : RETURN SEMICOLON;
+
+ifStatement          : IF LPAREN expression RPAREN THEN block (elsifClause)* (elseClause)? END;
+elsifClause          : ELSIF LPAREN expression RPAREN THEN block;
+elseClause           : ELSE block;
+
+// expressions
+expression : LPAREN expression RPAREN
+           | memoryAccess (INCREMENT | DECREMENT)
+           | unaryExpression
+           | expression binaryOp=(TIMES | DIV | MOD) expression                          // NOTE: order is important.
+           | expression binaryOp=(PLUS | MINUS) expression                               // In ANTLR order reflects
+           | expression binaryOp=(EQUAL | UNEQUAL | AND | OR) expression                 // the associativity of the
+           | expression binaryOp=(LESSER | GREATER | LESSER_EQ | GREATER_EQ) expression  // operations.
+           | expression binaryOp=(EQUAL | UNEQUAL) expression                            // Thus, operator with highest
+           | expression binaryOp=AND expression                                          // precendence MUST be listed
+           | expression binaryOp=OR expression                                           // first.
+           | trueConstant
+           | falseConstant
+           | integerConstant
+           | stringConstant
+           | memoryAccess
+           ;
+
+unaryExpression : unaryOp=(NOT | MINUS | PLUS | INCREMENT | DECREMENT) expression;
+trueConstant    : TRUE;
+falseConstant   : FALSE;
+integerConstant : INTEGER;
+stringConstant  : STRINGCONSTANT;
+memoryAccess    : ID
+                | memoryAccess DOT ID
+                | memoryAccess LBRACKET expression RBRACKET
+                ;
+
+// types and identifier
+declaration   : type identifier SEMICOLON;
+type          : basicType | type LBRACKET RBRACKET;
+basicType     : integerType | booleanType | stringType | recordType;
+integerType   : INT;
+stringType    : STRING;
+booleanType   : BOOLEAN;
+recordType    : identifier;
+
+identifier    : ID;
 
 ///////////////////////////////////////////////////////////////////////////////
-// Scanner(Lexer)-Regeln
+// Lexer rules
 ///////////////////////////////////////////////////////////////////////////////
-COMMENT : '//' ALLCHARS* ([\r\n] | EOF) -> skip;
-BLOCKCOMMENT : '/*' ALLCHARS* '*/' -> skip;
-WHITESPACE : [ \t\r\n]+ -> skip;
 
-INCREMENT : '++';
-DECREMENT : '--';
-NEGATE : '!';
-MULT : '*';
-DIV : '/';
-MOD : '%';
-ADD : '+';
-SUB : '-';
-LESSER : '<';
-GREATER : '>';
-LESSEREQ : '<=';
-GREATEREQ : '>=';
-EQUAL : '==';
-NOTEQUAL : '!=';
-ASSIGN: '=';
-AND : '&&';
-OR : '||';
+// operators, blocks, arrays indexes, and parameter lists
+LPAREN:        '(';
+RPAREN:        ')';
+LBRACE:        '{';
+RBRACE:        '}';
+LBRACKET:      '[';
+RBRACKET:      ']';
+SEMICOLON:     ';';
+COMMA:         ',';
+ASSIGN:        '=';
+INCREMENT:     '++';
+DECREMENT:     '--';
+PLUS:          '+';
+MINUS:         '-';
+TIMES:         '*';
+DIV:           '/';
+MOD:           '%';
+DOT:           '.';
+EQUAL:         '==';
+UNEQUAL:       '!=';
+LESSER:        '<';
+GREATER:       '>';
+LESSER_EQ:     '<=';
+GREATER_EQ:    '>=';
+NOT:           '!';
+AND:           '&&';
+OR:            '||';
 
-BEGIN : 'begin';
-END : 'end';
-BEGINBLOCK: '{';
-ENDBLOCK: '}';
-INDEXBEGIN : '[';
-INDEXEND : ']';
-LPAREN : '(';
-RPAREN : ')';
-COMMA : ',';
-PERIOD : '.';
-SEMICOLON : ';';
-QUOTES : '"';
 
-PROCEDURE : 'procedure';
-RECORD : 'record';
-IF : 'if';
-ELSIF : 'elsif';
-ELSE : 'else';
-THEN : 'then';
-WHILE : 'while';
-DO : 'do';
-REF : 'ref';
-RETURN : 'return';
+// declaraction
+RECORD:       'record';
+BEGIN:        'begin';
+END:          'end';
+PROCEDURE:    'procedure';
+REF:          'ref';
 
-TYPE : BASETYPE;
-BASETYPE : (INT | BOOL | STRING);
-INT: 'int';
-BOOL: 'boolean';
-STRING: 'string';
+// control flow
+IF:           'if';
+THEN:         'then';
+ELSIF:        'elsif';
+ELSE:         'else';
+WHILE:        'while';
+DO:           'do';
+RETURN:       'return';
 
-NUMBER : (ADD | SUB)? DIGIT+;
-DIGIT : [0-9];
-IDENTIFIER : (LOWERCHAR | UPPERCHAR) (LOWERCHAR | UPPERCHAR | DIGIT)*;
-ALLCHARS : DIGIT | LOWERCHAR | UPPERCHAR | PERIOD | WHITESPACE | COMMA | NEGATE | DIV;
-STRINGVALUE: QUOTES ALLCHARS* QUOTES;
-LOWERCHAR : 'a'..'z';
-UPPERCHAR : 'A'..'Z';
-BOOLVALUE : TRUE | FALSE;
-TRUE : 'true';
-FALSE : 'false';
+// types
+INT:          'int';
+BOOLEAN:      'boolean';
+STRING:       'string';
 
-READINT : 'readInt';
-WRITEINT : 'writeInt';
-READCHAR : 'readChar';
-WRITECHAR : 'writeChar';
+// values
+TRUE:           'true';
+FALSE:          'false';
+INTEGER:        ('+'|'-')?[0-9]+;
+STRINGCONSTANT: '"' (~'"')* '"'; //
 
-BLOCKCOMMENTSTART : '/*';
-BLOCKCOMMENTEND : '*/';
+// identifiers: order is important as all other keywords have precendence
+ID : [a-zA-Z][a-zA-Z0-9_$]*;
+
+// comments
+LINE_COMMENT: '//' ~[\r\n]* -> skip; // skip contents of line comments
+BLOCKCOMMENT: '/*' .*? '*/' -> skip; // skip contents of block comments
+WS:           [ \t\r\n]+    -> skip; // skip spaces, tabs, newlines
