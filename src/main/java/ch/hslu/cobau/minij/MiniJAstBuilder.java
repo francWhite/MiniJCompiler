@@ -1,5 +1,9 @@
 package ch.hslu.cobau.minij;
 
+import ch.hslu.cobau.minij.ast.constants.FalseConstant;
+import ch.hslu.cobau.minij.ast.constants.IntegerConstant;
+import ch.hslu.cobau.minij.ast.constants.StringConstant;
+import ch.hslu.cobau.minij.ast.constants.TrueConstant;
 import ch.hslu.cobau.minij.ast.entity.*;
 import ch.hslu.cobau.minij.ast.statement.ReturnStatement;
 import ch.hslu.cobau.minij.ast.statement.Statement;
@@ -104,12 +108,45 @@ public class MiniJAstBuilder extends MiniJBaseVisitor<Program> {
         return null;
     }
 
+    //Statements-----------------------------------------------------
     @Override
     public Program visitReturnStatement(MiniJParser.ReturnStatementContext ctx) {
         stack.push(new ReturnStatement());
         return null;
     }
 
+    //Expressions-----------------------------------------------------
+
+
+    //Constants-------------------------------------------------------
+    @Override
+    public Program visitTrueConstant(MiniJParser.TrueConstantContext ctx) {
+        stack.push(new TrueConstant());
+        return null;
+    }
+
+    @Override
+    public Program visitFalseConstant(MiniJParser.FalseConstantContext ctx) {
+        stack.push(new FalseConstant());
+        return null;
+    }
+
+    @Override
+    public Program visitIntegerConstant(MiniJParser.IntegerConstantContext ctx) {
+        var stringValue = ctx.INTEGER().getText();
+        var numericValue = Long.parseLong(stringValue);
+        stack.push(new IntegerConstant(numericValue));
+        return null;
+    }
+
+    @Override
+    public Program visitStringConstant(MiniJParser.StringConstantContext ctx) {
+        var value = ctx.STRINGCONSTANT().getText();
+        stack.push(new StringConstant(value));
+        return null;
+    }
+
+    //Types and identifier--------------------------------------------
     @Override
     public Program visitType(MiniJParser.TypeContext ctx) {
         visitChildren(ctx);
