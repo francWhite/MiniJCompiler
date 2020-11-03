@@ -1,9 +1,8 @@
 package ch.hslu.cobau.minij;
 
-import ch.hslu.cobau.minij.ast.entity.Declaration;
-import ch.hslu.cobau.minij.ast.entity.Procedure;
-import ch.hslu.cobau.minij.ast.entity.Program;
-import ch.hslu.cobau.minij.ast.entity.RecordStructure;
+import ch.hslu.cobau.minij.ast.entity.*;
+import ch.hslu.cobau.minij.ast.statement.ReturnStatement;
+import ch.hslu.cobau.minij.ast.statement.Statement;
 import ch.hslu.cobau.minij.ast.type.*;
 
 import java.util.LinkedList;
@@ -24,11 +23,11 @@ public class MiniJAstBuilder extends MiniJBaseVisitor<Program> {
         while (!stack.empty()) {
             var member = stack.pop();
 
-            if (member instanceof Declaration) {
+            if (member.getClass() == Declaration.class) {
                 globals.addFirst((Declaration) member);
-            } else if (member instanceof RecordStructure) {
+            } else if (member.getClass() == RecordStructure.class) {
                 records.addFirst((RecordStructure) member);
-            } else if (member instanceof Procedure) {
+            } else if (member.getClass() == Procedure.class) {
                 procedures.addFirst((Procedure) member);
             }
         }
@@ -62,6 +61,52 @@ public class MiniJAstBuilder extends MiniJBaseVisitor<Program> {
         var record = new RecordStructure(identifier, declarations);
         stack.push(record);
 
+        return null;
+    }
+
+    @Override
+    public Program visitProcedure(MiniJParser.ProcedureContext ctx) {
+        var parentStackCount = stack.size();
+        visitChildren(ctx);
+
+        var statements = new LinkedList<Statement>();
+        while (stack.size() > parentStackCount && stack.peek() instanceof Statement){
+            statements.addFirst((Statement)stack.pop());
+        }
+
+        var declarations = new LinkedList<Declaration>();
+        while (stack.size() > parentStackCount && stack.peek().getClass() == Declaration.class){
+            declarations.addFirst((Declaration)stack.pop());
+        }
+
+        var parameters = new LinkedList<Parameter>();
+        while (stack.size() > parentStackCount && stack.peek().getClass() == Parameter.class){
+            parameters.addFirst((Parameter)stack.pop());
+        }
+
+        var identifier = (String)stack.pop();
+
+        var procedure = new Procedure(identifier, parameters, declarations, statements);
+        stack.push(procedure);
+        return null;
+    }
+
+    @Override
+    public Program visitParameter(MiniJParser.ParameterContext ctx) {
+        visitChildren(ctx);
+
+        var identifier = (String)stack.pop();
+        var type = (Type)stack.pop();
+        var isByReference = ctx.REF() != null;
+
+        var parameter = new Parameter(identifier, type, isByReference);
+        stack.push(parameter);
+        return null;
+    }
+
+    @Override
+    public Program visitReturnStatement(MiniJParser.ReturnStatementContext ctx) {
+        stack.push(new ReturnStatement());
         return null;
     }
 

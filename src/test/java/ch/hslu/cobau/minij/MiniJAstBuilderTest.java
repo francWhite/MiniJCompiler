@@ -1,6 +1,7 @@
 package ch.hslu.cobau.minij;
 
 import ch.hslu.cobau.minij.ast.entity.Program;
+import ch.hslu.cobau.minij.ast.statement.ReturnStatement;
 import ch.hslu.cobau.minij.ast.type.ArrayType;
 import ch.hslu.cobau.minij.ast.type.BooleanType;
 import ch.hslu.cobau.minij.ast.type.IntegerType;
@@ -130,6 +131,42 @@ public class MiniJAstBuilderTest {
                 .hasSize(2)
                 .anyMatch(d -> d.getIdentifier().equals("x"))
                 .anyMatch(d -> d.getIdentifier().equals("y"));
+    }
+
+    @Test
+    public void simpleProcedure(){
+        var input =
+                "procedure test1(ref int number1, int number2)\n"+
+                    "int number3;\n" +
+                    "begin\n"+
+                    "return;\n"+
+                    "end\n";
+
+        var program = createAst(input);
+        assertThat(program.getProcedures()).hasSize(1);
+
+        var procedure = program.getProcedures().get(0);
+        assertThat(procedure.getIdentifier()).isEqualTo("test1");
+        assertThat(procedure.getFormalParameters()).hasSize(2);
+        assertThat(procedure.getDeclarations()).hasSize(1);
+        assertThat(procedure.getStatements()).hasSize(1);
+
+        var parameter = procedure.getFormalParameters().get(0);
+        assertThat(parameter.getIdentifier()).isEqualTo("number1");
+        assertThat(parameter.getType()).isInstanceOf(IntegerType.class);
+        assertThat(parameter.isByReference()).isEqualTo(true);
+
+        var parameter2 = procedure.getFormalParameters().get(1);
+        assertThat(parameter2.getIdentifier()).isEqualTo("number2");
+        assertThat(parameter2.getType()).isInstanceOf(IntegerType.class);
+        assertThat(parameter2.isByReference()).isEqualTo(false);
+
+        var declaration = procedure.getDeclarations().get(0);
+        assertThat(declaration.getIdentifier()).isEqualTo("number3");
+        assertThat(declaration.getType()).isInstanceOf(IntegerType.class);
+
+        var statement = procedure.getStatements().get(0);
+        assertThat(statement).isInstanceOf(ReturnStatement.class);
     }
 
     private Program createAst(String input) {
