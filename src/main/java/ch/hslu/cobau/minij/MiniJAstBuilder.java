@@ -194,6 +194,8 @@ public class MiniJAstBuilder extends MiniJBaseVisitor<Program> {
     @Override
     public Program visitStringConstant(MiniJParser.StringConstantContext ctx) {
         var value = ctx.STRINGCONSTANT().getText();
+        value = value.substring(1, value.length() - 1); //remove leading and trailing "
+
         stack.push(new StringConstant(value));
         return null;
     }

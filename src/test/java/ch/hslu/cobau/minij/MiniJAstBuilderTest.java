@@ -1,6 +1,7 @@
 package ch.hslu.cobau.minij;
 
 import ch.hslu.cobau.minij.ast.constants.IntegerConstant;
+import ch.hslu.cobau.minij.ast.constants.StringConstant;
 import ch.hslu.cobau.minij.ast.entity.Program;
 import ch.hslu.cobau.minij.ast.expression.*;
 import ch.hslu.cobau.minij.ast.statement.AssignmentStatement;
@@ -289,6 +290,34 @@ public class MiniJAstBuilderTest {
 
         var variabelAcces = (VariableAccess)expression;
         assertThat(variabelAcces.getIdentifier()).isEqualTo("other");
+    }
+
+    @Test
+    public void complexAsignment(){
+        var input =
+                "procedure test()\n"+
+                        "begin\n"+
+                        "base.field.secondFiled[1] = \"stringValue\";\n"+
+                        "end\n";
+
+        var program = createAst(input);
+        var assignmentStatement = (AssignmentStatement)program.getProcedures().get(0).getStatements().get(0);
+
+        var right = (StringConstant)assignmentStatement.getRight();
+        assertThat(right.getValue()).isEqualTo("stringValue");
+
+        var arrayAccess = (ArrayAccess)assignmentStatement.getLeft();
+        var arrayIndex = (IntegerConstant)arrayAccess.getIndexExpression();
+        assertThat(arrayIndex.getValue()).isEqualTo(1);
+
+        var field = (FieldAccess)arrayAccess.getBase();
+        assertThat(field.getField()).isEqualTo("secondFiled");
+
+        var baseOfField = (FieldAccess)field.getBase();
+        assertThat(baseOfField.getField()).isEqualTo("field");
+
+        var realBase = (VariableAccess)baseOfField.getBase();
+        assertThat(realBase.getIdentifier()).isEqualTo("base");
     }
 
     @Test
