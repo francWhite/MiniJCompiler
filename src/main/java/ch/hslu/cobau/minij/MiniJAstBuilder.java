@@ -5,9 +5,12 @@ import ch.hslu.cobau.minij.ast.constants.IntegerConstant;
 import ch.hslu.cobau.minij.ast.constants.StringConstant;
 import ch.hslu.cobau.minij.ast.constants.TrueConstant;
 import ch.hslu.cobau.minij.ast.entity.*;
+import ch.hslu.cobau.minij.ast.expression.*;
+import ch.hslu.cobau.minij.ast.statement.AssignmentStatement;
 import ch.hslu.cobau.minij.ast.statement.ReturnStatement;
 import ch.hslu.cobau.minij.ast.statement.Statement;
 import ch.hslu.cobau.minij.ast.type.*;
+import org.antlr.v4.runtime.Token;
 
 import java.util.LinkedList;
 import java.util.Stack;
@@ -115,8 +118,57 @@ public class MiniJAstBuilder extends MiniJBaseVisitor<Program> {
         return null;
     }
 
-    //Expressions-----------------------------------------------------
+    @Override
+    public Program visitAssignment(MiniJParser.AssignmentContext ctx) {
+        visitChildren(ctx);
 
+        var right = (Expression)stack.pop();
+        var left = (Expression)stack.pop();
+
+        var assignement = new AssignmentStatement(left, right);
+        stack.push(assignement);
+        return null;
+    }
+
+    //Expressions-----------------------------------------------------
+    @Override
+    public Program visitUnaryExpression(MiniJParser.UnaryExpressionContext ctx) {
+        visitChildren(ctx);
+
+        var expression = (Expression)stack.pop();
+        var unaryOperator = parseUnaryOperator(ctx.unaryOp);
+        var unaryExpression = new UnaryExpression(expression, unaryOperator);
+
+        stack.push(unaryExpression);
+        return null;
+    }
+
+    @Override
+    public Program visitMemoryAccess(MiniJParser.MemoryAccessContext ctx) {
+        var parentStackCount = stack.size();
+        visitChildren(ctx);
+
+        MemoryAccess memoryAccess;
+
+        //if no childern were added, it must be an VariableAccess
+        if (stack.size() == parentStackCount){
+            memoryAccess = new VariableAccess(ctx.ID().getText());
+        }
+        //if the last child is a MemoryAccess, it must be an FieldAccess
+        else if(stack.peek() instanceof MemoryAccess){
+            var base = (MemoryAccess)stack.pop();
+            memoryAccess = new FieldAccess(base, ctx.ID().getText());
+        }
+        //else it must be an ArrayAccess
+        else {
+            var indexExpression = (Expression)stack.pop();
+            var base = (MemoryAccess)stack.pop();
+            memoryAccess = new ArrayAccess(base, indexExpression);
+        }
+
+        stack.push(memoryAccess);
+        return null;
+    }
 
     //Constants-------------------------------------------------------
     @Override
@@ -191,5 +243,22 @@ public class MiniJAstBuilder extends MiniJBaseVisitor<Program> {
         var identifier = (String)stack.pop();
         stack.push(new RecordType(identifier));
         return null;
+    }
+
+    private UnaryOperator parseUnaryOperator(Token operator){
+        var symbolicName = MiniJParser.VOCABULARY.getSymbolicName(operator.getType());
+
+        return switch (symbolicName) {
+            case "NOT" -> UnaryOperator.NOT;
+            case "MINUS" -> UnaryOperator.MINUS;
+            case "INCREMENT" -> UnaryOperator.PRE_INCREMENT;
+            case "DECREMENT" -> UnaryOperator.PRE_DECREMENT;
+            default -> null;
+        };
+    }
+
+    private BinaryOperator parseBinaryOperator(Token operator){
+        var symbolicName = MiniJParser.VOCABULARY.getSymbolicName(operator.getType());
+        return BinaryOperator.valueOf(symbolicName);
     }
 }

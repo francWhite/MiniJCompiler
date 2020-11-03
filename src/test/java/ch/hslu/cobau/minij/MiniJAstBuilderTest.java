@@ -1,6 +1,9 @@
 package ch.hslu.cobau.minij;
 
+import ch.hslu.cobau.minij.ast.constants.IntegerConstant;
 import ch.hslu.cobau.minij.ast.entity.Program;
+import ch.hslu.cobau.minij.ast.expression.*;
+import ch.hslu.cobau.minij.ast.statement.AssignmentStatement;
 import ch.hslu.cobau.minij.ast.statement.ReturnStatement;
 import ch.hslu.cobau.minij.ast.type.ArrayType;
 import ch.hslu.cobau.minij.ast.type.BooleanType;
@@ -167,6 +170,145 @@ public class MiniJAstBuilderTest {
 
         var statement = procedure.getStatements().get(0);
         assertThat(statement).isInstanceOf(ReturnStatement.class);
+    }
+
+    @Test
+    public void assignment_setConstantValueToVariable(){
+        var input =
+                "procedure test()\n"+
+                        "begin\n"+
+                        "number = 5;\n"+
+                        "end\n";
+
+        var program = createAst(input);
+        var statement = program.getProcedures().get(0).getStatements().get(0);
+
+        assertThat(statement).isInstanceOf(AssignmentStatement.class);
+        var assignmentStatement = (AssignmentStatement)statement;
+
+        var left = assignmentStatement.getLeft();
+        assertThat(left).isInstanceOf(VariableAccess.class);
+        var variableAcces =(VariableAccess)left;
+        assertThat(variableAcces.getIdentifier()).isEqualTo("number");
+
+        var right = assignmentStatement.getRight();
+        assertThat(right).isInstanceOf(IntegerConstant.class);
+        var constant = (IntegerConstant)right;
+        assertThat(constant.getValue()).isEqualTo(5);
+    }
+
+    @Test
+    public void assignment_setConstantValueToField(){
+        var input =
+                "procedure test()\n"+
+                        "begin\n"+
+                        "object.number = 5;\n"+
+                        "end\n";
+
+        var program = createAst(input);
+        var statement = program.getProcedures().get(0).getStatements().get(0);
+
+        assertThat(statement).isInstanceOf(AssignmentStatement.class);
+        var assignmentStatement = (AssignmentStatement)statement;
+
+        //left side of assignment----------------------------------------------------
+        var left = assignmentStatement.getLeft();
+        assertThat(left).isInstanceOf(FieldAccess.class);
+
+        var fieldAccess =(FieldAccess)left;
+        assertThat(fieldAccess.getBase()).isInstanceOf(VariableAccess.class);
+
+        var base = (VariableAccess)fieldAccess.getBase();
+        assertThat(base.getIdentifier()).isEqualTo("object");
+
+        var field = fieldAccess.getField();
+        assertThat(field).isEqualTo("number");
+
+        //right side of assignment--------------------------------------------------
+        var right = assignmentStatement.getRight();
+        assertThat(right).isInstanceOf(IntegerConstant.class);
+        var constant = (IntegerConstant)right;
+        assertThat(constant.getValue()).isEqualTo(5);
+    }
+
+    @Test
+    public void assignment_setConstantValueToArray(){
+        var input =
+                "procedure test()\n"+
+                        "begin\n"+
+                        "object[1] = 5;\n"+
+                        "end\n";
+
+        var program = createAst(input);
+        var statement = program.getProcedures().get(0).getStatements().get(0);
+
+        assertThat(statement).isInstanceOf(AssignmentStatement.class);
+        var assignmentStatement = (AssignmentStatement)statement;
+
+        //left side of assignment----------------------------------------------------
+        var left = assignmentStatement.getLeft();
+        assertThat(left).isInstanceOf(ArrayAccess.class);
+
+        var arrayAccess =(ArrayAccess)left;
+        assertThat(arrayAccess.getBase()).isInstanceOf(VariableAccess.class);
+        assertThat(arrayAccess.getIndexExpression()).isInstanceOf(IntegerConstant.class);
+
+        var base = (VariableAccess)arrayAccess.getBase();
+        assertThat(base.getIdentifier()).isEqualTo("object");
+
+        var index = (IntegerConstant)arrayAccess.getIndexExpression();
+        assertThat(index.getValue()).isEqualTo(1);
+
+        //right side of assignment--------------------------------------------------
+        var right = assignmentStatement.getRight();
+        assertThat(right).isInstanceOf(IntegerConstant.class);
+        var constant = (IntegerConstant)right;
+        assertThat(constant.getValue()).isEqualTo(5);
+    }
+
+    @Test
+    public void unaryExpression_preDecrement(){
+        var input =
+                "procedure test()\n"+
+                        "begin\n"+
+                        "object = --other;\n"+
+                        "end\n";
+
+        var program = createAst(input);
+        var assignmentStatement = (AssignmentStatement)program.getProcedures().get(0).getStatements().get(0);
+
+        var right = assignmentStatement.getRight();
+        assertThat(right).isInstanceOf(UnaryExpression.class);
+
+        var unaryExpression = (UnaryExpression)right;
+        var expression = unaryExpression.getExpression();
+        var operator = unaryExpression.getUnaryOperator();
+
+        assertThat(expression).isInstanceOf(VariableAccess.class);
+        assertThat(operator).isEqualTo(UnaryOperator.PRE_DECREMENT);
+
+        var variabelAcces = (VariableAccess)expression;
+        assertThat(variabelAcces.getIdentifier()).isEqualTo("other");
+    }
+
+    @Test
+    public void unaryExpression_Not(){
+        var input =
+                "procedure test()\n"+
+                        "begin\n"+
+                        "object = !other;\n"+
+                        "end\n";
+
+        var program = createAst(input);
+        var assignmentStatement = (AssignmentStatement)program.getProcedures().get(0).getStatements().get(0);
+
+        var right = assignmentStatement.getRight();
+        assertThat(right).isInstanceOf(UnaryExpression.class);
+
+        var unaryExpression = (UnaryExpression)right;
+        var operator = unaryExpression.getUnaryOperator();
+
+        assertThat(operator).isEqualTo(UnaryOperator.NOT);
     }
 
     private Program createAst(String input) {
