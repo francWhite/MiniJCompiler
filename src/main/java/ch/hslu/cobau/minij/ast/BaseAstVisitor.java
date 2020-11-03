@@ -37,11 +37,6 @@ public class BaseAstVisitor implements AstVisitor {
     }
 
     @Override
-    public void visit(DeclarationStatement declarationStatement) {
-        declarationStatement.visitChildren(this);
-    }
-
-    @Override
     public void visit(CallStatement callStatement) {
         callStatement.visitChildren(this);
     }

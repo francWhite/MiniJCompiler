@@ -15,7 +15,6 @@ public interface AstVisitor {
     void visit(WhileStatement whileStatement);
     void visit(ReturnStatement returnStatement);
     void visit(AssignmentStatement assignment);
-    void visit(DeclarationStatement declarationStatement);
     void visit(CallStatement callStatement);
     void visit(Block block);
 
