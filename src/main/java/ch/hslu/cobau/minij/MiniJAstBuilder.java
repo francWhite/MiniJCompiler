@@ -6,12 +6,12 @@ import ch.hslu.cobau.minij.ast.constants.StringConstant;
 import ch.hslu.cobau.minij.ast.constants.TrueConstant;
 import ch.hslu.cobau.minij.ast.entity.*;
 import ch.hslu.cobau.minij.ast.expression.*;
-import ch.hslu.cobau.minij.ast.statement.AssignmentStatement;
-import ch.hslu.cobau.minij.ast.statement.ReturnStatement;
-import ch.hslu.cobau.minij.ast.statement.Statement;
+import ch.hslu.cobau.minij.ast.statement.*;
 import ch.hslu.cobau.minij.ast.type.*;
 import org.antlr.v4.runtime.Token;
+import org.stringtemplate.v4.ST;
 
+import javax.swing.plaf.synth.SynthTextAreaUI;
 import java.util.LinkedList;
 import java.util.Stack;
 
@@ -46,8 +46,8 @@ public class MiniJAstBuilder extends MiniJBaseVisitor<Program> {
     public Program visitDeclaration(MiniJParser.DeclarationContext ctx) {
         visitChildren(ctx);
 
-        var identifier = (String)stack.pop();
-        var type = (Type)stack.pop();
+        var identifier = (String) stack.pop();
+        var type = (Type) stack.pop();
         var declaration = new Declaration(identifier, type);
 
         stack.push(declaration);
@@ -61,10 +61,10 @@ public class MiniJAstBuilder extends MiniJBaseVisitor<Program> {
 
         var declarations = new LinkedList<Declaration>();
         while (stack.size() - 1 > parentStackCount) {            //stack.size() - 1 because the identifier is also pushed to the stack
-            declarations.addFirst((Declaration)stack.pop());
+            declarations.addFirst((Declaration) stack.pop());
         }
 
-        var identifier = (String)stack.pop();
+        var identifier = (String) stack.pop();
         var record = new RecordStructure(identifier, declarations);
         stack.push(record);
 
@@ -76,25 +76,37 @@ public class MiniJAstBuilder extends MiniJBaseVisitor<Program> {
         var parentStackCount = stack.size();
         visitChildren(ctx);
 
-        var statements = new LinkedList<Statement>();
-        while (stack.size() > parentStackCount && stack.peek() instanceof Statement){
-            statements.addFirst((Statement)stack.pop());
-        }
+        var block = (Block) stack.pop();
 
         var declarations = new LinkedList<Declaration>();
-        while (stack.size() > parentStackCount && stack.peek().getClass() == Declaration.class){
-            declarations.addFirst((Declaration)stack.pop());
+        while (stack.size() > parentStackCount && stack.peek().getClass() == Declaration.class) {
+            declarations.addFirst((Declaration) stack.pop());
         }
 
         var parameters = new LinkedList<Parameter>();
-        while (stack.size() > parentStackCount && stack.peek().getClass() == Parameter.class){
-            parameters.addFirst((Parameter)stack.pop());
+        while (stack.size() > parentStackCount && stack.peek().getClass() == Parameter.class) {
+            parameters.addFirst((Parameter) stack.pop());
         }
 
-        var identifier = (String)stack.pop();
+        var identifier = (String) stack.pop();
 
-        var procedure = new Procedure(identifier, parameters, declarations, statements);
+        var procedure = new Procedure(identifier, parameters, declarations, block.getStatements());
         stack.push(procedure);
+        return null;
+    }
+
+    @Override
+    public Program visitBlock(MiniJParser.BlockContext ctx) {
+        var parentStackCount = stack.size();
+        visitChildren(ctx);
+
+        var statements = new LinkedList<Statement>();
+        while (stack.size() > parentStackCount) {
+            statements.addFirst((Statement) stack.pop());
+        }
+
+        var block = new Block(statements);
+        stack.push(block);
         return null;
     }
 
@@ -102,8 +114,8 @@ public class MiniJAstBuilder extends MiniJBaseVisitor<Program> {
     public Program visitParameter(MiniJParser.ParameterContext ctx) {
         visitChildren(ctx);
 
-        var identifier = (String)stack.pop();
-        var type = (Type)stack.pop();
+        var identifier = (String) stack.pop();
+        var type = (Type) stack.pop();
         var isByReference = ctx.REF() != null;
 
         var parameter = new Parameter(identifier, type, isByReference);
@@ -122,20 +134,109 @@ public class MiniJAstBuilder extends MiniJBaseVisitor<Program> {
     public Program visitAssignment(MiniJParser.AssignmentContext ctx) {
         visitChildren(ctx);
 
-        var right = (Expression)stack.pop();
-        var left = (Expression)stack.pop();
+        var right = (Expression) stack.pop();
+        var left = (Expression) stack.pop();
 
         var assignement = new AssignmentStatement(left, right);
         stack.push(assignement);
         return null;
     }
 
+    @Override
+    public Program visitCallStatement(MiniJParser.CallStatementContext ctx) {
+        var parentStackCount = stack.size();
+        visitChildren(ctx);
+
+        var parameters = new LinkedList<Expression>();
+        while (stack.size() > parentStackCount && stack.peek() instanceof Expression) {
+            parameters.addFirst((Expression) stack.pop());
+        }
+
+        var identifier = (String) stack.pop();
+        var callStatement = new CallStatement(identifier, parameters);
+
+        stack.push(callStatement);
+        return null;
+    }
+
+    @Override
+    public Program visitWhileStatement(MiniJParser.WhileStatementContext ctx) {
+        visitChildren(ctx);
+
+        var block = (Block) stack.pop();
+        var expression = (Expression) stack.pop();
+        var whileStatement = new WhileStatement(expression, block.getStatements());
+
+        stack.push(whileStatement);
+        return null;
+    }
+
+    @Override
+    public Program visitIfStatement(MiniJParser.IfStatementContext ctx) {
+        var parentStackCount = stack.size();
+        visitChildren(ctx);
+
+        Block elseBlock = null;
+        if (stack.size() - parentStackCount % 2 != 0) {
+            elseBlock = (Block) stack.pop();
+        }
+
+        IfStatement lastElseIfStatement = null;
+        while (stack.size() >= parentStackCount + 4) {
+            var elseIfBlock = (Block) stack.pop();
+            var expression = (Expression) stack.pop();
+
+            if (lastElseIfStatement == null) {
+                lastElseIfStatement = new IfStatement(expression, elseIfBlock.getStatements(), elseBlock);
+            } else {
+                lastElseIfStatement = new IfStatement(expression, elseIfBlock.getStatements(), lastElseIfStatement);
+            }
+        }
+
+        var ifBlock = (Block) stack.pop();
+        var expression = (Expression) stack.pop();
+        var ifStatement = new IfStatement(expression, ifBlock.getStatements(), lastElseIfStatement);
+
+        stack.push(ifStatement);
+        return null;
+    }
+
     //Expressions-----------------------------------------------------
+    @Override
+    public Program visitExpression(MiniJParser.ExpressionContext ctx) {
+        visitChildren(ctx);
+
+        if (stack.peek() instanceof MemoryAccess && ctx.INCREMENT() != null || ctx.DECREMENT() != null) {
+            var memoryAccess = (MemoryAccess) stack.pop();
+
+            UnaryOperator unaryOperand;
+            if (ctx.INCREMENT() != null) {
+                unaryOperand = UnaryOperator.POST_INCREMENT;
+            } else {
+                unaryOperand = UnaryOperator.POST_DECREMENT;
+            }
+
+            var unaryExpression = new UnaryExpression(memoryAccess, unaryOperand);
+            stack.push(unaryExpression);
+        }
+
+        if (ctx.binaryOp != null) {
+            var right = (Expression) stack.pop();
+            var left = (Expression) stack.pop();
+            var operator = parseBinaryOperator(ctx.binaryOp);
+
+            var binaryExpression = new BinaryExpression(left, right, operator);
+            stack.push(binaryExpression);
+        }
+
+        return null;
+    }
+
     @Override
     public Program visitUnaryExpression(MiniJParser.UnaryExpressionContext ctx) {
         visitChildren(ctx);
 
-        var expression = (Expression)stack.pop();
+        var expression = (Expression) stack.pop();
         var unaryOperator = parseUnaryOperator(ctx.unaryOp);
         var unaryExpression = new UnaryExpression(expression, unaryOperator);
 
@@ -151,18 +252,18 @@ public class MiniJAstBuilder extends MiniJBaseVisitor<Program> {
         MemoryAccess memoryAccess;
 
         //if no childern were added, it must be an VariableAccess
-        if (stack.size() == parentStackCount){
+        if (stack.size() == parentStackCount) {
             memoryAccess = new VariableAccess(ctx.ID().getText());
         }
         //if the last child is a MemoryAccess, it must be an FieldAccess
-        else if(stack.peek() instanceof MemoryAccess){
-            var base = (MemoryAccess)stack.pop();
+        else if (stack.peek() instanceof MemoryAccess) {
+            var base = (MemoryAccess) stack.pop();
             memoryAccess = new FieldAccess(base, ctx.ID().getText());
         }
         //else it must be an ArrayAccess
         else {
-            var indexExpression = (Expression)stack.pop();
-            var base = (MemoryAccess)stack.pop();
+            var indexExpression = (Expression) stack.pop();
+            var base = (MemoryAccess) stack.pop();
             memoryAccess = new ArrayAccess(base, indexExpression);
         }
 
@@ -205,9 +306,9 @@ public class MiniJAstBuilder extends MiniJBaseVisitor<Program> {
     public Program visitType(MiniJParser.TypeContext ctx) {
         visitChildren(ctx);
 
-        var type = (Type)stack.pop();
-        if (ctx.RBRACKET() != null){
-           type = new ArrayType(type);
+        var type = (Type) stack.pop();
+        if (ctx.RBRACKET() != null) {
+            type = new ArrayType(type);
         }
 
         stack.push(type);
@@ -242,12 +343,12 @@ public class MiniJAstBuilder extends MiniJBaseVisitor<Program> {
     public Program visitRecordType(MiniJParser.RecordTypeContext ctx) {
         visitChildren(ctx);
 
-        var identifier = (String)stack.pop();
+        var identifier = (String) stack.pop();
         stack.push(new RecordType(identifier));
         return null;
     }
 
-    private UnaryOperator parseUnaryOperator(Token operator){
+    private UnaryOperator parseUnaryOperator(Token operator) {
         var symbolicName = MiniJParser.VOCABULARY.getSymbolicName(operator.getType());
 
         return switch (symbolicName) {
@@ -259,7 +360,7 @@ public class MiniJAstBuilder extends MiniJBaseVisitor<Program> {
         };
     }
 
-    private BinaryOperator parseBinaryOperator(Token operator){
+    private BinaryOperator parseBinaryOperator(Token operator) {
         var symbolicName = MiniJParser.VOCABULARY.getSymbolicName(operator.getType());
         return BinaryOperator.valueOf(symbolicName);
     }

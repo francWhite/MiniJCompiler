@@ -2,10 +2,10 @@ package ch.hslu.cobau.minij;
 
 import ch.hslu.cobau.minij.ast.constants.IntegerConstant;
 import ch.hslu.cobau.minij.ast.constants.StringConstant;
+import ch.hslu.cobau.minij.ast.constants.TrueConstant;
 import ch.hslu.cobau.minij.ast.entity.Program;
 import ch.hslu.cobau.minij.ast.expression.*;
-import ch.hslu.cobau.minij.ast.statement.AssignmentStatement;
-import ch.hslu.cobau.minij.ast.statement.ReturnStatement;
+import ch.hslu.cobau.minij.ast.statement.*;
 import ch.hslu.cobau.minij.ast.type.ArrayType;
 import ch.hslu.cobau.minij.ast.type.BooleanType;
 import ch.hslu.cobau.minij.ast.type.IntegerType;
@@ -338,6 +338,120 @@ public class MiniJAstBuilderTest {
         var operator = unaryExpression.getUnaryOperator();
 
         assertThat(operator).isEqualTo(UnaryOperator.NOT);
+    }
+
+    @Test
+    public void unaryExpression_PostIncrement(){
+        var input =
+                "procedure test()\n"+
+                        "begin\n"+
+                        "object = other++;\n"+
+                        "end\n";
+
+        var program = createAst(input);
+        var assignmentStatement = (AssignmentStatement)program.getProcedures().get(0).getStatements().get(0);
+
+        var right = assignmentStatement.getRight();
+        assertThat(right).isInstanceOf(UnaryExpression.class);
+
+        var unaryExpression = (UnaryExpression)right;
+        var operator = unaryExpression.getUnaryOperator();
+
+        assertThat(operator).isEqualTo(UnaryOperator.POST_INCREMENT);
+    }
+
+    @Test
+    public void binaryExpression_add(){
+        var input =
+                "procedure test()\n"+
+                        "begin\n"+
+                        "object = 1 + 2;\n"+
+                        "end\n";
+
+        var program = createAst(input);
+        var assignmentStatement = (AssignmentStatement)program.getProcedures().get(0).getStatements().get(0);
+
+        var right = assignmentStatement.getRight();
+        assertThat(right).isInstanceOf(BinaryExpression.class);
+
+        var binaryExpression = (BinaryExpression)right;
+        var leftExpression = (IntegerConstant)binaryExpression.getLeft();
+        var rightExpression = (IntegerConstant)binaryExpression.getRight();
+        var operand = binaryExpression.getBinaryOperator();
+
+        assertThat(leftExpression.getValue()).isEqualTo(1);
+        assertThat(rightExpression.getValue()).isEqualTo(2);
+        assertThat(operand).isEqualTo(BinaryOperator.PLUS);
+    }
+
+    @Test
+    public void methodCallStatement(){
+        var input =
+                "procedure test()\n"+
+                        "begin\n"+
+                        "call(1, x);\n"+
+                        "end\n";
+
+        var program = createAst(input);
+        var callStatement = (CallStatement)program.getProcedures().get(0).getStatements().get(0);
+
+        assertThat(callStatement.getIdentifier()).isEqualTo("call");
+        var firstParameter = (IntegerConstant)callStatement.getParameters().get(0);
+        var secondParameter = (VariableAccess)callStatement.getParameters().get(1);
+
+        assertThat(firstParameter.getValue()).isEqualTo(1);
+        assertThat(secondParameter.getIdentifier()).isEqualTo("x");
+    }
+
+    @Test
+    public void whileStatement(){
+        var input =
+                "procedure test()\n"+
+                        "begin\n"+
+                            "while(true)\n"+
+                            "do\n"+
+                                "call();\n"+
+                            "end\n"+
+                        "end\n";
+
+        var program = createAst(input);
+
+        var whileStatement = (WhileStatement)program.getProcedures().get(0).getStatements().get(0);
+        assertThat(whileStatement.getExpression()).isInstanceOf(TrueConstant.class);
+
+        var statement = whileStatement.getStatements().get(0);
+        assertThat(statement).isInstanceOf(CallStatement.class);
+    }
+
+    @Test
+    public void ifElsIfElseStatement(){
+        var input =
+                "procedure test()\n"+
+                        "begin\n"+
+                            "if(true)\n"+
+                            "then\n"+
+                                "call1();\n"+
+                            "elsif(true)\n"+
+                            "then\n"+
+                                "call2();\n" +
+                            "else\n"+
+                                "call3();\n"+
+                            "end\n"+
+                        "end\n";
+
+        var program = createAst(input);
+
+        var ifStatement = (IfStatement)program.getProcedures().get(0).getStatements().get(0);
+        var statement = (CallStatement)ifStatement.getStatements().get(0);
+        assertThat(statement.getIdentifier()).isEqualTo("call1");
+
+        var elseIfStatement =  (IfStatement)ifStatement.getElseBlock();
+        statement = (CallStatement)elseIfStatement.getStatements().get(0);
+        assertThat(statement.getIdentifier()).isEqualTo("call2");
+
+        var elseBlock = (Block)elseIfStatement.getElseBlock();
+        statement = (CallStatement)elseBlock.getStatements().get(0);
+        assertThat(statement.getIdentifier()).isEqualTo("call3");
     }
 
     private Program createAst(String input) {

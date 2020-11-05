@@ -4,7 +4,6 @@ import ch.hslu.cobau.minij.ast.entity.Program;
 import org.antlr.v4.runtime.*;
 
 import java.io.IOException;
-import java.util.LinkedList;
 
 public class MiniJCompiler {
     private static class EnhancedConsoleErrorListener extends ConsoleErrorListener {
@@ -46,6 +45,7 @@ public class MiniJCompiler {
         Program program = miniJAstBuilder.visit(unitContext);
 
         // semantic check (milestone 3)
+
 
         // code generation (milestone 4)
         // runtime and system libraries (milestone 5)
