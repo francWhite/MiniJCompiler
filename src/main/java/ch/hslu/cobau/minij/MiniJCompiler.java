@@ -1,6 +1,8 @@
 package ch.hslu.cobau.minij;
 
 import ch.hslu.cobau.minij.ast.entity.Program;
+import ch.hslu.cobau.minij.semanticChecks.symbolTable.SemanticErrorListener;
+import ch.hslu.cobau.minij.semanticChecks.symbolTable.SymbolTableVisitor;
 import org.antlr.v4.runtime.*;
 
 import java.io.IOException;
@@ -45,11 +47,27 @@ public class MiniJCompiler {
         Program program = miniJAstBuilder.visit(unitContext);
 
         // semantic check (milestone 3)
+        var semanticErrorListener = new SemanticErrorListener();
+        var symbolTableVisitor = new SymbolTableVisitor(semanticErrorListener);
+        symbolTableVisitor.visit(program);
 
+        var symbolTables = symbolTableVisitor.getSymbolTables();
 
         // code generation (milestone 4)
-        // runtime and system libraries (milestone 5)
 
-        System.exit(errorListener.hasErrors() ? 1 : 0);
+
+        // runtime and system libraries (milestone 5)
+        if (errorListener.hasErrors()){
+            System.exit(1);
+        }
+
+        if (semanticErrorListener.hasErrors()){
+            for(var error : semanticErrorListener.getErrors()){
+                System.out.println("Error: " + error.getErrorMessage());
+            }
+            System.exit(1);
+        }
+
+        System.exit(0);
     }
 }

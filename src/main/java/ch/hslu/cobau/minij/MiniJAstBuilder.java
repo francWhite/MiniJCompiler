@@ -9,9 +9,7 @@ import ch.hslu.cobau.minij.ast.expression.*;
 import ch.hslu.cobau.minij.ast.statement.*;
 import ch.hslu.cobau.minij.ast.type.*;
 import org.antlr.v4.runtime.Token;
-import org.stringtemplate.v4.ST;
 
-import javax.swing.plaf.synth.SynthTextAreaUI;
 import java.util.LinkedList;
 import java.util.Stack;
 
