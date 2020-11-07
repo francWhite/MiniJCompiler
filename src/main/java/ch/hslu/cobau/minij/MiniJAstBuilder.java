@@ -8,7 +8,6 @@ import ch.hslu.cobau.minij.ast.entity.*;
 import ch.hslu.cobau.minij.ast.expression.*;
 import ch.hslu.cobau.minij.ast.statement.*;
 import ch.hslu.cobau.minij.ast.type.*;
-import ch.hslu.cobau.minij.semanticChecks.symbolTable.SemanticErrorListener;
 import org.antlr.v4.runtime.Token;
 
 import java.util.LinkedList;
@@ -17,10 +16,10 @@ import java.util.Stack;
 public class MiniJAstBuilder extends MiniJBaseVisitor<Program> {
     // Main Stack
     private final Stack<Object> stack = new Stack<>();
-    private final SemanticErrorListener semanticErrorListener;
+    private final EnhancedConsoleErrorListener errorListener;
 
-    public MiniJAstBuilder(SemanticErrorListener semanticErrorListener) {
-        this.semanticErrorListener = semanticErrorListener;
+    public MiniJAstBuilder(EnhancedConsoleErrorListener errorListener) {
+        this.errorListener = errorListener;
     }
 
     @Override
@@ -295,7 +294,7 @@ public class MiniJAstBuilder extends MiniJBaseVisitor<Program> {
             var numericValue = Long.parseLong(stringValue);
             stack.push(new IntegerConstant(numericValue));
         }catch (NumberFormatException e){
-            semanticErrorListener.reportError("Integer: number is out of 64-Bit range");
+            errorListener.semanticError("Integer: number is out of 64-Bit range");
             stack.push(new IntegerConstant(-1));
         }
         return null;

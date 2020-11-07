@@ -1,38 +1,36 @@
 package ch.hslu.cobau.minij.semanticChecks.typeCheck;
 
+import ch.hslu.cobau.minij.EnhancedConsoleErrorListener;
 import ch.hslu.cobau.minij.ast.BaseAstVisitor;
 import ch.hslu.cobau.minij.ast.constants.FalseConstant;
 import ch.hslu.cobau.minij.ast.constants.IntegerConstant;
 import ch.hslu.cobau.minij.ast.constants.StringConstant;
 import ch.hslu.cobau.minij.ast.constants.TrueConstant;
 import ch.hslu.cobau.minij.ast.entity.Declaration;
-import ch.hslu.cobau.minij.ast.entity.Parameter;
 import ch.hslu.cobau.minij.ast.entity.Procedure;
 import ch.hslu.cobau.minij.ast.expression.FieldAccess;
 import ch.hslu.cobau.minij.ast.expression.VariableAccess;
 import ch.hslu.cobau.minij.ast.statement.AssignmentStatement;
 import ch.hslu.cobau.minij.ast.statement.CallStatement;
 import ch.hslu.cobau.minij.ast.type.*;
-import ch.hslu.cobau.minij.semanticChecks.symbolTable.SemanticErrorListener;
 import ch.hslu.cobau.minij.semanticChecks.symbolTable.Symbol;
 import ch.hslu.cobau.minij.semanticChecks.symbolTable.SymbolTable;
 
 import java.util.*;
 
 public class TypeValidationVisitor extends BaseAstVisitor {
+    private final EnhancedConsoleErrorListener errorListener;
     private final Stack<Object> stack = new Stack<>();
-    private final SemanticErrorListener errorListener;
+
     private final LinkedList<SymbolTable> symbolTables;
     private SymbolTable currentScopeSymoblTable;
 
-    private final Set<String> builtInMethods = new HashSet<String>(Arrays.asList("writeInt", "readInt", "writeChar", "readChar"));
+    private final Set<String> builtInMethods = new HashSet<>(Arrays.asList("writeInt", "readInt", "writeChar", "readChar"));
 
-
-    public TypeValidationVisitor(SemanticErrorListener errorListener, LinkedList<SymbolTable> symbolTables) {
+    public TypeValidationVisitor(EnhancedConsoleErrorListener errorListener, LinkedList<SymbolTable> symbolTables) {
         this.errorListener = errorListener;
         this.symbolTables = symbolTables;
     }
-
 
     @Override
     public void visit(Procedure procedure) {
@@ -43,15 +41,10 @@ public class TypeValidationVisitor extends BaseAstVisitor {
                 .get();
 
         if (procedure.getIdentifier().equals("main") && !procedure.getFormalParameters().isEmpty()) {
-            errorListener.reportError("Main mustn't contain parameters");
+            errorListener.semanticError("Main mustn't contain parameters");
         }
 
         super.visit(procedure);
-    }
-
-    @Override
-    public void visit(Parameter parameter) {
-        super.visit(parameter);
     }
 
     @Override
@@ -60,7 +53,7 @@ public class TypeValidationVisitor extends BaseAstVisitor {
             var recordType = (RecordType) declaration.getType();
             var symbol = getSymbolOfParent(recordType.getIdentifier());
             if (symbol.isEmpty()) {
-                errorListener.reportError("Identifier '" + declaration.getIdentifier() + "' doesnt exists");
+                errorListener.semanticError("Identifier '" + declaration.getIdentifier() + "' doesnt exists");
             }
         }
     }
@@ -73,7 +66,7 @@ public class TypeValidationVisitor extends BaseAstVisitor {
         var leftType = (Type) stack.pop();
 
         if (rightType.getClass() != leftType.getClass()) {
-            errorListener.reportError("Assignment: types '" + leftType.getClass() + "' and '" + rightType.getClass() + "' doesnt match");
+            errorListener.semanticError("Assignment: types '" + leftType.getClass() + "' and '" + rightType.getClass() + "' doesnt match");
         }
     }
 
@@ -85,20 +78,20 @@ public class TypeValidationVisitor extends BaseAstVisitor {
         var callParameters = callStatement.getParameters();
         if (builtInMethods.contains(callStatement.getIdentifier())) {
             if (callParameters.size() != 1) {
-                errorListener.reportError("Method '" + callStatement.getIdentifier() + "' takes only 1 parameter, but " + callParameters.size() + " are passed");
+                errorListener.semanticError("Method '" + callStatement.getIdentifier() + "' takes only 1 parameter, but " + callParameters.size() + " are passed");
             }
             return;
         }
 
         var procedureSymbol = getSymbolOfParent(callStatement.getIdentifier());
         if (procedureSymbol.isEmpty()) {
-            errorListener.reportError("Method '" + callStatement.getIdentifier() + "' doesnt exist");
+            errorListener.semanticError("Method '" + callStatement.getIdentifier() + "' doesnt exist");
             return;
         }
 
         var actualProcedure = (Procedure) procedureSymbol.get().getEntity();
         if (callParameters.size() != actualProcedure.getFormalParameters().size()) {
-            errorListener.reportError("Method '" + actualProcedure.getIdentifier() + "' takes only " + actualProcedure.getFormalParameters().size() + " parameters, but " + callParameters.size() + " are passed");
+            errorListener.semanticError("Method '" + actualProcedure.getIdentifier() + "' takes only " + actualProcedure.getFormalParameters().size() + " parameters, but " + callParameters.size() + " are passed");
         }
     }
 
@@ -113,7 +106,7 @@ public class TypeValidationVisitor extends BaseAstVisitor {
     public void visit(VariableAccess variableAccess) {
         var symbol = getSymbol(variableAccess.getIdentifier());
         if (symbol.isEmpty()) {
-            errorListener.reportError("Identifier '" + variableAccess.getIdentifier() + "' doesnt exists");
+            errorListener.semanticError("Identifier '" + variableAccess.getIdentifier() + "' doesnt exists");
             stack.push(new InvalidType());
         } else {
             stack.push(symbol.get().getType());

@@ -1,5 +1,6 @@
 package ch.hslu.cobau.minij.semanticChecks.symbolTable;
 
+import ch.hslu.cobau.minij.EnhancedConsoleErrorListener;
 import ch.hslu.cobau.minij.ast.BaseAstVisitor;
 import ch.hslu.cobau.minij.ast.entity.Procedure;
 import ch.hslu.cobau.minij.ast.entity.Program;
@@ -10,9 +11,9 @@ import java.util.LinkedList;
 
 public class SymbolTableVisitor extends BaseAstVisitor {
     private final LinkedList<SymbolTable> symbolTables = new LinkedList<>();
-    private final SemanticErrorListener errorListener;
+    private final EnhancedConsoleErrorListener errorListener;
 
-    public SymbolTableVisitor(SemanticErrorListener errorListener) {
+    public SymbolTableVisitor(EnhancedConsoleErrorListener errorListener) {
         this.errorListener = errorListener;
     }
 
@@ -106,7 +107,7 @@ public class SymbolTableVisitor extends BaseAstVisitor {
                 .anyMatch(s -> s.getIdentifier().equals(symbol.getIdentifier()));
 
         if (alreadyExitsInCurrentScope || alreadyExitsInParentScope) {
-            errorListener.reportError("Symbol '" + symbol.getIdentifier() + "' of type '"+symbol.getEntity().getClass().getSimpleName()+"' already exists");
+            errorListener.semanticError("Symbol '" + symbol.getIdentifier() + "' of type '"+symbol.getEntity().getClass().getSimpleName()+"' already exists");
             return false;
         }
 
