@@ -8,6 +8,7 @@ import ch.hslu.cobau.minij.ast.entity.*;
 import ch.hslu.cobau.minij.ast.expression.*;
 import ch.hslu.cobau.minij.ast.statement.*;
 import ch.hslu.cobau.minij.ast.type.*;
+import ch.hslu.cobau.minij.semanticChecks.symbolTable.SemanticErrorListener;
 import org.antlr.v4.runtime.Token;
 
 import java.util.LinkedList;
@@ -16,6 +17,11 @@ import java.util.Stack;
 public class MiniJAstBuilder extends MiniJBaseVisitor<Program> {
     // Main Stack
     private final Stack<Object> stack = new Stack<>();
+    private final SemanticErrorListener semanticErrorListener;
+
+    public MiniJAstBuilder(SemanticErrorListener semanticErrorListener) {
+        this.semanticErrorListener = semanticErrorListener;
+    }
 
     @Override
     public Program visitUnit(MiniJParser.UnitContext ctx) {
@@ -175,7 +181,7 @@ public class MiniJAstBuilder extends MiniJBaseVisitor<Program> {
         visitChildren(ctx);
 
         Block elseBlock = null;
-        if (stack.size() - parentStackCount % 2 != 0) {
+        if ((stack.size() - parentStackCount) % 2 != 0) {
             elseBlock = (Block) stack.pop();
         }
 
@@ -285,8 +291,13 @@ public class MiniJAstBuilder extends MiniJBaseVisitor<Program> {
     @Override
     public Program visitIntegerConstant(MiniJParser.IntegerConstantContext ctx) {
         var stringValue = ctx.INTEGER().getText();
-        var numericValue = Long.parseLong(stringValue);
-        stack.push(new IntegerConstant(numericValue));
+        try{
+            var numericValue = Long.parseLong(stringValue);
+            stack.push(new IntegerConstant(numericValue));
+        }catch (NumberFormatException e){
+            semanticErrorListener.reportError("Integer: number is out of 64-Bit range");
+            stack.push(new IntegerConstant(-1));
+        }
         return null;
     }
 

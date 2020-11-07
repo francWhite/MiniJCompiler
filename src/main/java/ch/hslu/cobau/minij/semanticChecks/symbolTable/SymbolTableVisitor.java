@@ -3,6 +3,8 @@ package ch.hslu.cobau.minij.semanticChecks.symbolTable;
 import ch.hslu.cobau.minij.ast.BaseAstVisitor;
 import ch.hslu.cobau.minij.ast.entity.Procedure;
 import ch.hslu.cobau.minij.ast.entity.Program;
+import ch.hslu.cobau.minij.ast.entity.RecordStructure;
+import ch.hslu.cobau.minij.ast.type.RecordType;
 
 import java.util.LinkedList;
 
@@ -26,6 +28,22 @@ public class SymbolTableVisitor extends BaseAstVisitor {
 
             if (validateSymbol(symbol, symbols, new LinkedList<>())) {
                 symbols.add(symbol);
+            }
+        }
+
+        //Procedure Symbols
+        for(var procedure : program.getProcedures()){
+            var procedureSymbol = new Symbol(procedure.getIdentifier(), procedure, null);
+            if (validateSymbol(procedureSymbol, symbols, new LinkedList<>())){
+                symbols.add(procedureSymbol);
+            }
+        }
+
+        //Records Symbols
+        for(var record : program.getRecords()){
+            var recordSymbol = new Symbol(record.getIdentifier(), record, new RecordType(record.getIdentifier()));
+            if (validateSymbol(recordSymbol, symbols, new LinkedList<>())){
+                symbols.add(recordSymbol);
             }
         }
 
@@ -58,15 +76,24 @@ public class SymbolTableVisitor extends BaseAstVisitor {
             }
         }
 
-        //Procedure Symbol
-        var procedureSymbol = new Symbol(procedure.getIdentifier(), procedure, null);
-        if (validateSymbol(procedureSymbol, parentSymbolTable.getSymbols(), new LinkedList<>())){
-            parentSymbolTable.getSymbols().add(procedureSymbol);
-        }
-
         var symbolTable = new SymbolTable(parentSymbolTable, procedure, symbols);
 
         symbolTables.add(symbolTable);
+    }
+
+    @Override
+    public void visit(RecordStructure recordStructure) {
+        var parentSymbolTable = symbolTables.getFirst();
+        var symbols = new LinkedList<Symbol>();
+
+        for(var declaration : recordStructure.getDeclarations()){
+            var identifier = recordStructure.getIdentifier() + "." + declaration.getIdentifier();
+            var symbol = new Symbol(identifier, declaration, declaration.getType());
+
+            if (validateSymbol(symbol, symbols, parentSymbolTable.getSymbols())) {
+                parentSymbolTable.getSymbols().add(symbol);
+            }
+        }
     }
 
     private boolean validateSymbol(Symbol symbol, LinkedList<Symbol> existingSymbols, LinkedList<Symbol> existingSymbolsParent){

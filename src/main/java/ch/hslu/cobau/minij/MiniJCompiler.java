@@ -3,6 +3,7 @@ package ch.hslu.cobau.minij;
 import ch.hslu.cobau.minij.ast.entity.Program;
 import ch.hslu.cobau.minij.semanticChecks.symbolTable.SemanticErrorListener;
 import ch.hslu.cobau.minij.semanticChecks.symbolTable.SymbolTableVisitor;
+import ch.hslu.cobau.minij.semanticChecks.typeCheck.TypeValidationVisitor;
 import org.antlr.v4.runtime.*;
 
 import java.io.IOException;
@@ -36,6 +37,7 @@ public class MiniJCompiler {
         MiniJParser miniJParser = new MiniJParser(commonTokenStream);
 
         EnhancedConsoleErrorListener errorListener = new EnhancedConsoleErrorListener();
+        var semanticErrorListener = new SemanticErrorListener();
         miniJParser.removeErrorListeners();
         miniJParser.addErrorListener(errorListener);
 
@@ -43,15 +45,16 @@ public class MiniJCompiler {
         MiniJParser.UnitContext unitContext = miniJParser.unit();
 
         // create AST
-        MiniJAstBuilder miniJAstBuilder = new MiniJAstBuilder();
+        MiniJAstBuilder miniJAstBuilder = new MiniJAstBuilder(semanticErrorListener);
         Program program = miniJAstBuilder.visit(unitContext);
 
         // semantic check (milestone 3)
-        var semanticErrorListener = new SemanticErrorListener();
         var symbolTableVisitor = new SymbolTableVisitor(semanticErrorListener);
         symbolTableVisitor.visit(program);
 
         var symbolTables = symbolTableVisitor.getSymbolTables();
+        var typeValidationVisitor = new TypeValidationVisitor(semanticErrorListener, symbolTables);
+        typeValidationVisitor.visit(program);
 
         // code generation (milestone 4)
 

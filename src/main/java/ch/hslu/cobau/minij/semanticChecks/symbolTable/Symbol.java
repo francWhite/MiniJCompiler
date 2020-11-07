@@ -21,4 +21,8 @@ public class Symbol {
     public AstElement getEntity() {
         return entity;
     }
+
+    public Type getType() {
+        return type;
+    }
 }

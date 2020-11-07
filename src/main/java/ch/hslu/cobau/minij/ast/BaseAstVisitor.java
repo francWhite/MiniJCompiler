@@ -27,6 +27,11 @@ public class BaseAstVisitor implements AstVisitor {
     }
 
     @Override
+    public void visit(Parameter parameter) {
+        parameter.visitChildren(this);
+    }
+
+    @Override
     public void visit(ReturnStatement returnStatement) {
         returnStatement.visitChildren(this);
     }

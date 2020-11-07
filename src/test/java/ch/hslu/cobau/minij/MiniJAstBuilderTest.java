@@ -10,6 +10,7 @@ import ch.hslu.cobau.minij.ast.type.ArrayType;
 import ch.hslu.cobau.minij.ast.type.BooleanType;
 import ch.hslu.cobau.minij.ast.type.IntegerType;
 import ch.hslu.cobau.minij.ast.type.StringType;
+import ch.hslu.cobau.minij.semanticChecks.symbolTable.SemanticErrorListener;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
 
@@ -460,7 +461,7 @@ public class MiniJAstBuilderTest {
         MiniJParser miniJParser = new MiniJParser(commonTokenStream);
         MiniJParser.UnitContext unitContext = miniJParser.unit();
 
-        MiniJAstBuilder miniJAstBuilder = new MiniJAstBuilder();
+        MiniJAstBuilder miniJAstBuilder = new MiniJAstBuilder(new SemanticErrorListener());
         return miniJAstBuilder.visit(unitContext);
     }
 

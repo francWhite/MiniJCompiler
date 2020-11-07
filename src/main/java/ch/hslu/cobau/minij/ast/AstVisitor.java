@@ -9,6 +9,7 @@ public interface AstVisitor {
     void visit(Program program);
     void visit(Procedure procedure);
     void visit(Declaration declaration);
+    void visit(Parameter parameter);
     void visit(RecordStructure record);
 
     void visit(IfStatement ifStatement);

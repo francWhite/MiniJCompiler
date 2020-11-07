@@ -43,6 +43,7 @@ public class Procedure extends Block {
     @Override
     public void visitChildren(AstVisitor astVisitor) {
         formalParameters.forEach(parameter -> parameter.accept(astVisitor));
+        declarations.forEach(declaration -> declaration.accept(astVisitor));
         super.visitChildren(astVisitor); // statements
     }
 }

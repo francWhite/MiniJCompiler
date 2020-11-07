@@ -9,7 +9,7 @@
     td.pass {border: 1px solid #90EE90; background-color: #90EE90;color: #007000}
     td.fail {border: 1px solid #F08080; background-color: #F08080;color: #700000}
     tr:nth-child(even) {background-color: #dddddd}
-    </style></head><body><p><b>Test results (score: 7.9 of 30.0 with a starting score of -30):</b></p><table>  <col width="12%">  <col width="13%">  <col width="20%">  <col width="20%">  <col width="5%">  <col width="5%">  <col width="5%">  <col width="5%">  <col width="7%">  <col width="8%">  <tr>    <th>Test case</th>
+    </style></head><body><p><b>Test results (score: 24.6 of 30.0 with a starting score of -30):</b></p><table>  <col width="12%">  <col width="13%">  <col width="20%">  <col width="20%">  <col width="5%">  <col width="5%">  <col width="5%">  <col width="5%">  <col width="7%">  <col width="8%">  <tr>    <th>Test case</th>
     <th>Input</th>
     <th>Expected Output</th>
     <th>Actual Output</th>
@@ -29,7 +29,7 @@
     <td>0</td>
     <td>2.4</td>
     <td class="pass">Passed</td>
-    <td>235</td>
+    <td>236</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -41,7 +41,7 @@
     <td>0</td>
     <td>2.4</td>
     <td class="pass">Passed</td>
-    <td>170</td>
+    <td>186</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -53,7 +53,7 @@
     <td>0</td>
     <td>2.4</td>
     <td class="pass">Passed</td>
-    <td>171</td>
+    <td>178</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -65,7 +65,7 @@
     <td>0</td>
     <td>2.4</td>
     <td class="pass">Passed</td>
-    <td>162</td>
+    <td>189</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -77,67 +77,67 @@
     <td>0</td>
     <td>2.4</td>
     <td class="pass">Passed</td>
-    <td>167</td>
+    <td>186</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>(Deklaration) Globale Variablen (nok)</td>
     <td>int number;<br>int number;</td>
     <td></td>
-    <td>Error: Symbol 'number'(Declaration) already exists<br></td>
+    <td>Error: Symbol 'number' of type 'Declaration' already exists<br></td>
     <td>1</td>
     <td>1</td>
     <td>2.4</td>
     <td class="pass">Passed</td>
-    <td>184</td>
+    <td>176</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>(Deklaration) Variablen (nok)</td>
     <td>procedure main()<br>    string text;<br>    string text;<br>begin<br>end</td>
     <td></td>
-    <td>Error: Symbol 'text'(Declaration) already exists<br></td>
+    <td>Error: Symbol 'text' of type 'Declaration' already exists<br></td>
     <td>1</td>
     <td>1</td>
     <td>2.4</td>
     <td class="pass">Passed</td>
-    <td>192</td>
+    <td>179</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>(Deklaration) Prozedur (nok)</td>
     <td>procedure test()<br>begin<br>end<br>procedure test()<br>begin<br>end</td>
     <td></td>
-    <td>Error: Symbol 'test'(Procedure) already exists<br></td>
+    <td>Error: Symbol 'test' of type 'Procedure' already exists<br></td>
     <td>1</td>
     <td>1</td>
     <td>2.4</td>
     <td class="pass">Passed</td>
-    <td>188</td>
+    <td>174</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>(Deklaration) Records (nok)</td>
     <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>record Coordinate<br>    int x;<br>    int y;<br>end</td>
     <td></td>
-    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>Error: Symbol 'Coordinate' of type 'RecordStructure' already exists<br>Error: Symbol 'Coordinate.x' of type 'Declaration' already exists<br>Error: Symbol 'Coordinate.y' of type 'Declaration' already exists<br></td>
     <td>1</td>
-    <td>0</td>
+    <td>1</td>
     <td>2.4</td>
-    <td class="fail">Wrong Exitcode</td>
-    <td>166</td>
+    <td class="pass">Passed</td>
+    <td>177</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>(Deklaration) Felder (nok)</td>
     <td>record Coordinate<br>    int x;<br>    int x;<br>end</td>
     <td></td>
-    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>Error: Symbol 'Coordinate.x' of type 'Declaration' already exists<br></td>
     <td>1</td>
-    <td>0</td>
+    <td>1</td>
     <td>2.4</td>
-    <td class="fail">Wrong Exitcode</td>
-    <td>161</td>
+    <td class="pass">Passed</td>
+    <td>178</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -149,19 +149,19 @@
     <td>0</td>
     <td>1.3</td>
     <td class="pass">Passed</td>
-    <td>170</td>
+    <td>185</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>(Existenz) Variable (nok)</td>
     <td>procedure main()<br>begin<br>    number = 0;<br>end</td>
     <td></td>
-    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>Error: Identifier 'number' doesnt exists<br>Error: Assignment: types 'class ch.hslu.cobau.minij.ast.type.InvalidType' and 'class ch.hslu.cobau.minij.ast.type.IntegerType' doesnt match<br></td>
     <td>1</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.53</td>
-    <td class="fail">Wrong Exitcode</td>
-    <td>169</td>
+    <td class="pass">Passed</td>
+    <td>181</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -173,19 +173,19 @@
     <td>0</td>
     <td>1.3</td>
     <td class="pass">Passed</td>
-    <td>171</td>
+    <td>176</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>(Existenz) Globale Variable (nok)</td>
     <td>procedure main()<br>begin<br>    number = 0;<br>end</td>
     <td></td>
-    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>Error: Identifier 'number' doesnt exists<br>Error: Assignment: types 'class ch.hslu.cobau.minij.ast.type.InvalidType' and 'class ch.hslu.cobau.minij.ast.type.IntegerType' doesnt match<br></td>
     <td>1</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.53</td>
-    <td class="fail">Wrong Exitcode</td>
-    <td>167</td>
+    <td class="pass">Passed</td>
+    <td>199</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -197,19 +197,19 @@
     <td>0</td>
     <td>1.4</td>
     <td class="pass">Passed</td>
-    <td>170</td>
+    <td>187</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>(Existenz) Parameter (nok)</td>
     <td>procedure test(string text)<br>begin<br>    greeting = "Hello";<br>end</td>
     <td></td>
-    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>Error: Identifier 'greeting' doesnt exists<br>Error: Assignment: types 'class ch.hslu.cobau.minij.ast.type.InvalidType' and 'class ch.hslu.cobau.minij.ast.type.StringType' doesnt match<br></td>
     <td>1</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.54</td>
-    <td class="fail">Wrong Exitcode</td>
-    <td>174</td>
+    <td class="pass">Passed</td>
+    <td>182</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -221,43 +221,43 @@
     <td>0</td>
     <td>1.3</td>
     <td class="pass">Passed</td>
-    <td>179</td>
+    <td>181</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>(Existenz) Record (nok)</td>
     <td>procedure main()<br>    Coordinate coordinate;<br>begin<br>end</td>
     <td></td>
-    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>Error: Identifier 'coordinate' doesnt exists<br></td>
     <td>1</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.53</td>
-    <td class="fail">Wrong Exitcode</td>
-    <td>166</td>
+    <td class="pass">Passed</td>
+    <td>179</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>(Existenz) Recordfelder</td>
     <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    Coordinate coordinate;<br>begin<br>    coordinate.x = 1;<br>end</td>
     <td></td>
-    <td></td>
+    <td>Error: Assignment: types 'class ch.hslu.cobau.minij.ast.type.RecordType' and 'class ch.hslu.cobau.minij.ast.type.IntegerType' doesnt match<br><br>Program exited with exit code: 1, but expected: 0</td>
     <td>0</td>
-    <td>0</td>
+    <td>1</td>
     <td>1.3</td>
-    <td class="pass">Passed</td>
-    <td>171</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>186</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>(Existenz) Recordfelder (nok)</td>
     <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    Coordinate coordinate;<br>begin<br>    coordinate.z = 1;<br>end</td>
     <td></td>
-    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>Error: Assignment: types 'class ch.hslu.cobau.minij.ast.type.RecordType' and 'class ch.hslu.cobau.minij.ast.type.IntegerType' doesnt match<br></td>
     <td>1</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.53</td>
-    <td class="fail">Wrong Exitcode</td>
-    <td>175</td>
+    <td class="pass">Passed</td>
+    <td>185</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -269,115 +269,115 @@
     <td>0</td>
     <td>1.4</td>
     <td class="pass">Passed</td>
-    <td>166</td>
+    <td>174</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>(Existenz) Prozedur (nok)</td>
     <td>procedure test()<br>begin<br>end<br>procedure main()<br>begin<br>    ueberpruefung();<br>end</td>
     <td></td>
-    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>Error: Method 'ueberpruefung' doesnt exist<br></td>
     <td>1</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.54</td>
-    <td class="fail">Wrong Exitcode</td>
-    <td>168</td>
+    <td class="pass">Passed</td>
+    <td>175</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>(Existenz) Falsche Entität (Global als Prozedur)</td>
     <td>int number;<br>procedure main()<br>begin<br>   number();<br>end</td>
     <td></td>
-    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>Exception in thread "main" java.lang.ClassCastException: class ch.hslu.cobau.minij.ast.entity.Declaration cannot be cast to class ch.hslu.cobau.minij.ast.entity.Procedure (ch.hslu.cobau.minij.ast.entity.Declaration and ch.hslu.cobau.minij.ast.entity.Procedure are in unnamed module of loader 'app')<br>&#191;at ch.hslu.cobau.minij.semanticChecks.typeCheck.TypeValidationVisitor.visit(TypeValidationVisitor.java:99)<br>&#191;at ch.hslu.cobau.minij.ast.statement.CallStatement.accept(CallStatement.java:31)<br>&#191;at ch.hslu.cobau.minij.ast.statement.Block.lambda$visitChildren$0(Block.java:27)<br>&#191;at java.base/java.lang.Iterable.forEach(Iterable.java:75)<br>&#191;at ch.hslu.cobau.minij.ast.statement.Block.visitChildren(Block.java:27)<br>&#191;at ch.hslu.cobau.minij.ast.entity.Procedure.visitChildren(Procedure.java:47)<br>&#191;at ch.hslu.cobau.minij.ast.BaseAstVisitor.visit(BaseAstVisitor.java:16)<br>&#191;at ch.hslu.cobau.minij.semanticChecks.typeCheck.TypeValidationVisitor.visit(TypeValidationVisitor.java:49)<br>&#191;at ch.hslu.cobau.minij.ast.entity.Procedure.accept(Procedure.java:40)<br>&#191;at ch.hslu.cobau.minij.ast.entity.Program.lambda$visitChildren$1(Program.java:44)<br>&#191;at java.base/java.lang.Iterable.forEach(Iterable.java:75)<br>&#191;at ch.hslu.cobau.minij.ast.entity.Program.visitChildren(Program.java:44)<br>&#191;at ch.hslu.cobau.minij.ast.BaseAstVisitor.visit(BaseAstVisitor.java:11)<br>&#191;at ch.hslu.cobau.minij.MiniJCompiler.main(MiniJCompiler.java:57)<br></td>
     <td>1</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.53</td>
-    <td class="fail">Wrong Exitcode</td>
-    <td>168</td>
+    <td class="pass">Passed</td>
+    <td>172</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>(Existenz) Falsche Entität (Record als Prozedur)</td>
     <td>record Coordinate<br>  int x;<br>  int y;<br>end<br>procedure main()<br>begin<br>   Coordinate();<br>end</td>
     <td></td>
-    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>Exception in thread "main" java.lang.ClassCastException: class ch.hslu.cobau.minij.ast.entity.RecordStructure cannot be cast to class ch.hslu.cobau.minij.ast.entity.Procedure (ch.hslu.cobau.minij.ast.entity.RecordStructure and ch.hslu.cobau.minij.ast.entity.Procedure are in unnamed module of loader 'app')<br>&#191;at ch.hslu.cobau.minij.semanticChecks.typeCheck.TypeValidationVisitor.visit(TypeValidationVisitor.java:99)<br>&#191;at ch.hslu.cobau.minij.ast.statement.CallStatement.accept(CallStatement.java:31)<br>&#191;at ch.hslu.cobau.minij.ast.statement.Block.lambda$visitChildren$0(Block.java:27)<br>&#191;at java.base/java.lang.Iterable.forEach(Iterable.java:75)<br>&#191;at ch.hslu.cobau.minij.ast.statement.Block.visitChildren(Block.java:27)<br>&#191;at ch.hslu.cobau.minij.ast.entity.Procedure.visitChildren(Procedure.java:47)<br>&#191;at ch.hslu.cobau.minij.ast.BaseAstVisitor.visit(BaseAstVisitor.java:16)<br>&#191;at ch.hslu.cobau.minij.semanticChecks.typeCheck.TypeValidationVisitor.visit(TypeValidationVisitor.java:49)<br>&#191;at ch.hslu.cobau.minij.ast.entity.Procedure.accept(Procedure.java:40)<br>&#191;at ch.hslu.cobau.minij.ast.entity.Program.lambda$visitChildren$1(Program.java:44)<br>&#191;at java.base/java.lang.Iterable.forEach(Iterable.java:75)<br>&#191;at ch.hslu.cobau.minij.ast.entity.Program.visitChildren(Program.java:44)<br>&#191;at ch.hslu.cobau.minij.ast.BaseAstVisitor.visit(BaseAstVisitor.java:11)<br>&#191;at ch.hslu.cobau.minij.MiniJCompiler.main(MiniJCompiler.java:57)<br></td>
     <td>1</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.53</td>
-    <td class="fail">Wrong Exitcode</td>
-    <td>186</td>
+    <td class="pass">Passed</td>
+    <td>184</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>(Existenz) Falsche Entität (Prozedur als Record)</td>
     <td>procedure test()<br>begin<br>end<br>procedure main()<br>begin<br>   test.x = 0;<br>end</td>
     <td></td>
-    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>Exception in thread "main" java.lang.NullPointerException<br>&#191;at ch.hslu.cobau.minij.semanticChecks.typeCheck.TypeValidationVisitor.visit(TypeValidationVisitor.java:75)<br>&#191;at ch.hslu.cobau.minij.ast.statement.AssignmentStatement.accept(AssignmentStatement.java:30)<br>&#191;at ch.hslu.cobau.minij.ast.statement.Block.lambda$visitChildren$0(Block.java:27)<br>&#191;at java.base/java.lang.Iterable.forEach(Iterable.java:75)<br>&#191;at ch.hslu.cobau.minij.ast.statement.Block.visitChildren(Block.java:27)<br>&#191;at ch.hslu.cobau.minij.ast.entity.Procedure.visitChildren(Procedure.java:47)<br>&#191;at ch.hslu.cobau.minij.ast.BaseAstVisitor.visit(BaseAstVisitor.java:16)<br>&#191;at ch.hslu.cobau.minij.semanticChecks.typeCheck.TypeValidationVisitor.visit(TypeValidationVisitor.java:49)<br>&#191;at ch.hslu.cobau.minij.ast.entity.Procedure.accept(Procedure.java:40)<br>&#191;at ch.hslu.cobau.minij.ast.entity.Program.lambda$visitChildren$1(Program.java:44)<br>&#191;at java.base/java.lang.Iterable.forEach(Iterable.java:75)<br>&#191;at ch.hslu.cobau.minij.ast.entity.Program.visitChildren(Program.java:44)<br>&#191;at ch.hslu.cobau.minij.ast.BaseAstVisitor.visit(BaseAstVisitor.java:11)<br>&#191;at ch.hslu.cobau.minij.MiniJCompiler.main(MiniJCompiler.java:57)<br></td>
     <td>1</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.54</td>
-    <td class="fail">Wrong Exitcode</td>
-    <td>173</td>
+    <td class="pass">Passed</td>
+    <td>174</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>(Existenz) Falsche Entität (Prozedur als Variable, LHS)</td>
     <td>procedure test()<br>begin<br>end<br>procedure main()<br>begin<br>   test = 42;<br>end</td>
     <td></td>
-    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>Exception in thread "main" java.lang.NullPointerException<br>&#191;at ch.hslu.cobau.minij.semanticChecks.typeCheck.TypeValidationVisitor.visit(TypeValidationVisitor.java:75)<br>&#191;at ch.hslu.cobau.minij.ast.statement.AssignmentStatement.accept(AssignmentStatement.java:30)<br>&#191;at ch.hslu.cobau.minij.ast.statement.Block.lambda$visitChildren$0(Block.java:27)<br>&#191;at java.base/java.lang.Iterable.forEach(Iterable.java:75)<br>&#191;at ch.hslu.cobau.minij.ast.statement.Block.visitChildren(Block.java:27)<br>&#191;at ch.hslu.cobau.minij.ast.entity.Procedure.visitChildren(Procedure.java:47)<br>&#191;at ch.hslu.cobau.minij.ast.BaseAstVisitor.visit(BaseAstVisitor.java:16)<br>&#191;at ch.hslu.cobau.minij.semanticChecks.typeCheck.TypeValidationVisitor.visit(TypeValidationVisitor.java:49)<br>&#191;at ch.hslu.cobau.minij.ast.entity.Procedure.accept(Procedure.java:40)<br>&#191;at ch.hslu.cobau.minij.ast.entity.Program.lambda$visitChildren$1(Program.java:44)<br>&#191;at java.base/java.lang.Iterable.forEach(Iterable.java:75)<br>&#191;at ch.hslu.cobau.minij.ast.entity.Program.visitChildren(Program.java:44)<br>&#191;at ch.hslu.cobau.minij.ast.BaseAstVisitor.visit(BaseAstVisitor.java:11)<br>&#191;at ch.hslu.cobau.minij.MiniJCompiler.main(MiniJCompiler.java:57)<br></td>
     <td>1</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.53</td>
-    <td class="fail">Wrong Exitcode</td>
-    <td>169</td>
+    <td class="pass">Passed</td>
+    <td>176</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>(Existenz) Falsche Entität (Prozedur als Variable, RHS)</td>
     <td>procedure test()<br>begin<br>end<br>procedure main()<br>  int number;<br>begin<br>   number = 2 * test;<br>end</td>
     <td></td>
-    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>Exception in thread "main" java.lang.NullPointerException<br>&#191;at ch.hslu.cobau.minij.semanticChecks.typeCheck.TypeValidationVisitor.visit(TypeValidationVisitor.java:75)<br>&#191;at ch.hslu.cobau.minij.ast.statement.AssignmentStatement.accept(AssignmentStatement.java:30)<br>&#191;at ch.hslu.cobau.minij.ast.statement.Block.lambda$visitChildren$0(Block.java:27)<br>&#191;at java.base/java.lang.Iterable.forEach(Iterable.java:75)<br>&#191;at ch.hslu.cobau.minij.ast.statement.Block.visitChildren(Block.java:27)<br>&#191;at ch.hslu.cobau.minij.ast.entity.Procedure.visitChildren(Procedure.java:47)<br>&#191;at ch.hslu.cobau.minij.ast.BaseAstVisitor.visit(BaseAstVisitor.java:16)<br>&#191;at ch.hslu.cobau.minij.semanticChecks.typeCheck.TypeValidationVisitor.visit(TypeValidationVisitor.java:49)<br>&#191;at ch.hslu.cobau.minij.ast.entity.Procedure.accept(Procedure.java:40)<br>&#191;at ch.hslu.cobau.minij.ast.entity.Program.lambda$visitChildren$1(Program.java:44)<br>&#191;at java.base/java.lang.Iterable.forEach(Iterable.java:75)<br>&#191;at ch.hslu.cobau.minij.ast.entity.Program.visitChildren(Program.java:44)<br>&#191;at ch.hslu.cobau.minij.ast.BaseAstVisitor.visit(BaseAstVisitor.java:11)<br>&#191;at ch.hslu.cobau.minij.MiniJCompiler.main(MiniJCompiler.java:57)<br></td>
     <td>1</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.53</td>
-    <td class="fail">Wrong Exitcode</td>
-    <td>177</td>
+    <td class="pass">Passed</td>
+    <td>180</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>(Existenz) Falsche Entität (Record als Variable, LHS)</td>
     <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>begin<br>   Coordinate = 42;<br>end</td>
     <td></td>
-    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>Error: Assignment: types 'class ch.hslu.cobau.minij.ast.type.RecordType' and 'class ch.hslu.cobau.minij.ast.type.IntegerType' doesnt match<br></td>
     <td>1</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.54</td>
-    <td class="fail">Wrong Exitcode</td>
-    <td>169</td>
+    <td class="pass">Passed</td>
+    <td>180</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>(Existenz) Falsche Entität (Record als Variable, RHS)</td>
     <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>  int number;<br>begin<br>   number = 2 * Coordinate;<br>end</td>
     <td></td>
-    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>Error: Assignment: types 'class ch.hslu.cobau.minij.ast.type.IntegerType' and 'class ch.hslu.cobau.minij.ast.type.RecordType' doesnt match<br></td>
     <td>1</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.53</td>
-    <td class="fail">Wrong Exitcode</td>
-    <td>185</td>
+    <td class="pass">Passed</td>
+    <td>187</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>(Existenz) Falsche Entität (Variable als Prozedur)</td>
     <td>procedure main()<br>   int number;<br>begin<br>   number();<br>end</td>
     <td></td>
-    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>Error: Method 'number' doesnt exist<br></td>
     <td>1</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.53</td>
-    <td class="fail">Wrong Exitcode</td>
-    <td>173</td>
+    <td class="pass">Passed</td>
+    <td>182</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -389,7 +389,7 @@
     <td>0</td>
     <td>0.54</td>
     <td class="fail">Wrong Exitcode</td>
-    <td>170</td>
+    <td>199</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -401,19 +401,19 @@
     <td>0</td>
     <td>0.5</td>
     <td class="pass">Passed</td>
-    <td>176</td>
+    <td>177</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>(Bereich) Wertebereich von Integerkonstante (zu hoch)</td>
     <td>int number;<br>procedure main() {<br>    number = 9223372036854775808;<br>}</td>
     <td></td>
-    <td>Exception in thread "main" java.lang.NumberFormatException: For input string: "9223372036854775808"<br>&#191;at java.base/java.lang.NumberFormatException.forInputString(NumberFormatException.java:68)<br>&#191;at java.base/java.lang.Long.parseLong(Long.java:711)<br>&#191;at java.base/java.lang.Long.parseLong(Long.java:832)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitIntegerConstant(MiniJAstBuilder.java:288)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitIntegerConstant(MiniJAstBuilder.java:16)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$IntegerConstantContext.accept(MiniJParser.java:1782)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitExpression(MiniJAstBuilder.java:205)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitExpression(MiniJAstBuilder.java:16)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$ExpressionContext.accept(MiniJParser.java:1372)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitAssignment(MiniJAstBuilder.java:133)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitAssignment(MiniJAstBuilder.java:16)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$AssignmentContext.accept(MiniJParser.java:878)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJBaseVisitor.visitStatement(MiniJBaseVisitor.java:85)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$StatementContext.accept(MiniJParser.java:788)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitBlock(MiniJAstBuilder.java:99)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitBlock(MiniJAstBuilder.java:16)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$BlockContext.accept(MiniJParser.java:655)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJBaseVisitor.visitProcedureBody(MiniJBaseVisitor.java:64)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$ProcedureBodyContext.accept(MiniJParser.java:585)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitProcedure(MiniJAstBuilder.java:75)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitProcedure(MiniJAstBuilder.java:16)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$ProcedureContext.accept(MiniJParser.java:379)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJBaseVisitor.visitMember(MiniJBaseVisitor.java:29)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$MemberContext.accept(MiniJParser.java:213)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitUnit(MiniJAstBuilder.java:22)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitUnit(MiniJAstBuilder.java:16)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$UnitContext.accept(MiniJParser.java:147)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visit(AbstractParseTreeVisitor.java:18)<br>&#191;at ch.hslu.cobau.minij.MiniJCompiler.main(MiniJCompiler.java:47)<br></td>
+    <td>Error: Integer: number is out of 64-Bit range<br></td>
     <td>1</td>
     <td>1</td>
     <td>0.5</td>
     <td class="pass">Passed</td>
-    <td>166</td>
+    <td>178</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -425,19 +425,19 @@
     <td>0</td>
     <td>0.5</td>
     <td class="pass">Passed</td>
-    <td>167</td>
+    <td>172</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>(Bereich) Wertebereich von Integerkonstante (zu tief)</td>
     <td>int number;<br>procedure main() {<br>    number = -9223372036854775809;<br>}</td>
     <td></td>
-    <td>Exception in thread "main" java.lang.NumberFormatException: For input string: "-9223372036854775809"<br>&#191;at java.base/java.lang.NumberFormatException.forInputString(NumberFormatException.java:68)<br>&#191;at java.base/java.lang.Long.parseLong(Long.java:711)<br>&#191;at java.base/java.lang.Long.parseLong(Long.java:832)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitIntegerConstant(MiniJAstBuilder.java:288)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitIntegerConstant(MiniJAstBuilder.java:16)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$IntegerConstantContext.accept(MiniJParser.java:1782)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitExpression(MiniJAstBuilder.java:205)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitExpression(MiniJAstBuilder.java:16)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$ExpressionContext.accept(MiniJParser.java:1372)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitAssignment(MiniJAstBuilder.java:133)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitAssignment(MiniJAstBuilder.java:16)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$AssignmentContext.accept(MiniJParser.java:878)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJBaseVisitor.visitStatement(MiniJBaseVisitor.java:85)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$StatementContext.accept(MiniJParser.java:788)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitBlock(MiniJAstBuilder.java:99)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitBlock(MiniJAstBuilder.java:16)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$BlockContext.accept(MiniJParser.java:655)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJBaseVisitor.visitProcedureBody(MiniJBaseVisitor.java:64)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$ProcedureBodyContext.accept(MiniJParser.java:585)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitProcedure(MiniJAstBuilder.java:75)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitProcedure(MiniJAstBuilder.java:16)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$ProcedureContext.accept(MiniJParser.java:379)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJBaseVisitor.visitMember(MiniJBaseVisitor.java:29)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$MemberContext.accept(MiniJParser.java:213)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitUnit(MiniJAstBuilder.java:22)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitUnit(MiniJAstBuilder.java:16)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$UnitContext.accept(MiniJParser.java:147)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visit(AbstractParseTreeVisitor.java:18)<br>&#191;at ch.hslu.cobau.minij.MiniJCompiler.main(MiniJCompiler.java:47)<br></td>
+    <td>Error: Integer: number is out of 64-Bit range<br></td>
     <td>1</td>
     <td>1</td>
     <td>0.5</td>
     <td class="pass">Passed</td>
-    <td>165</td>
+    <td>179</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -449,7 +449,7 @@
     <td>0</td>
     <td>1.0</td>
     <td class="pass">Passed</td>
-    <td>172</td>
+    <td>177</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -461,31 +461,31 @@
     <td>0</td>
     <td>1.0</td>
     <td class="pass">Passed</td>
-    <td>175</td>
+    <td>179</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>(Aufruf) Funktion mit 2 Parameter (nok)</td>
     <td>procedure test(int a, int b)<br>begin<br>end<br>procedure main()<br>    int number;<br>begin<br>    test(1, number, 3);<br>end</td>
     <td></td>
-    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>Error: Method 'test' takes only 2 parameters, but 3 are passed<br></td>
     <td>1</td>
-    <td>0</td>
+    <td>1</td>
     <td>1.0</td>
-    <td class="fail">Wrong Exitcode</td>
-    <td>171</td>
+    <td class="pass">Passed</td>
+    <td>185</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>(Aufruf) Funktion mit 3 Parameter (nok)</td>
     <td>procedure test(int a, int b, int c)<br>begin<br>end<br>procedure main()<br>    int number;<br>begin<br>    test(1, number);<br>    test(number);<br>end</td>
     <td></td>
-    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>Error: Method 'test' takes only 3 parameters, but 2 are passed<br>Error: Method 'test' takes only 3 parameters, but 1 are passed<br></td>
     <td>1</td>
-    <td>0</td>
+    <td>1</td>
     <td>1.0</td>
-    <td class="fail">Wrong Exitcode</td>
-    <td>173</td>
+    <td class="pass">Passed</td>
+    <td>187</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -497,30 +497,30 @@
     <td>0</td>
     <td>1.0</td>
     <td class="pass">Passed</td>
-    <td>165</td>
+    <td>180</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>(Main) Mainprozedur mit einem Parameter (nok)</td>
     <td>procedure main(int a)<br>begin<br>end</td>
     <td></td>
-    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>Error: Main mustn't contain parameters<br></td>
     <td>1</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.5</td>
-    <td class="fail">Wrong Exitcode</td>
-    <td>166</td>
+    <td class="pass">Passed</td>
+    <td>172</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>(Main) Mainprozedur mit zwei Parameter (nok)</td>
     <td>procedure main(int a, string b)<br>begin<br>end</td>
     <td></td>
-    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>Error: Main mustn't contain parameters<br></td>
     <td>1</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.5</td>
-    <td class="fail">Wrong Exitcode</td>
+    <td class="pass">Passed</td>
     <td>172</td>
     <td>1000</td>
   </tr>
@@ -533,43 +533,43 @@
     <td>0</td>
     <td>1.0</td>
     <td class="pass">Passed</td>
-    <td>172</td>
+    <td>178</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>(Built-in) writeInt/readInt/writeChar/readChar</td>
     <td>procedure main()<br>    int number;<br>begin<br>    if (1 == 1) then<br>        writeInt(number);<br>        readInt(number);<br>        writeChar(number);<br>        readChar(number);<br>    end;<br>end</td>
     <td></td>
-    <td>Exception in thread "main" java.lang.ClassCastException: class ch.hslu.cobau.minij.ast.expression.BinaryExpression cannot be cast to class ch.hslu.cobau.minij.ast.statement.Block (ch.hslu.cobau.minij.ast.expression.BinaryExpression and ch.hslu.cobau.minij.ast.statement.Block are in unnamed module of loader 'app')<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitIfStatement(MiniJAstBuilder.java:194)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitIfStatement(MiniJAstBuilder.java:16)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$IfStatementContext.accept(MiniJParser.java:1144)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJBaseVisitor.visitStatement(MiniJBaseVisitor.java:85)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$StatementContext.accept(MiniJParser.java:788)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitBlock(MiniJAstBuilder.java:99)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitBlock(MiniJAstBuilder.java:16)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$BlockContext.accept(MiniJParser.java:655)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJBaseVisitor.visitProcedureBody(MiniJBaseVisitor.java:64)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$ProcedureBodyContext.accept(MiniJParser.java:585)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitProcedure(MiniJAstBuilder.java:75)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitProcedure(MiniJAstBuilder.java:16)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$ProcedureContext.accept(MiniJParser.java:379)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJBaseVisitor.visitMember(MiniJBaseVisitor.java:29)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$MemberContext.accept(MiniJParser.java:213)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitUnit(MiniJAstBuilder.java:22)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitUnit(MiniJAstBuilder.java:16)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$UnitContext.accept(MiniJParser.java:147)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visit(AbstractParseTreeVisitor.java:18)<br>&#191;at ch.hslu.cobau.minij.MiniJCompiler.main(MiniJCompiler.java:47)<br><br>Program exited with exit code: 1, but expected: 0</td>
+    <td></td>
     <td>0</td>
-    <td>1</td>
+    <td>0</td>
     <td>1.0</td>
-    <td class="fail">Wrong Exitcode</td>
-    <td>168</td>
+    <td class="pass">Passed</td>
+    <td>213</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>(Built-in) writeInt (nok)</td>
     <td>procedure main()<br>    int number;<br>begin<br>    writeInt();<br>end</td>
     <td></td>
-    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>Error: Method 'writeInt' takes only 1 parameter, but 0 are passed<br></td>
     <td>1</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.4</td>
-    <td class="fail">Wrong Exitcode</td>
-    <td>171</td>
+    <td class="pass">Passed</td>
+    <td>262</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>(Built-in) readInt (nok)</td>
     <td>procedure main()<br>    int number;<br>begin<br>    readInt(number, number);<br>end</td>
     <td></td>
-    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>Error: Method 'readInt' takes only 1 parameter, but 2 are passed<br></td>
     <td>1</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.4</td>
-    <td class="fail">Wrong Exitcode</td>
-    <td>170</td>
+    <td class="pass">Passed</td>
+    <td>295</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -581,31 +581,31 @@
     <td>0</td>
     <td>0.4</td>
     <td class="fail">Wrong Exitcode</td>
-    <td>171</td>
+    <td>187</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>(Built-in) readChar (nok)</td>
     <td>procedure main()<br>begin<br>    readChar(1, 1, 1);<br>end</td>
     <td></td>
-    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>Error: Method 'readChar' takes only 1 parameter, but 3 are passed<br></td>
     <td>1</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.4</td>
-    <td class="fail">Wrong Exitcode</td>
-    <td>170</td>
+    <td class="pass">Passed</td>
+    <td>235</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>(Built-in) writeInt/readInt/writeChar/readChar (nok)</td>
     <td>procedure main()<br>    int number;<br>begin<br>    if (1 == 1) then<br>        writeInt("text");<br>    end;<br>end</td>
     <td></td>
-    <td>Exception in thread "main" java.lang.ClassCastException: class ch.hslu.cobau.minij.ast.expression.BinaryExpression cannot be cast to class ch.hslu.cobau.minij.ast.statement.Block (ch.hslu.cobau.minij.ast.expression.BinaryExpression and ch.hslu.cobau.minij.ast.statement.Block are in unnamed module of loader 'app')<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitIfStatement(MiniJAstBuilder.java:194)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitIfStatement(MiniJAstBuilder.java:16)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$IfStatementContext.accept(MiniJParser.java:1144)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJBaseVisitor.visitStatement(MiniJBaseVisitor.java:85)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$StatementContext.accept(MiniJParser.java:788)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitBlock(MiniJAstBuilder.java:99)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitBlock(MiniJAstBuilder.java:16)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$BlockContext.accept(MiniJParser.java:655)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJBaseVisitor.visitProcedureBody(MiniJBaseVisitor.java:64)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$ProcedureBodyContext.accept(MiniJParser.java:585)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitProcedure(MiniJAstBuilder.java:75)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitProcedure(MiniJAstBuilder.java:16)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$ProcedureContext.accept(MiniJParser.java:379)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJBaseVisitor.visitMember(MiniJBaseVisitor.java:29)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$MemberContext.accept(MiniJParser.java:213)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitUnit(MiniJAstBuilder.java:22)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitUnit(MiniJAstBuilder.java:16)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$UnitContext.accept(MiniJParser.java:147)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visit(AbstractParseTreeVisitor.java:18)<br>&#191;at ch.hslu.cobau.minij.MiniJCompiler.main(MiniJCompiler.java:47)<br></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
     <td>1</td>
-    <td>1</td>
+    <td>0</td>
     <td>0.4</td>
-    <td class="pass">Passed</td>
-    <td>166</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>181</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -624,12 +624,12 @@
     <td>(Typ) Zuweisung von Integerkonstante (nok)</td>
     <td>string text;<br>procedure main() {<br>    text = 0;<br>}</td>
     <td></td>
-    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>Error: Assignment: types 'class ch.hslu.cobau.minij.ast.type.StringType' and 'class ch.hslu.cobau.minij.ast.type.IntegerType' doesnt match<br></td>
     <td>1</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.125</td>
-    <td class="fail">Wrong Exitcode</td>
-    <td>171</td>
+    <td class="pass">Passed</td>
+    <td>194</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -641,19 +641,19 @@
     <td>0</td>
     <td>0.125</td>
     <td class="pass">Passed</td>
-    <td>170</td>
+    <td>173</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>(Typ) Zuweisung von Stringkonstante (nok)</td>
     <td>int number;<br>procedure main() {<br>    number = "xyz";<br>}</td>
     <td></td>
-    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>Error: Assignment: types 'class ch.hslu.cobau.minij.ast.type.IntegerType' and 'class ch.hslu.cobau.minij.ast.type.StringType' doesnt match<br></td>
     <td>1</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.125</td>
-    <td class="fail">Wrong Exitcode</td>
-    <td>169</td>
+    <td class="pass">Passed</td>
+    <td>195</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -665,91 +665,91 @@
     <td>0</td>
     <td>0.125</td>
     <td class="pass">Passed</td>
-    <td>179</td>
+    <td>176</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>(Typ) Zuweisung von Wahrheitswert (nok)</td>
     <td>int number;<br>procedure main() {<br>    number = true;<br>}</td>
     <td></td>
-    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>Error: Assignment: types 'class ch.hslu.cobau.minij.ast.type.IntegerType' and 'class ch.hslu.cobau.minij.ast.type.BooleanType' doesnt match<br></td>
     <td>1</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.0625</td>
-    <td class="fail">Wrong Exitcode</td>
-    <td>168</td>
+    <td class="pass">Passed</td>
+    <td>196</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>(Typ) Zuweisung von Wahrheitswert (nok)</td>
     <td>int number;<br>procedure main() {<br>    number = false;<br>}</td>
     <td></td>
-    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>Error: Assignment: types 'class ch.hslu.cobau.minij.ast.type.IntegerType' and 'class ch.hslu.cobau.minij.ast.type.BooleanType' doesnt match<br></td>
     <td>1</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.0625</td>
-    <td class="fail">Wrong Exitcode</td>
-    <td>170</td>
+    <td class="pass">Passed</td>
+    <td>196</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>(Typ) If-Anweisung mit Bedingung vom Typ boolean</td>
     <td>procedure main()<br>    boolean flag;<br>begin<br>   if (flag) then<br>       return;<br>   end;<br>end</td>
     <td></td>
-    <td>Exception in thread "main" java.lang.ClassCastException: class ch.hslu.cobau.minij.ast.expression.VariableAccess cannot be cast to class ch.hslu.cobau.minij.ast.statement.Block (ch.hslu.cobau.minij.ast.expression.VariableAccess and ch.hslu.cobau.minij.ast.statement.Block are in unnamed module of loader 'app')<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitIfStatement(MiniJAstBuilder.java:194)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitIfStatement(MiniJAstBuilder.java:16)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$IfStatementContext.accept(MiniJParser.java:1144)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJBaseVisitor.visitStatement(MiniJBaseVisitor.java:85)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$StatementContext.accept(MiniJParser.java:788)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitBlock(MiniJAstBuilder.java:99)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitBlock(MiniJAstBuilder.java:16)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$BlockContext.accept(MiniJParser.java:655)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJBaseVisitor.visitProcedureBody(MiniJBaseVisitor.java:64)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$ProcedureBodyContext.accept(MiniJParser.java:585)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitProcedure(MiniJAstBuilder.java:75)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitProcedure(MiniJAstBuilder.java:16)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$ProcedureContext.accept(MiniJParser.java:379)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJBaseVisitor.visitMember(MiniJBaseVisitor.java:29)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$MemberContext.accept(MiniJParser.java:213)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitUnit(MiniJAstBuilder.java:22)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitUnit(MiniJAstBuilder.java:16)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$UnitContext.accept(MiniJParser.java:147)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visit(AbstractParseTreeVisitor.java:18)<br>&#191;at ch.hslu.cobau.minij.MiniJCompiler.main(MiniJCompiler.java:47)<br><br>Program exited with exit code: 1, but expected: 0</td>
+    <td></td>
     <td>0</td>
-    <td>1</td>
+    <td>0</td>
     <td>0.125</td>
-    <td class="fail">Wrong Exitcode</td>
-    <td>163</td>
+    <td class="pass">Passed</td>
+    <td>190</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>(Typ) If-Anweisung mit Bedingung vom Typ int (nok)</td>
     <td>procedure main()<br>    int flag;<br>begin<br>   if (flag) then<br>       return;<br>   end;<br>end</td>
     <td></td>
-    <td>Exception in thread "main" java.lang.ClassCastException: class ch.hslu.cobau.minij.ast.expression.VariableAccess cannot be cast to class ch.hslu.cobau.minij.ast.statement.Block (ch.hslu.cobau.minij.ast.expression.VariableAccess and ch.hslu.cobau.minij.ast.statement.Block are in unnamed module of loader 'app')<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitIfStatement(MiniJAstBuilder.java:194)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitIfStatement(MiniJAstBuilder.java:16)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$IfStatementContext.accept(MiniJParser.java:1144)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJBaseVisitor.visitStatement(MiniJBaseVisitor.java:85)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$StatementContext.accept(MiniJParser.java:788)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitBlock(MiniJAstBuilder.java:99)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitBlock(MiniJAstBuilder.java:16)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$BlockContext.accept(MiniJParser.java:655)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJBaseVisitor.visitProcedureBody(MiniJBaseVisitor.java:64)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$ProcedureBodyContext.accept(MiniJParser.java:585)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitProcedure(MiniJAstBuilder.java:75)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitProcedure(MiniJAstBuilder.java:16)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$ProcedureContext.accept(MiniJParser.java:379)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJBaseVisitor.visitMember(MiniJBaseVisitor.java:29)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$MemberContext.accept(MiniJParser.java:213)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitUnit(MiniJAstBuilder.java:22)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitUnit(MiniJAstBuilder.java:16)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$UnitContext.accept(MiniJParser.java:147)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visit(AbstractParseTreeVisitor.java:18)<br>&#191;at ch.hslu.cobau.minij.MiniJCompiler.main(MiniJCompiler.java:47)<br></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
     <td>1</td>
-    <td>1</td>
+    <td>0</td>
     <td>0.03125</td>
-    <td class="pass">Passed</td>
-    <td>163</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>186</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>(Typ) If-Anweisung mit Bedingung vom Typ string (nok)</td>
     <td>procedure main()<br>    string flag;<br>begin<br>   if (flag) then<br>       return;<br>   end;<br>end</td>
     <td></td>
-    <td>Exception in thread "main" java.lang.ClassCastException: class ch.hslu.cobau.minij.ast.expression.VariableAccess cannot be cast to class ch.hslu.cobau.minij.ast.statement.Block (ch.hslu.cobau.minij.ast.expression.VariableAccess and ch.hslu.cobau.minij.ast.statement.Block are in unnamed module of loader 'app')<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitIfStatement(MiniJAstBuilder.java:194)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitIfStatement(MiniJAstBuilder.java:16)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$IfStatementContext.accept(MiniJParser.java:1144)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJBaseVisitor.visitStatement(MiniJBaseVisitor.java:85)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$StatementContext.accept(MiniJParser.java:788)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitBlock(MiniJAstBuilder.java:99)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitBlock(MiniJAstBuilder.java:16)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$BlockContext.accept(MiniJParser.java:655)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJBaseVisitor.visitProcedureBody(MiniJBaseVisitor.java:64)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$ProcedureBodyContext.accept(MiniJParser.java:585)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitProcedure(MiniJAstBuilder.java:75)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitProcedure(MiniJAstBuilder.java:16)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$ProcedureContext.accept(MiniJParser.java:379)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJBaseVisitor.visitMember(MiniJBaseVisitor.java:29)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$MemberContext.accept(MiniJParser.java:213)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitUnit(MiniJAstBuilder.java:22)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitUnit(MiniJAstBuilder.java:16)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$UnitContext.accept(MiniJParser.java:147)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visit(AbstractParseTreeVisitor.java:18)<br>&#191;at ch.hslu.cobau.minij.MiniJCompiler.main(MiniJCompiler.java:47)<br></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
     <td>1</td>
-    <td>1</td>
+    <td>0</td>
     <td>0.03125</td>
-    <td class="pass">Passed</td>
-    <td>164</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>187</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>(Typ) If-Anweisung mit Bedingung vom Typ int[] (nok)</td>
     <td>procedure main()<br>    int[] flag;<br>begin<br>   if (flag[0]) then<br>       return;<br>   end;<br>end</td>
     <td></td>
-    <td>Exception in thread "main" java.lang.ClassCastException: class ch.hslu.cobau.minij.ast.expression.ArrayAccess cannot be cast to class ch.hslu.cobau.minij.ast.statement.Block (ch.hslu.cobau.minij.ast.expression.ArrayAccess and ch.hslu.cobau.minij.ast.statement.Block are in unnamed module of loader 'app')<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitIfStatement(MiniJAstBuilder.java:194)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitIfStatement(MiniJAstBuilder.java:16)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$IfStatementContext.accept(MiniJParser.java:1144)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJBaseVisitor.visitStatement(MiniJBaseVisitor.java:85)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$StatementContext.accept(MiniJParser.java:788)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitBlock(MiniJAstBuilder.java:99)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitBlock(MiniJAstBuilder.java:16)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$BlockContext.accept(MiniJParser.java:655)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJBaseVisitor.visitProcedureBody(MiniJBaseVisitor.java:64)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$ProcedureBodyContext.accept(MiniJParser.java:585)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitProcedure(MiniJAstBuilder.java:75)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitProcedure(MiniJAstBuilder.java:16)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$ProcedureContext.accept(MiniJParser.java:379)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJBaseVisitor.visitMember(MiniJBaseVisitor.java:29)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$MemberContext.accept(MiniJParser.java:213)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitUnit(MiniJAstBuilder.java:22)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitUnit(MiniJAstBuilder.java:16)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$UnitContext.accept(MiniJParser.java:147)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visit(AbstractParseTreeVisitor.java:18)<br>&#191;at ch.hslu.cobau.minij.MiniJCompiler.main(MiniJCompiler.java:47)<br></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
     <td>1</td>
-    <td>1</td>
+    <td>0</td>
     <td>0.03125</td>
-    <td class="pass">Passed</td>
-    <td>163</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>187</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>(Typ) If-Anweisung mit Bedingung vom Typ record (nok)</td>
     <td>record Coordinate<br>  int x;<br>  int y;<br>end<br>procedure main()<br>    Coordinate flag;<br>begin<br>   if (flag) then<br>       return;<br>   end;<br>end</td>
     <td></td>
-    <td>Exception in thread "main" java.lang.ClassCastException: class ch.hslu.cobau.minij.ast.expression.VariableAccess cannot be cast to class ch.hslu.cobau.minij.ast.statement.Block (ch.hslu.cobau.minij.ast.expression.VariableAccess and ch.hslu.cobau.minij.ast.statement.Block are in unnamed module of loader 'app')<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitIfStatement(MiniJAstBuilder.java:194)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitIfStatement(MiniJAstBuilder.java:16)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$IfStatementContext.accept(MiniJParser.java:1144)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJBaseVisitor.visitStatement(MiniJBaseVisitor.java:85)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$StatementContext.accept(MiniJParser.java:788)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitBlock(MiniJAstBuilder.java:99)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitBlock(MiniJAstBuilder.java:16)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$BlockContext.accept(MiniJParser.java:655)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJBaseVisitor.visitProcedureBody(MiniJBaseVisitor.java:64)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$ProcedureBodyContext.accept(MiniJParser.java:585)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitProcedure(MiniJAstBuilder.java:75)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitProcedure(MiniJAstBuilder.java:16)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$ProcedureContext.accept(MiniJParser.java:379)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJBaseVisitor.visitMember(MiniJBaseVisitor.java:29)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$MemberContext.accept(MiniJParser.java:213)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitUnit(MiniJAstBuilder.java:22)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitUnit(MiniJAstBuilder.java:16)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$UnitContext.accept(MiniJParser.java:147)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visit(AbstractParseTreeVisitor.java:18)<br>&#191;at ch.hslu.cobau.minij.MiniJCompiler.main(MiniJCompiler.java:47)<br></td>
+    <td><br>Program exited with exit code: 0, but expected: 1</td>
     <td>1</td>
-    <td>1</td>
+    <td>0</td>
     <td>0.03125</td>
-    <td class="pass">Passed</td>
-    <td>171</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>186</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -773,7 +773,7 @@
     <td>0</td>
     <td>0.03125</td>
     <td class="fail">Wrong Exitcode</td>
-    <td>171</td>
+    <td>188</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -785,7 +785,7 @@
     <td>0</td>
     <td>0.03125</td>
     <td class="fail">Wrong Exitcode</td>
-    <td>169</td>
+    <td>189</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -797,7 +797,7 @@
     <td>0</td>
     <td>0.03125</td>
     <td class="fail">Wrong Exitcode</td>
-    <td>171</td>
+    <td>187</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -809,7 +809,7 @@
     <td>0</td>
     <td>0.03125</td>
     <td class="fail">Wrong Exitcode</td>
-    <td>170</td>
+    <td>186</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -821,7 +821,7 @@
     <td>0</td>
     <td>0.125</td>
     <td class="pass">Passed</td>
-    <td>177</td>
+    <td>179</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -833,7 +833,7 @@
     <td>0</td>
     <td>0.02</td>
     <td class="fail">Wrong Exitcode</td>
-    <td>173</td>
+    <td>199</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -857,7 +857,7 @@
     <td>0</td>
     <td>0.02</td>
     <td class="fail">Wrong Exitcode</td>
-    <td>171</td>
+    <td>185</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -869,7 +869,7 @@
     <td>0</td>
     <td>0.02</td>
     <td class="fail">Wrong Exitcode</td>
-    <td>176</td>
+    <td>186</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -881,7 +881,7 @@
     <td>0</td>
     <td>0.02</td>
     <td class="fail">Wrong Exitcode</td>
-    <td>171</td>
+    <td>185</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -893,7 +893,7 @@
     <td>0</td>
     <td>0.025</td>
     <td class="fail">Wrong Exitcode</td>
-    <td>171</td>
+    <td>174</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -905,7 +905,7 @@
     <td>0</td>
     <td>0.125</td>
     <td class="pass">Passed</td>
-    <td>175</td>
+    <td>177</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -917,7 +917,7 @@
     <td>0</td>
     <td>0.02</td>
     <td class="fail">Wrong Exitcode</td>
-    <td>174</td>
+    <td>188</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -929,7 +929,7 @@
     <td>0</td>
     <td>0.02</td>
     <td class="fail">Wrong Exitcode</td>
-    <td>184</td>
+    <td>191</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -941,7 +941,7 @@
     <td>0</td>
     <td>0.02</td>
     <td class="fail">Wrong Exitcode</td>
-    <td>175</td>
+    <td>190</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -953,7 +953,7 @@
     <td>0</td>
     <td>0.02</td>
     <td class="fail">Wrong Exitcode</td>
-    <td>175</td>
+    <td>193</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -965,7 +965,7 @@
     <td>0</td>
     <td>0.02</td>
     <td class="fail">Wrong Exitcode</td>
-    <td>172</td>
+    <td>176</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -977,7 +977,7 @@
     <td>0</td>
     <td>0.025</td>
     <td class="fail">Wrong Exitcode</td>
-    <td>169</td>
+    <td>192</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -989,7 +989,7 @@
     <td>0</td>
     <td>0.125</td>
     <td class="pass">Passed</td>
-    <td>176</td>
+    <td>175</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -1001,7 +1001,7 @@
     <td>0</td>
     <td>0.03125</td>
     <td class="fail">Wrong Exitcode</td>
-    <td>172</td>
+    <td>190</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -1013,7 +1013,7 @@
     <td>0</td>
     <td>0.03125</td>
     <td class="fail">Wrong Exitcode</td>
-    <td>172</td>
+    <td>186</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -1025,7 +1025,7 @@
     <td>0</td>
     <td>0.03125</td>
     <td class="fail">Wrong Exitcode</td>
-    <td>172</td>
+    <td>189</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -1037,7 +1037,7 @@
     <td>0</td>
     <td>0.03125</td>
     <td class="fail">Wrong Exitcode</td>
-    <td>174</td>
+    <td>177</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -1049,115 +1049,115 @@
     <td>0</td>
     <td>0.06</td>
     <td class="pass">Passed</td>
-    <td>170</td>
+    <td>187</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>(Typ) Zuweisung (int vs. boolean)</td>
     <td>procedure main()<br>    int number1;<br>    boolean flag2;<br>begin<br>    number1 = flag2;<br>end</td>
     <td></td>
-    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>Error: Assignment: types 'class ch.hslu.cobau.minij.ast.type.IntegerType' and 'class ch.hslu.cobau.minij.ast.type.BooleanType' doesnt match<br></td>
     <td>1</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.015</td>
-    <td class="fail">Wrong Exitcode</td>
-    <td>167</td>
+    <td class="pass">Passed</td>
+    <td>190</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>(Typ) Zuweisung (int vs. string)</td>
     <td>procedure main()<br>    int number1;<br>    string text2;<br>begin<br>    number1 = text2;<br>end</td>
     <td></td>
-    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>Error: Assignment: types 'class ch.hslu.cobau.minij.ast.type.IntegerType' and 'class ch.hslu.cobau.minij.ast.type.StringType' doesnt match<br></td>
     <td>1</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.015</td>
-    <td class="fail">Wrong Exitcode</td>
-    <td>176</td>
+    <td class="pass">Passed</td>
+    <td>199</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>(Typ) Zuweisung (int vs. Record)</td>
     <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    int number1;<br>    Coordinate coord2;<br>begin<br>    number1 = coord2;<br>end</td>
     <td></td>
-    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>Error: Assignment: types 'class ch.hslu.cobau.minij.ast.type.IntegerType' and 'class ch.hslu.cobau.minij.ast.type.RecordType' doesnt match<br></td>
     <td>1</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.015</td>
-    <td class="fail">Wrong Exitcode</td>
-    <td>172</td>
+    <td class="pass">Passed</td>
+    <td>185</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>(Typ) Zuweisung (int vs. Record-Field)</td>
     <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    int number1;<br>    Coordinate coord2;<br>begin<br>    number1 = coord2.x;<br>end</td>
     <td></td>
-    <td></td>
+    <td>Error: Assignment: types 'class ch.hslu.cobau.minij.ast.type.IntegerType' and 'class ch.hslu.cobau.minij.ast.type.RecordType' doesnt match<br><br>Program exited with exit code: 1, but expected: 0</td>
     <td>0</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.06</td>
-    <td class="pass">Passed</td>
-    <td>181</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>188</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>(Typ) Zuweisung (int vs. Intarray)</td>
     <td>procedure main()<br>    int number1;<br>    int[] array2;<br>begin<br>    number1 = array2;<br>end</td>
     <td></td>
-    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>Error: Assignment: types 'class ch.hslu.cobau.minij.ast.type.IntegerType' and 'class ch.hslu.cobau.minij.ast.type.ArrayType' doesnt match<br></td>
     <td>1</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.015</td>
-    <td class="fail">Wrong Exitcode</td>
-    <td>175</td>
+    <td class="pass">Passed</td>
+    <td>194</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>(Typ) Zuweisung (int vs. Recordarray)</td>
     <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    int number1;<br>    Coordinate[] coordinate2;<br>begin<br>    number1 = coordinate2;<br>end</td>
     <td></td>
-    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>Error: Assignment: types 'class ch.hslu.cobau.minij.ast.type.IntegerType' and 'class ch.hslu.cobau.minij.ast.type.ArrayType' doesnt match<br></td>
     <td>1</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.015</td>
-    <td class="fail">Wrong Exitcode</td>
-    <td>171</td>
+    <td class="pass">Passed</td>
+    <td>186</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>(Typ) Zuweisung (int vs. Intarray-Field)</td>
     <td>procedure main()<br>    int number1;<br>    int[] array2;<br>begin<br>    number1 = array2[0];<br>end</td>
     <td></td>
-    <td></td>
+    <td>Error: Assignment: types 'class ch.hslu.cobau.minij.ast.type.ArrayType' and 'class ch.hslu.cobau.minij.ast.type.IntegerType' doesnt match<br><br>Program exited with exit code: 1, but expected: 0</td>
     <td>0</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.06</td>
-    <td class="pass">Passed</td>
-    <td>173</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>200</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>(Typ) Zuweisung (int vs. Recordarray-Field)</td>
     <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    int number1;<br>    Coordinate[] coordinate2;<br>begin<br>    number1 = coordinate2[0];<br>end</td>
     <td></td>
-    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>Error: Assignment: types 'class ch.hslu.cobau.minij.ast.type.ArrayType' and 'class ch.hslu.cobau.minij.ast.type.IntegerType' doesnt match<br></td>
     <td>1</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.015</td>
-    <td class="fail">Wrong Exitcode</td>
-    <td>174</td>
+    <td class="pass">Passed</td>
+    <td>187</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>(Typ) Zuweisung (boolean vs. Intarray)</td>
     <td>procedure main()<br>    boolean flag1;<br>    int number2;<br>begin<br>    flag1 = number2;<br>end</td>
     <td></td>
-    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>Error: Assignment: types 'class ch.hslu.cobau.minij.ast.type.BooleanType' and 'class ch.hslu.cobau.minij.ast.type.IntegerType' doesnt match<br></td>
     <td>1</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.015</td>
-    <td class="fail">Wrong Exitcode</td>
-    <td>175</td>
+    <td class="pass">Passed</td>
+    <td>193</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -1169,115 +1169,115 @@
     <td>0</td>
     <td>0.06</td>
     <td class="pass">Passed</td>
-    <td>169</td>
+    <td>185</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>(Typ) Zuweisung (boolean vs. string)</td>
     <td>procedure main()<br>    boolean flag1;<br>    string text2;<br>begin<br>    flag1 = text2;<br>end</td>
     <td></td>
-    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>Error: Assignment: types 'class ch.hslu.cobau.minij.ast.type.BooleanType' and 'class ch.hslu.cobau.minij.ast.type.StringType' doesnt match<br></td>
     <td>1</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.015</td>
-    <td class="fail">Wrong Exitcode</td>
-    <td>172</td>
+    <td class="pass">Passed</td>
+    <td>200</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>(Typ) Zuweisung (boolean vs. Record)</td>
     <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    boolean flag1;<br>    Coordinate coord2;<br>begin<br>    flag1 = coord2;<br>end</td>
     <td></td>
-    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>Error: Assignment: types 'class ch.hslu.cobau.minij.ast.type.BooleanType' and 'class ch.hslu.cobau.minij.ast.type.RecordType' doesnt match<br></td>
     <td>1</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.015</td>
-    <td class="fail">Wrong Exitcode</td>
-    <td>172</td>
+    <td class="pass">Passed</td>
+    <td>185</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>(Typ) Zuweisung (boolean vs. Record-Field(int))</td>
     <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    boolean flag1;<br>    Coordinate coord2;<br>begin<br>    flag1 = coord2.x;<br>end</td>
     <td></td>
-    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>Error: Assignment: types 'class ch.hslu.cobau.minij.ast.type.BooleanType' and 'class ch.hslu.cobau.minij.ast.type.RecordType' doesnt match<br></td>
     <td>1</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.015</td>
-    <td class="fail">Wrong Exitcode</td>
-    <td>188</td>
+    <td class="pass">Passed</td>
+    <td>190</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>(Typ) Zuweisung (boolean vs. Intarray)</td>
     <td>procedure main()<br>    boolean flag1;<br>    int[] array2;<br>begin<br>    flag1 = array2;<br>end</td>
     <td></td>
-    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>Error: Assignment: types 'class ch.hslu.cobau.minij.ast.type.BooleanType' and 'class ch.hslu.cobau.minij.ast.type.ArrayType' doesnt match<br></td>
     <td>1</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.015</td>
-    <td class="fail">Wrong Exitcode</td>
-    <td>172</td>
+    <td class="pass">Passed</td>
+    <td>192</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>(Typ) Zuweisung (boolean vs. Recordarray)</td>
     <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    boolean flag1;<br>    Coordinate[] coordinate2;<br>begin<br>    flag1 = coordinate2;<br>end</td>
     <td></td>
-    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>Error: Assignment: types 'class ch.hslu.cobau.minij.ast.type.BooleanType' and 'class ch.hslu.cobau.minij.ast.type.ArrayType' doesnt match<br></td>
     <td>1</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.015</td>
-    <td class="fail">Wrong Exitcode</td>
-    <td>176</td>
+    <td class="pass">Passed</td>
+    <td>183</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>(Typ) Zuweisung (boolean vs. Intarray-Field)</td>
     <td>procedure main()<br>    boolean flag1;<br>    int[] array2;<br>begin<br>    flag1 = array2[0];<br>end</td>
     <td></td>
-    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>Error: Assignment: types 'class ch.hslu.cobau.minij.ast.type.ArrayType' and 'class ch.hslu.cobau.minij.ast.type.IntegerType' doesnt match<br></td>
     <td>1</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.015</td>
-    <td class="fail">Wrong Exitcode</td>
-    <td>174</td>
+    <td class="pass">Passed</td>
+    <td>193</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>(Typ) Zuweisung (boolean vs. Recordarray-Field)</td>
     <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    boolean flag1;<br>    Coordinate[] coordinate2;<br>begin<br>    flag1 = coordinate2[0];<br>end</td>
     <td></td>
-    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>Error: Assignment: types 'class ch.hslu.cobau.minij.ast.type.ArrayType' and 'class ch.hslu.cobau.minij.ast.type.IntegerType' doesnt match<br></td>
     <td>1</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.015</td>
-    <td class="fail">Wrong Exitcode</td>
-    <td>180</td>
+    <td class="pass">Passed</td>
+    <td>186</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>(Typ) Zuweisung (string vs. int)</td>
     <td>procedure main()<br>    string text1;<br>    int number2;<br>begin<br>    text1 = number2;<br>end</td>
     <td></td>
-    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>Error: Assignment: types 'class ch.hslu.cobau.minij.ast.type.StringType' and 'class ch.hslu.cobau.minij.ast.type.IntegerType' doesnt match<br></td>
     <td>1</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.015</td>
-    <td class="fail">Wrong Exitcode</td>
-    <td>171</td>
+    <td class="pass">Passed</td>
+    <td>192</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>(Typ) Zuweisung (string vs. boolean)</td>
     <td>procedure main()<br>    string text1;<br>    boolean flag2;<br>begin<br>    text1 = flag2;<br>end</td>
     <td></td>
-    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>Error: Assignment: types 'class ch.hslu.cobau.minij.ast.type.StringType' and 'class ch.hslu.cobau.minij.ast.type.BooleanType' doesnt match<br></td>
     <td>1</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.015</td>
-    <td class="fail">Wrong Exitcode</td>
-    <td>175</td>
+    <td class="pass">Passed</td>
+    <td>197</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -1289,115 +1289,115 @@
     <td>0</td>
     <td>0.06</td>
     <td class="pass">Passed</td>
-    <td>174</td>
+    <td>173</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>(Typ) Zuweisung (string vs. Record)</td>
     <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    string text1;<br>    Coordinate coord2;<br>begin<br>    text1 = coord2;<br>end</td>
     <td></td>
-    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>Error: Assignment: types 'class ch.hslu.cobau.minij.ast.type.StringType' and 'class ch.hslu.cobau.minij.ast.type.RecordType' doesnt match<br></td>
     <td>1</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.015</td>
-    <td class="fail">Wrong Exitcode</td>
-    <td>176</td>
+    <td class="pass">Passed</td>
+    <td>187</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>(Typ) Zuweisung (string vs. Record-Field(int))</td>
     <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    string text1;<br>    Coordinate coord2;<br>begin<br>    text1 = coord2.x;<br>end</td>
     <td></td>
-    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>Error: Assignment: types 'class ch.hslu.cobau.minij.ast.type.StringType' and 'class ch.hslu.cobau.minij.ast.type.RecordType' doesnt match<br></td>
     <td>1</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.015</td>
-    <td class="fail">Wrong Exitcode</td>
-    <td>174</td>
+    <td class="pass">Passed</td>
+    <td>192</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>(Typ) Zuweisung (string vs. Intarray)</td>
     <td>procedure main()<br>    string text1;<br>    int[] array2;<br>begin<br>    text1 = array2;<br>end</td>
     <td></td>
-    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>Error: Assignment: types 'class ch.hslu.cobau.minij.ast.type.StringType' and 'class ch.hslu.cobau.minij.ast.type.ArrayType' doesnt match<br></td>
     <td>1</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.015</td>
-    <td class="fail">Wrong Exitcode</td>
-    <td>177</td>
+    <td class="pass">Passed</td>
+    <td>203</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>(Typ) Zuweisung (string vs. Recordarray)</td>
     <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    string text1;<br>    Coordinate[] coordinate2;<br>begin<br>    text1 = coordinate2;<br>end</td>
     <td></td>
-    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>Error: Assignment: types 'class ch.hslu.cobau.minij.ast.type.StringType' and 'class ch.hslu.cobau.minij.ast.type.ArrayType' doesnt match<br></td>
     <td>1</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.015</td>
-    <td class="fail">Wrong Exitcode</td>
-    <td>178</td>
+    <td class="pass">Passed</td>
+    <td>196</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>(Typ) Zuweisung (string vs. Intarray-Field)</td>
     <td>procedure main()<br>    string text1;<br>    int[] array2;<br>begin<br>    text1 = array2[0];<br>end</td>
     <td></td>
-    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>Error: Assignment: types 'class ch.hslu.cobau.minij.ast.type.ArrayType' and 'class ch.hslu.cobau.minij.ast.type.IntegerType' doesnt match<br></td>
     <td>1</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.016</td>
-    <td class="fail">Wrong Exitcode</td>
-    <td>170</td>
+    <td class="pass">Passed</td>
+    <td>197</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>(Typ) Zuweisung (string vs. Recordarray-Field)</td>
     <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    string text1;<br>    Coordinate[] coordinate2;<br>begin<br>    text1 = coordinate2[0];<br>end</td>
     <td></td>
-    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>Error: Assignment: types 'class ch.hslu.cobau.minij.ast.type.ArrayType' and 'class ch.hslu.cobau.minij.ast.type.IntegerType' doesnt match<br></td>
     <td>1</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.016</td>
-    <td class="fail">Wrong Exitcode</td>
-    <td>185</td>
+    <td class="pass">Passed</td>
+    <td>192</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>(Typ) Zuweisung (Record vs. int)</td>
     <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    Coordinate coord1;<br>    int number2;<br>begin<br>    coord1 = number2;<br>end</td>
     <td></td>
-    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>Error: Assignment: types 'class ch.hslu.cobau.minij.ast.type.RecordType' and 'class ch.hslu.cobau.minij.ast.type.IntegerType' doesnt match<br></td>
     <td>1</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.016</td>
-    <td class="fail">Wrong Exitcode</td>
-    <td>179</td>
+    <td class="pass">Passed</td>
+    <td>190</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>(Typ) Zuweisung (Record vs. boolean)</td>
     <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    Coordinate coord1;<br>    boolean flag2;<br>begin<br>    coord1 = flag2;<br>end</td>
     <td></td>
-    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>Error: Assignment: types 'class ch.hslu.cobau.minij.ast.type.RecordType' and 'class ch.hslu.cobau.minij.ast.type.BooleanType' doesnt match<br></td>
     <td>1</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.016</td>
-    <td class="fail">Wrong Exitcode</td>
-    <td>181</td>
+    <td class="pass">Passed</td>
+    <td>185</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>(Typ) Zuweisung (Record vs. string)</td>
     <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    Coordinate coord1;<br>    string text2;<br>begin<br>    coord1 = text2;<br>end</td>
     <td></td>
-    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>Error: Assignment: types 'class ch.hslu.cobau.minij.ast.type.RecordType' and 'class ch.hslu.cobau.minij.ast.type.StringType' doesnt match<br></td>
     <td>1</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.016</td>
-    <td class="fail">Wrong Exitcode</td>
-    <td>179</td>
+    <td class="pass">Passed</td>
+    <td>182</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -1409,7 +1409,7 @@
     <td>0</td>
     <td>0.06</td>
     <td class="pass">Passed</td>
-    <td>181</td>
+    <td>182</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -1421,18 +1421,18 @@
     <td>0</td>
     <td>0.016</td>
     <td class="fail">Wrong Exitcode</td>
-    <td>181</td>
+    <td>185</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>(Typ) Zuweisung (Record vs. Intarray)</td>
     <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    Coordinate coord1;<br>    int[] array2;<br>begin<br>    coord1 = array2;<br>end</td>
     <td></td>
-    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>Error: Assignment: types 'class ch.hslu.cobau.minij.ast.type.RecordType' and 'class ch.hslu.cobau.minij.ast.type.ArrayType' doesnt match<br></td>
     <td>1</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.016</td>
-    <td class="fail">Wrong Exitcode</td>
+    <td class="pass">Passed</td>
     <td>182</td>
     <td>1000</td>
   </tr>
@@ -1440,72 +1440,72 @@
     <td>(Typ) Zuweisung (Record vs. Recordarray)</td>
     <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    Coordinate coord1;<br>    Coordinate[] coordinate2;<br>begin<br>    coord1 = coordinate2;<br>end</td>
     <td></td>
-    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>Error: Assignment: types 'class ch.hslu.cobau.minij.ast.type.RecordType' and 'class ch.hslu.cobau.minij.ast.type.ArrayType' doesnt match<br></td>
     <td>1</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.016</td>
-    <td class="fail">Wrong Exitcode</td>
-    <td>179</td>
+    <td class="pass">Passed</td>
+    <td>188</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>(Typ) Zuweisung (Record vs. Intarray-Field)</td>
     <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    Coordinate coord1;<br>    int[] array2;<br>begin<br>    coord1 = array2[0];<br>end</td>
     <td></td>
-    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>Error: Assignment: types 'class ch.hslu.cobau.minij.ast.type.ArrayType' and 'class ch.hslu.cobau.minij.ast.type.IntegerType' doesnt match<br></td>
     <td>1</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.016</td>
-    <td class="fail">Wrong Exitcode</td>
-    <td>169</td>
+    <td class="pass">Passed</td>
+    <td>182</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>(Typ) Zuweisung (Record vs. Recordarray-Field)</td>
     <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    Coordinate coord1;<br>    Coordinate[] coordinate2;<br>begin<br>    coord1 = coordinate2[0];<br>end</td>
     <td></td>
-    <td></td>
+    <td>Error: Assignment: types 'class ch.hslu.cobau.minij.ast.type.ArrayType' and 'class ch.hslu.cobau.minij.ast.type.IntegerType' doesnt match<br><br>Program exited with exit code: 1, but expected: 0</td>
     <td>0</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.06</td>
-    <td class="pass">Passed</td>
-    <td>183</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>195</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>(Typ) Zuweisung (Record-Field(int) vs. int)</td>
     <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    Coordinate coord1;<br>    int number2;<br>begin<br>    coord1.x = number2;<br>end</td>
     <td></td>
-    <td></td>
+    <td>Error: Assignment: types 'class ch.hslu.cobau.minij.ast.type.RecordType' and 'class ch.hslu.cobau.minij.ast.type.IntegerType' doesnt match<br><br>Program exited with exit code: 1, but expected: 0</td>
     <td>0</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.06</td>
-    <td class="pass">Passed</td>
-    <td>179</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>187</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>(Typ) Zuweisung (Record-Field(int) vs. boolean)</td>
     <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    Coordinate coord1;<br>    boolean flag2;<br>begin<br>    coord1.x = flag2;<br>end</td>
     <td></td>
-    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>Error: Assignment: types 'class ch.hslu.cobau.minij.ast.type.RecordType' and 'class ch.hslu.cobau.minij.ast.type.BooleanType' doesnt match<br></td>
     <td>1</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.016</td>
-    <td class="fail">Wrong Exitcode</td>
-    <td>168</td>
+    <td class="pass">Passed</td>
+    <td>184</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>(Typ) Zuweisung (Record-Field(int) vs. string)</td>
     <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    Coordinate coord1;<br>    string text2;<br>begin<br>    coord1.x = text2;<br>end</td>
     <td></td>
-    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>Error: Assignment: types 'class ch.hslu.cobau.minij.ast.type.RecordType' and 'class ch.hslu.cobau.minij.ast.type.StringType' doesnt match<br></td>
     <td>1</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.016</td>
-    <td class="fail">Wrong Exitcode</td>
-    <td>176</td>
+    <td class="pass">Passed</td>
+    <td>188</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -1517,7 +1517,7 @@
     <td>0</td>
     <td>0.016</td>
     <td class="fail">Wrong Exitcode</td>
-    <td>164</td>
+    <td>182</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -1529,115 +1529,115 @@
     <td>0</td>
     <td>0.06</td>
     <td class="pass">Passed</td>
-    <td>179</td>
+    <td>185</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>(Typ) Zuweisung (Record-Field(int) vs. Intarray)</td>
     <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    Coordinate coord1;<br>    int[] array2;<br>begin<br>    coord1.x = array2;<br>end</td>
     <td></td>
-    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>Error: Assignment: types 'class ch.hslu.cobau.minij.ast.type.RecordType' and 'class ch.hslu.cobau.minij.ast.type.ArrayType' doesnt match<br></td>
     <td>1</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.016</td>
-    <td class="fail">Wrong Exitcode</td>
-    <td>180</td>
+    <td class="pass">Passed</td>
+    <td>184</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>(Typ) Zuweisung (Record-Field(int) vs. Recordarray)</td>
     <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    Coordinate coord1;<br>    Coordinate[] coordinate2;<br>begin<br>    coord1.x = coordinate2;<br>end</td>
     <td></td>
-    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>Error: Assignment: types 'class ch.hslu.cobau.minij.ast.type.RecordType' and 'class ch.hslu.cobau.minij.ast.type.ArrayType' doesnt match<br></td>
     <td>1</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.016</td>
-    <td class="fail">Wrong Exitcode</td>
-    <td>181</td>
+    <td class="pass">Passed</td>
+    <td>185</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>(Typ) Zuweisung (Record-Field(int) vs. Intarray-Field)</td>
     <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    Coordinate coord1;<br>    int[] array2;<br>begin<br>    coord1.x = array2[0];<br>end</td>
     <td></td>
-    <td></td>
+    <td>Error: Assignment: types 'class ch.hslu.cobau.minij.ast.type.ArrayType' and 'class ch.hslu.cobau.minij.ast.type.IntegerType' doesnt match<br><br>Program exited with exit code: 1, but expected: 0</td>
     <td>0</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.06</td>
-    <td class="pass">Passed</td>
-    <td>180</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>190</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>(Typ) Zuweisung (Record-Field(int) vs. Recordarray-Field)</td>
     <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    Coordinate coord1;<br>    Coordinate[] coordinate2;<br>begin<br>    coord1.x = coordinate2[0];<br>end</td>
     <td></td>
-    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>Error: Assignment: types 'class ch.hslu.cobau.minij.ast.type.ArrayType' and 'class ch.hslu.cobau.minij.ast.type.IntegerType' doesnt match<br></td>
     <td>1</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.016</td>
-    <td class="fail">Wrong Exitcode</td>
-    <td>177</td>
+    <td class="pass">Passed</td>
+    <td>214</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>(Typ) Zuweisung (Intarray vs. int)</td>
     <td>procedure main()<br>    int[] array1;<br>    int number2;<br>begin<br>    array1 = number2;<br>end</td>
     <td></td>
-    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>Error: Assignment: types 'class ch.hslu.cobau.minij.ast.type.ArrayType' and 'class ch.hslu.cobau.minij.ast.type.IntegerType' doesnt match<br></td>
     <td>1</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.016</td>
-    <td class="fail">Wrong Exitcode</td>
-    <td>165</td>
+    <td class="pass">Passed</td>
+    <td>196</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>(Typ) Zuweisung (Intarray vs. boolean)</td>
     <td>procedure main()<br>    int[] array1;<br>    boolean flag2;<br>begin<br>    array1 = flag2;<br>end</td>
     <td></td>
-    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>Error: Assignment: types 'class ch.hslu.cobau.minij.ast.type.ArrayType' and 'class ch.hslu.cobau.minij.ast.type.BooleanType' doesnt match<br></td>
     <td>1</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.016</td>
-    <td class="fail">Wrong Exitcode</td>
-    <td>171</td>
+    <td class="pass">Passed</td>
+    <td>193</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>(Typ) Zuweisung (Intarray vs. string)</td>
     <td>procedure main()<br>    int[] array1;<br>    string text2;<br>begin<br>    array1 = text2;<br>end</td>
     <td></td>
-    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>Error: Assignment: types 'class ch.hslu.cobau.minij.ast.type.ArrayType' and 'class ch.hslu.cobau.minij.ast.type.StringType' doesnt match<br></td>
     <td>1</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.016</td>
-    <td class="fail">Wrong Exitcode</td>
-    <td>179</td>
+    <td class="pass">Passed</td>
+    <td>194</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>(Typ) Zuweisung (Intarray vs. Record)</td>
     <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    int[] array1;<br>    Coordinate coord2;<br>begin<br>    array1 = coord2;<br>end</td>
     <td></td>
-    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>Error: Assignment: types 'class ch.hslu.cobau.minij.ast.type.ArrayType' and 'class ch.hslu.cobau.minij.ast.type.RecordType' doesnt match<br></td>
     <td>1</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.016</td>
-    <td class="fail">Wrong Exitcode</td>
-    <td>180</td>
+    <td class="pass">Passed</td>
+    <td>195</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>(Typ) Zuweisung (Intarray vs. Record-Field(int))</td>
     <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    int[] array1;<br>    Coordinate coord2;<br>begin<br>    array1 = coord2.x;<br>end</td>
     <td></td>
-    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>Error: Assignment: types 'class ch.hslu.cobau.minij.ast.type.ArrayType' and 'class ch.hslu.cobau.minij.ast.type.RecordType' doesnt match<br></td>
     <td>1</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.016</td>
-    <td class="fail">Wrong Exitcode</td>
-    <td>181</td>
+    <td class="pass">Passed</td>
+    <td>191</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -1649,7 +1649,7 @@
     <td>0</td>
     <td>0.06</td>
     <td class="pass">Passed</td>
-    <td>184</td>
+    <td>172</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -1661,66 +1661,66 @@
     <td>0</td>
     <td>0.016</td>
     <td class="fail">Wrong Exitcode</td>
-    <td>170</td>
+    <td>180</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>(Typ) Zuweisung (Intarray vs. Intarray-Field)</td>
     <td>procedure main()<br>    int[] array1;<br>    int[] array2;<br>begin<br>    array1 = array2[0];<br>end</td>
     <td></td>
-    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>Error: Assignment: types 'class ch.hslu.cobau.minij.ast.type.ArrayType' and 'class ch.hslu.cobau.minij.ast.type.IntegerType' doesnt match<br></td>
     <td>1</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.016</td>
-    <td class="fail">Wrong Exitcode</td>
-    <td>172</td>
+    <td class="pass">Passed</td>
+    <td>197</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>(Typ) Zuweisung (Intarray vs. Recordarray-Field)</td>
     <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    int[] array1;<br>    Coordinate[] coordinate2;<br>begin<br>    array1 = coordinate2[0];<br>end</td>
     <td></td>
-    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>Error: Assignment: types 'class ch.hslu.cobau.minij.ast.type.ArrayType' and 'class ch.hslu.cobau.minij.ast.type.IntegerType' doesnt match<br></td>
     <td>1</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.016</td>
-    <td class="fail">Wrong Exitcode</td>
-    <td>180</td>
+    <td class="pass">Passed</td>
+    <td>184</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>(Typ) Zuweisung (Recordarray vs. int)</td>
     <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    Coordinate[] coordinate1;<br>    int number2;<br>begin<br>    coordinate1 = number2;<br>end</td>
     <td></td>
-    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>Error: Assignment: types 'class ch.hslu.cobau.minij.ast.type.ArrayType' and 'class ch.hslu.cobau.minij.ast.type.IntegerType' doesnt match<br></td>
     <td>1</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.016</td>
-    <td class="fail">Wrong Exitcode</td>
-    <td>169</td>
+    <td class="pass">Passed</td>
+    <td>183</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>(Typ) Zuweisung (Recordarray vs. boolean)</td>
     <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    Coordinate[] coordinate1;<br>    boolean flag2;<br>begin<br>    coordinate1 = flag2;<br>end</td>
     <td></td>
-    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>Error: Assignment: types 'class ch.hslu.cobau.minij.ast.type.ArrayType' and 'class ch.hslu.cobau.minij.ast.type.BooleanType' doesnt match<br></td>
     <td>1</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.016</td>
-    <td class="fail">Wrong Exitcode</td>
-    <td>190</td>
+    <td class="pass">Passed</td>
+    <td>183</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>(Typ) Zuweisung (Recordarray vs. string)</td>
     <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    Coordinate[] coordinate1;<br>    string text2;<br>begin<br>    coordinate1 = text2;<br>end</td>
     <td></td>
-    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>Error: Assignment: types 'class ch.hslu.cobau.minij.ast.type.ArrayType' and 'class ch.hslu.cobau.minij.ast.type.StringType' doesnt match<br></td>
     <td>1</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.016</td>
-    <td class="fail">Wrong Exitcode</td>
+    <td class="pass">Passed</td>
     <td>182</td>
     <td>1000</td>
   </tr>
@@ -1728,24 +1728,24 @@
     <td>(Typ) Zuweisung (Recordarray vs. Record)</td>
     <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    Coordinate[] coordinate1;<br>    Coordinate coord2;<br>begin<br>    coordinate1 = coord2;<br>end</td>
     <td></td>
-    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>Error: Assignment: types 'class ch.hslu.cobau.minij.ast.type.ArrayType' and 'class ch.hslu.cobau.minij.ast.type.RecordType' doesnt match<br></td>
     <td>1</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.016</td>
-    <td class="fail">Wrong Exitcode</td>
-    <td>174</td>
+    <td class="pass">Passed</td>
+    <td>185</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>(Typ) Zuweisung (Recordarray vs. Record-Field(int))</td>
     <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    Coordinate[] coordinate1;<br>    Coordinate coord2;<br>begin<br>    coordinate1 = coord2.x;<br>end</td>
     <td></td>
-    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>Error: Assignment: types 'class ch.hslu.cobau.minij.ast.type.ArrayType' and 'class ch.hslu.cobau.minij.ast.type.RecordType' doesnt match<br></td>
     <td>1</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.016</td>
-    <td class="fail">Wrong Exitcode</td>
-    <td>180</td>
+    <td class="pass">Passed</td>
+    <td>209</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -1757,7 +1757,7 @@
     <td>0</td>
     <td>0.016</td>
     <td class="fail">Wrong Exitcode</td>
-    <td>191</td>
+    <td>199</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -1769,18 +1769,18 @@
     <td>0</td>
     <td>0.06</td>
     <td class="pass">Passed</td>
-    <td>180</td>
+    <td>181</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>(Typ) Zuweisung (Recordarray vs. Intarray-Field)</td>
     <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    Coordinate[] coordinate1;<br>    int[] array2;<br>begin<br>    coordinate1 = array2[0];<br>end</td>
     <td></td>
-    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>Error: Assignment: types 'class ch.hslu.cobau.minij.ast.type.ArrayType' and 'class ch.hslu.cobau.minij.ast.type.IntegerType' doesnt match<br></td>
     <td>1</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.016</td>
-    <td class="fail">Wrong Exitcode</td>
+    <td class="pass">Passed</td>
     <td>184</td>
     <td>1000</td>
   </tr>
@@ -1788,12 +1788,12 @@
     <td>(Typ) Zuweisung (Recordarray vs. Recordarray-Field)</td>
     <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    Coordinate[] coordinate1;<br>    Coordinate[] coordinate2;<br>begin<br>    coordinate1 = coordinate2[0];<br>end</td>
     <td></td>
-    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>Error: Assignment: types 'class ch.hslu.cobau.minij.ast.type.ArrayType' and 'class ch.hslu.cobau.minij.ast.type.IntegerType' doesnt match<br></td>
     <td>1</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.016</td>
-    <td class="fail">Wrong Exitcode</td>
-    <td>182</td>
+    <td class="pass">Passed</td>
+    <td>184</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -1805,54 +1805,54 @@
     <td>0</td>
     <td>0.06</td>
     <td class="pass">Passed</td>
-    <td>174</td>
+    <td>183</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>(Typ) Zuweisung (Intarray-Field vs. boolean)</td>
     <td>procedure main()<br>    int[] array1;<br>    boolean flag2;<br>begin<br>    array1[0] = flag2;<br>end</td>
     <td></td>
-    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>Error: Assignment: types 'class ch.hslu.cobau.minij.ast.type.IntegerType' and 'class ch.hslu.cobau.minij.ast.type.BooleanType' doesnt match<br></td>
     <td>1</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.016</td>
-    <td class="fail">Wrong Exitcode</td>
-    <td>172</td>
+    <td class="pass">Passed</td>
+    <td>196</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>(Typ) Zuweisung (Intarray-Field vs. string)</td>
     <td>procedure main()<br>    int[] array1;<br>    string text2;<br>begin<br>    array1[0] = text2;<br>end</td>
     <td></td>
-    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>Error: Assignment: types 'class ch.hslu.cobau.minij.ast.type.IntegerType' and 'class ch.hslu.cobau.minij.ast.type.StringType' doesnt match<br></td>
     <td>1</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.016</td>
-    <td class="fail">Wrong Exitcode</td>
-    <td>173</td>
+    <td class="pass">Passed</td>
+    <td>192</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>(Typ) Zuweisung (Intarray-Field vs. Record)</td>
     <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    int[] array1;<br>    Coordinate coord2;<br>begin<br>    array1[0] = coord2;<br>end</td>
     <td></td>
-    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>Error: Assignment: types 'class ch.hslu.cobau.minij.ast.type.IntegerType' and 'class ch.hslu.cobau.minij.ast.type.RecordType' doesnt match<br></td>
     <td>1</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.016</td>
-    <td class="fail">Wrong Exitcode</td>
-    <td>180</td>
+    <td class="pass">Passed</td>
+    <td>184</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>(Typ) Zuweisung (Intarray-Field vs. Record-Field(int))</td>
     <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    int[] array1;<br>    Coordinate coord2;<br>begin<br>    array1[0] = coord2.x;<br>end</td>
     <td></td>
-    <td></td>
+    <td>Error: Assignment: types 'class ch.hslu.cobau.minij.ast.type.IntegerType' and 'class ch.hslu.cobau.minij.ast.type.RecordType' doesnt match<br><br>Program exited with exit code: 1, but expected: 0</td>
     <td>0</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.06</td>
-    <td class="pass">Passed</td>
+    <td class="fail">Wrong Exitcode</td>
     <td>181</td>
     <td>1000</td>
   </tr>
@@ -1860,48 +1860,48 @@
     <td>(Typ) Zuweisung (Intarray-Field vs. Intarray)</td>
     <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    int[] array1;<br>    int[] array2;<br>begin<br>    array1[0] = array2;<br>end</td>
     <td></td>
-    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>Error: Assignment: types 'class ch.hslu.cobau.minij.ast.type.IntegerType' and 'class ch.hslu.cobau.minij.ast.type.ArrayType' doesnt match<br></td>
     <td>1</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.016</td>
-    <td class="fail">Wrong Exitcode</td>
-    <td>171</td>
+    <td class="pass">Passed</td>
+    <td>181</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>(Typ) Zuweisung (Intarray-Field vs. Recordarray)</td>
     <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    int[] array1;<br>    Coordinate[] coordinate2;<br>begin<br>    array1[0] = coordinate2;<br>end</td>
     <td></td>
-    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>Error: Assignment: types 'class ch.hslu.cobau.minij.ast.type.IntegerType' and 'class ch.hslu.cobau.minij.ast.type.ArrayType' doesnt match<br></td>
     <td>1</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.016</td>
-    <td class="fail">Wrong Exitcode</td>
-    <td>180</td>
+    <td class="pass">Passed</td>
+    <td>185</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>(Typ) Zuweisung (Intarray-Field vs. Intarray-Field)</td>
     <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    int[] array1;<br>    int[] array2;<br>begin<br>    array1[0] = array2[0];<br>end</td>
     <td></td>
-    <td></td>
+    <td>Error: Assignment: types 'class ch.hslu.cobau.minij.ast.type.ArrayType' and 'class ch.hslu.cobau.minij.ast.type.IntegerType' doesnt match<br><br>Program exited with exit code: 1, but expected: 0</td>
     <td>0</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.06</td>
-    <td class="pass">Passed</td>
-    <td>181</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>190</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>(Typ) Zuweisung (Intarray-Field vs. Recordarray-Field)</td>
     <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    int[] array1;<br>    Coordinate[] coordinate2;<br>begin<br>    array1[0] = coordinate2[0];<br>end</td>
     <td></td>
-    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>Error: Assignment: types 'class ch.hslu.cobau.minij.ast.type.ArrayType' and 'class ch.hslu.cobau.minij.ast.type.IntegerType' doesnt match<br></td>
     <td>1</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.016</td>
-    <td class="fail">Wrong Exitcode</td>
-    <td>184</td>
+    <td class="pass">Passed</td>
+    <td>199</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -1913,103 +1913,103 @@
     <td>0</td>
     <td>0.016</td>
     <td class="fail">Wrong Exitcode</td>
-    <td>169</td>
+    <td>195</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>(Typ) Zuweisung (Recordarray-Field vs. boolean)</td>
     <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    Coordinate[] coordinate1;<br>    boolean flag2;<br>begin<br>    coordinate1[0] = flag2;<br>end</td>
     <td></td>
-    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>Error: Assignment: types 'class ch.hslu.cobau.minij.ast.type.IntegerType' and 'class ch.hslu.cobau.minij.ast.type.BooleanType' doesnt match<br></td>
     <td>1</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.016</td>
-    <td class="fail">Wrong Exitcode</td>
-    <td>182</td>
+    <td class="pass">Passed</td>
+    <td>186</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>(Typ) Zuweisung (Recordarray-Field vs. string)</td>
     <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    Coordinate[] coordinate1;<br>    string text2;<br>begin<br>    coordinate1[0] = text2;<br>end</td>
     <td></td>
-    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>Error: Assignment: types 'class ch.hslu.cobau.minij.ast.type.IntegerType' and 'class ch.hslu.cobau.minij.ast.type.StringType' doesnt match<br></td>
     <td>1</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.016</td>
-    <td class="fail">Wrong Exitcode</td>
-    <td>169</td>
+    <td class="pass">Passed</td>
+    <td>181</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>(Typ) Zuweisung (Recordarray-Field vs. Record)</td>
     <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    Coordinate[] coordinate1;<br>    Coordinate coord2;<br>begin<br>    coordinate1[0] = coord2;<br>end</td>
     <td></td>
-    <td></td>
+    <td>Error: Assignment: types 'class ch.hslu.cobau.minij.ast.type.IntegerType' and 'class ch.hslu.cobau.minij.ast.type.RecordType' doesnt match<br><br>Program exited with exit code: 1, but expected: 0</td>
     <td>0</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.05</td>
-    <td class="pass">Passed</td>
-    <td>179</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>182</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>(Typ) Zuweisung (Recordarray-Field vs. Record-Field(int))</td>
     <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    Coordinate[] coordinate1;<br>    Coordinate coord2;<br>begin<br>    coordinate1[0] = coord2.x;<br>end</td>
     <td></td>
-    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>Error: Assignment: types 'class ch.hslu.cobau.minij.ast.type.IntegerType' and 'class ch.hslu.cobau.minij.ast.type.RecordType' doesnt match<br></td>
     <td>1</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.016</td>
-    <td class="fail">Wrong Exitcode</td>
-    <td>178</td>
+    <td class="pass">Passed</td>
+    <td>186</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>(Typ) Zuweisung (Recordarray-Field vs. Intarray)</td>
     <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    Coordinate[] coordinate1;<br>    int[] array2;<br>begin<br>    coordinate1[0] = array2;<br>end</td>
     <td></td>
-    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>Error: Assignment: types 'class ch.hslu.cobau.minij.ast.type.IntegerType' and 'class ch.hslu.cobau.minij.ast.type.ArrayType' doesnt match<br></td>
     <td>1</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.016</td>
-    <td class="fail">Wrong Exitcode</td>
-    <td>182</td>
+    <td class="pass">Passed</td>
+    <td>187</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>(Typ) Zuweisung (Recordarray-Field vs. Recordarray)</td>
     <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    Coordinate[] coordinate1;<br>    Coordinate[] coordinate2;<br>begin<br>    coordinate1[0] = coordinate2;<br>end</td>
     <td></td>
-    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>Error: Assignment: types 'class ch.hslu.cobau.minij.ast.type.IntegerType' and 'class ch.hslu.cobau.minij.ast.type.ArrayType' doesnt match<br></td>
     <td>1</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.016</td>
-    <td class="fail">Wrong Exitcode</td>
-    <td>169</td>
+    <td class="pass">Passed</td>
+    <td>181</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>(Typ) Zuweisung (Recordarray-Field vs. Intarray-Field)</td>
     <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    Coordinate[] coordinate1;<br>    int[] array2;<br>begin<br>    coordinate1[0] = array2[0];<br>end</td>
     <td></td>
-    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>Error: Assignment: types 'class ch.hslu.cobau.minij.ast.type.ArrayType' and 'class ch.hslu.cobau.minij.ast.type.IntegerType' doesnt match<br></td>
     <td>1</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.016</td>
-    <td class="fail">Wrong Exitcode</td>
-    <td>171</td>
+    <td class="pass">Passed</td>
+    <td>183</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>(Typ) Zuweisung (Recordarray-Field vs. Recordarray-Field)</td>
     <td>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    Coordinate[] coordinate1;<br>    Coordinate[] coordinate2;<br>begin<br>    coordinate1[0] = coordinate2[0];<br>end</td>
     <td></td>
-    <td></td>
+    <td>Error: Assignment: types 'class ch.hslu.cobau.minij.ast.type.ArrayType' and 'class ch.hslu.cobau.minij.ast.type.IntegerType' doesnt match<br><br>Program exited with exit code: 1, but expected: 0</td>
     <td>0</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.05</td>
-    <td class="pass">Passed</td>
-    <td>170</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>186</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -2021,7 +2021,7 @@
     <td>0</td>
     <td>0.03</td>
     <td class="pass">Passed</td>
-    <td>170</td>
+    <td>187</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -2033,7 +2033,7 @@
     <td>0</td>
     <td>0.05</td>
     <td class="pass">Passed</td>
-    <td>171</td>
+    <td>189</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -2045,7 +2045,7 @@
     <td>0</td>
     <td>0.02</td>
     <td class="fail">Wrong Exitcode</td>
-    <td>170</td>
+    <td>187</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -2057,19 +2057,19 @@
     <td>0</td>
     <td>0.02</td>
     <td class="fail">Wrong Exitcode</td>
-    <td>172</td>
+    <td>178</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>(Typ) Operatoren (Record, +)</td>
     <td>procedure main()<br>    Coordinate value1;<br>    Coordinate value2;<br>begin<br>    value1 = value1 + value2;<br>end</td>
     <td></td>
-    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>Error: Identifier 'value1' doesnt exists<br>Error: Identifier 'value2' doesnt exists<br></td>
     <td>1</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.02</td>
-    <td class="fail">Wrong Exitcode</td>
-    <td>167</td>
+    <td class="pass">Passed</td>
+    <td>186</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -2081,7 +2081,7 @@
     <td>0</td>
     <td>0.02</td>
     <td class="pass">Passed</td>
-    <td>171</td>
+    <td>186</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -2093,7 +2093,7 @@
     <td>0</td>
     <td>0.02</td>
     <td class="fail">Wrong Exitcode</td>
-    <td>169</td>
+    <td>196</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -2105,7 +2105,7 @@
     <td>0</td>
     <td>0.02</td>
     <td class="fail">Wrong Exitcode</td>
-    <td>167</td>
+    <td>177</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -2117,19 +2117,19 @@
     <td>0</td>
     <td>0.02</td>
     <td class="fail">Wrong Exitcode</td>
-    <td>170</td>
+    <td>190</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>(Typ) Operatoren (Record, -)</td>
     <td>procedure main()<br>    Coordinate value1;<br>    Coordinate value2;<br>begin<br>    value1 = value1 - value2;<br>end</td>
     <td></td>
-    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>Error: Identifier 'value1' doesnt exists<br>Error: Identifier 'value2' doesnt exists<br></td>
     <td>1</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.02</td>
-    <td class="fail">Wrong Exitcode</td>
-    <td>169</td>
+    <td class="pass">Passed</td>
+    <td>180</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -2141,7 +2141,7 @@
     <td>0</td>
     <td>0.03</td>
     <td class="pass">Passed</td>
-    <td>170</td>
+    <td>187</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -2153,7 +2153,7 @@
     <td>0</td>
     <td>0.02</td>
     <td class="fail">Wrong Exitcode</td>
-    <td>168</td>
+    <td>175</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -2165,7 +2165,7 @@
     <td>0</td>
     <td>0.02</td>
     <td class="fail">Wrong Exitcode</td>
-    <td>166</td>
+    <td>189</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -2177,19 +2177,19 @@
     <td>0</td>
     <td>0.02</td>
     <td class="fail">Wrong Exitcode</td>
-    <td>167</td>
+    <td>187</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>(Typ) Operatoren (Record, *)</td>
     <td>procedure main()<br>    Coordinate value1;<br>    Coordinate value2;<br>begin<br>    value1 = value1 * value2;<br>end</td>
     <td></td>
-    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>Error: Identifier 'value1' doesnt exists<br>Error: Identifier 'value2' doesnt exists<br></td>
     <td>1</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.02</td>
-    <td class="fail">Wrong Exitcode</td>
-    <td>169</td>
+    <td class="pass">Passed</td>
+    <td>183</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -2201,7 +2201,7 @@
     <td>0</td>
     <td>0.02</td>
     <td class="pass">Passed</td>
-    <td>166</td>
+    <td>185</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -2213,7 +2213,7 @@
     <td>0</td>
     <td>0.02</td>
     <td class="fail">Wrong Exitcode</td>
-    <td>167</td>
+    <td>174</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -2225,7 +2225,7 @@
     <td>0</td>
     <td>0.02</td>
     <td class="fail">Wrong Exitcode</td>
-    <td>176</td>
+    <td>187</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -2237,19 +2237,19 @@
     <td>0</td>
     <td>0.02</td>
     <td class="fail">Wrong Exitcode</td>
-    <td>170</td>
+    <td>185</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>(Typ) Operatoren (Record, /)</td>
     <td>procedure main()<br>    Coordinate value1;<br>    Coordinate value2;<br>begin<br>    value1 = value1 / value2;<br>end</td>
     <td></td>
-    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>Error: Identifier 'value1' doesnt exists<br>Error: Identifier 'value2' doesnt exists<br></td>
     <td>1</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.02</td>
-    <td class="fail">Wrong Exitcode</td>
-    <td>165</td>
+    <td class="pass">Passed</td>
+    <td>183</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -2261,7 +2261,7 @@
     <td>0</td>
     <td>0.05</td>
     <td class="pass">Passed</td>
-    <td>170</td>
+    <td>173</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -2273,7 +2273,7 @@
     <td>0</td>
     <td>0.02</td>
     <td class="fail">Wrong Exitcode</td>
-    <td>166</td>
+    <td>180</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -2285,7 +2285,7 @@
     <td>0</td>
     <td>0.02</td>
     <td class="fail">Wrong Exitcode</td>
-    <td>168</td>
+    <td>176</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -2297,7 +2297,7 @@
     <td>0</td>
     <td>0.02</td>
     <td class="fail">Wrong Exitcode</td>
-    <td>168</td>
+    <td>187</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -2309,7 +2309,7 @@
     <td>0</td>
     <td>0.02</td>
     <td class="fail">Wrong Exitcode</td>
-    <td>184</td>
+    <td>186</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -2321,7 +2321,7 @@
     <td>0</td>
     <td>0.05</td>
     <td class="pass">Passed</td>
-    <td>169</td>
+    <td>188</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -2333,7 +2333,7 @@
     <td>0</td>
     <td>0.05</td>
     <td class="pass">Passed</td>
-    <td>172</td>
+    <td>177</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -2345,7 +2345,7 @@
     <td>0</td>
     <td>0.05</td>
     <td class="pass">Passed</td>
-    <td>171</td>
+    <td>186</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -2357,7 +2357,7 @@
     <td>0</td>
     <td>0.02</td>
     <td class="fail">Wrong Exitcode</td>
-    <td>170</td>
+    <td>185</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -2369,7 +2369,7 @@
     <td>0</td>
     <td>0.02</td>
     <td class="fail">Wrong Exitcode</td>
-    <td>182</td>
+    <td>188</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -2381,7 +2381,7 @@
     <td>0</td>
     <td>0.05</td>
     <td class="pass">Passed</td>
-    <td>171</td>
+    <td>176</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -2393,7 +2393,7 @@
     <td>0</td>
     <td>0.05</td>
     <td class="pass">Passed</td>
-    <td>167</td>
+    <td>187</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -2405,7 +2405,7 @@
     <td>0</td>
     <td>0.05</td>
     <td class="pass">Passed</td>
-    <td>168</td>
+    <td>177</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -2417,7 +2417,7 @@
     <td>0</td>
     <td>0.02</td>
     <td class="fail">Wrong Exitcode</td>
-    <td>171</td>
+    <td>177</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -2429,7 +2429,7 @@
     <td>0</td>
     <td>0.02</td>
     <td class="fail">Wrong Exitcode</td>
-    <td>182</td>
+    <td>189</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -2441,7 +2441,7 @@
     <td>0</td>
     <td>0.02</td>
     <td class="pass">Passed</td>
-    <td>169</td>
+    <td>195</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -2453,7 +2453,7 @@
     <td>0</td>
     <td>0.05</td>
     <td class="pass">Passed</td>
-    <td>168</td>
+    <td>176</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -2465,7 +2465,7 @@
     <td>0</td>
     <td>0.02</td>
     <td class="fail">Wrong Exitcode</td>
-    <td>167</td>
+    <td>186</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -2477,7 +2477,7 @@
     <td>0</td>
     <td>0.02</td>
     <td class="fail">Wrong Exitcode</td>
-    <td>169</td>
+    <td>188</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -2489,7 +2489,7 @@
     <td>0</td>
     <td>0.02</td>
     <td class="fail">Wrong Exitcode</td>
-    <td>180</td>
+    <td>186</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -2501,7 +2501,7 @@
     <td>0</td>
     <td>0.03</td>
     <td class="pass">Passed</td>
-    <td>171</td>
+    <td>180</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -2513,7 +2513,7 @@
     <td>0</td>
     <td>0.05</td>
     <td class="pass">Passed</td>
-    <td>170</td>
+    <td>175</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -2525,7 +2525,7 @@
     <td>0</td>
     <td>0.02</td>
     <td class="fail">Wrong Exitcode</td>
-    <td>169</td>
+    <td>186</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -2537,7 +2537,7 @@
     <td>0</td>
     <td>0.02</td>
     <td class="fail">Wrong Exitcode</td>
-    <td>166</td>
+    <td>188</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -2549,7 +2549,7 @@
     <td>0</td>
     <td>0.02</td>
     <td class="fail">Wrong Exitcode</td>
-    <td>179</td>
+    <td>186</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -2561,7 +2561,7 @@
     <td>0</td>
     <td>0.02</td>
     <td class="pass">Passed</td>
-    <td>169</td>
+    <td>177</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -2573,7 +2573,7 @@
     <td>0</td>
     <td>0.05</td>
     <td class="pass">Passed</td>
-    <td>167</td>
+    <td>174</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -2585,7 +2585,7 @@
     <td>0</td>
     <td>0.02</td>
     <td class="fail">Wrong Exitcode</td>
-    <td>168</td>
+    <td>176</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -2597,7 +2597,7 @@
     <td>0</td>
     <td>0.02</td>
     <td class="fail">Wrong Exitcode</td>
-    <td>168</td>
+    <td>176</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -2609,7 +2609,7 @@
     <td>0</td>
     <td>0.02</td>
     <td class="fail">Wrong Exitcode</td>
-    <td>180</td>
+    <td>184</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -2621,7 +2621,7 @@
     <td>0</td>
     <td>0.03</td>
     <td class="pass">Passed</td>
-    <td>172</td>
+    <td>188</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -2633,7 +2633,7 @@
     <td>0</td>
     <td>0.05</td>
     <td class="pass">Passed</td>
-    <td>173</td>
+    <td>187</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -2645,7 +2645,7 @@
     <td>0</td>
     <td>0.02</td>
     <td class="fail">Wrong Exitcode</td>
-    <td>169</td>
+    <td>187</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -2657,7 +2657,7 @@
     <td>0</td>
     <td>0.02</td>
     <td class="fail">Wrong Exitcode</td>
-    <td>171</td>
+    <td>189</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -2669,7 +2669,7 @@
     <td>0</td>
     <td>0.02</td>
     <td class="fail">Wrong Exitcode</td>
-    <td>181</td>
+    <td>184</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -2681,7 +2681,7 @@
     <td>0</td>
     <td>0.02</td>
     <td class="fail">Wrong Exitcode</td>
-    <td>173</td>
+    <td>186</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -2693,7 +2693,7 @@
     <td>0</td>
     <td>0.05</td>
     <td class="pass">Passed</td>
-    <td>173</td>
+    <td>186</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -2705,19 +2705,19 @@
     <td>0</td>
     <td>0.02</td>
     <td class="fail">Wrong Exitcode</td>
-    <td>174</td>
+    <td>176</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>(Typ) Operatoren (Record, ||)</td>
     <td>record Coordinate<br>    boolean res;<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    Coordinate value1;<br>    Coordinate value2;<br>begin<br>    res = value1 || value2;<br>end</td>
     <td></td>
-    <td><br>Program exited with exit code: 0, but expected: 1</td>
+    <td>Error: Identifier 'res' doesnt exists<br></td>
     <td>1</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.02</td>
-    <td class="fail">Wrong Exitcode</td>
-    <td>186</td>
+    <td class="pass">Passed</td>
+    <td>190</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -2729,7 +2729,7 @@
     <td>0</td>
     <td>0.02</td>
     <td class="fail">Wrong Exitcode</td>
-    <td>174</td>
+    <td>177</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -2741,7 +2741,7 @@
     <td>0</td>
     <td>0.02</td>
     <td class="fail">Wrong Exitcode</td>
-    <td>178</td>
+    <td>188</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -2753,7 +2753,7 @@
     <td>0</td>
     <td>0.05</td>
     <td class="pass">Passed</td>
-    <td>172</td>
+    <td>186</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -2765,7 +2765,7 @@
     <td>0</td>
     <td>0.02</td>
     <td class="fail">Wrong Exitcode</td>
-    <td>178</td>
+    <td>190</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -2777,7 +2777,7 @@
     <td>0</td>
     <td>0.02</td>
     <td class="fail">Wrong Exitcode</td>
-    <td>176</td>
+    <td>187</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -2789,7 +2789,7 @@
     <td>0</td>
     <td>0.02</td>
     <td class="fail">Wrong Exitcode</td>
-    <td>169</td>
+    <td>187</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -2801,7 +2801,7 @@
     <td>0</td>
     <td>0.02</td>
     <td class="fail">Wrong Exitcode</td>
-    <td>172</td>
+    <td>185</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -2813,7 +2813,7 @@
     <td>0</td>
     <td>0.05</td>
     <td class="pass">Passed</td>
-    <td>171</td>
+    <td>188</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -2825,7 +2825,7 @@
     <td>0</td>
     <td>0.02</td>
     <td class="fail">Wrong Exitcode</td>
-    <td>175</td>
+    <td>188</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -2837,7 +2837,7 @@
     <td>0</td>
     <td>0.02</td>
     <td class="fail">Wrong Exitcode</td>
-    <td>171</td>
+    <td>184</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -2849,7 +2849,7 @@
     <td>0</td>
     <td>0.05</td>
     <td class="pass">Passed</td>
-    <td>171</td>
+    <td>175</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -2861,7 +2861,7 @@
     <td>0</td>
     <td>0.02</td>
     <td class="fail">Wrong Exitcode</td>
-    <td>168</td>
+    <td>183</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -2873,7 +2873,7 @@
     <td>0</td>
     <td>0.02</td>
     <td class="fail">Wrong Exitcode</td>
-    <td>170</td>
+    <td>186</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -2885,7 +2885,7 @@
     <td>0</td>
     <td>0.02</td>
     <td class="fail">Wrong Exitcode</td>
-    <td>171</td>
+    <td>188</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -2897,7 +2897,7 @@
     <td>0</td>
     <td>0.02</td>
     <td class="fail">Wrong Exitcode</td>
-    <td>184</td>
+    <td>181</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -2909,7 +2909,7 @@
     <td>0</td>
     <td>0.33</td>
     <td class="pass">Passed</td>
-    <td>172</td>
+    <td>174</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -2921,7 +2921,7 @@
     <td>0</td>
     <td>0.33</td>
     <td class="pass">Passed</td>
-    <td>171</td>
+    <td>175</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -2933,7 +2933,7 @@
     <td>0</td>
     <td>0.34</td>
     <td class="pass">Passed</td>
-    <td>176</td>
+    <td>177</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -2945,7 +2945,7 @@
     <td>0</td>
     <td>0.33</td>
     <td class="fail">Wrong Exitcode</td>
-    <td>174</td>
+    <td>173</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -2957,19 +2957,19 @@
     <td>0</td>
     <td>0.33</td>
     <td class="fail">Wrong Exitcode</td>
-    <td>174</td>
+    <td>187</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>(Typ) Funktionsaufruf (Parametertypen falsch)</td>
     <td>procedure test2(int number, int number, int[] a)<br>begin<br>end<br>record Coordinate<br>    int x;<br>    int y;<br>end<br>procedure main()<br>    Coordinate coord;<br>begin<br>    if (1 == 1) then<br>        test2(23, 42, coord);<br>    end;<br>end</td>
     <td></td>
-    <td>Exception in thread "main" java.lang.ClassCastException: class ch.hslu.cobau.minij.ast.expression.BinaryExpression cannot be cast to class ch.hslu.cobau.minij.ast.statement.Block (ch.hslu.cobau.minij.ast.expression.BinaryExpression and ch.hslu.cobau.minij.ast.statement.Block are in unnamed module of loader 'app')<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitIfStatement(MiniJAstBuilder.java:194)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitIfStatement(MiniJAstBuilder.java:16)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$IfStatementContext.accept(MiniJParser.java:1144)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJBaseVisitor.visitStatement(MiniJBaseVisitor.java:85)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$StatementContext.accept(MiniJParser.java:788)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitBlock(MiniJAstBuilder.java:99)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitBlock(MiniJAstBuilder.java:16)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$BlockContext.accept(MiniJParser.java:655)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJBaseVisitor.visitProcedureBody(MiniJBaseVisitor.java:64)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$ProcedureBodyContext.accept(MiniJParser.java:585)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitProcedure(MiniJAstBuilder.java:75)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitProcedure(MiniJAstBuilder.java:16)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$ProcedureContext.accept(MiniJParser.java:379)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJBaseVisitor.visitMember(MiniJBaseVisitor.java:29)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$MemberContext.accept(MiniJParser.java:213)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitUnit(MiniJAstBuilder.java:22)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitUnit(MiniJAstBuilder.java:16)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$UnitContext.accept(MiniJParser.java:147)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visit(AbstractParseTreeVisitor.java:18)<br>&#191;at ch.hslu.cobau.minij.MiniJCompiler.main(MiniJCompiler.java:47)<br></td>
+    <td>Error: Symbol 'number' of type 'Parameter' already exists<br></td>
     <td>1</td>
     <td>1</td>
     <td>0.34</td>
     <td class="pass">Passed</td>
-    <td>169</td>
+    <td>194</td>
     <td>1000</td>
   </tr>
 </table>
