@@ -9,13 +9,15 @@ import java.util.Objects;
 public class Declaration extends AstElement {
     private final String identifier;
     private final Type type;
+    private final boolean isReference;
 
-    public Declaration(String identifier, Type type) {
+    public Declaration(String identifier, Type type, boolean isReference) {
         Objects.requireNonNull(identifier);
         Objects.requireNonNull(type);
 
         this.identifier = identifier;
         this.type = type;
+        this.isReference = isReference;
     }
 
     public String getIdentifier() {
@@ -24,6 +26,10 @@ public class Declaration extends AstElement {
 
     public Type getType() {
         return type;
+    }
+
+    public boolean isReference() {
+        return isReference;
     }
 
     @Override

@@ -1,16 +1,35 @@
 package ch.hslu.cobau.minij;
 
-import ch.hslu.cobau.minij.ast.entity.Program;
-import ch.hslu.cobau.minij.semanticChecks.symbolTable.SymbolTableVisitor;
-import ch.hslu.cobau.minij.semanticChecks.typeCheck.TypeValidationVisitor;
+import ch.hslu.cobau.minij.ast.*;
+import ch.hslu.cobau.minij.ast.entity.*;
+import ch.hslu.cobau.minij.semantic.*;
+import ch.hslu.cobau.minij.symbol.*;
 import org.antlr.v4.runtime.*;
 
 import java.io.IOException;
 
 public class MiniJCompiler {
+    public static class EnhancedConsoleErrorListener extends ConsoleErrorListener {
+        private boolean hasErrors;
 
-    public static void main(String[] args) throws IOException {    
-        // initialize compiler
+        @Override
+        public void syntaxError(Recognizer<?, ?> recognizer, Object offendingSymbol, int line, int charPositionInLine, String msg, RecognitionException e) {
+            super.syntaxError(recognizer, offendingSymbol, line, charPositionInLine, msg, e);
+            hasErrors = true;
+        }
+
+        public void semanticError(String message) {
+            System.err.println(message);
+            hasErrors = true;
+        }
+
+        public boolean hasErrors() {
+            return hasErrors;
+        }
+    }
+
+    public static void main(String[] args) throws IOException {
+        // initialize lexer and parser
         CharStream charStream;
         if (args.length > 0) {
             charStream = CharStreams.fromFileName(args[0]);
@@ -26,24 +45,31 @@ public class MiniJCompiler {
         miniJParser.removeErrorListeners();
         miniJParser.addErrorListener(errorListener);
 
-        // start parsing at outermost level
+        // start parsing at outermost level (milestone 2)
         MiniJParser.UnitContext unitContext = miniJParser.unit();
 
-        // create AST
-        MiniJAstBuilder miniJAstBuilder = new MiniJAstBuilder(errorListener);
-        Program program = miniJAstBuilder.visit(unitContext);
+        // build abstract syntax tree (performs value checks for milestone 3)
+        AstBuilder astBuilder = new AstBuilder(errorListener);
+        unitContext.accept(astBuilder);
+        Program program = astBuilder.getProgram();
 
-        // semantic check (milestone 3)
-        var symbolTableVisitor = new SymbolTableVisitor(errorListener);
-        symbolTableVisitor.visit(program);
+        // build symbol table (performs duplicate checks for milestone 3)
+        SymbolTableBuilder symbolTableBuilder = new SymbolTableBuilder(errorListener);
+        program.accept(symbolTableBuilder);
+        SymbolTable symbolTable = symbolTableBuilder.getSymbolTable();
 
-        var symbolTables = symbolTableVisitor.getSymbolTables();
-        var typeValidationVisitor = new TypeValidationVisitor(errorListener, symbolTables);
-        typeValidationVisitor.visit(program);
+        // checks for symbol existence and correct types (milestone 3)
+        TypeAndExistenceChecker typeAndExistenceChecker = new TypeAndExistenceChecker(symbolTable, errorListener);
+        typeAndExistenceChecker.visit(astBuilder.getProgram());
 
-        // code generation (milestone 4)
+        // check main procedure (mile stone 3)
+        MainChecker mainChecker = new MainChecker(errorListener);
+        mainChecker.visit(astBuilder.getProgram());
 
-        // runtime and system libraries (milestone 5)
-       System.exit(errorListener.hasErrors() ? 1 : 0);
+        if (!errorListener.hasErrors()) {
+            // TODO: Milestone 4: generate program code
+        } else {
+            System.exit(1);
+        }
     }
 }

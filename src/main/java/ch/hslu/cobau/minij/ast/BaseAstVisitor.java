@@ -27,11 +27,6 @@ public class BaseAstVisitor implements AstVisitor {
     }
 
     @Override
-    public void visit(Parameter parameter) {
-        parameter.visitChildren(this);
-    }
-
-    @Override
     public void visit(ReturnStatement returnStatement) {
         returnStatement.visitChildren(this);
     }
@@ -39,6 +34,11 @@ public class BaseAstVisitor implements AstVisitor {
     @Override
     public void visit(AssignmentStatement assignment) {
         assignment.visitChildren(this);
+    }
+
+    @Override
+    public void visit(DeclarationStatement declarationStatement) {
+        declarationStatement.visitChildren(this);
     }
 
     @Override

@@ -9,13 +9,13 @@ public interface AstVisitor {
     void visit(Program program);
     void visit(Procedure procedure);
     void visit(Declaration declaration);
-    void visit(Parameter parameter);
     void visit(RecordStructure record);
 
     void visit(IfStatement ifStatement);
     void visit(WhileStatement whileStatement);
     void visit(ReturnStatement returnStatement);
     void visit(AssignmentStatement assignment);
+    void visit(DeclarationStatement declarationStatement);
     void visit(CallStatement callStatement);
     void visit(Block block);
 

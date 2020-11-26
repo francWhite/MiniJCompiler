@@ -30,10 +30,10 @@ block         : (statement)*;
 
 // statements
 declarationStatement : declaration | SEMICOLON;
-statement            : assignment | callStatement | returnStatement | ifStatement | whileStatement | SEMICOLON;
+statement            : assignment | call | returnStatement | ifStatement | whileStatement | SEMICOLON;
 
 assignment           : memoryAccess ASSIGN expression SEMICOLON;
-callStatement        : identifier LPAREN (expression (COMMA expression)*)? RPAREN SEMICOLON;
+call                 : identifier LPAREN (expression (COMMA expression)*)? RPAREN SEMICOLON;
 whileStatement       : WHILE LPAREN expression RPAREN DO block END;
 returnStatement      : RETURN SEMICOLON;
 
@@ -45,14 +45,13 @@ elseClause           : ELSE block;
 expression : LPAREN expression RPAREN
            | memoryAccess (INCREMENT | DECREMENT)
            | unaryExpression
-           | expression binaryOp=(TIMES | DIV | MOD) expression                          // NOTE: order is important.
-           | expression binaryOp=(PLUS | MINUS) expression                               // In ANTLR order reflects
-           | expression binaryOp=(EQUAL | UNEQUAL | AND | OR) expression                 // the associativity of the
-           | expression binaryOp=(LESSER | GREATER | LESSER_EQ | GREATER_EQ) expression  // operations.
-           | expression binaryOp=(EQUAL | UNEQUAL) expression                            // Thus, operator with highest
-           | expression binaryOp=AND expression                                          // precendence MUST be listed
-           | expression binaryOp=OR expression                                           // first.
-           | trueConstant
+           | expression binaryOp=(TIMES | DIV | MOD) expression                          // note: order is important
+           | expression binaryOp=(PLUS | MINUS) expression                               // in ANTLR order reflects
+           | expression binaryOp=(LESSER | GREATER | LESSER_EQ | GREATER_EQ) expression  // the associativity of the
+           | expression binaryOp=(EQUAL | UNEQUAL) expression                            // operations.
+           | expression binaryOp=AND expression                                          // Thus, operator with highest
+           | expression binaryOp=OR expression                                           // precendence must be listed
+           | trueConstant                                                                // first.
            | falseConstant
            | integerConstant
            | stringConstant
