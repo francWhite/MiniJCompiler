@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta charset="utf-8">
 <style>
     table { font-family: arial, sans-serif;border-collapse: collapse;width: 100% }
     p { font-family:arial;font-size:120% }
@@ -8,10 +9,12 @@
     td.pass {border: 1px solid #90EE90; background-color: #90EE90;color: #007000}
     td.fail {border: 1px solid #F08080; background-color: #F08080;color: #700000}
     tr:nth-child(even) {background-color: #dddddd}
-    </style></head><body><p><b>Test results (score: 10.0 of 10.0):</b></p><table>  <col width="14%">  <col width="14%">  <col width="24%">  <col width="23%">  <col width="5%">  <col width="5%">  <col width="7%">  <col width="8%">  <tr>    <th>Test case</th>
+    </style></head><body><p><b>Test results (score: 10.0 of 10.0 with a starting score of 0):</b></p><table>  <col width="12%">  <col width="13%">  <col width="20%">  <col width="20%">  <col width="5%">  <col width="5%">  <col width="5%">  <col width="5%">  <col width="7%">  <col width="8%">  <tr>    <th>Test case</th>
     <th>Input</th>
     <th>Expected Output</th>
     <th>Actual Output</th>
+    <th>Expected Exitcode</th>
+    <th>Actual Exitcode</th>
     <th>Score</th>
     <th>Result</th>
     <th>Time [ms]</th>
@@ -22,9 +25,11 @@
     <td>0<br></td>
     <td>0</td>
     <td>Bitte geben Sie eine Zahl ein:<br>Das Resultat ist: 0<br><br></td>
+    <td>0</td>
+    <td>0</td>
     <td>2.0</td>
     <td class="pass">Passed</td>
-    <td>0</td>
+    <td>30</td>
     <td>500</td>
   </tr>
   <tr>
@@ -32,9 +37,11 @@
     <td>3<br></td>
     <td>1</td>
     <td>Bitte geben Sie eine Zahl ein:<br>Das Resultat ist: 1<br><br></td>
+    <td>0</td>
+    <td>0</td>
     <td>2.0</td>
     <td class="pass">Passed</td>
-    <td>0</td>
+    <td>29</td>
     <td>500</td>
   </tr>
   <tr>
@@ -42,9 +49,11 @@
     <td>10<br></td>
     <td>5</td>
     <td>Bitte geben Sie eine Zahl ein:<br>Das Resultat ist: 5<br><br></td>
+    <td>0</td>
+    <td>0</td>
     <td>1.0</td>
     <td class="pass">Passed</td>
-    <td>0</td>
+    <td>30</td>
     <td>500</td>
   </tr>
   <tr>
@@ -52,9 +61,11 @@
     <td>42<br></td>
     <td>21</td>
     <td>Bitte geben Sie eine Zahl ein:<br>Das Resultat ist: 21<br><br></td>
+    <td>0</td>
+    <td>0</td>
     <td>1.0</td>
     <td class="pass">Passed</td>
-    <td>0</td>
+    <td>30</td>
     <td>500</td>
   </tr>
   <tr>
@@ -62,9 +73,11 @@
     <td>10<br></td>
     <td>Bitte geben Sie eine Zahl ein:<br>Das Resultat ist: 5</td>
     <td>Bitte geben Sie eine Zahl ein:<br>Das Resultat ist: 5<br><br></td>
+    <td>0</td>
+    <td>0</td>
     <td>1.0</td>
     <td class="pass">Passed</td>
-    <td>0</td>
+    <td>31</td>
     <td>500</td>
   </tr>
   <tr>
@@ -72,9 +85,11 @@
     <td>-1234<br></td>
     <td>-617</td>
     <td>Bitte geben Sie eine Zahl ein:<br>Das Resultat ist: -617<br><br></td>
+    <td>0</td>
+    <td>0</td>
     <td>1.0</td>
     <td class="pass">Passed</td>
-    <td>0</td>
+    <td>29</td>
     <td>500</td>
   </tr>
   <tr>
@@ -82,9 +97,11 @@
     <td>12345678900<br></td>
     <td>6172839450</td>
     <td>Bitte geben Sie eine Zahl ein:<br>Das Resultat ist: 6172839450<br><br></td>
+    <td>0</td>
+    <td>0</td>
     <td>0.5</td>
     <td class="pass">Passed</td>
-    <td>0</td>
+    <td>29</td>
     <td>500</td>
   </tr>
   <tr>
@@ -92,9 +109,11 @@
     <td>-12345678900<br></td>
     <td>-6172839450</td>
     <td>Bitte geben Sie eine Zahl ein:<br>Das Resultat ist: -6172839450<br><br></td>
+    <td>0</td>
+    <td>0</td>
     <td>0.5</td>
     <td class="pass">Passed</td>
-    <td>0</td>
+    <td>29</td>
     <td>500</td>
   </tr>
   <tr>
@@ -102,9 +121,11 @@
     <td>9223372036854775807<br></td>
     <td>4611686018427387903</td>
     <td>Bitte geben Sie eine Zahl ein:<br>Das Resultat ist: 4611686018427387903<br><br></td>
+    <td>0</td>
+    <td>0</td>
     <td>0.5</td>
     <td class="pass">Passed</td>
-    <td>0</td>
+    <td>29</td>
     <td>500</td>
   </tr>
   <tr>
@@ -112,9 +133,11 @@
     <td>-9223372036854775808<br></td>
     <td>-4611686018427387904</td>
     <td>Bitte geben Sie eine Zahl ein:<br>Das Resultat ist: -4611686018427387904<br><br></td>
+    <td>0</td>
+    <td>0</td>
     <td>0.5</td>
     <td class="pass">Passed</td>
-    <td>0</td>
+    <td>28</td>
     <td>500</td>
   </tr>
 </table>

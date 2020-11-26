@@ -1,0 +1,358 @@
+{
+    "name"                  : "Code Generation",
+    "commandline"           : "bin/mjtest_${os}${shell_ext}",
+    "description"           : "A set of system tests to verify, whether the compiler is able to generate a binary out of a miniJ program",
+    "startScore"            : 0,
+    "timeoutMilliseconds"   : 2000,
+    "testCases" : [
+    {
+        "name"             : "(main) Main",
+        "input"            : "procedure main()\nbegin\nend;",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "",
+        "score"            : 10.0
+    },
+    {
+        "name"             : "(built-in) writeInt",
+        "input"            : "procedure main()\nbegin\n    writeInt(7471857118);\nend",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "7471857118",
+        "score"            : 3.0
+    },
+    {
+        "name"             : "(built-in) writeChar",
+        "input"            : "procedure main()\nbegin\n    writeChar(72);\n    writeChar(97);\n    writeChar(108);\n    writeChar(108);\n    writeChar(111);\nend",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "Hallo",
+        "score"            : 2.0
+    },
+    {
+        "name"             : "(assignment) Local",
+        "input"            : "procedure main()\n    int a;\n    int b;\nbegin\n    a = 1;\n    b = 2;\n    writeInt(a);\n    writeInt(b);\nend",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "12",
+        "score"            : 1.0
+    },
+    {
+        "name"             : "(globals|assignment) Global",
+        "input"            : "int a;\nint b;\nprocedure main()\nbegin\n    a = 1;\n    b = 2;\n    writeInt(a);\n    writeInt(b);\nend",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "12",
+        "score"            : 1.5
+    },
+    {
+        "name"             : "(assignment) Konstante (integer)",
+        "input"            : "procedure main()\n    int myValue;\nbegin\n    myValue = -123;\n    writeInt(myValue);\nend",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "-123",
+        "score"            : 1.0
+    },
+    {
+        "name"             : "(if) einfaches if (true)",
+        "input"            : "procedure main()\nbegin\n    if (1==1) then\n        writeInt(123);\n    end;\nend",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "123",
+        "score"            : 0.5
+    },
+    {
+        "name"             : "(if|assignment) Konstante (boolean)",
+        "input"            : "procedure main()\n    boolean flag;\nbegin\n    flag = true;\n    if (flag) then\n        writeInt(123);\n    end;\nend",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "123",
+        "score"            : 0.5
+    },
+    {
+        "name"             : "(if) einfaches if (false)",
+        "input"            : "procedure main()\nbegin\n    writeInt(123);\n    if (false) then\n        writeInt(456);\n    end;\nend",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "123",
+        "score"            : 0.25
+    },
+    {
+        "name"             : "(if) if else (true)",
+        "input"            : "procedure main()\nbegin\n    writeInt(123);\n    if (true) then\n        writeInt(456);\n    else\n        writeInt(789);\n    end;\nend",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "123456",
+        "score"            : 0.25
+    },
+    {
+        "name"             : "(if) if else (false)",
+        "input"            : "procedure main()\nbegin\n    writeInt(123);\n    if (false) then\n        writeInt(456);\n    else\n        writeInt(789);\n    end;\nend",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "123789",
+        "score"            : 0.25
+    },
+    {
+        "name"             : "(if) if else if (false dann true)",
+        "input"            : "procedure main()\nbegin\n    writeInt(123);\n    if (false) then\n        writeInt(456);\n    elsif (true) then\n        writeInt(789);\n    else\n        writeInt(123);\n    end;\nend",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "123789",
+        "score"            : 0.25
+    },
+    {
+        "name"             : "(if) if else if (false dann true)",
+        "input"            : "procedure main()\nbegin\n    writeInt(123);\n    if (false) then\n        writeInt(456);\n    else\n       if (true) then\n           writeInt(789);\n       else\n           writeInt(123);\n       end;\n    end;\nend",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "123789",
+        "score"            : 0.25
+    },
+    {
+        "name"             : "(while) Keine Iterationen",
+        "input"            : "procedure main()\n    boolean flag;\nbegin\n    flag = false;\n    while (flag) do\n    end;\n    writeInt(123);\nend",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "123",
+        "score"            : 0.5
+    },
+    {
+        "name"             : "(while) Eine Iteration",
+        "input"            : "procedure main()\n    boolean flag;\nbegin\n    flag = true;\n    while (flag) do\n        flag = false;\n        writeInt(123);\n    end;\n    writeInt(123);\nend",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "123123",
+        "score"            : 0.5
+    },
+    {
+        "name"             : "(while) (expr) Summenformel",
+        "input"            : "procedure main()\n    int i;\n    int result;\nbegin\n    while(i <= 10) do\n       result = result + i;\n       i = i + 1;\n    end;\n    writeInt(result);\nend",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "55",
+        "score"            : 0.5
+    },
+    {
+        "name"             : "(while) Verschachtelte Summenformel",
+        "input"            : "procedure main()\n    int i;\n    int j;\n    int result;\nbegin\n    while(i <= 10) do\n        j = 0;\n        while(j <= 10) do\n            result = result + j;\n            j = j + 1;\n        end;\n       i = i + 1;\n    end;\n    writeInt(result);\nend",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "605",
+        "score"            : 0.5
+    },
+    {
+        "name"             : "(call) Ein Parameter",
+        "input"            : "procedure myProc1(int a)\nbegin\n    writeInt(a);\nend;\nprocedure main()\nbegin\n     myProc1(23);\n     myProc1(42);\nend",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "2342",
+        "score"            : 0.4
+    },
+    {
+        "name"             : "(call) Zwei Parameter",
+        "input"            : "procedure myProc1(int a, int b)\nbegin\n    writeInt(a);\n    writeInt(b);\nend;\nprocedure main()\nbegin\n    myProc1(12, 13);\n    myProc1(-12, -13);\nend",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "1213-12-13",
+        "score"            : 0.4
+    },
+    {
+        "name"             : "(call) Drei Parameter",
+        "input"            : "procedure myProc1(int a, int b, int c)\nbegin\n    writeInt(c);\n    writeInt(b);\n    writeInt(a);\nend;\nprocedure main()\nbegin\n    myProc1(12,13,14);\n    myProc1(1000,2000,-4000);\nend",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "141312-400020001000",
+        "score"            : 0.4
+    },
+    {
+        "name"             : "(call) Acht Parameter",
+        "input"            : "procedure myProc1(int a, int b, int c, int d, int e, int f, int g, int h)\n   int sum;\nbegin\n    sum = a + b + c + d + e + f + g + h;\n    writeInt(sum);\nend;\nprocedure main()\nbegin\n    myProc1(1, 1, 1, 1, 1, 1, 1, 1);\n    myProc1(1, 2, 3, 4, 5, 6, 7, 8);\nend",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "836",
+        "score"            : 0.2
+    },
+    {
+        "name"             : "(call) Verschachtelte Aufrufe",
+        "input"            : "procedure myProc1(int a)\nbegin\n    writeInt(a);\nend;\nprocedure myProc2(int a)\nbegin\n    writeInt(a);\nend;\nprocedure myProc3()\nbegin\n    myProc1(42);\n    myProc2(23);\nend;\nprocedure main()\nbegin\n    myProc3();\nend",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "4223",
+        "score"            : 0.2
+    },
+    {
+        "name"             : "(call) Rekursive Aufrufe",
+        "input"            : "procedure rec(int a)\nbegin\n    if (a == 42) then\n        writeInt(a);\n    else\n        rec(a + 1);\n    end;\nend;\nprocedure main()\nbegin\n    rec(0);\nend",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "42",
+        "score"            : 0.4
+    },
+    {
+        "name"             : "(return) Einfaches Return",
+        "input"            : "procedure myProc()\nbegin\n    writeInt(13);\n    return;\n    writeInt(14);\nend;\nprocedure main()\nbegin\n    myProc();\nend",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "13",
+        "score"            : 0.4
+    },
+    {
+        "name"             : "(return) PrintMax mit Result",
+        "input"            : "procedure max(int a, int b)\nbegin\n    if (a > b) then\n        writeInt(a);\n        return;\n    end;\n    writeInt(b);\nend;\nprocedure main()\nbegin\n    max(4, 5);\n    max(-12,-56);\n    max(-20,20000000);\nend",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "5-1220000000",
+        "score"            : 0.4
+    },
+    {
+        "name"             : "(expression) Arithmetische Operationen (Addition)",
+        "input"            : "procedure main()\n    int a;\n    int b;\n    int c;\nbegin\n    a = 1;\n    writeInt(a);\n    b = 1 + 3;\n    writeInt(b);\n    c = 1 + a;\n    writeInt(c);\n    c = a + b;\n    writeInt(c);\nend;",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "1425",
+        "score"            : 0.6
+    },
+    {
+        "name"             : "(expression) Arithmetische Operationen (Subtraktion)",
+        "input"            : "procedure main()\n    int a;\n    int b;\nbegin\n    a = 24;\n    writeInt(a);\n    b = 109 - a;\n    writeInt(b);\n    b = 109 - a + 3;\n    writeInt(b);\nend;",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "248588",
+        "score"            : 0.6
+    },
+    {
+        "name"             : "(expression) Arithmetische Operationen (Multiplikation)",
+        "input"            : "procedure main()\n    int a;\n    int b;\n    int c;\nbegin\n    a = 24;\n    writeInt(a);\n    b = 106;\n    writeInt(b);\n    c = b * a;\n    writeInt(c);\n    c = b * a * c + 3;\n    writeInt(c);\nend;",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "2410625446471939",
+        "score"            : 0.4
+    },
+    {
+        "name"             : "(expression) Arithmetische Operationen (Division)",
+        "input"            : "procedure main()\n    int a;\n    int b;\n    int c;\n    int d;\nbegin\n    a = 2400;\n    writeInt(a);\n    b = a / 2;\n    writeInt(b);\n    c = a / (-1 * 109);\n    writeInt(c);\nend;",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "24001200-22",
+        "score"            : 0.2
+    },
+    {
+        "name"             : "(expression) Arithmetische Operationen (Divisonsrest)",
+        "input"            : "procedure main()\n    int b;\n    int c;\n    int d;\nbegin\n    b = 103;\n    c = 23;\n    writeInt(c);\n    d = c + (108 % b);\n    writeInt(d);\nend;",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "2328",
+        "score"            : 0.2
+    },
+    {
+        "name"             : "(expression) Boolean Expressions (arith. Gleichheit) ",
+        "input"            : "procedure writeBoolean(boolean value)\nbegin\n    if (value) then writeInt(1); else writeInt(0); end;\nend\nprocedure main()\n    int a;\n    int b;\nbegin\n    a = 10;\n    b = 3;\n    writeBoolean(1 != 1);\n    writeBoolean(1 != 2);\n    writeBoolean(1 == 1);\n    writeBoolean(1 == 2);\nend;",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "0110",
+        "score"            : 0.5
+    },
+    {
+        "name"             : "(expression) Boolean Expressions (arith. Vergleiche) ",
+        "input"            : "procedure writeBoolean(boolean value)\nbegin\n    if (value) then writeInt(1); else writeInt(0); end;\nend\nprocedure main()\n    int a;\n    int b;\nbegin\n    a = 10;\n    b = 3;\n    writeBoolean(b > 2);\n    writeBoolean(2 > b);\n    writeBoolean(-5 < a);\n    writeBoolean(a < -5);\n    writeBoolean(-1 >= -2);\n    writeBoolean(-1 >= -1);\n    writeBoolean(100000 <= -5);\n    writeBoolean(100000 <= 100000);\nend;",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "10101101",
+        "score"            : 0.5
+    },
+    {
+        "name"             : "(expression) Boolean Expressions (bool)",
+        "input"            : "procedure writeBoolean(boolean value)\nbegin\n    if (value) then writeInt(1); else writeInt(0); end;\nend\nprocedure main()\n    boolean res;\nbegin\n    writeBoolean(true);\n    writeBoolean(false);\n    res = true == false;\n    writeBoolean(res);\n    res = true == true;\n    writeBoolean(res);\n    res = true != false;\n    writeBoolean(res);\n    res = true != true;\n    writeBoolean(res);\nend;",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "100110",
+        "score"            : 1.5
+    },
+    {
+        "name"             : "(expression) Complex",
+        "input"            : "procedure main()\n    int a;\n    int b;\nbegin\n    a = 5;\n    b = 10;\n    if (3 <= a && a <= 10) then\n        writeInt(12);\n    end;\n    if (!(3 <= a && a <= 10)) then\n        writeInt(34);\n    end;\n    if (3 > 5 || a == a) then\n        writeInt(56);\n    end;\n    if (3 > 5 && a == a) then\n        writeInt(78);\n    end;\nend",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "1256",
+        "score"            : 0.5
+    },
+    {
+        "name"             : "(program) Count",
+        "input"            : "procedure main()\n    int i;\nbegin\n    i = 10;\n    while(i > 0) do\n        writeInt(i);\n        writeChar(10);\n        i = i - 1;\n    end;\nend",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "10\n9\n8\n7\n6\n5\n4\n3\n2\n1",
+        "score"            : 1.0
+    },
+    {
+        "name"             : "(program) Max",
+        "input"            : "int result;\nprocedure max(int a, int b)\nbegin\n    if (a > b) then\n        result = a;\n    else\n        result = b;\n    end;\nend;\nprocedure main()\n    int value1;\n    int value2;\n    int value3;\nbegin\n    max(45, 12);\n    value1 = result;\n    max(-1200000, 120444444);\n    value2 = result;\n    max(value1, value2);\n    value3 = result;\n    writeInt(value1);\n    writeInt(value2);\n    writeInt(value3);\nend",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "45120444444120444444",
+        "score"            : 0.5
+    },
+    {
+        "name"             : "(program) Sort",
+        "input"            : "int a0;\nint a1;\nint a2;\nint a3;\nint a4;\nint retval;\nprocedure set(int index, int value)\nbegin\n   if (index == 0) then a0 = value;\n   elsif (index == 1) then a1 = value;\n   elsif (index == 2) then a2 = value;\n   elsif (index == 3) then a3 = value;\n   else a4 = value;\n   end;\nend;\nprocedure get(int index)\nbegin\n   if (index == 0) then retval = a0;\n   elsif (index == 1) then retval = a1;\n   elsif (index == 2) then retval = a2;\n   elsif (index == 3) then retval = a3;\n   else retval = a4;\n   end;\nend;\nprocedure print()\nbegin\n    writeInt(a0); writeChar(44);\n    writeInt(a1); writeChar(44);\n    writeInt(a2); writeChar(44);\n    writeInt(a3); writeChar(44);\n    writeInt(a4); writeChar(10);\nend;\nprocedure sort()\n    int i;\n    int n;\n    boolean swapped;\n    int prev;\nbegin\n    n = 5;\n    swapped = true;\n    while(swapped) do\n        i = 0;\n        swapped = false;\n        while (i < n - 1) do\n            get(i);\n            prev = retval;\n            get(i + 1);\n            if (prev > retval) then\n                get(i);\n                prev = retval;\n                get(i + 1);\n                set(i, retval);\n                set(i + 1, prev);\n                swapped = true;\n            end;\n            i = i + 1;\n        end;\n        n = n - 1;\n   end;\nend;\nprocedure main()\nbegin\n   a0 = 3; a1 = 1; a2 = 4; a3 = 23; a4= -3;\n   print();\n   sort();\n   print();\nend;",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "3,1,4,23,-3\n-3,1,3,4,23",
+        "score"            : 0.5
+    },
+    {
+        "name"             : "(reference) int",
+        "input"            : "procedure myProc1(ref int a)\nbegin\n    a = 13;\nend;\nprocedure main()\n    int myRef;\nbegin\n    myProc1(myRef);\n    writeInt(myRef);\nend",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "13",
+        "score"            : 1.5
+    },
+    {
+        "name"             : "(reference) readInt",
+        "input"            : "procedure main()\n    int value;\nbegin\n    readInt(value);\n    writeInt(value);\nend\n----INPUT----\n42",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "42",
+        "score"            : 0.25
+    },
+    {
+        "name"             : "(reference) readChar",
+        "input"            : "procedure main()\n    int value;\nbegin\n    readChar(value);\n    writeChar(value);\nend\n----INPUT----\nM",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "M",
+        "score"            : 0.25
+    },
+    {
+        "name"             : "(record) Zugriff",
+        "input"            : "record coordinates\n   int x;\n   int y;\nend;\nprocedure main()\n    coordinates c;\nbegin\n    c.x = 147;\n    c.y = -23;\n    writeInt(c.x);\n    writeInt(c.y);\nend",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "147-23",
+        "score"            : 1.5
+    },
+    {
+        "name"             : "(record) Berechnung",
+        "input"            : "record coordinates\n   int x;\n   int y;\nend;\nprocedure main()\n    coordinates c;\n    int result;\nbegin\n    c.x = 2;\n    c.y = 104;\n    result = (c.x * c.x + c.y * c.y) / c.x;\n    writeInt(result);\n    writeInt(c.y);\nend",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "5410104",
+        "score"            : 0.5
+    },
+    {
+        "name"             : "(record) Parameter",
+        "input"            : "record coord3d\n   int x;\n   int y;\n   int z;\nend;\nprocedure print(coord3d c)\nbegin\n    writeInt(c.x);\n    writeInt(c.y);\n    writeInt(c.z);\nend;\nprocedure main()\n    coord3d x;\nbegin\n    x.x = -23;\n    x.y = 1024;\n    x.z = -2;\n    print(x);\nend",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "-231024-2",
+        "score"            : 0.5
+    },
+    {
+        "name"             : "(record|reference) Reference Parameter",
+        "input"            : "record coord3d\n   int x;\n   int y;\n   int z;\nend;\nprocedure add(ref coord3d c, int value)\nbegin\n    c.x = c.x + value;\n    c.y = c.y + value;\n    c.z = c.z + value;\nend;\nprocedure print(coord3d c)\nbegin\n    writeInt(c.x);\n    writeInt(c.y);\n    writeInt(c.z);\nend;\nprocedure main()\n    coord3d x;\nbegin\n    x.x = -23;\n    x.y = 1024;\n    x.z = -2;\n    add(x, 25);\n    print(x);\nend",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "2104923",
+        "score"            : 0.5
+    },
+    {
+        "name"             : "(incdec) increment (pre)",
+        "input"            : "procedure main()\n    int a;\n    int res;\nbegin\n    a = 10;\n    res = ++a;\n    writeInt(res);\n    writeInt(a);\nend;",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "1111",
+        "score"            : 0.4
+    },
+    {
+        "name"             : "(incdec) increment (post)",
+        "input"            : "procedure main()\n    int a;\n    int res;\nbegin\n    a = 10;\n    res = a++;\n    writeInt(res);\n    writeInt(a);\nend;",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "1011",
+        "score"            : 0.35
+    },
+    {
+        "name"             : "(incdec) decrement (pre)",
+        "input"            : "procedure main()\n    int a;\n    int res;\nbegin\n    a = 10;\n    res = --a;\n    writeInt(res);\n    writeInt(a);\nend;",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "99",
+        "score"            : 0.4
+    },
+    {
+        "name"             : "(incdec) decrement (post)",
+        "input"            : "procedure main()\n    int a;\n    int res;\nbegin\n    a = 10;\n    res = a--;\n    writeInt(res);\n    writeInt(a);\nend;",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "109",
+        "score"            : 0.35
+    },
+    {
+        "name"             : "(circuit) Kurzschluss (und)",
+        "input"            : "procedure main()\n    int a;\n    int res;\nbegin\n    a = 123;\n    if (a == 0 && a++ == 0) then\n    end;\n    writeInt(a); // a++ not executed\n    a = 123;\n    if (a == 123 && a++ == 123) then\n    end;\n    writeInt(a); // a++ executed\nend;",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "123124",
+        "score"            : 0.5
+    },
+    {
+        "name"             : "(circuit) Kurzschluss (oder)",
+        "input"            : "procedure main()\n    int a;\n    int res;\nbegin\n    a = 123;\n    if (a == 123 || a++ == 123) then\n    end;\n    writeInt(a); // a++ not executed\n    a = 123;\n    if (a == 0 || a++ == 0) then\n    end;\n    writeInt(a);  // a++ executed\nend;",
+        "expectedExitCode" : "0",
+        "expectedOutput"   : "123124",
+        "score"            : 0.5
+    }  ]
+}

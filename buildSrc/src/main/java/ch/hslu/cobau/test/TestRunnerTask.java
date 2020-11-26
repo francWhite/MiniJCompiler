@@ -15,7 +15,6 @@ import java.io.*;
  * Gradle task that performs an execution of a test set.
  */
 public class TestRunnerTask extends DefaultTask {
-    public static final String WINDOWS_EXECUTABLE_SUFFIX = ".exe";
     private File testSet;
     public File reportDestination;
 
@@ -93,15 +92,46 @@ public class TestRunnerTask extends DefaultTask {
             part = part.replace('\\', File.separatorChar);
             part = part.replace("${buildDir}", getProject().getBuildDir().getAbsolutePath());
             part = part.replace("${jvm}", getJavaBinary());
-
-            if (i == 0 && Os.isFamily(Os.FAMILY_WINDOWS) && !part.toLowerCase().endsWith(WINDOWS_EXECUTABLE_SUFFIX)) {
-                part = part + WINDOWS_EXECUTABLE_SUFFIX;
-            }
+            part = part.replace("${os}", getOs());
+            part = part.replace("${exec_ext}", getExecSuffix());
+            part = part.replace("${shell_ext}", getShellSuffix());
 
             commandLine[i] = part;
         }
 
         return commandLine;
+    }
+
+    private String getOs() {
+        if (Os.isFamily(Os.FAMILY_WINDOWS)) {
+            return "windows";
+        } else if (Os.isFamily(Os.FAMILY_MAC)) {
+            return "macosx";
+        } else if (Os.isFamily(Os.FAMILY_UNIX)) {
+            return "linux";
+        }
+        throw new RuntimeException("unsupported operating system");
+    }
+    private String getExecSuffix() {
+        switch (getOs()) {
+            case "windows" :
+                return ".exe";
+            case "linux"   :
+            case "macosx"  :
+                return "";
+        }
+        throw new RuntimeException("unsupported operating system");
+    }
+
+    private String getShellSuffix() {
+        switch (getOs()) {
+            case "windows" :
+                return ".bat";
+            case "linux"   :
+            case "macosx"  :
+                return ".sh";
+        }
+        throw new RuntimeException("unsupported operating system");
     }
 
     /**

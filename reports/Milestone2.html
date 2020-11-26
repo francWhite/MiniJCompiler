@@ -9,7 +9,7 @@
     td.pass {border: 1px solid #90EE90; background-color: #90EE90;color: #007000}
     td.fail {border: 1px solid #F08080; background-color: #F08080;color: #700000}
     tr:nth-child(even) {background-color: #dddddd}
-    </style></head><body><p><b>Test results (score: 20.0 of 20.0 with a starting score of -20):</b></p><table>  <col width="12%">  <col width="13%">  <col width="20%">  <col width="20%">  <col width="5%">  <col width="5%">  <col width="5%">  <col width="5%">  <col width="7%">  <col width="8%">  <tr>    <th>Test case</th>
+    </style></head><body><p><b>Test results (score: 14.7 of 20.0 with a starting score of -20):</b></p><table>  <col width="12%">  <col width="13%">  <col width="20%">  <col width="20%">  <col width="5%">  <col width="5%">  <col width="5%">  <col width="5%">  <col width="7%">  <col width="8%">  <tr>    <th>Test case</th>
     <th>Input</th>
     <th>Expected Output</th>
     <th>Actual Output</th>
@@ -29,7 +29,7 @@
     <td>0</td>
     <td>0.3333</td>
     <td class="pass">Passed</td>
-    <td>162</td>
+    <td>163</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -41,7 +41,7 @@
     <td>0</td>
     <td>0.3333</td>
     <td class="pass">Passed</td>
-    <td>161</td>
+    <td>163</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -53,19 +53,19 @@
     <td>0</td>
     <td>0.3333</td>
     <td class="pass">Passed</td>
-    <td>159</td>
+    <td>161</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>Globale Variable (reference)</td>
     <td>record test<br>   int f1;<br>end;<br>test myRec;</td>
     <td></td>
-    <td></td>
+    <td>Exception in thread "main" java.lang.NullPointerException<br>&#191;at ch.hslu.cobau.minij.semanticChecks.typeCheck.TypeValidationVisitor.getSymbolOfParent(TypeValidationVisitor.java:152)<br>&#191;at ch.hslu.cobau.minij.semanticChecks.typeCheck.TypeValidationVisitor.visit(TypeValidationVisitor.java:54)<br>&#191;at ch.hslu.cobau.minij.ast.entity.Declaration.accept(Declaration.java:31)<br>&#191;at ch.hslu.cobau.minij.ast.entity.Program.lambda$visitChildren$0(Program.java:43)<br>&#191;at java.base/java.lang.Iterable.forEach(Iterable.java:75)<br>&#191;at ch.hslu.cobau.minij.ast.entity.Program.visitChildren(Program.java:43)<br>&#191;at ch.hslu.cobau.minij.ast.BaseAstVisitor.visit(BaseAstVisitor.java:11)<br>&#191;at ch.hslu.cobau.minij.MiniJCompiler.main(MiniJCompiler.java:42)<br><br>Program exited with exit code: 1, but expected: 0</td>
     <td>0</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.3333</td>
-    <td class="pass">Passed</td>
-    <td>155</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>187</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -77,7 +77,7 @@
     <td>0</td>
     <td>0.3333</td>
     <td class="pass">Passed</td>
-    <td>157</td>
+    <td>167</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -89,7 +89,7 @@
     <td>0</td>
     <td>0.3333</td>
     <td class="pass">Passed</td>
-    <td>156</td>
+    <td>157</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -101,19 +101,19 @@
     <td>1</td>
     <td>0.3333</td>
     <td class="pass">Passed</td>
-    <td>154</td>
+    <td>161</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>Falsche Variablendefinition (mehr als eine Symbolname)</td>
     <td>int i,j;</td>
     <td></td>
-    <td>line 1:5 mismatched input ',' expecting {'[', ID}<br>line 1:7 missing ID at ';'<br></td>
+    <td>line 1:5 mismatched input ',' expecting {'[', ID}<br>line 1:7 missing ID at ';'<br>Exception in thread "main" java.lang.NullPointerException<br>&#191;at ch.hslu.cobau.minij.semanticChecks.typeCheck.TypeValidationVisitor.getSymbolOfParent(TypeValidationVisitor.java:152)<br>&#191;at ch.hslu.cobau.minij.semanticChecks.typeCheck.TypeValidationVisitor.visit(TypeValidationVisitor.java:54)<br>&#191;at ch.hslu.cobau.minij.ast.entity.Declaration.accept(Declaration.java:31)<br>&#191;at ch.hslu.cobau.minij.ast.entity.Program.lambda$visitChildren$0(Program.java:43)<br>&#191;at java.base/java.lang.Iterable.forEach(Iterable.java:75)<br>&#191;at ch.hslu.cobau.minij.ast.entity.Program.visitChildren(Program.java:43)<br>&#191;at ch.hslu.cobau.minij.ast.BaseAstVisitor.visit(BaseAstVisitor.java:11)<br>&#191;at ch.hslu.cobau.minij.MiniJCompiler.main(MiniJCompiler.java:42)<br></td>
     <td>1</td>
     <td>1</td>
     <td>0.3333</td>
     <td class="pass">Passed</td>
-    <td>155</td>
+    <td>159</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -125,7 +125,7 @@
     <td>1</td>
     <td>0.3333</td>
     <td class="pass">Passed</td>
-    <td>157</td>
+    <td>159</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -137,7 +137,7 @@
     <td>0</td>
     <td>0.3333</td>
     <td class="pass">Passed</td>
-    <td>155</td>
+    <td>183</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -149,7 +149,7 @@
     <td>0</td>
     <td>0.3333</td>
     <td class="pass">Passed</td>
-    <td>154</td>
+    <td>171</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -161,7 +161,7 @@
     <td>0</td>
     <td>0.3333</td>
     <td class="pass">Passed</td>
-    <td>158</td>
+    <td>179</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -173,31 +173,31 @@
     <td>0</td>
     <td>0.3333</td>
     <td class="pass">Passed</td>
-    <td>161</td>
+    <td>180</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>Recorddefinition mit globaler Variable</td>
     <td>record x<br>  int xCoord;<br>end;<br>x myRecord;</td>
     <td></td>
-    <td></td>
+    <td>Exception in thread "main" java.lang.NullPointerException<br>&#191;at ch.hslu.cobau.minij.semanticChecks.typeCheck.TypeValidationVisitor.getSymbolOfParent(TypeValidationVisitor.java:152)<br>&#191;at ch.hslu.cobau.minij.semanticChecks.typeCheck.TypeValidationVisitor.visit(TypeValidationVisitor.java:54)<br>&#191;at ch.hslu.cobau.minij.ast.entity.Declaration.accept(Declaration.java:31)<br>&#191;at ch.hslu.cobau.minij.ast.entity.Program.lambda$visitChildren$0(Program.java:43)<br>&#191;at java.base/java.lang.Iterable.forEach(Iterable.java:75)<br>&#191;at ch.hslu.cobau.minij.ast.entity.Program.visitChildren(Program.java:43)<br>&#191;at ch.hslu.cobau.minij.ast.BaseAstVisitor.visit(BaseAstVisitor.java:11)<br>&#191;at ch.hslu.cobau.minij.MiniJCompiler.main(MiniJCompiler.java:42)<br><br>Program exited with exit code: 1, but expected: 0</td>
     <td>0</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.3333</td>
-    <td class="pass">Passed</td>
-    <td>157</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>178</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>Recorddefinition (falsches Schlüsselwort)</td>
     <td>recrd meinRecord42<br>  int xCoord;<br>  int yCoord;<br>end</td>
     <td></td>
-    <td>line 2:2 missing ';' at 'int'<br>line 4:0 extraneous input 'end' expecting {<EOF>, ';', 'record', 'procedure', 'int', 'boolean', 'string', ID}<br></td>
+    <td>line 2:2 missing ';' at 'int'<br>line 4:0 extraneous input 'end' expecting {<EOF>, ';', 'record', 'procedure', 'int', 'boolean', 'string', ID}<br>Exception in thread "main" java.lang.NullPointerException<br>&#191;at ch.hslu.cobau.minij.semanticChecks.typeCheck.TypeValidationVisitor.getSymbolOfParent(TypeValidationVisitor.java:152)<br>&#191;at ch.hslu.cobau.minij.semanticChecks.typeCheck.TypeValidationVisitor.visit(TypeValidationVisitor.java:54)<br>&#191;at ch.hslu.cobau.minij.ast.entity.Declaration.accept(Declaration.java:31)<br>&#191;at ch.hslu.cobau.minij.ast.entity.Program.lambda$visitChildren$0(Program.java:43)<br>&#191;at java.base/java.lang.Iterable.forEach(Iterable.java:75)<br>&#191;at ch.hslu.cobau.minij.ast.entity.Program.visitChildren(Program.java:43)<br>&#191;at ch.hslu.cobau.minij.ast.BaseAstVisitor.visit(BaseAstVisitor.java:11)<br>&#191;at ch.hslu.cobau.minij.MiniJCompiler.main(MiniJCompiler.java:42)<br></td>
     <td>1</td>
     <td>1</td>
     <td>0.3333</td>
     <td class="pass">Passed</td>
-    <td>158</td>
+    <td>162</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -209,7 +209,7 @@
     <td>1</td>
     <td>0.3333</td>
     <td class="pass">Passed</td>
-    <td>155</td>
+    <td>190</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -221,19 +221,19 @@
     <td>1</td>
     <td>0.3333</td>
     <td class="pass">Passed</td>
-    <td>162</td>
+    <td>175</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>Record Definition (Felddefinition inkorrekt)</td>
     <td>record meinRecord42<br>  int name,name;<br>  int yCoord;<br>end</td>
     <td></td>
-    <td>line 2:10 mismatched input ',' expecting {'[', ID}<br>line 2:15 missing ID at ';'<br></td>
+    <td>line 2:10 mismatched input ',' expecting {'[', ID}<br>line 2:15 missing ID at ';'<br>Exception in thread "main" java.lang.NullPointerException<br>&#191;at ch.hslu.cobau.minij.semanticChecks.typeCheck.TypeValidationVisitor.getSymbolOfParent(TypeValidationVisitor.java:152)<br>&#191;at ch.hslu.cobau.minij.semanticChecks.typeCheck.TypeValidationVisitor.visit(TypeValidationVisitor.java:54)<br>&#191;at ch.hslu.cobau.minij.ast.entity.Declaration.accept(Declaration.java:31)<br>&#191;at ch.hslu.cobau.minij.ast.entity.RecordStructure.lambda$visitChildren$0(RecordStructure.java:35)<br>&#191;at java.base/java.lang.Iterable.forEach(Iterable.java:75)<br>&#191;at ch.hslu.cobau.minij.ast.entity.RecordStructure.visitChildren(RecordStructure.java:35)<br>&#191;at ch.hslu.cobau.minij.ast.BaseAstVisitor.visit(BaseAstVisitor.java:21)<br>&#191;at ch.hslu.cobau.minij.ast.entity.RecordStructure.accept(RecordStructure.java:30)<br>&#191;at ch.hslu.cobau.minij.ast.entity.Program.lambda$visitChildren$2(Program.java:45)<br>&#191;at java.base/java.lang.Iterable.forEach(Iterable.java:75)<br>&#191;at ch.hslu.cobau.minij.ast.entity.Program.visitChildren(Program.java:45)<br>&#191;at ch.hslu.cobau.minij.ast.BaseAstVisitor.visit(BaseAstVisitor.java:11)<br>&#191;at ch.hslu.cobau.minij.MiniJCompiler.main(MiniJCompiler.java:42)<br></td>
     <td>1</td>
     <td>1</td>
     <td>0.3333</td>
     <td class="pass">Passed</td>
-    <td>163</td>
+    <td>172</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -245,7 +245,7 @@
     <td>0</td>
     <td>0.3333</td>
     <td class="pass">Passed</td>
-    <td>153</td>
+    <td>172</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -257,7 +257,7 @@
     <td>0</td>
     <td>0.3333</td>
     <td class="pass">Passed</td>
-    <td>156</td>
+    <td>175</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -269,7 +269,7 @@
     <td>0</td>
     <td>0.3333</td>
     <td class="pass">Passed</td>
-    <td>156</td>
+    <td>182</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -281,7 +281,7 @@
     <td>0</td>
     <td>0.3333</td>
     <td class="pass">Passed</td>
-    <td>158</td>
+    <td>179</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -293,7 +293,7 @@
     <td>0</td>
     <td>0.3333</td>
     <td class="pass">Passed</td>
-    <td>159</td>
+    <td>176</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -305,7 +305,7 @@
     <td>0</td>
     <td>0.3333</td>
     <td class="pass">Passed</td>
-    <td>158</td>
+    <td>167</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -317,19 +317,19 @@
     <td>1</td>
     <td>0.3333</td>
     <td class="pass">Passed</td>
-    <td>168</td>
+    <td>177</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>Prozedur ohne Parameterliste (falsch)</td>
     <td>procedure myName {<br>}</td>
     <td></td>
-    <td>line 1:17 mismatched input '{' expecting '('<br></td>
+    <td>line 1:17 mismatched input '{' expecting '('<br>Exception in thread "main" java.lang.ClassCastException: class java.lang.String cannot be cast to class ch.hslu.cobau.minij.ast.statement.Block (java.lang.String is in module java.base of loader 'bootstrap'; ch.hslu.cobau.minij.ast.statement.Block is in unnamed module of loader 'app')<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitProcedure(MiniJAstBuilder.java:82)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitProcedure(MiniJAstBuilder.java:16)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$ProcedureContext.accept(MiniJParser.java:379)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJBaseVisitor.visitMember(MiniJBaseVisitor.java:29)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$MemberContext.accept(MiniJParser.java:213)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitUnit(MiniJAstBuilder.java:27)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitUnit(MiniJAstBuilder.java:16)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$UnitContext.accept(MiniJParser.java:147)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visit(AbstractParseTreeVisitor.java:18)<br>&#191;at ch.hslu.cobau.minij.MiniJCompiler.main(MiniJCompiler.java:34)<br></td>
     <td>1</td>
     <td>1</td>
     <td>0.3333</td>
     <td class="pass">Passed</td>
-    <td>157</td>
+    <td>154</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -341,7 +341,7 @@
     <td>1</td>
     <td>0.3333</td>
     <td class="pass">Passed</td>
-    <td>160</td>
+    <td>177</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -353,7 +353,7 @@
     <td>1</td>
     <td>0.3333</td>
     <td class="pass">Passed</td>
-    <td>170</td>
+    <td>169</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -365,7 +365,7 @@
     <td>0</td>
     <td>0.3333</td>
     <td class="pass">Passed</td>
-    <td>161</td>
+    <td>176</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -377,7 +377,7 @@
     <td>0</td>
     <td>0.3333</td>
     <td class="pass">Passed</td>
-    <td>159</td>
+    <td>184</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -389,7 +389,7 @@
     <td>1</td>
     <td>0.3333</td>
     <td class="pass">Passed</td>
-    <td>159</td>
+    <td>167</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -401,7 +401,7 @@
     <td>1</td>
     <td>0.3333</td>
     <td class="pass">Passed</td>
-    <td>161</td>
+    <td>175</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -413,7 +413,7 @@
     <td>1</td>
     <td>0.3333</td>
     <td class="pass">Passed</td>
-    <td>162</td>
+    <td>175</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -425,7 +425,7 @@
     <td>0</td>
     <td>0.3333</td>
     <td class="pass">Passed</td>
-    <td>160</td>
+    <td>172</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -437,7 +437,7 @@
     <td>1</td>
     <td>0.3333</td>
     <td class="pass">Passed</td>
-    <td>159</td>
+    <td>178</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -449,19 +449,19 @@
     <td>0</td>
     <td>0.3333</td>
     <td class="pass">Passed</td>
-    <td>159</td>
+    <td>178</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>Zuweisung von fehlerhafter Stringkonstante</td>
     <td>procedure test()<br>    string s;<br>{<br>    s = "abc;<br>}</td>
     <td></td>
-    <td>line 4:8 token recognition error at: '"abc;\n}'<br>line 5:1 mismatched input '<EOF>' expecting {'(', '++', '--', '+', '-', '!', 'true', 'false', INTEGER, STRINGCONSTANT, ID}<br></td>
+    <td>line 4:8 token recognition error at: '"abc;\n}'<br>line 5:1 mismatched input '<EOF>' expecting {'(', '++', '--', '+', '-', '!', 'true', 'false', INTEGER, STRINGCONSTANT, ID}<br>Exception in thread "main" java.lang.ClassCastException: class ch.hslu.cobau.minij.ast.entity.Declaration cannot be cast to class ch.hslu.cobau.minij.ast.expression.Expression (ch.hslu.cobau.minij.ast.entity.Declaration and ch.hslu.cobau.minij.ast.expression.Expression are in unnamed module of loader 'app')<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitAssignment(MiniJAstBuilder.java:141)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitAssignment(MiniJAstBuilder.java:16)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$AssignmentContext.accept(MiniJParser.java:878)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJBaseVisitor.visitStatement(MiniJBaseVisitor.java:85)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$StatementContext.accept(MiniJParser.java:788)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitBlock(MiniJAstBuilder.java:104)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitBlock(MiniJAstBuilder.java:16)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$BlockContext.accept(MiniJParser.java:655)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJBaseVisitor.visitProcedureBody(MiniJBaseVisitor.java:64)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$ProcedureBodyContext.accept(MiniJParser.java:585)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitProcedure(MiniJAstBuilder.java:80)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitProcedure(MiniJAstBuilder.java:16)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$ProcedureContext.accept(MiniJParser.java:379)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJBaseVisitor.visitMember(MiniJBaseVisitor.java:29)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$MemberContext.accept(MiniJParser.java:213)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitUnit(MiniJAstBuilder.java:27)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitUnit(MiniJAstBuilder.java:16)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$UnitContext.accept(MiniJParser.java:147)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visit(AbstractParseTreeVisitor.java:18)<br>&#191;at ch.hslu.cobau.minij.MiniJCompiler.main(MiniJCompiler.java:34)<br></td>
     <td>1</td>
     <td>1</td>
     <td>0.3333</td>
     <td class="pass">Passed</td>
-    <td>160</td>
+    <td>155</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -473,7 +473,7 @@
     <td>0</td>
     <td>0.3333</td>
     <td class="pass">Passed</td>
-    <td>166</td>
+    <td>180</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -485,7 +485,7 @@
     <td>1</td>
     <td>0.3333</td>
     <td class="pass">Passed</td>
-    <td>158</td>
+    <td>180</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -497,7 +497,7 @@
     <td>0</td>
     <td>0.3333</td>
     <td class="pass">Passed</td>
-    <td>162</td>
+    <td>177</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -509,7 +509,7 @@
     <td>1</td>
     <td>0.3333</td>
     <td class="pass">Passed</td>
-    <td>160</td>
+    <td>178</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -521,31 +521,31 @@
     <td>1</td>
     <td>0.3333</td>
     <td class="pass">Passed</td>
-    <td>161</td>
+    <td>178</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>Prozeduraufruf</td>
     <td>procedure call1() begin end;<br>procedure call2(int a) begin end;<br>procedure call3(int a, int b) begin end;<br>procedure call4(int a, int b, int c) begin end;<br>procedure test()<br>int a;<br>boolean b;<br>string a;<br>{<br>    call1();<br>    call2(a);<br>    call3(a, b);<br>    call4(a, b, a);<br>}</td>
     <td></td>
-    <td></td>
+    <td>Symbol 'a' of type 'Declaration' already exists<br><br>Program exited with exit code: 1, but expected: 0</td>
     <td>0</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.3333</td>
-    <td class="pass">Passed</td>
-    <td>166</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>179</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>Fehlerhafter Prozeduraufruf</td>
     <td>procedure test()<br>{<br>    call(abc;<br>}</td>
     <td></td>
-    <td>line 3:12 mismatched input ';' expecting {')', ','}<br></td>
+    <td>line 3:12 mismatched input ';' expecting {')', ','}<br>Identifier 'abc' doesnt exists<br>Method 'call' doesnt exist<br></td>
     <td>1</td>
     <td>1</td>
     <td>0.3333</td>
     <td class="pass">Passed</td>
-    <td>159</td>
+    <td>175</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -557,14 +557,14 @@
     <td>0</td>
     <td>0.3333</td>
     <td class="pass">Passed</td>
-    <td>161</td>
+    <td>174</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>Fehlerhafter Ausdruck (math.)</td>
     <td>procedure test()<br>   int a;<br>{<br>    a = 2 +<br>}</td>
     <td></td>
-    <td>line 5:0 mismatched input '}' expecting {'(', '++', '--', '+', '-', '!', 'true', 'false', INTEGER, STRINGCONSTANT, ID}<br></td>
+    <td>line 5:0 mismatched input '}' expecting {'(', '++', '--', '+', '-', '!', 'true', 'false', INTEGER, STRINGCONSTANT, ID}<br>Exception in thread "main" java.lang.ClassCastException: class ch.hslu.cobau.minij.ast.entity.Declaration cannot be cast to class ch.hslu.cobau.minij.ast.expression.Expression (ch.hslu.cobau.minij.ast.entity.Declaration and ch.hslu.cobau.minij.ast.expression.Expression are in unnamed module of loader 'app')<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitAssignment(MiniJAstBuilder.java:141)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitAssignment(MiniJAstBuilder.java:16)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$AssignmentContext.accept(MiniJParser.java:878)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJBaseVisitor.visitStatement(MiniJBaseVisitor.java:85)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$StatementContext.accept(MiniJParser.java:788)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitBlock(MiniJAstBuilder.java:104)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitBlock(MiniJAstBuilder.java:16)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$BlockContext.accept(MiniJParser.java:655)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJBaseVisitor.visitProcedureBody(MiniJBaseVisitor.java:64)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$ProcedureBodyContext.accept(MiniJParser.java:585)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitProcedure(MiniJAstBuilder.java:80)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitProcedure(MiniJAstBuilder.java:16)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$ProcedureContext.accept(MiniJParser.java:379)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJBaseVisitor.visitMember(MiniJBaseVisitor.java:29)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$MemberContext.accept(MiniJParser.java:213)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitUnit(MiniJAstBuilder.java:27)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitUnit(MiniJAstBuilder.java:16)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$UnitContext.accept(MiniJParser.java:147)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visit(AbstractParseTreeVisitor.java:18)<br>&#191;at ch.hslu.cobau.minij.MiniJCompiler.main(MiniJCompiler.java:34)<br></td>
     <td>1</td>
     <td>1</td>
     <td>0.3333</td>
@@ -581,19 +581,19 @@
     <td>0</td>
     <td>0.3333</td>
     <td class="pass">Passed</td>
-    <td>175</td>
+    <td>173</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>Fehlerhafter Ausdruck (Vergleich)</td>
     <td>procedure test()<br>   int a;<br>{<br>    a = 2 <;<br>}</td>
     <td></td>
-    <td>line 4:11 mismatched input ';' expecting {'(', '++', '--', '+', '-', '!', 'true', 'false', INTEGER, STRINGCONSTANT, ID}<br></td>
+    <td>line 4:11 mismatched input ';' expecting {'(', '++', '--', '+', '-', '!', 'true', 'false', INTEGER, STRINGCONSTANT, ID}<br>Exception in thread "main" java.lang.ClassCastException: class ch.hslu.cobau.minij.ast.entity.Declaration cannot be cast to class ch.hslu.cobau.minij.ast.expression.Expression (ch.hslu.cobau.minij.ast.entity.Declaration and ch.hslu.cobau.minij.ast.expression.Expression are in unnamed module of loader 'app')<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitAssignment(MiniJAstBuilder.java:141)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitAssignment(MiniJAstBuilder.java:16)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$AssignmentContext.accept(MiniJParser.java:878)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJBaseVisitor.visitStatement(MiniJBaseVisitor.java:85)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$StatementContext.accept(MiniJParser.java:788)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitBlock(MiniJAstBuilder.java:104)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitBlock(MiniJAstBuilder.java:16)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$BlockContext.accept(MiniJParser.java:655)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJBaseVisitor.visitProcedureBody(MiniJBaseVisitor.java:64)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$ProcedureBodyContext.accept(MiniJParser.java:585)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitProcedure(MiniJAstBuilder.java:80)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitProcedure(MiniJAstBuilder.java:16)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$ProcedureContext.accept(MiniJParser.java:379)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJBaseVisitor.visitMember(MiniJBaseVisitor.java:29)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$MemberContext.accept(MiniJParser.java:213)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitUnit(MiniJAstBuilder.java:27)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitUnit(MiniJAstBuilder.java:16)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$UnitContext.accept(MiniJParser.java:147)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visit(AbstractParseTreeVisitor.java:18)<br>&#191;at ch.hslu.cobau.minij.MiniJCompiler.main(MiniJCompiler.java:34)<br></td>
     <td>1</td>
     <td>1</td>
     <td>0.3333</td>
     <td class="pass">Passed</td>
-    <td>161</td>
+    <td>157</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -605,19 +605,19 @@
     <td>0</td>
     <td>0.3333</td>
     <td class="pass">Passed</td>
-    <td>164</td>
+    <td>173</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>Fehlerhafter Ausdruck (Boolean)</td>
     <td>procedure test()<br>   int a;<br>{<br>    a = 2 !=;<br>}</td>
     <td></td>
-    <td>line 4:12 mismatched input ';' expecting {'(', '++', '--', '+', '-', '!', 'true', 'false', INTEGER, STRINGCONSTANT, ID}<br></td>
+    <td>line 4:12 mismatched input ';' expecting {'(', '++', '--', '+', '-', '!', 'true', 'false', INTEGER, STRINGCONSTANT, ID}<br>Exception in thread "main" java.lang.ClassCastException: class ch.hslu.cobau.minij.ast.entity.Declaration cannot be cast to class ch.hslu.cobau.minij.ast.expression.Expression (ch.hslu.cobau.minij.ast.entity.Declaration and ch.hslu.cobau.minij.ast.expression.Expression are in unnamed module of loader 'app')<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitAssignment(MiniJAstBuilder.java:141)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitAssignment(MiniJAstBuilder.java:16)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$AssignmentContext.accept(MiniJParser.java:878)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJBaseVisitor.visitStatement(MiniJBaseVisitor.java:85)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$StatementContext.accept(MiniJParser.java:788)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitBlock(MiniJAstBuilder.java:104)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitBlock(MiniJAstBuilder.java:16)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$BlockContext.accept(MiniJParser.java:655)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJBaseVisitor.visitProcedureBody(MiniJBaseVisitor.java:64)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$ProcedureBodyContext.accept(MiniJParser.java:585)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitProcedure(MiniJAstBuilder.java:80)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitProcedure(MiniJAstBuilder.java:16)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$ProcedureContext.accept(MiniJParser.java:379)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJBaseVisitor.visitMember(MiniJBaseVisitor.java:29)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$MemberContext.accept(MiniJParser.java:213)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitUnit(MiniJAstBuilder.java:27)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitUnit(MiniJAstBuilder.java:16)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$UnitContext.accept(MiniJParser.java:147)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visit(AbstractParseTreeVisitor.java:18)<br>&#191;at ch.hslu.cobau.minij.MiniJCompiler.main(MiniJCompiler.java:34)<br></td>
     <td>1</td>
     <td>1</td>
     <td>0.3333</td>
     <td class="pass">Passed</td>
-    <td>160</td>
+    <td>155</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -629,7 +629,7 @@
     <td>0</td>
     <td>0.3333</td>
     <td class="pass">Passed</td>
-    <td>186</td>
+    <td>196</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -641,7 +641,7 @@
     <td>1</td>
     <td>0.3333</td>
     <td class="pass">Passed</td>
-    <td>160</td>
+    <td>182</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -653,7 +653,7 @@
     <td>1</td>
     <td>0.3333</td>
     <td class="pass">Passed</td>
-    <td>165</td>
+    <td>182</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -665,19 +665,19 @@
     <td>1</td>
     <td>0.3333</td>
     <td class="pass">Passed</td>
-    <td>164</td>
+    <td>180</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>Ausdrücke (Unär) {</td>
     <td>procedure myExpr(int i)<br>    int a;<br>    boolean x;<br>{<br>    a = -a;<br>    x = !b;<br>}</td>
     <td></td>
-    <td></td>
+    <td>Identifier 'b' doesnt exists<br>Assignment: types 'class ch.hslu.cobau.minij.ast.type.BooleanType' and 'class ch.hslu.cobau.minij.ast.type.InvalidType' doesnt match<br><br>Program exited with exit code: 1, but expected: 0</td>
     <td>0</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.3333</td>
-    <td class="pass">Passed</td>
-    <td>167</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>188</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -689,7 +689,7 @@
     <td>1</td>
     <td>0.3333</td>
     <td class="pass">Passed</td>
-    <td>163</td>
+    <td>170</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -701,7 +701,7 @@
     <td>1</td>
     <td>0.3333</td>
     <td class="pass">Passed</td>
-    <td>163</td>
+    <td>191</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -713,7 +713,7 @@
     <td>0</td>
     <td>0.3333</td>
     <td class="pass">Passed</td>
-    <td>161</td>
+    <td>182</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -725,7 +725,7 @@
     <td>0</td>
     <td>0.3333</td>
     <td class="pass">Passed</td>
-    <td>164</td>
+    <td>197</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -737,19 +737,19 @@
     <td>0</td>
     <td>0.3333</td>
     <td class="pass">Passed</td>
-    <td>160</td>
+    <td>171</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>Fehlerhafter Ausdruck (Post-increment/Post-decrement) {</td>
     <td>procedure myExpr(int i)<br>    int a;<br>    boolean x;<br>{<br>    x = a++++;<br>    y = a----;<br>}</td>
     <td></td>
-    <td>line 5:11 extraneous input '++' expecting ';'<br>line 6:11 extraneous input '--' expecting ';'<br></td>
+    <td>line 5:11 extraneous input '++' expecting ';'<br>line 6:11 extraneous input '--' expecting ';'<br>Assignment: types 'class ch.hslu.cobau.minij.ast.type.BooleanType' and 'class ch.hslu.cobau.minij.ast.type.IntegerType' doesnt match<br>Identifier 'y' doesnt exists<br>Assignment: types 'class ch.hslu.cobau.minij.ast.type.InvalidType' and 'class ch.hslu.cobau.minij.ast.type.IntegerType' doesnt match<br></td>
     <td>1</td>
     <td>1</td>
     <td>0.3333</td>
     <td class="pass">Passed</td>
-    <td>168</td>
+    <td>180</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -761,7 +761,7 @@
     <td>0</td>
     <td>0.3333</td>
     <td class="pass">Passed</td>
-    <td>163</td>
+    <td>190</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -773,199 +773,199 @@
     <td>1</td>
     <td>0.3333</td>
     <td class="pass">Passed</td>
-    <td>164</td>
+    <td>195</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>Prozeduraufruf mit Expressions</td>
     <td>procedure call1() begin end;<br>procedure call2(int a) begin end;<br>procedure call3(int a, int b) begin end;<br>procedure call4(int a, int b, int c) begin end;<br>procedure test(int a, int b)<br>    int a;<br>    int b;<br>{<br>    call1();<br>    call2(a + b);<br>    call3(a > b, b - a);<br>    call4("Test", b++, a);<br>}</td>
     <td></td>
-    <td></td>
+    <td>Symbol 'a' of type 'Declaration' already exists<br>Symbol 'b' of type 'Declaration' already exists<br><br>Program exited with exit code: 1, but expected: 0</td>
     <td>0</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.3333</td>
-    <td class="pass">Passed</td>
-    <td>161</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>184</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>Prozeduraufruf mit Expressions (Fehlerhaft 1)</td>
     <td>procedure call(int a) begin end;<br>procedure test(int a, int b)<br>    int a;<br>    int b;<br>{<br>    call((a + b);<br>}</td>
     <td></td>
-    <td>line 6:16 mismatched input ';' expecting {')', ','}<br></td>
+    <td>line 6:16 mismatched input ';' expecting {')', ','}<br>Symbol 'a' of type 'Declaration' already exists<br>Symbol 'b' of type 'Declaration' already exists<br></td>
     <td>1</td>
     <td>1</td>
     <td>0.3333</td>
     <td class="pass">Passed</td>
-    <td>162</td>
+    <td>181</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>Prozeduraufruf mit Expressions (Fehlerhaft 2)</td>
     <td>procedure call(int a) begin end;<br>procedure test(int a, int b)<br>    int a;<br>    int b;<br>{<br>    call(a + b;<br>}</td>
     <td></td>
-    <td>line 6:14 mismatched input ';' expecting {')', ','}<br></td>
+    <td>line 6:14 mismatched input ';' expecting {')', ','}<br>Symbol 'a' of type 'Declaration' already exists<br>Symbol 'b' of type 'Declaration' already exists<br></td>
     <td>1</td>
     <td>1</td>
     <td>0.3333</td>
     <td class="pass">Passed</td>
-    <td>177</td>
+    <td>184</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>Prozeduraufruf mit Expressions (Fehlerhaft 3)</td>
     <td>procedure call(int a) begin end;<br>procedure test(int a, int b)<br>    int a;<br>    int b;<br>{<br>    call((a + b), (a - b);<br>}</td>
     <td></td>
-    <td>line 6:25 extraneous input ';' expecting {')', ','}<br></td>
+    <td>line 6:25 extraneous input ';' expecting {')', ','}<br>Symbol 'a' of type 'Declaration' already exists<br>Symbol 'b' of type 'Declaration' already exists<br>Method 'call' takes only 1 parameters, but 2 are passed<br></td>
     <td>1</td>
     <td>1</td>
     <td>0.3333</td>
     <td class="pass">Passed</td>
-    <td>166</td>
+    <td>198</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>If-Anweisung</td>
     <td>procedure test(int i)<br>    int i;<br>{<br>    if (i == 1) then<br>        return;<br>    end;<br>}</td>
     <td></td>
-    <td></td>
+    <td>Symbol 'i' of type 'Declaration' already exists<br><br>Program exited with exit code: 1, but expected: 0</td>
     <td>0</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.3333</td>
-    <td class="pass">Passed</td>
-    <td>163</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>181</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>If-Anweisung mit else</td>
     <td>procedure test(int i)<br>    int i;<br>{<br>    if (i == 1) then<br>        return;<br>    else<br>        return;<br>    end;<br>}</td>
     <td></td>
-    <td></td>
+    <td>Symbol 'i' of type 'Declaration' already exists<br><br>Program exited with exit code: 1, but expected: 0</td>
     <td>0</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.3333</td>
-    <td class="pass">Passed</td>
-    <td>165</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>177</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>If-Anweisung mit elsif</td>
     <td>procedure test(int i)<br>   int i;<br>{<br>    if (i == 1) then<br>        return;<br>    elsif (i > 1) then<br>        return;<br>    else<br>        return;<br>    end;<br>}</td>
     <td></td>
-    <td></td>
+    <td>Symbol 'i' of type 'Declaration' already exists<br><br>Program exited with exit code: 1, but expected: 0</td>
     <td>0</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.3333</td>
-    <td class="pass">Passed</td>
-    <td>164</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>185</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>If-Anweisung ohne end</td>
     <td>procedure test(int i)<br>   int i;<br>{<br>    if (i == 1) then<br>        return;<br>}</td>
     <td></td>
-    <td>line 6:0 mismatched input '}' expecting {'end', 'elsif', 'else'}<br></td>
+    <td>line 6:0 mismatched input '}' expecting {'end', 'elsif', 'else'}<br>Symbol 'i' of type 'Declaration' already exists<br></td>
     <td>1</td>
     <td>1</td>
     <td>0.3333</td>
     <td class="pass">Passed</td>
-    <td>163</td>
+    <td>182</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>If-Anweisung ohne then</td>
     <td>procedure test(int i)<br>   int i;<br>{<br>    if (i == 1)<br>        return;<br>    end;<br>}</td>
     <td></td>
-    <td>line 5:8 missing 'then' at 'return'<br></td>
+    <td>line 5:8 missing 'then' at 'return'<br>Symbol 'i' of type 'Declaration' already exists<br></td>
     <td>1</td>
     <td>1</td>
     <td>0.3333</td>
     <td class="pass">Passed</td>
-    <td>163</td>
+    <td>178</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>If-Anweisung mit else if ohne then</td>
     <td>procedure test(int i)<br>   int i;<br>{<br>    if (i == 1) then<br>        return;<br>    elsif (i > 1)<br>        return;<br>    else<br>        return;<br>    end;<br>}</td>
     <td></td>
-    <td>line 7:8 missing 'then' at 'return'<br></td>
+    <td>line 7:8 missing 'then' at 'return'<br>Symbol 'i' of type 'Declaration' already exists<br></td>
     <td>1</td>
     <td>1</td>
     <td>0.3333</td>
     <td class="pass">Passed</td>
-    <td>164</td>
+    <td>180</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>If-Anweisung ohne Semikolon</td>
     <td>procedure test(int i)<br>   int i;<br>{<br>    if (i == 1) then<br>        return;<br>    elsif (i > 1)<br>        return;<br>    else<br>        return;<br>    end<br>}</td>
     <td></td>
-    <td>line 7:8 missing 'then' at 'return'<br></td>
+    <td>line 7:8 missing 'then' at 'return'<br>Symbol 'i' of type 'Declaration' already exists<br></td>
     <td>1</td>
     <td>1</td>
     <td>0.3333</td>
     <td class="pass">Passed</td>
-    <td>161</td>
+    <td>180</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>If-Anweisung doppelt verschachtelt</td>
     <td>procedure test(int i)<br>    int i;<br>{<br>    if (i == 1) then<br>        i = i + 1;<br>    elsif (i > 1) then<br>        if (i < 100) then<br>            i = i + 2;<br>        else<br>            i = i + 3;<br>        end;<br>    else<br>        if (i < -100) then<br>            i = i + 4;<br>        elsif(i > -50) then<br>            i = i + 5;<br>        end;<br>    end;<br>}</td>
     <td></td>
-    <td></td>
+    <td>Symbol 'i' of type 'Declaration' already exists<br><br>Program exited with exit code: 1, but expected: 0</td>
     <td>0</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.3333</td>
-    <td class="pass">Passed</td>
-    <td>164</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>181</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>If-Anweisung doppelt verschachtelt; end fehlt</td>
     <td>procedure test(int i)<br>    int i;<br>{<br>    if (i == 1) then<br>        i = i + 1;<br>    elsif (i > 1) then<br>        if (i < 100) then<br>            i = i + 2;<br>        else<br>            i = i + 3;<br>        end;<br>    else<br>        if (i < -100) then<br>            i = i + 4;<br>        elsif(i > -50) then<br>            i = i + 5;<br>        end;<br>}</td>
     <td></td>
-    <td>line 18:0 missing 'end' at '}'<br></td>
+    <td>line 18:0 missing 'end' at '}'<br>Symbol 'i' of type 'Declaration' already exists<br></td>
     <td>1</td>
     <td>1</td>
     <td>0.3333</td>
     <td class="pass">Passed</td>
-    <td>166</td>
+    <td>192</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>If-Anweisung dreifach verschachtelt</td>
     <td>procedure test(int i)<br>    int i;<br>{<br>    if (i > 0) then<br>        if (i > 1) then<br>            if (i > 2) then<br>               i = i + 1;<br>            end;<br>        end;<br>    end;<br>}</td>
     <td></td>
-    <td></td>
+    <td>Symbol 'i' of type 'Declaration' already exists<br><br>Program exited with exit code: 1, but expected: 0</td>
     <td>0</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.3333</td>
-    <td class="pass">Passed</td>
-    <td>162</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>180</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>If-Anweisung dreifach verschachtelt; end fehlt</td>
     <td>procedure test(int i)<br>    int i;<br>{<br>    if (i > 0) then<br>        if (i > 1) then<br>            if (i > 2) then<br>               i = i + 1;<br>            end;<br>    end;<br>}</td>
     <td></td>
-    <td>line 10:0 mismatched input '}' expecting {'end', 'elsif', 'else'}<br></td>
+    <td>line 10:0 mismatched input '}' expecting {'end', 'elsif', 'else'}<br>Symbol 'i' of type 'Declaration' already exists<br></td>
     <td>1</td>
     <td>1</td>
     <td>0.3333</td>
     <td class="pass">Passed</td>
-    <td>173</td>
+    <td>181</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>If-Anweisung dreifach verschachtelt; Klammer fehlt</td>
     <td>procedure test(int i)<br>    int i;<br>{<br>    if i > 0 then<br>        if i > 1 then<br>            if i > 2 then<br>               i = i + 1;<br>            end;<br>    end;<br>}</td>
     <td></td>
-    <td>line 4:7 missing '(' at 'i'<br>line 4:13 missing ')' at 'then'<br>line 5:11 missing '(' at 'i'<br>line 5:17 missing ')' at 'then'<br>line 6:15 missing '(' at 'i'<br>line 6:21 missing ')' at 'then'<br>line 10:0 mismatched input '}' expecting {'end', 'elsif', 'else'}<br></td>
+    <td>line 4:7 missing '(' at 'i'<br>line 4:13 missing ')' at 'then'<br>line 5:11 missing '(' at 'i'<br>line 5:17 missing ')' at 'then'<br>line 6:15 missing '(' at 'i'<br>line 6:21 missing ')' at 'then'<br>line 10:0 mismatched input '}' expecting {'end', 'elsif', 'else'}<br>Symbol 'i' of type 'Declaration' already exists<br></td>
     <td>1</td>
     <td>1</td>
     <td>0.3333</td>
     <td class="pass">Passed</td>
-    <td>167</td>
+    <td>189</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -977,7 +977,7 @@
     <td>0</td>
     <td>0.3333</td>
     <td class="pass">Passed</td>
-    <td>164</td>
+    <td>181</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -989,7 +989,7 @@
     <td>1</td>
     <td>0.3333</td>
     <td class="pass">Passed</td>
-    <td>164</td>
+    <td>177</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -1001,7 +1001,7 @@
     <td>1</td>
     <td>0.3333</td>
     <td class="pass">Passed</td>
-    <td>165</td>
+    <td>173</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -1013,7 +1013,7 @@
     <td>1</td>
     <td>0.3333</td>
     <td class="pass">Passed</td>
-    <td>163</td>
+    <td>180</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -1025,7 +1025,7 @@
     <td>1</td>
     <td>0.3333</td>
     <td class="pass">Passed</td>
-    <td>161</td>
+    <td>170</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -1037,7 +1037,7 @@
     <td>0</td>
     <td>0.3333</td>
     <td class="pass">Passed</td>
-    <td>168</td>
+    <td>176</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -1049,7 +1049,7 @@
     <td>0</td>
     <td>0.3333</td>
     <td class="pass">Passed</td>
-    <td>162</td>
+    <td>185</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -1061,7 +1061,7 @@
     <td>0</td>
     <td>0.3333</td>
     <td class="pass">Passed</td>
-    <td>166</td>
+    <td>178</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -1073,7 +1073,7 @@
     <td>0</td>
     <td>0.3333</td>
     <td class="pass">Passed</td>
-    <td>168</td>
+    <td>177</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -1085,19 +1085,19 @@
     <td>1</td>
     <td>0.3333</td>
     <td class="pass">Passed</td>
-    <td>167</td>
+    <td>182</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>Feldzugriff (falsch)</td>
     <td>record test<br>    int value1;<br>    int value2;<br>end;<br>procedure fields()<br>   test myTest;<br>   int i;<br>begin<br>   i = myTest. + 1;<br>end;</td>
     <td></td>
-    <td>line 9:15 no viable alternative at input 'myTest.+'<br>line 9:15 mismatched input '+' expecting ID<br></td>
+    <td>line 9:15 no viable alternative at input 'myTest.+'<br>line 9:15 mismatched input '+' expecting ID<br>Exception in thread "main" java.lang.ClassCastException: class ch.hslu.cobau.minij.ast.entity.Declaration cannot be cast to class ch.hslu.cobau.minij.ast.expression.Expression (ch.hslu.cobau.minij.ast.entity.Declaration and ch.hslu.cobau.minij.ast.expression.Expression are in unnamed module of loader 'app')<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitAssignment(MiniJAstBuilder.java:141)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitAssignment(MiniJAstBuilder.java:16)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$AssignmentContext.accept(MiniJParser.java:878)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJBaseVisitor.visitStatement(MiniJBaseVisitor.java:85)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$StatementContext.accept(MiniJParser.java:788)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitBlock(MiniJAstBuilder.java:104)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitBlock(MiniJAstBuilder.java:16)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$BlockContext.accept(MiniJParser.java:655)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJBaseVisitor.visitProcedureBody(MiniJBaseVisitor.java:64)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$ProcedureBodyContext.accept(MiniJParser.java:585)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitProcedure(MiniJAstBuilder.java:80)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitProcedure(MiniJAstBuilder.java:16)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$ProcedureContext.accept(MiniJParser.java:379)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJBaseVisitor.visitMember(MiniJBaseVisitor.java:29)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$MemberContext.accept(MiniJParser.java:213)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitUnit(MiniJAstBuilder.java:27)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitUnit(MiniJAstBuilder.java:16)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$UnitContext.accept(MiniJParser.java:147)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visit(AbstractParseTreeVisitor.java:18)<br>&#191;at ch.hslu.cobau.minij.MiniJCompiler.main(MiniJCompiler.java:34)<br></td>
     <td>1</td>
     <td>1</td>
     <td>0.3333</td>
     <td class="pass">Passed</td>
-    <td>173</td>
+    <td>163</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -1109,7 +1109,7 @@
     <td>0</td>
     <td>0.3333</td>
     <td class="pass">Passed</td>
-    <td>167</td>
+    <td>183</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -1121,55 +1121,55 @@
     <td>1</td>
     <td>0.3333</td>
     <td class="pass">Passed</td>
-    <td>177</td>
+    <td>180</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>Arrayzugriff (LHS und RHS)</td>
     <td>boolean[] values;<br>procedure fields()<br>    boolean result;<br>begin<br>   values[0] = true;<br>   values[1] = false;<br>   result = values[0] && values[1];<br>end;</td>
     <td></td>
-    <td></td>
+    <td>Assignment: types 'class ch.hslu.cobau.minij.ast.type.IntegerType' and 'class ch.hslu.cobau.minij.ast.type.BooleanType' doesnt match<br>Assignment: types 'class ch.hslu.cobau.minij.ast.type.IntegerType' and 'class ch.hslu.cobau.minij.ast.type.BooleanType' doesnt match<br>Assignment: types 'class ch.hslu.cobau.minij.ast.type.ArrayType' and 'class ch.hslu.cobau.minij.ast.type.IntegerType' doesnt match<br><br>Program exited with exit code: 1, but expected: 0</td>
     <td>0</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.3333</td>
-    <td class="pass">Passed</td>
-    <td>162</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>192</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>Arrayzugriff (falsch)</td>
     <td>boolean[] values;<br>procedure fields()<br>    boolean result;<br>begin<br>   values[0] = true;<br>   values[1 = false;<br>   result = values[0] && values[1];<br>end;</td>
     <td></td>
-    <td>line 6:12 missing ']' at '='<br></td>
+    <td>line 6:12 missing ']' at '='<br>Assignment: types 'class ch.hslu.cobau.minij.ast.type.IntegerType' and 'class ch.hslu.cobau.minij.ast.type.BooleanType' doesnt match<br>Assignment: types 'class ch.hslu.cobau.minij.ast.type.IntegerType' and 'class ch.hslu.cobau.minij.ast.type.BooleanType' doesnt match<br>Assignment: types 'class ch.hslu.cobau.minij.ast.type.ArrayType' and 'class ch.hslu.cobau.minij.ast.type.IntegerType' doesnt match<br></td>
     <td>1</td>
     <td>1</td>
     <td>0.3333</td>
     <td class="pass">Passed</td>
-    <td>164</td>
+    <td>196</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>Arrayzugriff (LHS und RHS, falsch)</td>
     <td>boolean[] values;<br>procedure fields()<br>    boolean result;<br>begin<br>   values[0] = true;<br>   values[1] = false;<br>   result = values[0 && values[1];<br>end;</td>
     <td></td>
-    <td>line 7:33 no viable alternative at input 'values[0&&values[1];'<br>line 7:33 mismatched input ';' expecting {']', '+', '-', '*', '/', '%', '==', '!=', '<', '>', '<=', '>=', '&&', '||'}<br></td>
+    <td>line 7:33 no viable alternative at input 'values[0&&values[1];'<br>line 7:33 mismatched input ';' expecting {']', '+', '-', '*', '/', '%', '==', '!=', '<', '>', '<=', '>=', '&&', '||'}<br>Exception in thread "main" java.lang.ClassCastException: class ch.hslu.cobau.minij.ast.statement.AssignmentStatement cannot be cast to class ch.hslu.cobau.minij.ast.expression.Expression (ch.hslu.cobau.minij.ast.statement.AssignmentStatement and ch.hslu.cobau.minij.ast.expression.Expression are in unnamed module of loader 'app')<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitAssignment(MiniJAstBuilder.java:141)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitAssignment(MiniJAstBuilder.java:16)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$AssignmentContext.accept(MiniJParser.java:878)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJBaseVisitor.visitStatement(MiniJBaseVisitor.java:85)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$StatementContext.accept(MiniJParser.java:788)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitBlock(MiniJAstBuilder.java:104)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitBlock(MiniJAstBuilder.java:16)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$BlockContext.accept(MiniJParser.java:655)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJBaseVisitor.visitProcedureBody(MiniJBaseVisitor.java:64)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$ProcedureBodyContext.accept(MiniJParser.java:585)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitProcedure(MiniJAstBuilder.java:80)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitProcedure(MiniJAstBuilder.java:16)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$ProcedureContext.accept(MiniJParser.java:379)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJBaseVisitor.visitMember(MiniJBaseVisitor.java:29)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$MemberContext.accept(MiniJParser.java:213)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitUnit(MiniJAstBuilder.java:27)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitUnit(MiniJAstBuilder.java:16)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$UnitContext.accept(MiniJParser.java:147)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visit(AbstractParseTreeVisitor.java:18)<br>&#191;at ch.hslu.cobau.minij.MiniJCompiler.main(MiniJCompiler.java:34)<br></td>
     <td>1</td>
     <td>1</td>
     <td>0.3333</td>
     <td class="pass">Passed</td>
-    <td>166</td>
+    <td>169</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>Arrayzugriff (LHS und RHS, 2D)</td>
     <td>string[][] values;<br>procedure fields()<br>   int i;<br>begin<br>   values[0][0] = "1";<br>   values[1][1] = "2";<br>   i =  values[0][0] + values[1][1];<br>end;</td>
     <td></td>
-    <td></td>
+    <td>Assignment: types 'class ch.hslu.cobau.minij.ast.type.IntegerType' and 'class ch.hslu.cobau.minij.ast.type.StringType' doesnt match<br>Assignment: types 'class ch.hslu.cobau.minij.ast.type.IntegerType' and 'class ch.hslu.cobau.minij.ast.type.StringType' doesnt match<br><br>Program exited with exit code: 1, but expected: 0</td>
     <td>0</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.3333</td>
-    <td class="pass">Passed</td>
-    <td>163</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>197</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -1181,28 +1181,16 @@
     <td>0</td>
     <td>0.3333</td>
     <td class="pass">Passed</td>
-    <td>162</td>
+    <td>176</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>Arrayzugriff (LHS und RHS, falsch, 3D)</td>
     <td>int[][][] values;<br>procedure fields()<br>   int i;<br>begin<br>   values[0][call(x)][2] = 1;<br>   values[1][1][3] = 2;<br>   i = values[0][0][2] * values[1][1][3];<br>end;</td>
     <td></td>
-    <td>line 5:17 mismatched input '(' expecting {'[', ']', '+', '-', '*', '/', '%', '.', '==', '!=', '<', '>', '<=', '>=', '&&', '||'}<br>line 5:19 mismatched input ')' expecting {'[', ']', '+', '-', '*', '/', '%', '.', '==', '!=', '<', '>', '<=', '>=', '&&', '||'}<br></td>
+    <td>line 5:17 mismatched input '(' expecting {'[', ']', '+', '-', '*', '/', '%', '.', '==', '!=', '<', '>', '<=', '>=', '&&', '||'}<br>line 5:19 mismatched input ')' expecting {'[', ']', '+', '-', '*', '/', '%', '.', '==', '!=', '<', '>', '<=', '>=', '&&', '||'}<br>Exception in thread "main" java.lang.NullPointerException<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitMemoryAccess(MiniJAstBuilder.java:264)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitMemoryAccess(MiniJAstBuilder.java:16)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$MemoryAccessContext.accept(MiniJParser.java:1875)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitAssignment(MiniJAstBuilder.java:138)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitAssignment(MiniJAstBuilder.java:16)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$AssignmentContext.accept(MiniJParser.java:878)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJBaseVisitor.visitStatement(MiniJBaseVisitor.java:85)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$StatementContext.accept(MiniJParser.java:788)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitBlock(MiniJAstBuilder.java:104)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitBlock(MiniJAstBuilder.java:16)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$BlockContext.accept(MiniJParser.java:655)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJBaseVisitor.visitProcedureBody(MiniJBaseVisitor.java:64)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$ProcedureBodyContext.accept(MiniJParser.java:585)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitProcedure(MiniJAstBuilder.java:80)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitProcedure(MiniJAstBuilder.java:16)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$ProcedureContext.accept(MiniJParser.java:379)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJBaseVisitor.visitMember(MiniJBaseVisitor.java:29)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$MemberContext.accept(MiniJParser.java:213)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitUnit(MiniJAstBuilder.java:27)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitUnit(MiniJAstBuilder.java:16)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$UnitContext.accept(MiniJParser.java:147)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visit(AbstractParseTreeVisitor.java:18)<br>&#191;at ch.hslu.cobau.minij.MiniJCompiler.main(MiniJCompiler.java:34)<br></td>
     <td>1</td>
     <td>1</td>
-    <td>0.3333</td>
-    <td class="pass">Passed</td>
-    <td>163</td>
-    <td>1000</td>
-  </tr>
-  <tr>
-    <td>Arrayzugriff mit Feld (LHS und RHS)</td>
-    <td>record test<br>  int f1;<br>  int f2;<br>end<br>test[] values;<br>procedure fields()<br>   int i;<br>begin<br>   test.f1[0] = 1;<br>   test.f2[1] = 2;<br>   i =  test.f1[0] + test.f2[1];<br>end;</td>
-    <td></td>
-    <td></td>
-    <td>0</td>
-    <td>0</td>
     <td>0.3333</td>
     <td class="pass">Passed</td>
     <td>165</td>
@@ -1210,14 +1198,26 @@
   </tr>
   <tr>
     <td>Arrayzugriff mit Feld (LHS und RHS)</td>
+    <td>record test<br>  int f1;<br>  int f2;<br>end<br>test[] values;<br>procedure fields()<br>   int i;<br>begin<br>   test.f1[0] = 1;<br>   test.f2[1] = 2;<br>   i =  test.f1[0] + test.f2[1];<br>end;</td>
+    <td></td>
+    <td>Assignment: types 'class ch.hslu.cobau.minij.ast.type.RecordType' and 'class ch.hslu.cobau.minij.ast.type.IntegerType' doesnt match<br><br>Program exited with exit code: 1, but expected: 0</td>
+    <td>0</td>
+    <td>1</td>
+    <td>0.3333</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>181</td>
+    <td>1000</td>
+  </tr>
+  <tr>
+    <td>Arrayzugriff mit Feld (LHS und RHS)</td>
     <td>record test<br>  int f1;<br>  int f2;<br>end<br>test[] values;<br>procedure fields()<br>   int i;<br>begin<br>   values[0].f1 = 1;<br>   values[call().f2 = 2;<br>   i = values[0].f1 + values[0].f2;<br>end;</td>
     <td></td>
-    <td>line 10:14 mismatched input '(' expecting {'[', ']', '+', '-', '*', '/', '%', '.', '==', '!=', '<', '>', '<=', '>=', '&&', '||'}<br></td>
+    <td>line 10:14 mismatched input '(' expecting {'[', ']', '+', '-', '*', '/', '%', '.', '==', '!=', '<', '>', '<=', '>=', '&&', '||'}<br>Exception in thread "main" java.lang.NullPointerException<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitMemoryAccess(MiniJAstBuilder.java:264)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitMemoryAccess(MiniJAstBuilder.java:16)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$MemoryAccessContext.accept(MiniJParser.java:1875)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitAssignment(MiniJAstBuilder.java:138)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitAssignment(MiniJAstBuilder.java:16)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$AssignmentContext.accept(MiniJParser.java:878)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJBaseVisitor.visitStatement(MiniJBaseVisitor.java:85)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$StatementContext.accept(MiniJParser.java:788)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitBlock(MiniJAstBuilder.java:104)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitBlock(MiniJAstBuilder.java:16)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$BlockContext.accept(MiniJParser.java:655)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJBaseVisitor.visitProcedureBody(MiniJBaseVisitor.java:64)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$ProcedureBodyContext.accept(MiniJParser.java:585)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitProcedure(MiniJAstBuilder.java:80)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitProcedure(MiniJAstBuilder.java:16)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$ProcedureContext.accept(MiniJParser.java:379)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJBaseVisitor.visitMember(MiniJBaseVisitor.java:29)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$MemberContext.accept(MiniJParser.java:213)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitUnit(MiniJAstBuilder.java:27)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitUnit(MiniJAstBuilder.java:16)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$UnitContext.accept(MiniJParser.java:147)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visit(AbstractParseTreeVisitor.java:18)<br>&#191;at ch.hslu.cobau.minij.MiniJCompiler.main(MiniJCompiler.java:34)<br></td>
     <td>1</td>
     <td>1</td>
     <td>0.3333</td>
     <td class="pass">Passed</td>
-    <td>179</td>
+    <td>165</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -1229,7 +1229,7 @@
     <td>0</td>
     <td>0.3333</td>
     <td class="pass">Passed</td>
-    <td>171</td>
+    <td>194</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -1241,43 +1241,43 @@
     <td>0</td>
     <td>0.3333</td>
     <td class="pass">Passed</td>
-    <td>162</td>
+    <td>183</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>Referenzparameter (falsch)</td>
     <td>procedure refParameters(refer int abc) {<br>    abc = 1;<br>}</td>
     <td></td>
-    <td>line 1:30 extraneous input 'int' expecting ID<br></td>
+    <td>line 1:30 extraneous input 'int' expecting ID<br>Assignment: types 'class ch.hslu.cobau.minij.ast.type.RecordType' and 'class ch.hslu.cobau.minij.ast.type.IntegerType' doesnt match<br></td>
     <td>1</td>
     <td>1</td>
     <td>0.3333</td>
     <td class="pass">Passed</td>
-    <td>162</td>
+    <td>179</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>Zwei Referenzparameter (falsch)</td>
     <td>procedure refParameters(ref int abc ref string xyz) {<br>    abc = 1;<br>    xyz = "abc";<br>}</td>
     <td></td>
-    <td>line 1:36 mismatched input 'ref' expecting {')', ','}<br>line 1:50 mismatched input ')' expecting {'[', ID}<br>line 2:8 mismatched input '=' expecting {'[', ID}<br>line 3:8 mismatched input '=' expecting {'[', ID}<br>line 4:0 extraneous input '}' expecting {<EOF>, ';', 'record', 'procedure', 'int', 'boolean', 'string', ID}<br>Exception in thread "main" java.lang.NullPointerException<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitIdentifier(MiniJAstBuilder.java:121)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitIdentifier(MiniJAstBuilder.java:10)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$IdentifierContext.accept(MiniJParser.java:2362)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitDeclaration(MiniJAstBuilder.java:39)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitDeclaration(MiniJAstBuilder.java:10)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$DeclarationContext.accept(MiniJParser.java:1979)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJBaseVisitor.visitMember(MiniJBaseVisitor.java:29)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$MemberContext.accept(MiniJParser.java:213)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitUnit(MiniJAstBuilder.java:16)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitUnit(MiniJAstBuilder.java:10)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$UnitContext.accept(MiniJParser.java:147)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visit(AbstractParseTreeVisitor.java:18)<br>&#191;at ch.hslu.cobau.minij.MiniJCompiler.main(MiniJCompiler.java:46)<br></td>
+    <td>line 1:36 mismatched input 'ref' expecting {')', ','}<br>line 1:50 mismatched input ')' expecting {'[', ID}<br>line 2:8 mismatched input '=' expecting {'[', ID}<br>line 3:8 mismatched input '=' expecting {'[', ID}<br>line 4:0 extraneous input '}' expecting {<EOF>, ';', 'record', 'procedure', 'int', 'boolean', 'string', ID}<br>Exception in thread "main" java.lang.ClassCastException: class ch.hslu.cobau.minij.ast.entity.Parameter cannot be cast to class ch.hslu.cobau.minij.ast.statement.Block (ch.hslu.cobau.minij.ast.entity.Parameter and ch.hslu.cobau.minij.ast.statement.Block are in unnamed module of loader 'app')<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitProcedure(MiniJAstBuilder.java:82)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitProcedure(MiniJAstBuilder.java:16)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$ProcedureContext.accept(MiniJParser.java:379)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJBaseVisitor.visitMember(MiniJBaseVisitor.java:29)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$MemberContext.accept(MiniJParser.java:213)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitUnit(MiniJAstBuilder.java:27)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitUnit(MiniJAstBuilder.java:16)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$UnitContext.accept(MiniJParser.java:147)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visit(AbstractParseTreeVisitor.java:18)<br>&#191;at ch.hslu.cobau.minij.MiniJCompiler.main(MiniJCompiler.java:34)<br></td>
     <td>1</td>
     <td>1</td>
     <td>0.3333</td>
     <td class="pass">Passed</td>
-    <td>160</td>
+    <td>166</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>Kombinationen</td>
     <td>int j;<br>record myRec<br>    int field1;<br>    string field2;<br>    boolean field3;<br>end;<br>procedure stmt1() begin end;<br>procedure stmt2() begin end;<br>procedure myWhile()<br>begin<br>    while(x > 1) do<br>        stmt1();<br>        stmt2();<br>    end;<br>end;</td>
     <td></td>
-    <td></td>
+    <td>Identifier 'x' doesnt exists<br><br>Program exited with exit code: 1, but expected: 0</td>
     <td>0</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.3333</td>
-    <td class="pass">Passed</td>
-    <td>173</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>187</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -1289,7 +1289,7 @@
     <td>0</td>
     <td>0.3333</td>
     <td class="pass">Passed</td>
-    <td>178</td>
+    <td>190</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -1301,7 +1301,7 @@
     <td>0</td>
     <td>0.3333</td>
     <td class="pass">Passed</td>
-    <td>153</td>
+    <td>162</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -1313,7 +1313,7 @@
     <td>0</td>
     <td>0.3333</td>
     <td class="pass">Passed</td>
-    <td>167</td>
+    <td>172</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -1332,12 +1332,12 @@
     <td>Zeilenkommentar (falsch 1)</td>
     <td>/Falscher Kommentar</td>
     <td></td>
-    <td>line 1:0 extraneous input '/' expecting {<EOF>, ';', 'record', 'procedure', 'int', 'boolean', 'string', ID}<br>line 1:19 missing ';' at '<EOF>'<br></td>
+    <td>line 1:0 extraneous input '/' expecting {<EOF>, ';', 'record', 'procedure', 'int', 'boolean', 'string', ID}<br>line 1:19 missing ';' at '<EOF>'<br>Exception in thread "main" java.lang.NullPointerException<br>&#191;at ch.hslu.cobau.minij.semanticChecks.typeCheck.TypeValidationVisitor.getSymbolOfParent(TypeValidationVisitor.java:152)<br>&#191;at ch.hslu.cobau.minij.semanticChecks.typeCheck.TypeValidationVisitor.visit(TypeValidationVisitor.java:54)<br>&#191;at ch.hslu.cobau.minij.ast.entity.Declaration.accept(Declaration.java:31)<br>&#191;at ch.hslu.cobau.minij.ast.entity.Program.lambda$visitChildren$0(Program.java:43)<br>&#191;at java.base/java.lang.Iterable.forEach(Iterable.java:75)<br>&#191;at ch.hslu.cobau.minij.ast.entity.Program.visitChildren(Program.java:43)<br>&#191;at ch.hslu.cobau.minij.ast.BaseAstVisitor.visit(BaseAstVisitor.java:11)<br>&#191;at ch.hslu.cobau.minij.MiniJCompiler.main(MiniJCompiler.java:42)<br></td>
     <td>1</td>
     <td>1</td>
     <td>0.3333</td>
     <td class="pass">Passed</td>
-    <td>153</td>
+    <td>161</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -1349,19 +1349,19 @@
     <td>1</td>
     <td>0.3333</td>
     <td class="pass">Passed</td>
-    <td>165</td>
+    <td>173</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>Blockkommentar</td>
     <td>int bla;<br>/* Bla */<br>int bla;</td>
     <td></td>
-    <td></td>
+    <td>Symbol 'bla' of type 'Declaration' already exists<br><br>Program exited with exit code: 1, but expected: 0</td>
     <td>0</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.3333</td>
-    <td class="pass">Passed</td>
-    <td>158</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>175</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -1373,19 +1373,19 @@
     <td>0</td>
     <td>0.3333</td>
     <td class="pass">Passed</td>
-    <td>161</td>
+    <td>171</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>Nicht geschlossener Blockkommentar 1</td>
     <td>int bla;<br>/* Bla<br>int bla;</td>
     <td></td>
-    <td>line 2:0 extraneous input '/' expecting {<EOF>, ';', 'record', 'procedure', 'int', 'boolean', 'string', ID}<br>line 3:0 extraneous input 'int' expecting ID<br></td>
+    <td>line 2:0 extraneous input '/' expecting {<EOF>, ';', 'record', 'procedure', 'int', 'boolean', 'string', ID}<br>line 3:0 extraneous input 'int' expecting ID<br>Symbol 'bla' of type 'Declaration' already exists<br>Exception in thread "main" java.lang.NullPointerException<br>&#191;at ch.hslu.cobau.minij.semanticChecks.typeCheck.TypeValidationVisitor.getSymbolOfParent(TypeValidationVisitor.java:152)<br>&#191;at ch.hslu.cobau.minij.semanticChecks.typeCheck.TypeValidationVisitor.visit(TypeValidationVisitor.java:54)<br>&#191;at ch.hslu.cobau.minij.ast.entity.Declaration.accept(Declaration.java:31)<br>&#191;at ch.hslu.cobau.minij.ast.entity.Program.lambda$visitChildren$0(Program.java:43)<br>&#191;at java.base/java.lang.Iterable.forEach(Iterable.java:75)<br>&#191;at ch.hslu.cobau.minij.ast.entity.Program.visitChildren(Program.java:43)<br>&#191;at ch.hslu.cobau.minij.ast.BaseAstVisitor.visit(BaseAstVisitor.java:11)<br>&#191;at ch.hslu.cobau.minij.MiniJCompiler.main(MiniJCompiler.java:42)<br></td>
     <td>1</td>
     <td>1</td>
     <td>0.3333</td>
     <td class="pass">Passed</td>
-    <td>158</td>
+    <td>173</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -1397,7 +1397,7 @@
     <td>1</td>
     <td>0.3333</td>
     <td class="pass">Passed</td>
-    <td>163</td>
+    <td>179</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -1409,7 +1409,7 @@
     <td>1</td>
     <td>0.3333</td>
     <td class="pass">Passed</td>
-    <td>158</td>
+    <td>162</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -1421,7 +1421,7 @@
     <td>1</td>
     <td>0.3333</td>
     <td class="pass">Passed</td>
-    <td>160</td>
+    <td>164</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -1433,7 +1433,7 @@
     <td>1</td>
     <td>0.3333</td>
     <td class="pass">Passed</td>
-    <td>162</td>
+    <td>166</td>
     <td>1000</td>
   </tr>
   <tr>
@@ -1445,19 +1445,19 @@
     <td>0</td>
     <td>0.3333</td>
     <td class="pass">Passed</td>
-    <td>167</td>
+    <td>180</td>
     <td>1000</td>
   </tr>
   <tr>
     <td>Programm: QuickSort</td>
     <td>procedure quickSort(ref int[] arr, int from, int to)<br>    int partitionIndex;<br>begin<br>     if (from < to) then<br>        partition(arr, partitionIndex, from, to);<br>        quickSort(arr, from, partitionIndex - 1);<br>        quickSort(arr, partitionIndex + 1, to);<br>     end;<br>end;<br>procedure partition(ref int[] arr, ref int partitionIndex, int from, int to)<br>    int pivot;<br>    int i;<br>    int j;<br>    int swapTemp;<br>begin<br>    pivot = arr[to];<br>    i = from - 1;<br>    j = from;<br>    while (j < to) do<br>        if (arr[j] <= pivot) then<br>            i = i + 1;<br>            swapTemp = arr[i];<br>            arr[i] = arr[j];<br>            arr[j] = swapTemp;<br>        end;<br>        j = j + 1;<br>    end;<br>    swapTemp = arr[i + 1];<br>    arr[i + 1] = arr[to];<br>    arr[to] = swapTemp;<br>    partitionIndex = i + 1;<br>end;</td>
     <td></td>
-    <td></td>
+    <td>Exception in thread "main" java.lang.NullPointerException<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitMemoryAccess(MiniJAstBuilder.java:264)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitMemoryAccess(MiniJAstBuilder.java:16)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$MemoryAccessContext.accept(MiniJParser.java:1875)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitExpression(MiniJAstBuilder.java:210)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitExpression(MiniJAstBuilder.java:16)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$ExpressionContext.accept(MiniJParser.java:1372)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitAssignment(MiniJAstBuilder.java:138)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitAssignment(MiniJAstBuilder.java:16)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$AssignmentContext.accept(MiniJParser.java:878)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJBaseVisitor.visitStatement(MiniJBaseVisitor.java:85)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$StatementContext.accept(MiniJParser.java:788)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitBlock(MiniJAstBuilder.java:104)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitBlock(MiniJAstBuilder.java:16)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$BlockContext.accept(MiniJParser.java:655)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJBaseVisitor.visitProcedureBody(MiniJBaseVisitor.java:64)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$ProcedureBodyContext.accept(MiniJParser.java:585)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitProcedure(MiniJAstBuilder.java:80)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitProcedure(MiniJAstBuilder.java:16)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$ProcedureContext.accept(MiniJParser.java:379)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJBaseVisitor.visitMember(MiniJBaseVisitor.java:29)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$MemberContext.accept(MiniJParser.java:213)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visitChildren(AbstractParseTreeVisitor.java:46)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitUnit(MiniJAstBuilder.java:27)<br>&#191;at ch.hslu.cobau.minij.MiniJAstBuilder.visitUnit(MiniJAstBuilder.java:16)<br>&#191;at ch.hslu.cobau.minij.MiniJParser$UnitContext.accept(MiniJParser.java:147)<br>&#191;at org.antlr.v4.runtime.tree.AbstractParseTreeVisitor.visit(AbstractParseTreeVisitor.java:18)<br>&#191;at ch.hslu.cobau.minij.MiniJCompiler.main(MiniJCompiler.java:34)<br><br>Program exited with exit code: 1, but expected: 0</td>
     <td>0</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.3333</td>
-    <td class="pass">Passed</td>
-    <td>173</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>166</td>
     <td>1000</td>
   </tr>
 </table>

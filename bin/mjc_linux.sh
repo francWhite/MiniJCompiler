@@ -2,7 +2,7 @@
 
 # if there are not at least two arguments: exit and show usage
 if [ $# -lt 2 ]; then
-  echo "usage: ./compile_linux <input> <output>"
+  echo "usage: bin/mjc_linux.sh <input> <output>"
   exit 1;
 fi
 
@@ -22,7 +22,7 @@ if [ ! $? -eq 0 ]; then
 fi
 
 # link including runtime
-ld -o ${2} build/tmp/compile/file.o build/runtime/objects/*.o
+ld -o ${2} build/tmp/compile/file.o build/objects/runtime/*.o
 if [ ! $? -eq 0 ]; then
   exit 1
 fi

@@ -2,7 +2,7 @@
 
 # if there are not at least two arguments: exit and show usage
 if [ $# -lt 2 ]; then
-  echo "usage: ./compile_macosx <input> <output>"
+  echo "usage: bin/mjc_macosx.sh <input> <output>"
   exit 1;
 fi
 
@@ -22,7 +22,7 @@ if [ ! $? -eq 0 ]; then
 fi
 
 # link including runtime
-ld -macosx_version_min 10.12 -e _start -o ${2} build/tmp/compile/file.o build/runtime/objects/*.o -lC -no_pie
+ld -macosx_version_min 10.12 -e _start -o ${2} build/tmp/compile/file.o build/objects/runtime/*.o -lC -no_pie
 if [ ! $? -eq 0 ]; then
   exit 1
 fi
