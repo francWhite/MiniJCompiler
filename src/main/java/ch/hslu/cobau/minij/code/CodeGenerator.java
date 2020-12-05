@@ -6,6 +6,7 @@ import ch.hslu.cobau.minij.ast.entity.Procedure;
 import ch.hslu.cobau.minij.ast.entity.Program;
 import ch.hslu.cobau.minij.ast.statement.CallStatement;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Stack;
@@ -35,6 +36,10 @@ public class CodeGenerator extends BaseAstVisitor {
     public void visit(Procedure procedure) {
         if (procedure.getIdentifier().equals("main")) {
             BuildMainProcedure(procedure);
+            return;
+        }
+
+        if (Arrays.stream(BuiltInMethods.values()).anyMatch(b -> b.toString().equals(procedure.getIdentifier()))) {
             return;
         }
 
@@ -69,6 +74,20 @@ public class CodeGenerator extends BaseAstVisitor {
                 "   call _exit\n" +
                 "   mov  rsp, rbp\n" +
                 "   pop  rbp\n";
+    }
+
+    private void BuildBuiltInProcedure(Procedure procedure) {
+        procedure.visitChildren(this);
+
+        var procedureCode = procedure.getIdentifier() + ":\n" +
+                "   push rbp\n" +
+                "   mov rbp, rsp\n" +
+                "   call _" + procedure.getIdentifier() + " \n" +
+                "   mov rsp, rbp\n" +
+                "   pop rbp\n" +
+                "   ret\n";;
+
+        statementsStack.push(procedureCode);
     }
 
     private void BuildProcedure(Procedure procedure) {
