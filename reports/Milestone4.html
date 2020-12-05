@@ -29,7 +29,7 @@
     <td>0</td>
     <td>10.0</td>
     <td class="pass">Passed</td>
-    <td>417</td>
+    <td>398</td>
     <td>2000</td>
   </tr>
   <tr>
@@ -41,43 +41,43 @@
     <td>0</td>
     <td>3.0</td>
     <td class="fail">Wrong Answer</td>
-    <td>324</td>
+    <td>312</td>
     <td>2000</td>
   </tr>
   <tr>
     <td>(built-in) writeChar</td>
     <td>procedure main()<br>begin<br>    writeChar(72);<br>    writeChar(97);<br>    writeChar(108);<br>    writeChar(108);<br>    writeChar(111);<br>end</td>
     <td>Hallo</td>
-    <td></td>
+    <td><br>Program exited with exit code: -1073741819, but expected: 0</td>
     <td>0</td>
-    <td>0</td>
+    <td>-1073741819</td>
     <td>2.0</td>
-    <td class="fail">Wrong Answer</td>
-    <td>285</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>1461</td>
     <td>2000</td>
   </tr>
   <tr>
     <td>(assignment) Local</td>
     <td>procedure main()<br>    int a;<br>    int b;<br>begin<br>    a = 1;<br>    b = 2;<br>    writeInt(a);<br>    writeInt(b);<br>end</td>
     <td>12</td>
-    <td></td>
+    <td>build\tmp\compile\file.asm:10: error: label or instruction expected at start of line<br><br>Program exited with exit code: 1, but expected: 0</td>
     <td>0</td>
-    <td>0</td>
+    <td>1</td>
     <td>1.0</td>
-    <td class="fail">Wrong Answer</td>
-    <td>288</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>252</td>
     <td>2000</td>
   </tr>
   <tr>
     <td>(globals|assignment) Global</td>
     <td>int a;<br>int b;<br>procedure main()<br>begin<br>    a = 1;<br>    b = 2;<br>    writeInt(a);<br>    writeInt(b);<br>end</td>
     <td>12</td>
-    <td></td>
+    <td>build\tmp\compile\file.asm:10: error: label or instruction expected at start of line<br><br>Program exited with exit code: 1, but expected: 0</td>
     <td>0</td>
-    <td>0</td>
+    <td>1</td>
     <td>1.5</td>
-    <td class="fail">Wrong Answer</td>
-    <td>320</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>251</td>
     <td>2000</td>
   </tr>
   <tr>
@@ -89,19 +89,19 @@
     <td>0</td>
     <td>1.0</td>
     <td class="fail">Wrong Answer</td>
-    <td>290</td>
+    <td>304</td>
     <td>2000</td>
   </tr>
   <tr>
     <td>(if) einfaches if (true)</td>
     <td>procedure main()<br>begin<br>    if (1==1) then<br>        writeInt(123);<br>    end;<br>end</td>
     <td>123</td>
-    <td></td>
+    <td>build\tmp\compile\file.asm:10: error: label or instruction expected at start of line<br><br>Program exited with exit code: 1, but expected: 0</td>
     <td>0</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.5</td>
-    <td class="fail">Wrong Answer</td>
-    <td>286</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>258</td>
     <td>2000</td>
   </tr>
   <tr>
@@ -113,7 +113,7 @@
     <td>0</td>
     <td>0.5</td>
     <td class="fail">Wrong Answer</td>
-    <td>292</td>
+    <td>307</td>
     <td>2000</td>
   </tr>
   <tr>
@@ -125,7 +125,7 @@
     <td>0</td>
     <td>0.25</td>
     <td class="fail">Wrong Answer</td>
-    <td>327</td>
+    <td>308</td>
     <td>2000</td>
   </tr>
   <tr>
@@ -137,7 +137,7 @@
     <td>0</td>
     <td>0.25</td>
     <td class="fail">Wrong Answer</td>
-    <td>284</td>
+    <td>296</td>
     <td>2000</td>
   </tr>
   <tr>
@@ -149,7 +149,7 @@
     <td>0</td>
     <td>0.25</td>
     <td class="fail">Wrong Answer</td>
-    <td>287</td>
+    <td>301</td>
     <td>2000</td>
   </tr>
   <tr>
@@ -161,7 +161,7 @@
     <td>0</td>
     <td>0.25</td>
     <td class="fail">Wrong Answer</td>
-    <td>314</td>
+    <td>297</td>
     <td>2000</td>
   </tr>
   <tr>
@@ -173,7 +173,7 @@
     <td>0</td>
     <td>0.25</td>
     <td class="fail">Wrong Answer</td>
-    <td>287</td>
+    <td>280</td>
     <td>2000</td>
   </tr>
   <tr>
@@ -185,7 +185,7 @@
     <td>0</td>
     <td>0.5</td>
     <td class="fail">Wrong Answer</td>
-    <td>286</td>
+    <td>302</td>
     <td>2000</td>
   </tr>
   <tr>
@@ -197,427 +197,427 @@
     <td>0</td>
     <td>0.5</td>
     <td class="fail">Wrong Answer</td>
-    <td>284</td>
+    <td>304</td>
     <td>2000</td>
   </tr>
   <tr>
     <td>(while) (expr) Summenformel</td>
     <td>procedure main()<br>    int i;<br>    int result;<br>begin<br>    while(i <= 10) do<br>       result = result + i;<br>       i = i + 1;<br>    end;<br>    writeInt(result);<br>end</td>
     <td>55</td>
-    <td></td>
+    <td>build\tmp\compile\file.asm:10: error: label or instruction expected at start of line<br><br>Program exited with exit code: 1, but expected: 0</td>
     <td>0</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.5</td>
-    <td class="fail">Wrong Answer</td>
-    <td>307</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>262</td>
     <td>2000</td>
   </tr>
   <tr>
     <td>(while) Verschachtelte Summenformel</td>
     <td>procedure main()<br>    int i;<br>    int j;<br>    int result;<br>begin<br>    while(i <= 10) do<br>        j = 0;<br>        while(j <= 10) do<br>            result = result + j;<br>            j = j + 1;<br>        end;<br>       i = i + 1;<br>    end;<br>    writeInt(result);<br>end</td>
     <td>605</td>
-    <td></td>
+    <td>build\tmp\compile\file.asm:10: error: label or instruction expected at start of line<br><br>Program exited with exit code: 1, but expected: 0</td>
     <td>0</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.5</td>
-    <td class="fail">Wrong Answer</td>
-    <td>295</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>257</td>
     <td>2000</td>
   </tr>
   <tr>
     <td>(call) Ein Parameter</td>
     <td>procedure myProc1(int a)<br>begin<br>    writeInt(a);<br>end;<br>procedure main()<br>begin<br>     myProc1(23);<br>     myProc1(42);<br>end</td>
     <td>2342</td>
-    <td></td>
+    <td>Exception in thread "main" java.util.EmptyStackException<br>&#191;at java.base/java.util.Stack.peek(Stack.java:101)<br>&#191;at java.base/java.util.Stack.pop(Stack.java:83)<br>&#191;at ch.hslu.cobau.minij.code.CodeGenerator.visit(CodeGenerator.java:105)<br>&#191;at ch.hslu.cobau.minij.ast.statement.CallStatement.accept(CallStatement.java:31)<br>&#191;at ch.hslu.cobau.minij.ast.statement.Block.lambda$visitChildren$0(Block.java:27)<br>&#191;at java.base/java.lang.Iterable.forEach(Iterable.java:75)<br>&#191;at ch.hslu.cobau.minij.ast.statement.Block.visitChildren(Block.java:27)<br>&#191;at ch.hslu.cobau.minij.ast.entity.Procedure.visitChildren(Procedure.java:38)<br>&#191;at ch.hslu.cobau.minij.code.CodeGenerator.BuildProcedure(CodeGenerator.java:75)<br>&#191;at ch.hslu.cobau.minij.code.CodeGenerator.visit(CodeGenerator.java:41)<br>&#191;at ch.hslu.cobau.minij.ast.entity.Procedure.accept(Procedure.java:32)<br>&#191;at ch.hslu.cobau.minij.ast.entity.Program.lambda$visitChildren$1(Program.java:44)<br>&#191;at java.base/java.lang.Iterable.forEach(Iterable.java:75)<br>&#191;at ch.hslu.cobau.minij.ast.entity.Program.visitChildren(Program.java:44)<br>&#191;at ch.hslu.cobau.minij.code.CodeGenerator.visit(CodeGenerator.java:24)<br>&#191;at ch.hslu.cobau.minij.MiniJCompiler.main(MiniJCompiler.java:72)<br><br>Program exited with exit code: 1, but expected: 0</td>
     <td>0</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.4</td>
-    <td class="fail">Wrong Answer</td>
-    <td>289</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>233</td>
     <td>2000</td>
   </tr>
   <tr>
     <td>(call) Zwei Parameter</td>
     <td>procedure myProc1(int a, int b)<br>begin<br>    writeInt(a);<br>    writeInt(b);<br>end;<br>procedure main()<br>begin<br>    myProc1(12, 13);<br>    myProc1(-12, -13);<br>end</td>
     <td>1213-12-13</td>
-    <td></td>
+    <td>Exception in thread "main" java.util.EmptyStackException<br>&#191;at java.base/java.util.Stack.peek(Stack.java:101)<br>&#191;at java.base/java.util.Stack.pop(Stack.java:83)<br>&#191;at ch.hslu.cobau.minij.code.CodeGenerator.visit(CodeGenerator.java:105)<br>&#191;at ch.hslu.cobau.minij.ast.statement.CallStatement.accept(CallStatement.java:31)<br>&#191;at ch.hslu.cobau.minij.ast.statement.Block.lambda$visitChildren$0(Block.java:27)<br>&#191;at java.base/java.lang.Iterable.forEach(Iterable.java:75)<br>&#191;at ch.hslu.cobau.minij.ast.statement.Block.visitChildren(Block.java:27)<br>&#191;at ch.hslu.cobau.minij.ast.entity.Procedure.visitChildren(Procedure.java:38)<br>&#191;at ch.hslu.cobau.minij.code.CodeGenerator.BuildProcedure(CodeGenerator.java:75)<br>&#191;at ch.hslu.cobau.minij.code.CodeGenerator.visit(CodeGenerator.java:41)<br>&#191;at ch.hslu.cobau.minij.ast.entity.Procedure.accept(Procedure.java:32)<br>&#191;at ch.hslu.cobau.minij.ast.entity.Program.lambda$visitChildren$1(Program.java:44)<br>&#191;at java.base/java.lang.Iterable.forEach(Iterable.java:75)<br>&#191;at ch.hslu.cobau.minij.ast.entity.Program.visitChildren(Program.java:44)<br>&#191;at ch.hslu.cobau.minij.code.CodeGenerator.visit(CodeGenerator.java:24)<br>&#191;at ch.hslu.cobau.minij.MiniJCompiler.main(MiniJCompiler.java:72)<br><br>Program exited with exit code: 1, but expected: 0</td>
     <td>0</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.4</td>
-    <td class="fail">Wrong Answer</td>
-    <td>315</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>248</td>
     <td>2000</td>
   </tr>
   <tr>
     <td>(call) Drei Parameter</td>
     <td>procedure myProc1(int a, int b, int c)<br>begin<br>    writeInt(c);<br>    writeInt(b);<br>    writeInt(a);<br>end;<br>procedure main()<br>begin<br>    myProc1(12,13,14);<br>    myProc1(1000,2000,-4000);<br>end</td>
     <td>141312-400020001000</td>
-    <td></td>
+    <td>Exception in thread "main" java.util.EmptyStackException<br>&#191;at java.base/java.util.Stack.peek(Stack.java:101)<br>&#191;at java.base/java.util.Stack.pop(Stack.java:83)<br>&#191;at ch.hslu.cobau.minij.code.CodeGenerator.visit(CodeGenerator.java:105)<br>&#191;at ch.hslu.cobau.minij.ast.statement.CallStatement.accept(CallStatement.java:31)<br>&#191;at ch.hslu.cobau.minij.ast.statement.Block.lambda$visitChildren$0(Block.java:27)<br>&#191;at java.base/java.lang.Iterable.forEach(Iterable.java:75)<br>&#191;at ch.hslu.cobau.minij.ast.statement.Block.visitChildren(Block.java:27)<br>&#191;at ch.hslu.cobau.minij.ast.entity.Procedure.visitChildren(Procedure.java:38)<br>&#191;at ch.hslu.cobau.minij.code.CodeGenerator.BuildProcedure(CodeGenerator.java:75)<br>&#191;at ch.hslu.cobau.minij.code.CodeGenerator.visit(CodeGenerator.java:41)<br>&#191;at ch.hslu.cobau.minij.ast.entity.Procedure.accept(Procedure.java:32)<br>&#191;at ch.hslu.cobau.minij.ast.entity.Program.lambda$visitChildren$1(Program.java:44)<br>&#191;at java.base/java.lang.Iterable.forEach(Iterable.java:75)<br>&#191;at ch.hslu.cobau.minij.ast.entity.Program.visitChildren(Program.java:44)<br>&#191;at ch.hslu.cobau.minij.code.CodeGenerator.visit(CodeGenerator.java:24)<br>&#191;at ch.hslu.cobau.minij.MiniJCompiler.main(MiniJCompiler.java:72)<br><br>Program exited with exit code: 1, but expected: 0</td>
     <td>0</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.4</td>
-    <td class="fail">Wrong Answer</td>
-    <td>295</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>229</td>
     <td>2000</td>
   </tr>
   <tr>
     <td>(call) Acht Parameter</td>
     <td>procedure myProc1(int a, int b, int c, int d, int e, int f, int g, int h)<br>   int sum;<br>begin<br>    sum = a + b + c + d + e + f + g + h;<br>    writeInt(sum);<br>end;<br>procedure main()<br>begin<br>    myProc1(1, 1, 1, 1, 1, 1, 1, 1);<br>    myProc1(1, 2, 3, 4, 5, 6, 7, 8);<br>end</td>
     <td>836</td>
-    <td></td>
+    <td>Exception in thread "main" java.util.EmptyStackException<br>&#191;at java.base/java.util.Stack.peek(Stack.java:101)<br>&#191;at java.base/java.util.Stack.pop(Stack.java:83)<br>&#191;at ch.hslu.cobau.minij.code.CodeGenerator.visit(CodeGenerator.java:105)<br>&#191;at ch.hslu.cobau.minij.ast.statement.CallStatement.accept(CallStatement.java:31)<br>&#191;at ch.hslu.cobau.minij.ast.statement.Block.lambda$visitChildren$0(Block.java:27)<br>&#191;at java.base/java.lang.Iterable.forEach(Iterable.java:75)<br>&#191;at ch.hslu.cobau.minij.ast.statement.Block.visitChildren(Block.java:27)<br>&#191;at ch.hslu.cobau.minij.ast.entity.Procedure.visitChildren(Procedure.java:38)<br>&#191;at ch.hslu.cobau.minij.code.CodeGenerator.BuildProcedure(CodeGenerator.java:75)<br>&#191;at ch.hslu.cobau.minij.code.CodeGenerator.visit(CodeGenerator.java:41)<br>&#191;at ch.hslu.cobau.minij.ast.entity.Procedure.accept(Procedure.java:32)<br>&#191;at ch.hslu.cobau.minij.ast.entity.Program.lambda$visitChildren$1(Program.java:44)<br>&#191;at java.base/java.lang.Iterable.forEach(Iterable.java:75)<br>&#191;at ch.hslu.cobau.minij.ast.entity.Program.visitChildren(Program.java:44)<br>&#191;at ch.hslu.cobau.minij.code.CodeGenerator.visit(CodeGenerator.java:24)<br>&#191;at ch.hslu.cobau.minij.MiniJCompiler.main(MiniJCompiler.java:72)<br><br>Program exited with exit code: 1, but expected: 0</td>
     <td>0</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.2</td>
-    <td class="fail">Wrong Answer</td>
-    <td>295</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>235</td>
     <td>2000</td>
   </tr>
   <tr>
     <td>(call) Verschachtelte Aufrufe</td>
     <td>procedure myProc1(int a)<br>begin<br>    writeInt(a);<br>end;<br>procedure myProc2(int a)<br>begin<br>    writeInt(a);<br>end;<br>procedure myProc3()<br>begin<br>    myProc1(42);<br>    myProc2(23);<br>end;<br>procedure main()<br>begin<br>    myProc3();<br>end</td>
     <td>4223</td>
-    <td></td>
+    <td>Exception in thread "main" java.util.EmptyStackException<br>&#191;at java.base/java.util.Stack.peek(Stack.java:101)<br>&#191;at java.base/java.util.Stack.pop(Stack.java:83)<br>&#191;at ch.hslu.cobau.minij.code.CodeGenerator.visit(CodeGenerator.java:105)<br>&#191;at ch.hslu.cobau.minij.ast.statement.CallStatement.accept(CallStatement.java:31)<br>&#191;at ch.hslu.cobau.minij.ast.statement.Block.lambda$visitChildren$0(Block.java:27)<br>&#191;at java.base/java.lang.Iterable.forEach(Iterable.java:75)<br>&#191;at ch.hslu.cobau.minij.ast.statement.Block.visitChildren(Block.java:27)<br>&#191;at ch.hslu.cobau.minij.ast.entity.Procedure.visitChildren(Procedure.java:38)<br>&#191;at ch.hslu.cobau.minij.code.CodeGenerator.BuildProcedure(CodeGenerator.java:75)<br>&#191;at ch.hslu.cobau.minij.code.CodeGenerator.visit(CodeGenerator.java:41)<br>&#191;at ch.hslu.cobau.minij.ast.entity.Procedure.accept(Procedure.java:32)<br>&#191;at ch.hslu.cobau.minij.ast.entity.Program.lambda$visitChildren$1(Program.java:44)<br>&#191;at java.base/java.lang.Iterable.forEach(Iterable.java:75)<br>&#191;at ch.hslu.cobau.minij.ast.entity.Program.visitChildren(Program.java:44)<br>&#191;at ch.hslu.cobau.minij.code.CodeGenerator.visit(CodeGenerator.java:24)<br>&#191;at ch.hslu.cobau.minij.MiniJCompiler.main(MiniJCompiler.java:72)<br><br>Program exited with exit code: 1, but expected: 0</td>
     <td>0</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.2</td>
-    <td class="fail">Wrong Answer</td>
-    <td>304</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>234</td>
     <td>2000</td>
   </tr>
   <tr>
     <td>(call) Rekursive Aufrufe</td>
     <td>procedure rec(int a)<br>begin<br>    if (a == 42) then<br>        writeInt(a);<br>    else<br>        rec(a + 1);<br>    end;<br>end;<br>procedure main()<br>begin<br>    rec(0);<br>end</td>
     <td>42</td>
-    <td></td>
+    <td><br>Program exited with exit code: -1073741571, but expected: 0</td>
     <td>0</td>
-    <td>0</td>
+    <td>-1073741571</td>
     <td>0.4</td>
-    <td class="fail">Wrong Answer</td>
-    <td>285</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>1463</td>
     <td>2000</td>
   </tr>
   <tr>
     <td>(return) Einfaches Return</td>
     <td>procedure myProc()<br>begin<br>    writeInt(13);<br>    return;<br>    writeInt(14);<br>end;<br>procedure main()<br>begin<br>    myProc();<br>end</td>
     <td>13</td>
-    <td></td>
+    <td>build\tmp\compile\file.asm:10: error: invalid segment override<br>build\tmp\compile\file.asm:10: error: expression syntax error<br><br>Program exited with exit code: 1, but expected: 0</td>
     <td>0</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.4</td>
-    <td class="fail">Wrong Answer</td>
-    <td>288</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>251</td>
     <td>2000</td>
   </tr>
   <tr>
     <td>(return) PrintMax mit Result</td>
     <td>procedure max(int a, int b)<br>begin<br>    if (a > b) then<br>        writeInt(a);<br>        return;<br>    end;<br>    writeInt(b);<br>end;<br>procedure main()<br>begin<br>    max(4, 5);<br>    max(-12,-56);<br>    max(-20,20000000);<br>end</td>
     <td>5-1220000000</td>
-    <td></td>
+    <td>Exception in thread "main" java.util.EmptyStackException<br>&#191;at java.base/java.util.Stack.peek(Stack.java:101)<br>&#191;at java.base/java.util.Stack.pop(Stack.java:83)<br>&#191;at ch.hslu.cobau.minij.code.CodeGenerator.visit(CodeGenerator.java:105)<br>&#191;at ch.hslu.cobau.minij.ast.statement.CallStatement.accept(CallStatement.java:31)<br>&#191;at ch.hslu.cobau.minij.ast.statement.Block.lambda$visitChildren$0(Block.java:27)<br>&#191;at java.base/java.lang.Iterable.forEach(Iterable.java:75)<br>&#191;at ch.hslu.cobau.minij.ast.statement.Block.visitChildren(Block.java:27)<br>&#191;at ch.hslu.cobau.minij.ast.statement.IfStatement.visitChildren(IfStatement.java:37)<br>&#191;at ch.hslu.cobau.minij.ast.BaseAstVisitor.visit(BaseAstVisitor.java:51)<br>&#191;at ch.hslu.cobau.minij.ast.statement.IfStatement.accept(IfStatement.java:31)<br>&#191;at ch.hslu.cobau.minij.ast.statement.Block.lambda$visitChildren$0(Block.java:27)<br>&#191;at java.base/java.lang.Iterable.forEach(Iterable.java:75)<br>&#191;at ch.hslu.cobau.minij.ast.statement.Block.visitChildren(Block.java:27)<br>&#191;at ch.hslu.cobau.minij.ast.entity.Procedure.visitChildren(Procedure.java:38)<br>&#191;at ch.hslu.cobau.minij.code.CodeGenerator.BuildProcedure(CodeGenerator.java:75)<br>&#191;at ch.hslu.cobau.minij.code.CodeGenerator.visit(CodeGenerator.java:41)<br>&#191;at ch.hslu.cobau.minij.ast.entity.Procedure.accept(Procedure.java:32)<br>&#191;at ch.hslu.cobau.minij.ast.entity.Program.lambda$visitChildren$1(Program.java:44)<br>&#191;at java.base/java.lang.Iterable.forEach(Iterable.java:75)<br>&#191;at ch.hslu.cobau.minij.ast.entity.Program.visitChildren(Program.java:44)<br>&#191;at ch.hslu.cobau.minij.code.CodeGenerator.visit(CodeGenerator.java:24)<br>&#191;at ch.hslu.cobau.minij.MiniJCompiler.main(MiniJCompiler.java:72)<br><br>Program exited with exit code: 1, but expected: 0</td>
     <td>0</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.4</td>
-    <td class="fail">Wrong Answer</td>
-    <td>285</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>236</td>
     <td>2000</td>
   </tr>
   <tr>
     <td>(expression) Arithmetische Operationen (Addition)</td>
     <td>procedure main()<br>    int a;<br>    int b;<br>    int c;<br>begin<br>    a = 1;<br>    writeInt(a);<br>    b = 1 + 3;<br>    writeInt(b);<br>    c = 1 + a;<br>    writeInt(c);<br>    c = a + b;<br>    writeInt(c);<br>end;</td>
     <td>1425</td>
-    <td></td>
+    <td>build\tmp\compile\file.asm:12: error: label or instruction expected at start of line<br>build\tmp\compile\file.asm:14: error: comma, colon, decorator or end of line expected after operand<br><br>Program exited with exit code: 1, but expected: 0</td>
     <td>0</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.6</td>
-    <td class="fail">Wrong Answer</td>
-    <td>320</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>253</td>
     <td>2000</td>
   </tr>
   <tr>
     <td>(expression) Arithmetische Operationen (Subtraktion)</td>
     <td>procedure main()<br>    int a;<br>    int b;<br>begin<br>    a = 24;<br>    writeInt(a);<br>    b = 109 - a;<br>    writeInt(b);<br>    b = 109 - a + 3;<br>    writeInt(b);<br>end;</td>
     <td>248588</td>
-    <td></td>
+    <td>build\tmp\compile\file.asm:14: error: label or instruction expected at start of line<br><br>Program exited with exit code: 1, but expected: 0</td>
     <td>0</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.6</td>
-    <td class="fail">Wrong Answer</td>
-    <td>289</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>275</td>
     <td>2000</td>
   </tr>
   <tr>
     <td>(expression) Arithmetische Operationen (Multiplikation)</td>
     <td>procedure main()<br>    int a;<br>    int b;<br>    int c;<br>begin<br>    a = 24;<br>    writeInt(a);<br>    b = 106;<br>    writeInt(b);<br>    c = b * a;<br>    writeInt(c);<br>    c = b * a * c + 3;<br>    writeInt(c);<br>end;</td>
     <td>2410625446471939</td>
-    <td></td>
+    <td>build\tmp\compile\file.asm:12: error: comma, colon, decorator or end of line expected after operand<br><br>Program exited with exit code: 1, but expected: 0</td>
     <td>0</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.4</td>
-    <td class="fail">Wrong Answer</td>
-    <td>289</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>257</td>
     <td>2000</td>
   </tr>
   <tr>
     <td>(expression) Arithmetische Operationen (Division)</td>
     <td>procedure main()<br>    int a;<br>    int b;<br>    int c;<br>    int d;<br>begin<br>    a = 2400;<br>    writeInt(a);<br>    b = a / 2;<br>    writeInt(b);<br>    c = a / (-1 * 109);<br>    writeInt(c);<br>end;</td>
     <td>24001200-22</td>
-    <td></td>
+    <td>build\tmp\compile\file.asm:14: error: label or instruction expected at start of line<br><br>Program exited with exit code: 1, but expected: 0</td>
     <td>0</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.2</td>
-    <td class="fail">Wrong Answer</td>
-    <td>342</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>283</td>
     <td>2000</td>
   </tr>
   <tr>
     <td>(expression) Arithmetische Operationen (Divisonsrest)</td>
     <td>procedure main()<br>    int b;<br>    int c;<br>    int d;<br>begin<br>    b = 103;<br>    c = 23;<br>    writeInt(c);<br>    d = c + (108 % b);<br>    writeInt(d);<br>end;</td>
     <td>2328</td>
-    <td></td>
+    <td>build\tmp\compile\file.asm:10: error: label or instruction expected at start of line<br><br>Program exited with exit code: 1, but expected: 0</td>
     <td>0</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.2</td>
-    <td class="fail">Wrong Answer</td>
-    <td>282</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>260</td>
     <td>2000</td>
   </tr>
   <tr>
     <td>(expression) Boolean Expressions (arith. Gleichheit) </td>
     <td>procedure writeBoolean(boolean value)<br>begin<br>    if (value) then writeInt(1); else writeInt(0); end;<br>end<br>procedure main()<br>    int a;<br>    int b;<br>begin<br>    a = 10;<br>    b = 3;<br>    writeBoolean(1 != 1);<br>    writeBoolean(1 != 2);<br>    writeBoolean(1 == 1);<br>    writeBoolean(1 == 2);<br>end;</td>
     <td>0110</td>
-    <td></td>
+    <td>build\tmp\compile\file.asm:20: error: label or instruction expected at start of line<br>build\tmp\compile\file.asm:22: error: label or instruction expected at start of line<br>build\tmp\compile\file.asm:24: error: label or instruction expected at start of line<br>build\tmp\compile\file.asm:26: error: label or instruction expected at start of line<br><br>Program exited with exit code: 1, but expected: 0</td>
     <td>0</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.5</td>
-    <td class="fail">Wrong Answer</td>
-    <td>281</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>268</td>
     <td>2000</td>
   </tr>
   <tr>
     <td>(expression) Boolean Expressions (arith. Vergleiche) </td>
     <td>procedure writeBoolean(boolean value)<br>begin<br>    if (value) then writeInt(1); else writeInt(0); end;<br>end<br>procedure main()<br>    int a;<br>    int b;<br>begin<br>    a = 10;<br>    b = 3;<br>    writeBoolean(b > 2);<br>    writeBoolean(2 > b);<br>    writeBoolean(-5 < a);<br>    writeBoolean(a < -5);<br>    writeBoolean(-1 >= -2);<br>    writeBoolean(-1 >= -1);<br>    writeBoolean(100000 <= -5);<br>    writeBoolean(100000 <= 100000);<br>end;</td>
     <td>10101101</td>
-    <td></td>
+    <td>build\tmp\compile\file.asm:20: error: label or instruction expected at start of line<br>build\tmp\compile\file.asm:28: error: label or instruction expected at start of line<br>build\tmp\compile\file.asm:30: error: label or instruction expected at start of line<br>build\tmp\compile\file.asm:32: error: label or instruction expected at start of line<br>build\tmp\compile\file.asm:34: error: label or instruction expected at start of line<br><br>Program exited with exit code: 1, but expected: 0</td>
     <td>0</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.5</td>
-    <td class="fail">Wrong Answer</td>
-    <td>333</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>324</td>
     <td>2000</td>
   </tr>
   <tr>
     <td>(expression) Boolean Expressions (bool)</td>
     <td>procedure writeBoolean(boolean value)<br>begin<br>    if (value) then writeInt(1); else writeInt(0); end;<br>end<br>procedure main()<br>    boolean res;<br>begin<br>    writeBoolean(true);<br>    writeBoolean(false);<br>    res = true == false;<br>    writeBoolean(res);<br>    res = true == true;<br>    writeBoolean(res);<br>    res = true != false;<br>    writeBoolean(res);<br>    res = true != true;<br>    writeBoolean(res);<br>end;</td>
     <td>100110</td>
-    <td></td>
+    <td>build\tmp\compile\file.asm:10: error: comma, colon, decorator or end of line expected after operand<br>build\tmp\compile\file.asm:10: error: comma, colon, decorator or end of line expected after operand<br>build\tmp\compile\file.asm:10: error: comma, colon, decorator or end of line expected after operand<br>build\tmp\compile\file.asm:10: error: comma, colon, decorator or end of line expected after operand<br><br>Program exited with exit code: 1, but expected: 0</td>
     <td>0</td>
-    <td>0</td>
+    <td>1</td>
     <td>1.5</td>
-    <td class="fail">Wrong Answer</td>
-    <td>285</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>264</td>
     <td>2000</td>
   </tr>
   <tr>
     <td>(expression) Complex</td>
     <td>procedure main()<br>    int a;<br>    int b;<br>begin<br>    a = 5;<br>    b = 10;<br>    if (3 <= a && a <= 10) then<br>        writeInt(12);<br>    end;<br>    if (!(3 <= a && a <= 10)) then<br>        writeInt(34);<br>    end;<br>    if (3 > 5 || a == a) then<br>        writeInt(56);<br>    end;<br>    if (3 > 5 && a == a) then<br>        writeInt(78);<br>    end;<br>end</td>
     <td>1256</td>
-    <td></td>
+    <td>build\tmp\compile\file.asm:10: error: label or instruction expected at start of line<br>build\tmp\compile\file.asm:12: error: label or instruction expected at start of line<br>build\tmp\compile\file.asm:14: error: label or instruction expected at start of line<br>build\tmp\compile\file.asm:16: error: label or instruction expected at start of line<br><br>Program exited with exit code: 1, but expected: 0</td>
     <td>0</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.5</td>
-    <td class="fail">Wrong Answer</td>
-    <td>292</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>265</td>
     <td>2000</td>
   </tr>
   <tr>
     <td>(program) Count</td>
     <td>procedure main()<br>    int i;<br>begin<br>    i = 10;<br>    while(i > 0) do<br>        writeInt(i);<br>        writeChar(10);<br>        i = i - 1;<br>    end;<br>end</td>
     <td>10<br>9<br>8<br>7<br>6<br>5<br>4<br>3<br>2<br>1</td>
-    <td></td>
+    <td>build\tmp\compile\file.asm:10: error: label or instruction expected at start of line<br>build\tmp\compile\file.asm:14: error: label or instruction expected at start of line<br><br>Program exited with exit code: 1, but expected: 0</td>
     <td>0</td>
-    <td>0</td>
+    <td>1</td>
     <td>1.0</td>
-    <td class="fail">Wrong Answer</td>
-    <td>281</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>293</td>
     <td>2000</td>
   </tr>
   <tr>
     <td>(program) Max</td>
     <td>int result;<br>procedure max(int a, int b)<br>begin<br>    if (a > b) then<br>        result = a;<br>    else<br>        result = b;<br>    end;<br>end;<br>procedure main()<br>    int value1;<br>    int value2;<br>    int value3;<br>begin<br>    max(45, 12);<br>    value1 = result;<br>    max(-1200000, 120444444);<br>    value2 = result;<br>    max(value1, value2);<br>    value3 = result;<br>    writeInt(value1);<br>    writeInt(value2);<br>    writeInt(value3);<br>end</td>
     <td>45120444444120444444</td>
-    <td></td>
+    <td>build\tmp\compile\file.asm:16: error: label or instruction expected at start of line<br>build\tmp\compile\file.asm:18: error: label or instruction expected at start of line<br><br>Program exited with exit code: 1, but expected: 0</td>
     <td>0</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.5</td>
-    <td class="fail">Wrong Answer</td>
-    <td>329</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>275</td>
     <td>2000</td>
   </tr>
   <tr>
     <td>(program) Sort</td>
     <td>int a0;<br>int a1;<br>int a2;<br>int a3;<br>int a4;<br>int retval;<br>procedure set(int index, int value)<br>begin<br>   if (index == 0) then a0 = value;<br>   elsif (index == 1) then a1 = value;<br>   elsif (index == 2) then a2 = value;<br>   elsif (index == 3) then a3 = value;<br>   else a4 = value;<br>   end;<br>end;<br>procedure get(int index)<br>begin<br>   if (index == 0) then retval = a0;<br>   elsif (index == 1) then retval = a1;<br>   elsif (index == 2) then retval = a2;<br>   elsif (index == 3) then retval = a3;<br>   else retval = a4;<br>   end;<br>end;<br>procedure print()<br>begin<br>    writeInt(a0); writeChar(44);<br>    writeInt(a1); writeChar(44);<br>    writeInt(a2); writeChar(44);<br>    writeInt(a3); writeChar(44);<br>    writeInt(a4); writeChar(10);<br>end;<br>procedure sort()<br>    int i;<br>    int n;<br>    boolean swapped;<br>    int prev;<br>begin<br>    n = 5;<br>    swapped = true;<br>    while(swapped) do<br>        i = 0;<br>        swapped = false;<br>        while (i < n - 1) do<br>            get(i);<br>            prev = retval;<br>            get(i + 1);<br>            if (prev > retval) then<br>                get(i);<br>                prev = retval;<br>                get(i + 1);<br>                set(i, retval);<br>                set(i + 1, prev);<br>                swapped = true;<br>            end;<br>            i = i + 1;<br>        end;<br>        n = n - 1;<br>   end;<br>end;<br>procedure main()<br>begin<br>   a0 = 3; a1 = 1; a2 = 4; a3 = 23; a4= -3;<br>   print();<br>   sort();<br>   print();<br>end;</td>
     <td>3,1,4,23,-3<br>-3,1,3,4,23</td>
-    <td></td>
+    <td>build\tmp\compile\file.asm:16: error: invalid segment override<br>build\tmp\compile\file.asm:16: error: expression syntax error<br>build\tmp\compile\file.asm:22: error: label or instruction expected at start of line<br>build\tmp\compile\file.asm:25: error: label or instruction expected at start of line<br>build\tmp\compile\file.asm:30: error: comma, colon, decorator or end of line expected after operand<br>build\tmp\compile\file.asm:34: error: comma, colon, decorator or end of line expected after operand<br>build\tmp\compile\file.asm:38: error: comma, colon, decorator or end of line expected after operand<br>build\tmp\compile\file.asm:42: error: comma, colon, decorator or end of line expected after operand<br>build\tmp\compile\file.asm:51: error: label or instruction expected at start of line<br>build\tmp\compile\file.asm:53: error: comma, colon, decorator or end of line expected after operand<br>build\tmp\compile\file.asm:57: error: comma, colon, decorator or end of line expected after operand<br>build\tmp\compile\file.asm:63: error: label or instruction expected at start of line<br>build\tmp\compile\file.asm:66: error: label or instruction expected at start of line<br><br>Program exited with exit code: 1, but expected: 0</td>
     <td>0</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.5</td>
-    <td class="fail">Wrong Answer</td>
-    <td>306</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>270</td>
     <td>2000</td>
   </tr>
   <tr>
     <td>(reference) int</td>
     <td>procedure myProc1(ref int a)<br>begin<br>    a = 13;<br>end;<br>procedure main()<br>    int myRef;<br>begin<br>    myProc1(myRef);<br>    writeInt(myRef);<br>end</td>
     <td>13</td>
-    <td></td>
+    <td>build\tmp\compile\file.asm:10: error: comma, colon, decorator or end of line expected after operand<br>build\tmp\compile\file.asm:10: error: invalid segment override<br>build\tmp\compile\file.asm:10: error: expression syntax error<br>build\tmp\compile\file.asm:13: error: label or instruction expected at start of line<br><br>Program exited with exit code: 1, but expected: 0</td>
     <td>0</td>
-    <td>0</td>
+    <td>1</td>
     <td>1.5</td>
-    <td class="fail">Wrong Answer</td>
-    <td>281</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>251</td>
     <td>2000</td>
   </tr>
   <tr>
     <td>(reference) readInt</td>
     <td>procedure main()<br>    int value;<br>begin<br>    readInt(value);<br>    writeInt(value);<br>end<br>----INPUT----<br>42</td>
     <td>42</td>
-    <td></td>
+    <td>Exception in thread "main" java.util.EmptyStackException<br>&#191;at java.base/java.util.Stack.peek(Stack.java:101)<br>&#191;at java.base/java.util.Stack.pop(Stack.java:83)<br>&#191;at ch.hslu.cobau.minij.code.CodeGenerator.visit(CodeGenerator.java:105)<br>&#191;at ch.hslu.cobau.minij.ast.statement.CallStatement.accept(CallStatement.java:31)<br>&#191;at ch.hslu.cobau.minij.ast.statement.Block.lambda$visitChildren$0(Block.java:27)<br>&#191;at java.base/java.lang.Iterable.forEach(Iterable.java:75)<br>&#191;at ch.hslu.cobau.minij.ast.statement.Block.visitChildren(Block.java:27)<br>&#191;at ch.hslu.cobau.minij.ast.entity.Procedure.visitChildren(Procedure.java:38)<br>&#191;at ch.hslu.cobau.minij.code.CodeGenerator.BuildMainProcedure(CodeGenerator.java:46)<br>&#191;at ch.hslu.cobau.minij.code.CodeGenerator.visit(CodeGenerator.java:37)<br>&#191;at ch.hslu.cobau.minij.ast.entity.Procedure.accept(Procedure.java:32)<br>&#191;at ch.hslu.cobau.minij.ast.entity.Program.lambda$visitChildren$1(Program.java:44)<br>&#191;at java.base/java.lang.Iterable.forEach(Iterable.java:75)<br>&#191;at ch.hslu.cobau.minij.ast.entity.Program.visitChildren(Program.java:44)<br>&#191;at ch.hslu.cobau.minij.code.CodeGenerator.visit(CodeGenerator.java:24)<br>&#191;at ch.hslu.cobau.minij.MiniJCompiler.main(MiniJCompiler.java:72)<br><br>Program exited with exit code: 1, but expected: 0</td>
     <td>0</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.25</td>
-    <td class="fail">Wrong Answer</td>
-    <td>307</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>236</td>
     <td>2000</td>
   </tr>
   <tr>
     <td>(reference) readChar</td>
     <td>procedure main()<br>    int value;<br>begin<br>    readChar(value);<br>    writeChar(value);<br>end<br>----INPUT----<br>M</td>
     <td>M</td>
-    <td></td>
+    <td>Exception in thread "main" java.util.EmptyStackException<br>&#191;at java.base/java.util.Stack.peek(Stack.java:101)<br>&#191;at java.base/java.util.Stack.pop(Stack.java:83)<br>&#191;at ch.hslu.cobau.minij.code.CodeGenerator.visit(CodeGenerator.java:105)<br>&#191;at ch.hslu.cobau.minij.ast.statement.CallStatement.accept(CallStatement.java:31)<br>&#191;at ch.hslu.cobau.minij.ast.statement.Block.lambda$visitChildren$0(Block.java:27)<br>&#191;at java.base/java.lang.Iterable.forEach(Iterable.java:75)<br>&#191;at ch.hslu.cobau.minij.ast.statement.Block.visitChildren(Block.java:27)<br>&#191;at ch.hslu.cobau.minij.ast.entity.Procedure.visitChildren(Procedure.java:38)<br>&#191;at ch.hslu.cobau.minij.code.CodeGenerator.BuildMainProcedure(CodeGenerator.java:46)<br>&#191;at ch.hslu.cobau.minij.code.CodeGenerator.visit(CodeGenerator.java:37)<br>&#191;at ch.hslu.cobau.minij.ast.entity.Procedure.accept(Procedure.java:32)<br>&#191;at ch.hslu.cobau.minij.ast.entity.Program.lambda$visitChildren$1(Program.java:44)<br>&#191;at java.base/java.lang.Iterable.forEach(Iterable.java:75)<br>&#191;at ch.hslu.cobau.minij.ast.entity.Program.visitChildren(Program.java:44)<br>&#191;at ch.hslu.cobau.minij.code.CodeGenerator.visit(CodeGenerator.java:24)<br>&#191;at ch.hslu.cobau.minij.MiniJCompiler.main(MiniJCompiler.java:72)<br><br>Program exited with exit code: 1, but expected: 0</td>
     <td>0</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.25</td>
-    <td class="fail">Wrong Answer</td>
-    <td>280</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>260</td>
     <td>2000</td>
   </tr>
   <tr>
     <td>(record) Zugriff</td>
     <td>record coordinates<br>   int x;<br>   int y;<br>end;<br>procedure main()<br>    coordinates c;<br>begin<br>    c.x = 147;<br>    c.y = -23;<br>    writeInt(c.x);<br>    writeInt(c.y);<br>end</td>
     <td>147-23</td>
-    <td></td>
+    <td>build\tmp\compile\file.asm:10: error: label or instruction expected at start of line<br><br>Program exited with exit code: 1, but expected: 0</td>
     <td>0</td>
-    <td>0</td>
+    <td>1</td>
     <td>1.5</td>
-    <td class="fail">Wrong Answer</td>
-    <td>287</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>281</td>
     <td>2000</td>
   </tr>
   <tr>
     <td>(record) Berechnung</td>
     <td>record coordinates<br>   int x;<br>   int y;<br>end;<br>procedure main()<br>    coordinates c;<br>    int result;<br>begin<br>    c.x = 2;<br>    c.y = 104;<br>    result = (c.x * c.x + c.y * c.y) / c.x;<br>    writeInt(result);<br>    writeInt(c.y);<br>end</td>
     <td>5410104</td>
-    <td></td>
+    <td>build\tmp\compile\file.asm:10: error: label or instruction expected at start of line<br><br>Program exited with exit code: 1, but expected: 0</td>
     <td>0</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.5</td>
-    <td class="fail">Wrong Answer</td>
-    <td>321</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>291</td>
     <td>2000</td>
   </tr>
   <tr>
     <td>(record) Parameter</td>
     <td>record coord3d<br>   int x;<br>   int y;<br>   int z;<br>end;<br>procedure print(coord3d c)<br>begin<br>    writeInt(c.x);<br>    writeInt(c.y);<br>    writeInt(c.z);<br>end;<br>procedure main()<br>    coord3d x;<br>begin<br>    x.x = -23;<br>    x.y = 1024;<br>    x.z = -2;<br>    print(x);<br>end</td>
     <td>-231024-2</td>
-    <td></td>
+    <td>Exception in thread "main" java.util.EmptyStackException<br>&#191;at java.base/java.util.Stack.peek(Stack.java:101)<br>&#191;at java.base/java.util.Stack.pop(Stack.java:83)<br>&#191;at ch.hslu.cobau.minij.code.CodeGenerator.visit(CodeGenerator.java:105)<br>&#191;at ch.hslu.cobau.minij.ast.statement.CallStatement.accept(CallStatement.java:31)<br>&#191;at ch.hslu.cobau.minij.ast.statement.Block.lambda$visitChildren$0(Block.java:27)<br>&#191;at java.base/java.lang.Iterable.forEach(Iterable.java:75)<br>&#191;at ch.hslu.cobau.minij.ast.statement.Block.visitChildren(Block.java:27)<br>&#191;at ch.hslu.cobau.minij.ast.entity.Procedure.visitChildren(Procedure.java:38)<br>&#191;at ch.hslu.cobau.minij.code.CodeGenerator.BuildProcedure(CodeGenerator.java:75)<br>&#191;at ch.hslu.cobau.minij.code.CodeGenerator.visit(CodeGenerator.java:41)<br>&#191;at ch.hslu.cobau.minij.ast.entity.Procedure.accept(Procedure.java:32)<br>&#191;at ch.hslu.cobau.minij.ast.entity.Program.lambda$visitChildren$1(Program.java:44)<br>&#191;at java.base/java.lang.Iterable.forEach(Iterable.java:75)<br>&#191;at ch.hslu.cobau.minij.ast.entity.Program.visitChildren(Program.java:44)<br>&#191;at ch.hslu.cobau.minij.code.CodeGenerator.visit(CodeGenerator.java:24)<br>&#191;at ch.hslu.cobau.minij.MiniJCompiler.main(MiniJCompiler.java:72)<br><br>Program exited with exit code: 1, but expected: 0</td>
     <td>0</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.5</td>
-    <td class="fail">Wrong Answer</td>
-    <td>288</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>269</td>
     <td>2000</td>
   </tr>
   <tr>
     <td>(record|reference) Reference Parameter</td>
     <td>record coord3d<br>   int x;<br>   int y;<br>   int z;<br>end;<br>procedure add(ref coord3d c, int value)<br>begin<br>    c.x = c.x + value;<br>    c.y = c.y + value;<br>    c.z = c.z + value;<br>end;<br>procedure print(coord3d c)<br>begin<br>    writeInt(c.x);<br>    writeInt(c.y);<br>    writeInt(c.z);<br>end;<br>procedure main()<br>    coord3d x;<br>begin<br>    x.x = -23;<br>    x.y = 1024;<br>    x.z = -2;<br>    add(x, 25);<br>    print(x);<br>end</td>
     <td>2104923</td>
-    <td></td>
+    <td>build\tmp\compile\file.asm:13: error: comma, colon, decorator or end of line expected after operand<br>build\tmp\compile\file.asm:13: error: comma, colon, decorator or end of line expected after operand<br>build\tmp\compile\file.asm:13: error: invalid segment override<br>build\tmp\compile\file.asm:13: error: expression syntax error<br>build\tmp\compile\file.asm:28: error: label or instruction expected at start of line<br><br>Program exited with exit code: 1, but expected: 0</td>
     <td>0</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.5</td>
-    <td class="fail">Wrong Answer</td>
-    <td>288</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>312</td>
     <td>2000</td>
   </tr>
   <tr>
     <td>(incdec) increment (pre)</td>
     <td>procedure main()<br>    int a;<br>    int res;<br>begin<br>    a = 10;<br>    res = ++a;<br>    writeInt(res);<br>    writeInt(a);<br>end;</td>
     <td>1111</td>
-    <td></td>
+    <td>build\tmp\compile\file.asm:10: error: comma, colon, decorator or end of line expected after operand<br><br>Program exited with exit code: 1, but expected: 0</td>
     <td>0</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.4</td>
-    <td class="fail">Wrong Answer</td>
-    <td>278</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>288</td>
     <td>2000</td>
   </tr>
   <tr>
     <td>(incdec) increment (post)</td>
     <td>procedure main()<br>    int a;<br>    int res;<br>begin<br>    a = 10;<br>    res = a++;<br>    writeInt(res);<br>    writeInt(a);<br>end;</td>
     <td>1011</td>
-    <td></td>
+    <td>build\tmp\compile\file.asm:10: error: comma, colon, decorator or end of line expected after operand<br><br>Program exited with exit code: 1, but expected: 0</td>
     <td>0</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.35</td>
-    <td class="fail">Wrong Answer</td>
-    <td>310</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>302</td>
     <td>2000</td>
   </tr>
   <tr>
     <td>(incdec) decrement (pre)</td>
     <td>procedure main()<br>    int a;<br>    int res;<br>begin<br>    a = 10;<br>    res = --a;<br>    writeInt(res);<br>    writeInt(a);<br>end;</td>
     <td>99</td>
-    <td></td>
+    <td>build\tmp\compile\file.asm:10: error: comma, colon, decorator or end of line expected after operand<br><br>Program exited with exit code: 1, but expected: 0</td>
     <td>0</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.4</td>
-    <td class="fail">Wrong Answer</td>
-    <td>285</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>265</td>
     <td>2000</td>
   </tr>
   <tr>
     <td>(incdec) decrement (post)</td>
     <td>procedure main()<br>    int a;<br>    int res;<br>begin<br>    a = 10;<br>    res = a--;<br>    writeInt(res);<br>    writeInt(a);<br>end;</td>
     <td>109</td>
-    <td></td>
+    <td>build\tmp\compile\file.asm:10: error: comma, colon, decorator or end of line expected after operand<br><br>Program exited with exit code: 1, but expected: 0</td>
     <td>0</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.35</td>
-    <td class="fail">Wrong Answer</td>
-    <td>282</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>271</td>
     <td>2000</td>
   </tr>
   <tr>
     <td>(circuit) Kurzschluss (und)</td>
     <td>procedure main()<br>    int a;<br>    int res;<br>begin<br>    a = 123;<br>    if (a == 0 && a++ == 0) then<br>    end;<br>    writeInt(a); // a++ not executed<br>    a = 123;<br>    if (a == 123 && a++ == 123) then<br>    end;<br>    writeInt(a); // a++ executed<br>end;</td>
     <td>123124</td>
-    <td></td>
+    <td>build\tmp\compile\file.asm:10: error: label or instruction expected at start of line<br>build\tmp\compile\file.asm:12: error: label or instruction expected at start of line<br><br>Program exited with exit code: 1, but expected: 0</td>
     <td>0</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.5</td>
-    <td class="fail">Wrong Answer</td>
-    <td>308</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>255</td>
     <td>2000</td>
   </tr>
   <tr>
     <td>(circuit) Kurzschluss (oder)</td>
     <td>procedure main()<br>    int a;<br>    int res;<br>begin<br>    a = 123;<br>    if (a == 123 || a++ == 123) then<br>    end;<br>    writeInt(a); // a++ not executed<br>    a = 123;<br>    if (a == 0 || a++ == 0) then<br>    end;<br>    writeInt(a);  // a++ executed<br>end;</td>
     <td>123124</td>
-    <td></td>
+    <td>build\tmp\compile\file.asm:10: error: label or instruction expected at start of line<br>build\tmp\compile\file.asm:12: error: label or instruction expected at start of line<br><br>Program exited with exit code: 1, but expected: 0</td>
     <td>0</td>
-    <td>0</td>
+    <td>1</td>
     <td>0.5</td>
-    <td class="fail">Wrong Answer</td>
-    <td>285</td>
+    <td class="fail">Wrong Exitcode</td>
+    <td>261</td>
     <td>2000</td>
   </tr>
 </table>
