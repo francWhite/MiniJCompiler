@@ -76,20 +76,6 @@ public class CodeGenerator extends BaseAstVisitor {
                 "   pop  rbp\n";
     }
 
-    private void BuildBuiltInProcedure(Procedure procedure) {
-        procedure.visitChildren(this);
-
-        var procedureCode = procedure.getIdentifier() + ":\n" +
-                "   push rbp\n" +
-                "   mov rbp, rsp\n" +
-                "   call _" + procedure.getIdentifier() + " \n" +
-                "   mov rsp, rbp\n" +
-                "   pop rbp\n" +
-                "   ret\n";;
-
-        statementsStack.push(procedureCode);
-    }
-
     private void BuildProcedure(Procedure procedure) {
         procedure.visitChildren(this);
 
